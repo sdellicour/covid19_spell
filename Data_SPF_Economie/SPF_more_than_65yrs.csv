@@ -1,0 +1,1915 @@
+CD_REFNIS,MS_SEX,<65 year,>=65year,TOTAL,,TX_DESCR_FR
+01000,TOTAL,9266106,2165300,11431406,België,Belgique
+01000,MAN,4675715,952513,5628228,België,Belgique
+01000,VROUW,4590391,1212787,5803178,België,Belgique
+02000,TOTAL,5257018,1332051,6589069,Vlaams Gewest,Région flamande
+02000,MAN,2660537,599496,3260033,Vlaams Gewest,Région flamande
+02000,VROUW,2596481,732555,3329036,Vlaams Gewest,Région flamande
+03000,TOTAL,2959215,674580,3633795,Waals Gewest,Région wallonne
+03000,MAN,1487334,288432,1775766,Waals Gewest,Région wallonne
+03000,VROUW,1471881,386148,1858029,Waals Gewest,Région wallonne
+04000,TOTAL,1049873,158669,1208542,Brussels Hoofdstedelijk Gewest,Région de Bruxelles-Capitale
+04000,MAN,527844,64585,592429,Brussels Hoofdstedelijk Gewest,Région de Bruxelles-Capitale
+04000,VROUW,522029,94084,616113,Brussels Hoofdstedelijk Gewest,Région de Bruxelles-Capitale
+10000,TOTAL,1499764,358222,1857986,Provincie Antwerpen,Province d’Anvers
+10000,MAN,759355,162392,921747,Provincie Antwerpen,Province d’Anvers
+10000,VROUW,740409,195830,936239,Provincie Antwerpen,Province d’Anvers
+11000,TOTAL,853834,197467,1051301,Arrondissement Antwerpen,Arrondissement d’Anvers
+11000,MAN,432818,88112,520930,Arrondissement Antwerpen,Arrondissement d’Anvers
+11000,VROUW,421016,109355,530371,Arrondissement Antwerpen,Arrondissement d’Anvers
+11001,TOTAL,10710,3583,14293,Aartselaar,Aartselaar
+11001,MAN,5431,1658,7089,Aartselaar,Aartselaar
+11001,VROUW,5279,1925,7204,Aartselaar,Aartselaar
+11002,TOTAL,439563,86372,525935,Antwerpen,Anvers
+11002,MAN,225546,37375,262921,Antwerpen,Anvers
+11002,VROUW,214017,48997,263014,Antwerpen,Anvers
+11004,TOTAL,10503,2763,13266,Boechout,Boechout
+11004,MAN,5243,1263,6506,Boechout,Boechout
+11004,VROUW,5260,1500,6760,Boechout,Boechout
+11005,TOTAL,15047,3197,18244,Boom,Boom
+11005,MAN,7618,1406,9024,Boom,Boom
+11005,VROUW,7429,1791,9220,Boom,Boom
+11007,TOTAL,8709,2145,10854,Borsbeek,Borsbeek
+11007,MAN,4321,949,5270,Borsbeek,Borsbeek
+11007,VROUW,4388,1196,5584,Borsbeek,Borsbeek
+11008,TOTAL,28804,9142,37946,Brasschaat,Brasschaat
+11008,MAN,14156,4064,18220,Brasschaat,Brasschaat
+11008,VROUW,14648,5078,19726,Brasschaat,Brasschaat
+11009,TOTAL,23655,5613,29268,Brecht,Brecht
+11009,MAN,11909,2646,14555,Brecht,Brecht
+11009,VROUW,11746,2967,14713,Brecht,Brecht
+11013,TOTAL,16801,5262,22063,Edegem,Edegem
+11013,MAN,8297,2317,10614,Edegem,Edegem
+11013,VROUW,8504,2945,11449,Edegem,Edegem
+11016,TOTAL,15528,3510,19038,Essen,Essen
+11016,MAN,7846,1673,9519,Essen,Essen
+11016,VROUW,7682,1837,9519,Essen,Essen
+11018,TOTAL,9611,1948,11559,Hemiksem,Hemiksem
+11018,MAN,4863,905,5768,Hemiksem,Hemiksem
+11018,VROUW,4748,1043,5791,Hemiksem,Hemiksem
+11021,TOTAL,6197,1928,8125,Hove (Antwerpen),Hove (Anvers)
+11021,MAN,3018,874,3892,Hove (Antwerpen),Hove (Anvers)
+11021,VROUW,3179,1054,4233,Hove (Antwerpen),Hove (Anvers)
+11022,TOTAL,14616,4079,18695,Kalmthout,Kalmthout
+11022,MAN,7261,1865,9126,Kalmthout,Kalmthout
+11022,VROUW,7355,2214,9569,Kalmthout,Kalmthout
+11023,TOTAL,20595,6255,26850,Kapellen (Antwerpen),Kapellen (Anvers)
+11023,MAN,10308,2837,13145,Kapellen (Antwerpen),Kapellen (Anvers)
+11023,VROUW,10287,3418,13705,Kapellen (Antwerpen),Kapellen (Anvers)
+11024,TOTAL,16716,4399,21115,Kontich,Kontich
+11024,MAN,8387,2006,10393,Kontich,Kontich
+11024,VROUW,8329,2393,10722,Kontich,Kontich
+11025,TOTAL,7106,1612,8718,Lint,Lint
+11025,MAN,3573,770,4343,Lint,Lint
+11025,VROUW,3533,842,4375,Lint,Lint
+11029,TOTAL,20840,5259,26099,Mortsel,Mortsel
+11029,MAN,10384,2246,12630,Mortsel,Mortsel
+11029,VROUW,10456,3013,13469,Mortsel,Mortsel
+11030,TOTAL,8794,1707,10501,Niel,Niel
+11030,MAN,4438,777,5215,Niel,Niel
+11030,VROUW,4356,930,5286,Niel,Niel
+11035,TOTAL,14937,4071,19008,Ranst,Ranst
+11035,MAN,7552,1964,9516,Ranst,Ranst
+11035,VROUW,7385,2107,9492,Ranst,Ranst
+11037,TOTAL,11923,3167,15090,Rumst,Rumst
+11037,MAN,6073,1436,7509,Rumst,Rumst
+11037,VROUW,5850,1731,7581,Rumst,Rumst
+11038,TOTAL,6798,1720,8518,Schelle,Schelle
+11038,MAN,3357,791,4148,Schelle,Schelle
+11038,VROUW,3441,929,4370,Schelle,Schelle
+11039,TOTAL,14807,4845,19652,Schilde,Schilde
+11039,MAN,7307,2284,9591,Schilde,Schilde
+11039,VROUW,7500,2561,10061,Schilde,Schilde
+11040,TOTAL,27005,7512,34517,Schoten,Schoten
+11040,MAN,13338,3339,16677,Schoten,Schoten
+11040,VROUW,13667,4173,17840,Schoten,Schoten
+11044,TOTAL,15113,3597,18710,Stabroek,Stabroek
+11044,MAN,7594,1699,9293,Stabroek,Stabroek
+11044,VROUW,7519,1898,9417,Stabroek,Stabroek
+11050,TOTAL,7623,2193,9816,Wijnegem,Wijnegem
+11050,MAN,3797,954,4751,Wijnegem,Wijnegem
+11050,VROUW,3826,1239,5065,Wijnegem,Wijnegem
+11052,TOTAL,10134,2731,12865,Wommelgem,Wommelgem
+11052,MAN,5106,1266,6372,Wommelgem,Wommelgem
+11052,VROUW,5028,1465,6493,Wommelgem,Wommelgem
+11053,TOTAL,17258,3712,20970,Wuustwezel,Wuustwezel
+11053,MAN,8786,1787,10573,Wuustwezel,Wuustwezel
+11053,VROUW,8472,1925,10397,Wuustwezel,Wuustwezel
+11054,TOTAL,10105,2920,13025,Zandhoven,Zandhoven
+11054,MAN,5099,1389,6488,Zandhoven,Zandhoven
+11054,VROUW,5006,1531,6537,Zandhoven,Zandhoven
+11055,TOTAL,16807,5137,21944,Zoersel,Zoersel
+11055,MAN,8357,2392,10749,Zoersel,Zoersel
+11055,VROUW,8450,2745,11195,Zoersel,Zoersel
+11056,TOTAL,15102,3954,19056,Zwijndrecht,Zwijndrecht
+11056,MAN,7552,1781,9333,Zwijndrecht,Zwijndrecht
+11056,VROUW,7550,2173,9723,Zwijndrecht,Zwijndrecht
+11057,TOTAL,12427,3134,15561,Malle,Malle
+11057,MAN,6301,1399,7700,Malle,Malle
+11057,VROUW,6126,1735,7861,Malle,Malle
+12000,TOTAL,276092,68726,344818,Arrondissement Mechelen,Arrondissement de Malines
+12000,MAN,138577,30892,169469,Arrondissement Mechelen,Arrondissement de Malines
+12000,VROUW,137515,37834,175349,Arrondissement Mechelen,Arrondissement de Malines
+12002,TOTAL,9091,2436,11527,Berlaar,Berlaar
+12002,MAN,4581,1112,5693,Berlaar,Berlaar
+12002,VROUW,4510,1324,5834,Berlaar,Berlaar
+12005,TOTAL,11458,3552,15010,Bonheiden,Bonheiden
+12005,MAN,5711,1570,7281,Bonheiden,Bonheiden
+12005,VROUW,5747,1982,7729,Bonheiden,Bonheiden
+12007,TOTAL,16682,4684,21366,Bornem,Bornem
+12007,MAN,8410,2146,10556,Bornem,Bornem
+12007,VROUW,8272,2538,10810,Bornem,Bornem
+12009,TOTAL,13913,3578,17491,Duffel,Duffel
+12009,MAN,7007,1567,8574,Duffel,Duffel
+12009,VROUW,6906,2011,8917,Duffel,Duffel
+12014,TOTAL,33577,9104,42681,Heist-op-den-Berg,Heist-op-den-Berg
+12014,MAN,16856,4212,21068,Heist-op-den-Berg,Heist-op-den-Berg
+12014,VROUW,16721,4892,21613,Heist-op-den-Berg,Heist-op-den-Berg
+12021,TOTAL,28677,7565,36242,Lier,Lierre
+12021,MAN,14233,3380,17613,Lier,Lierre
+12021,VROUW,14444,4185,18629,Lier,Lierre
+12025,TOTAL,71737,14879,86616,Mechelen,Malines
+12025,MAN,35956,6433,42389,Mechelen,Malines
+12025,VROUW,35781,8446,44227,Mechelen,Malines
+12026,TOTAL,18191,4758,22949,Nijlen,Nijlen
+12026,MAN,9105,2254,11359,Nijlen,Nijlen
+12026,VROUW,9086,2504,11590,Nijlen,Nijlen
+12029,TOTAL,13980,3820,17800,Putte,Putte
+12029,MAN,7046,1761,8807,Putte,Putte
+12029,VROUW,6934,2059,8993,Putte,Putte
+12035,TOTAL,16431,4361,20792,Sint-Katelijne-Waver,Sint-Katelijne-Waver
+12035,MAN,8278,1927,10205,Sint-Katelijne-Waver,Sint-Katelijne-Waver
+12035,VROUW,8153,2434,10587,Sint-Katelijne-Waver,Sint-Katelijne-Waver
+12040,TOTAL,21722,4740,26462,Willebroek,Willebroek
+12040,MAN,10954,2118,13072,Willebroek,Willebroek
+12040,VROUW,10768,2622,13390,Willebroek,Willebroek
+12041,TOTAL,20633,5249,25882,Puurs-Sint-Amands,Puurs-Sint-Amands
+12041,MAN,10440,2412,12852,Puurs-Sint-Amands,Puurs-Sint-Amands
+12041,VROUW,10193,2837,13030,Puurs-Sint-Amands,Puurs-Sint-Amands
+13000,TOTAL,369838,92029,461867,Arrondissement Turnhout,Arrondissement de Turnhout
+13000,MAN,187960,43388,231348,Arrondissement Turnhout,Arrondissement de Turnhout
+13000,VROUW,181878,48641,230519,Arrondissement Turnhout,Arrondissement de Turnhout
+13001,TOTAL,10759,2534,13293,Arendonk,Arendonk
+13001,MAN,5496,1160,6656,Arendonk,Arendonk
+13001,VROUW,5263,1374,6637,Arendonk,Arendonk
+13002,TOTAL,2204,556,2760,Baarle-Hertog,Baerle-Duc
+13002,MAN,1109,271,1380,Baarle-Hertog,Baerle-Duc
+13002,VROUW,1095,285,1380,Baarle-Hertog,Baerle-Duc
+13003,TOTAL,18255,4363,22618,Balen,Balen
+13003,MAN,9228,2041,11269,Balen,Balen
+13003,VROUW,9027,2322,11349,Balen,Balen
+13004,TOTAL,14773,3311,18084,Beerse,Beerse
+13004,MAN,7462,1545,9007,Beerse,Beerse
+13004,VROUW,7311,1766,9077,Beerse,Beerse
+13006,TOTAL,7693,1905,9598,Dessel,Dessel
+13006,MAN,3924,888,4812,Dessel,Dessel
+13006,VROUW,3769,1017,4786,Dessel,Dessel
+13008,TOTAL,32412,7941,40353,Geel,Geel
+13008,MAN,16558,3698,20256,Geel,Geel
+13008,VROUW,15854,4243,20097,Geel,Geel
+13010,TOTAL,8767,2388,11155,Grobbendonk,Grobbendonk
+13010,MAN,4447,1145,5592,Grobbendonk,Grobbendonk
+13010,VROUW,4320,1243,5563,Grobbendonk,Grobbendonk
+13011,TOTAL,22317,5860,28177,Herentals,Herentals
+13011,MAN,11239,2618,13857,Herentals,Herentals
+13011,VROUW,11078,3242,14320,Herentals,Herentals
+13012,TOTAL,7122,1939,9061,Herenthout,Herenthout
+13012,MAN,3560,934,4494,Herenthout,Herenthout
+13012,VROUW,3562,1005,4567,Herenthout,Herenthout
+13013,TOTAL,11330,3193,14523,Herselt,Herselt
+13013,MAN,5781,1538,7319,Herselt,Herselt
+13013,VROUW,5549,1655,7204,Herselt,Herselt
+13014,TOTAL,17290,4065,21355,Hoogstraten,Hoogstraten
+13014,MAN,8897,1999,10896,Hoogstraten,Hoogstraten
+13014,VROUW,8393,2066,10459,Hoogstraten,Hoogstraten
+13016,TOTAL,8418,2006,10424,Hulshout,Hulshout
+13016,MAN,4261,952,5213,Hulshout,Hulshout
+13016,VROUW,4157,1054,5211,Hulshout,Hulshout
+13017,TOTAL,14786,3869,18655,Kasterlee,Kasterlee
+13017,MAN,7564,1854,9418,Kasterlee,Kasterlee
+13017,VROUW,7222,2015,9237,Kasterlee,Kasterlee
+13019,TOTAL,13424,3105,16529,Lille,Lille
+13019,MAN,6833,1525,8358,Lille,Lille
+13019,VROUW,6591,1580,8171,Lille,Lille
+13021,TOTAL,8250,2111,10361,Meerhout,Meerhout
+13021,MAN,4209,1025,5234,Meerhout,Meerhout
+13021,VROUW,4041,1086,5127,Meerhout,Meerhout
+13023,TOTAL,7040,1560,8600,Merksplas,Merksplas
+13023,MAN,3616,769,4385,Merksplas,Merksplas
+13023,VROUW,3424,791,4215,Merksplas,Merksplas
+13025,TOTAL,29354,7471,36825,Mol,Mol
+13025,MAN,14859,3449,18308,Mol,Mol
+13025,VROUW,14495,4022,18517,Mol,Mol
+13029,TOTAL,10197,2308,12505,Olen,Olen
+13029,MAN,5177,1082,6259,Olen,Olen
+13029,VROUW,5020,1226,6246,Olen,Olen
+13031,TOTAL,10556,3106,13662,Oud-Turnhout,Oud-Turnhout
+13031,MAN,5346,1489,6835,Oud-Turnhout,Oud-Turnhout
+13031,VROUW,5210,1617,6827,Oud-Turnhout,Oud-Turnhout
+13035,TOTAL,12076,2933,15009,Ravels,Ravels
+13035,MAN,6146,1423,7569,Ravels,Ravels
+13035,VROUW,5930,1510,7440,Ravels,Ravels
+13036,TOTAL,9173,2223,11396,Retie,Retie
+13036,MAN,4659,1089,5748,Retie,Retie
+13036,VROUW,4514,1134,5648,Retie,Retie
+13037,TOTAL,9837,2223,12060,Rijkevorsel,Rijkevorsel
+13037,MAN,5021,1069,6090,Rijkevorsel,Rijkevorsel
+13037,VROUW,4816,1154,5970,Rijkevorsel,Rijkevorsel
+13040,TOTAL,35980,8684,44664,Turnhout,Turnhout
+13040,MAN,18325,3923,22248,Turnhout,Turnhout
+13040,VROUW,17655,4761,22416,Turnhout,Turnhout
+13044,TOTAL,6285,1576,7861,Vorselaar,Vorselaar
+13044,MAN,3197,741,3938,Vorselaar,Vorselaar
+13044,VROUW,3088,835,3923,Vorselaar,Vorselaar
+13046,TOTAL,9035,2152,11187,Vosselaar,Vosselaar
+13046,MAN,4556,1012,5568,Vosselaar,Vosselaar
+13046,VROUW,4479,1140,5619,Vosselaar,Vosselaar
+13049,TOTAL,19726,5325,25051,Westerlo,Westerlo
+13049,MAN,10004,2552,12556,Westerlo,Westerlo
+13049,VROUW,9722,2773,12495,Westerlo,Westerlo
+13053,TOTAL,12779,3322,16101,Laakdal,Laakdal
+13053,MAN,6486,1597,8083,Laakdal,Laakdal
+13053,VROUW,6293,1725,8018,Laakdal,Laakdal
+20001,TOTAL,925490,220685,1146175,Provincie Vlaams-Brabant,Province du Brabant flamand
+20001,MAN,464045,97969,562014,Provincie Vlaams-Brabant,Province du Brabant flamand
+20001,VROUW,461445,122716,584161,Provincie Vlaams-Brabant,Province du Brabant flamand
+20002,TOTAL,326915,76684,403599,Provincie Waals-Brabant,Province du Brabant wallon
+20002,MAN,162761,33155,195916,Provincie Waals-Brabant,Province du Brabant wallon
+20002,VROUW,164154,43529,207683,Provincie Waals-Brabant,Province du Brabant wallon
+21000,TOTAL,1049873,158669,1208542,Arrondissement Brussel-Hoofdstad,Arrondissement de Bruxelles-Capitale
+21000,MAN,527844,64585,592429,Arrondissement Brussel-Hoofdstad,Arrondissement de Bruxelles-Capitale
+21000,VROUW,522029,94084,616113,Arrondissement Brussel-Hoofdstad,Arrondissement de Bruxelles-Capitale
+21001,TOTAL,104496,15218,119714,Anderlecht,Anderlecht
+21001,MAN,53410,6223,59633,Anderlecht,Anderlecht
+21001,VROUW,51086,8995,60081,Anderlecht,Anderlecht
+21002,TOTAL,28431,5582,34013,Oudergem,Auderghem
+21002,MAN,14071,2135,16206,Oudergem,Auderghem
+21002,VROUW,14360,3447,17807,Oudergem,Auderghem
+21003,TOTAL,21314,3865,25179,Sint-Agatha-Berchem,Berchem-Sainte-Agathe
+21003,MAN,10555,1635,12190,Sint-Agatha-Berchem,Berchem-Sainte-Agathe
+21003,VROUW,10759,2230,12989,Sint-Agatha-Berchem,Berchem-Sainte-Agathe
+21004,TOTAL,161641,20085,181726,Brussel,Bruxelles
+21004,MAN,84024,8744,92768,Brussel,Bruxelles
+21004,VROUW,77617,11341,88958,Brussel,Bruxelles
+21005,TOTAL,43079,5288,48367,Etterbeek,Etterbeek
+21005,MAN,21152,2110,23262,Etterbeek,Etterbeek
+21005,VROUW,21927,3178,25105,Etterbeek,Etterbeek
+21006,TOTAL,35110,6653,41763,Evere,Evere
+21006,MAN,17405,2476,19881,Evere,Evere
+21006,VROUW,17705,4177,21882,Evere,Evere
+21007,TOTAL,48774,7515,56289,Vorst (Brussel-Hoofdstad),Forest (Bruxelles-Capitale)
+21007,MAN,24273,3015,27288,Vorst (Brussel-Hoofdstad),Forest (Bruxelles-Capitale)
+21007,VROUW,24501,4500,29001,Vorst (Brussel-Hoofdstad),Forest (Bruxelles-Capitale)
+21008,TOTAL,20676,4226,24902,Ganshoren,Ganshoren
+21008,MAN,10295,1612,11907,Ganshoren,Ganshoren
+21008,VROUW,10381,2614,12995,Ganshoren,Ganshoren
+21009,TOTAL,77195,9681,86876,Elsene,Ixelles
+21009,MAN,38484,4026,42510,Elsene,Ixelles
+21009,VROUW,38711,5655,44366,Elsene,Ixelles
+21010,TOTAL,44725,7811,52536,Jette,Jette
+21010,MAN,22199,3013,25212,Jette,Jette
+21010,VROUW,22526,4798,27324,Jette,Jette
+21011,TOTAL,19428,2562,21990,Koekelberg,Koekelberg
+21011,MAN,9878,1061,10939,Koekelberg,Koekelberg
+21011,VROUW,9550,1501,11051,Koekelberg,Koekelberg
+21012,TOTAL,86099,11363,97462,Sint-Jans-Molenbeek,Molenbeek-Saint-Jean
+21012,MAN,43975,4743,48718,Sint-Jans-Molenbeek,Molenbeek-Saint-Jean
+21012,VROUW,42124,6620,48744,Sint-Jans-Molenbeek,Molenbeek-Saint-Jean
+21013,TOTAL,45596,4671,50267,Sint-Gillis,Saint-Gilles
+21013,MAN,23175,2046,25221,Sint-Gillis,Saint-Gilles
+21013,VROUW,22421,2625,25046,Sint-Gillis,Saint-Gilles
+21014,TOTAL,25162,2295,27457,Sint-Joost-ten-Node,Saint-Josse-ten-Noode
+21014,MAN,13261,1018,14279,Sint-Joost-ten-Node,Saint-Josse-ten-Noode
+21014,VROUW,11901,1277,13178,Sint-Joost-ten-Node,Saint-Josse-ten-Noode
+21015,TOTAL,120274,13035,133309,Schaarbeek,Schaerbeek
+21015,MAN,60968,5499,66467,Schaarbeek,Schaerbeek
+21015,VROUW,59306,7536,66842,Schaarbeek,Schaerbeek
+21016,TOTAL,67102,15922,83024,Ukkel,Uccle
+21016,MAN,32234,6297,38531,Ukkel,Uccle
+21016,VROUW,34868,9625,44493,Ukkel,Uccle
+21017,TOTAL,20059,5125,25184,Watermaal-Bosvoorde,Watermael-Boitsfort
+21017,MAN,9598,2046,11644,Watermaal-Bosvoorde,Watermael-Boitsfort
+21017,VROUW,10461,3079,13540,Watermaal-Bosvoorde,Watermael-Boitsfort
+21018,TOTAL,46952,9708,56660,Sint-Lambrechts-Woluwe,Woluwe-Saint-Lambert
+21018,MAN,22594,3678,26272,Sint-Lambrechts-Woluwe,Woluwe-Saint-Lambert
+21018,VROUW,24358,6030,30388,Sint-Lambrechts-Woluwe,Woluwe-Saint-Lambert
+21019,TOTAL,33760,8064,41824,Sint-Pieters-Woluwe,Woluwe-Saint-Pierre
+21019,MAN,16293,3208,19501,Sint-Pieters-Woluwe,Woluwe-Saint-Pierre
+21019,VROUW,17467,4856,22323,Sint-Pieters-Woluwe,Woluwe-Saint-Pierre
+23000,TOTAL,518339,119102,637441,Arrondissement Halle-Vilvoorde,Arrondissement de Hal-Vilvorde
+23000,MAN,258307,52225,310532,Arrondissement Halle-Vilvoorde,Arrondissement de Hal-Vilvorde
+23000,VROUW,260032,66877,326909,Arrondissement Halle-Vilvoorde,Arrondissement de Hal-Vilvorde
+23002,TOTAL,27051,6107,33158,Asse,Asse
+23002,MAN,13491,2652,16143,Asse,Asse
+23002,VROUW,13560,3455,17015,Asse,Asse
+23003,TOTAL,20567,4684,25251,Beersel,Beersel
+23003,MAN,10346,2108,12454,Beersel,Beersel
+23003,VROUW,10221,2576,12797,Beersel,Beersel
+23009,TOTAL,1791,368,2159,Bever,Biévène
+23009,MAN,915,172,1087,Bever,Biévène
+23009,VROUW,876,196,1072,Bever,Biévène
+23016,TOTAL,34067,8780,42847,Dilbeek,Dilbeek
+23016,MAN,16802,3829,20631,Dilbeek,Dilbeek
+23016,VROUW,17265,4951,22216,Dilbeek,Dilbeek
+23023,TOTAL,7127,1619,8746,Galmaarden,Gammerages
+23023,MAN,3578,726,4304,Galmaarden,Gammerages
+23023,VROUW,3549,893,4442,Galmaarden,Gammerages
+23024,TOTAL,7223,1947,9170,Gooik,Gooik
+23024,MAN,3646,872,4518,Gooik,Gooik
+23024,VROUW,3577,1075,4652,Gooik,Gooik
+23025,TOTAL,30222,7320,37542,Grimbergen,Grimbergen
+23025,MAN,14938,3109,18047,Grimbergen,Grimbergen
+23025,VROUW,15284,4211,19495,Grimbergen,Grimbergen
+23027,TOTAL,31999,7541,39540,Halle (Halle-Vilvoorde),Hal (Hal-Vilvorde)
+23027,MAN,16012,3132,19144,Halle (Halle-Vilvoorde),Hal (Hal-Vilvorde)
+23027,VROUW,15987,4409,20396,Halle (Halle-Vilvoorde),Hal (Hal-Vilvorde)
+23032,TOTAL,5278,1387,6665,Herne,Herne
+23032,MAN,2662,616,3278,Herne,Herne
+23032,VROUW,2616,771,3387,Herne,Herne
+23033,TOTAL,9236,2085,11321,Hoeilaart,Hoeilaart
+23033,MAN,4638,916,5554,Hoeilaart,Hoeilaart
+23033,VROUW,4598,1169,5767,Hoeilaart,Hoeilaart
+23038,TOTAL,9756,2216,11972,Kampenhout,Kampenhout
+23038,MAN,4870,1016,5886,Kampenhout,Kampenhout
+23038,VROUW,4886,1200,6086,Kampenhout,Kampenhout
+23039,TOTAL,7436,1977,9413,Kapelle-op-den-Bos,Kapelle-op-den-Bos
+23039,MAN,3707,861,4568,Kapelle-op-den-Bos,Kapelle-op-den-Bos
+23039,VROUW,3729,1116,4845,Kapelle-op-den-Bos,Kapelle-op-den-Bos
+23044,TOTAL,10530,2765,13295,Liedekerke,Liedekerke
+23044,MAN,5281,1223,6504,Liedekerke,Liedekerke
+23044,VROUW,5249,1542,6791,Liedekerke,Liedekerke
+23045,TOTAL,14961,3788,18749,Londerzeel,Londerzeel
+23045,MAN,7514,1685,9199,Londerzeel,Londerzeel
+23045,VROUW,7447,2103,9550,Londerzeel,Londerzeel
+23047,TOTAL,13256,2213,15469,Machelen (Halle-Vilvoorde),Machelen (Hal-Vilvorde)
+23047,MAN,6584,913,7497,Machelen (Halle-Vilvoorde),Machelen (Hal-Vilvorde)
+23047,VROUW,6672,1300,7972,Machelen (Halle-Vilvoorde),Machelen (Hal-Vilvorde)
+23050,TOTAL,15549,3862,19411,Meise,Meise
+23050,MAN,7697,1755,9452,Meise,Meise
+23050,VROUW,7852,2107,9959,Meise,Meise
+23052,TOTAL,13333,3250,16583,Merchtem,Merchtem
+23052,MAN,6709,1408,8117,Merchtem,Merchtem
+23052,VROUW,6624,1842,8466,Merchtem,Merchtem
+23060,TOTAL,11830,2717,14547,Opwijk,Opwijk
+23060,MAN,5929,1214,7143,Opwijk,Opwijk
+23060,VROUW,5901,1503,7404,Opwijk,Opwijk
+23062,TOTAL,20302,5101,25403,Overijse,Overijse
+23062,MAN,10161,2261,12422,Overijse,Overijse
+23062,VROUW,10141,2840,12981,Overijse,Overijse
+23064,TOTAL,3596,883,4479,Pepingen,Pepingen
+23064,MAN,1832,392,2224,Pepingen,Pepingen
+23064,VROUW,1764,491,2255,Pepingen,Pepingen
+23077,TOTAL,27957,6271,34228,Sint-Pieters-Leeuw,Sint-Pieters-Leeuw
+23077,MAN,13939,2794,16733,Sint-Pieters-Leeuw,Sint-Pieters-Leeuw
+23077,VROUW,14018,3477,17495,Sint-Pieters-Leeuw,Sint-Pieters-Leeuw
+23081,TOTAL,9732,2403,12135,Steenokkerzeel,Steenokkerzeel
+23081,MAN,4851,1089,5940,Steenokkerzeel,Steenokkerzeel
+23081,VROUW,4881,1314,6195,Steenokkerzeel,Steenokkerzeel
+23086,TOTAL,12605,3141,15746,Ternat,Ternat
+23086,MAN,6313,1419,7732,Ternat,Ternat
+23086,VROUW,6292,1722,8014,Ternat,Ternat
+23088,TOTAL,38311,6416,44727,Vilvoorde,Vilvorde
+23088,MAN,19032,2726,21758,Vilvoorde,Vilvorde
+23088,VROUW,19279,3690,22969,Vilvoorde,Vilvorde
+23094,TOTAL,28903,5465,34368,Zaventem,Zaventem
+23094,MAN,14446,2327,16773,Zaventem,Zaventem
+23094,VROUW,14457,3138,17595,Zaventem,Zaventem
+23096,TOTAL,18982,4376,23358,Zemst,Zemst
+23096,MAN,9455,1994,11449,Zemst,Zemst
+23096,VROUW,9527,2382,11909,Zemst,Zemst
+23097,TOTAL,9433,2198,11631,Roosdaal,Roosdaal
+23097,MAN,4734,1006,5740,Roosdaal,Roosdaal
+23097,VROUW,4699,1192,5891,Roosdaal,Roosdaal
+23098,TOTAL,4768,921,5689,Drogenbos,Drogenbos
+23098,MAN,2315,365,2680,Drogenbos,Drogenbos
+23098,VROUW,2453,556,3009,Drogenbos,Drogenbos
+23099,TOTAL,11273,2457,13730,Kraainem,Kraainem
+23099,MAN,5584,1087,6671,Kraainem,Kraainem
+23099,VROUW,5689,1370,7059,Kraainem,Kraainem
+23100,TOTAL,3773,898,4671,Linkebeek,Linkebeek
+23100,MAN,1826,380,2206,Linkebeek,Linkebeek
+23100,VROUW,1947,518,2465,Linkebeek,Linkebeek
+23101,TOTAL,14859,3528,18387,Sint-Genesius-Rode,Rhode-Saint-Genèse
+23101,MAN,7282,1591,8873,Sint-Genesius-Rode,Rhode-Saint-Genèse
+23101,VROUW,7577,1937,9514,Sint-Genesius-Rode,Rhode-Saint-Genèse
+23102,TOTAL,13316,3175,16491,Wemmel,Wemmel
+23102,MAN,6677,1318,7995,Wemmel,Wemmel
+23102,VROUW,6639,1857,8496,Wemmel,Wemmel
+23103,TOTAL,11556,2702,14258,Wezembeek-Oppem,Wezembeek-Oppem
+23103,MAN,5649,1218,6867,Wezembeek-Oppem,Wezembeek-Oppem
+23103,VROUW,5907,1484,7391,Wezembeek-Oppem,Wezembeek-Oppem
+23104,TOTAL,7061,2013,9074,Lennik,Lennik
+23104,MAN,3568,882,4450,Lennik,Lennik
+23104,VROUW,3493,1131,4624,Lennik,Lennik
+23105,TOTAL,10700,2528,13228,Affligem,Affligem
+23105,MAN,5324,1169,6493,Affligem,Affligem
+23105,VROUW,5376,1359,6735,Affligem,Affligem
+24000,TOTAL,407151,101583,508734,Arrondissement Leuven,Arrondissement de Louvain
+24000,MAN,205738,45744,251482,Arrondissement Leuven,Arrondissement de Louvain
+24000,VROUW,201413,55839,257252,Arrondissement Leuven,Arrondissement de Louvain
+24001,TOTAL,23334,6781,30115,Aarschot,Aarschot
+24001,MAN,11708,3017,14725,Aarschot,Aarschot
+24001,VROUW,11626,3764,15390,Aarschot,Aarschot
+24007,TOTAL,7985,2129,10114,Begijnendijk,Begijnendijk
+24007,MAN,3937,1014,4951,Begijnendijk,Begijnendijk
+24007,VROUW,4048,1115,5163,Begijnendijk,Begijnendijk
+24008,TOTAL,5005,1301,6306,Bekkevoort,Bekkevoort
+24008,MAN,2583,603,3186,Bekkevoort,Bekkevoort
+24008,VROUW,2422,698,3120,Bekkevoort,Bekkevoort
+24009,TOTAL,8076,1931,10007,Bertem,Bertem
+24009,MAN,4039,865,4904,Bertem,Bertem
+24009,VROUW,4037,1066,5103,Bertem,Bertem
+24011,TOTAL,7926,2157,10083,Bierbeek,Bierbeek
+24011,MAN,4043,994,5037,Bierbeek,Bierbeek
+24011,VROUW,3883,1163,5046,Bierbeek,Bierbeek
+24014,TOTAL,10001,2515,12516,Boortmeerbeek,Boortmeerbeek
+24014,MAN,5035,1176,6211,Boortmeerbeek,Boortmeerbeek
+24014,VROUW,4966,1339,6305,Boortmeerbeek,Boortmeerbeek
+24016,TOTAL,6730,1512,8242,Boutersem,Boutersem
+24016,MAN,3402,678,4080,Boutersem,Boutersem
+24016,VROUW,3328,834,4162,Boutersem,Boutersem
+24020,TOTAL,18727,5271,23998,Diest,Diest
+24020,MAN,9353,2418,11771,Diest,Diest
+24020,VROUW,9374,2853,12227,Diest,Diest
+24028,TOTAL,4852,1266,6118,Geetbets,Geetbets
+24028,MAN,2475,587,3062,Geetbets,Geetbets
+24028,VROUW,2377,679,3056,Geetbets,Geetbets
+24033,TOTAL,11632,2945,14577,Haacht,Haacht
+24033,MAN,5795,1328,7123,Haacht,Haacht
+24033,VROUW,5837,1617,7454,Haacht,Haacht
+24038,TOTAL,17440,4242,21682,Herent,Herent
+24038,MAN,8726,1862,10588,Herent,Herent
+24038,VROUW,8714,2380,11094,Herent,Herent
+24041,TOTAL,5704,1182,6886,Hoegaarden,Hoegaarden
+24041,MAN,2955,537,3492,Hoegaarden,Hoegaarden
+24041,VROUW,2749,645,3394,Hoegaarden,Hoegaarden
+24043,TOTAL,8015,2004,10019,Holsbeek,Holsbeek
+24043,MAN,4051,952,5003,Holsbeek,Holsbeek
+24043,VROUW,3964,1052,5016,Holsbeek,Holsbeek
+24045,TOTAL,8031,1890,9921,Huldenberg,Huldenberg
+24045,MAN,4043,837,4880,Huldenberg,Huldenberg
+24045,VROUW,3988,1053,5041,Huldenberg,Huldenberg
+24048,TOTAL,9799,3051,12850,Keerbergen,Keerbergen
+24048,MAN,4821,1448,6269,Keerbergen,Keerbergen
+24048,VROUW,4978,1603,6581,Keerbergen,Keerbergen
+24054,TOTAL,6135,1740,7875,Kortenaken,Kortenaken
+24054,MAN,3128,824,3952,Kortenaken,Kortenaken
+24054,VROUW,3007,916,3923,Kortenaken,Kortenaken
+24055,TOTAL,16367,3912,20279,Kortenberg,Kortenberg
+24055,MAN,8232,1733,9965,Kortenberg,Kortenberg
+24055,VROUW,8135,2179,10314,Kortenberg,Kortenberg
+24059,TOTAL,12655,3296,15951,Landen,Landen
+24059,MAN,6341,1439,7780,Landen,Landen
+24059,VROUW,6314,1857,8171,Landen,Landen
+24062,TOTAL,85096,16528,101624,Leuven,Louvain
+24062,MAN,43945,7067,51012,Leuven,Louvain
+24062,VROUW,41151,9461,50612,Leuven,Louvain
+24066,TOTAL,11281,3278,14559,Lubbeek,Lubbeek
+24066,MAN,5693,1544,7237,Lubbeek,Lubbeek
+24066,VROUW,5588,1734,7322,Lubbeek,Lubbeek
+24086,TOTAL,8813,2299,11112,Oud-Heverlee,Oud-Heverlee
+24086,MAN,4454,1089,5543,Oud-Heverlee,Oud-Heverlee
+24086,VROUW,4359,1210,5569,Oud-Heverlee,Oud-Heverlee
+24094,TOTAL,13558,3235,16793,Rotselaar,Rotselaar
+24094,MAN,6835,1499,8334,Rotselaar,Rotselaar
+24094,VROUW,6723,1736,8459,Rotselaar,Rotselaar
+24104,TOTAL,18295,4127,22422,Tervuren,Tervuren
+24104,MAN,9069,1829,10898,Tervuren,Tervuren
+24104,VROUW,9226,2298,11524,Tervuren,Tervuren
+24107,TOTAL,27345,7630,34975,Tienen,Tirlemont
+24107,MAN,13631,3264,16895,Tienen,Tirlemont
+24107,VROUW,13714,4366,18080,Tienen,Tirlemont
+24109,TOTAL,11668,3246,14914,Tremelo,Tremelo
+24109,MAN,5848,1570,7418,Tremelo,Tremelo
+24109,VROUW,5820,1676,7496,Tremelo,Tremelo
+24130,TOTAL,6654,1826,8480,Zoutleeuw,Léau
+24130,MAN,3352,812,4164,Zoutleeuw,Léau
+24130,VROUW,3302,1014,4316,Zoutleeuw,Léau
+24133,TOTAL,5760,1509,7269,Linter,Linter
+24133,MAN,2922,685,3607,Linter,Linter
+24133,VROUW,2838,824,3662,Linter,Linter
+24134,TOTAL,17569,5460,23029,Scherpenheuvel-Zichem,Montaigu-Zichem
+24134,MAN,8871,2522,11393,Scherpenheuvel-Zichem,Montaigu-Zichem
+24134,VROUW,8698,2938,11636,Scherpenheuvel-Zichem,Montaigu-Zichem
+24135,TOTAL,8556,2191,10747,Tielt-Winge,Tielt-Winge
+24135,MAN,4354,1034,5388,Tielt-Winge,Tielt-Winge
+24135,VROUW,4202,1157,5359,Tielt-Winge,Tielt-Winge
+24137,TOTAL,4142,1129,5271,Glabbeek,Glabbeek
+24137,MAN,2097,517,2614,Glabbeek,Glabbeek
+24137,VROUW,2045,612,2657,Glabbeek,Glabbeek
+25000,TOTAL,326915,76684,403599,Arrondissement Nijvel,Arrondissement de Nivelles
+25000,MAN,162761,33155,195916,Arrondissement Nijvel,Arrondissement de Nivelles
+25000,VROUW,164154,43529,207683,Arrondissement Nijvel,Arrondissement de Nivelles
+25005,TOTAL,5983,1260,7243,Bevekom,Beauvechain
+25005,MAN,2992,593,3585,Bevekom,Beauvechain
+25005,VROUW,2991,667,3658,Bevekom,Beauvechain
+25014,TOTAL,32107,7901,40008,Eigenbrakel,Braine-l’Alleud
+25014,MAN,15861,3394,19255,Eigenbrakel,Braine-l’Alleud
+25014,VROUW,16246,4507,20753,Eigenbrakel,Braine-l’Alleud
+25015,TOTAL,8696,1853,10549,Kasteelbrakel,Braine-le-Château
+25015,MAN,4327,822,5149,Kasteelbrakel,Braine-le-Château
+25015,VROUW,4369,1031,5400,Kasteelbrakel,Braine-le-Château
+25018,TOTAL,9603,2195,11798,Chaumont-Gistoux,Chaumont-Gistoux
+25018,MAN,4753,1032,5785,Chaumont-Gistoux,Chaumont-Gistoux
+25018,VROUW,4850,1163,6013,Chaumont-Gistoux,Chaumont-Gistoux
+25023,TOTAL,8832,1708,10540,Court-Saint-Etienne,Court-Saint-Etienne
+25023,MAN,4398,758,5156,Court-Saint-Etienne,Court-Saint-Etienne
+25023,VROUW,4434,950,5384,Court-Saint-Etienne,Court-Saint-Etienne
+25031,TOTAL,12793,2634,15427,Genepiën,Genappe
+25031,MAN,6433,1178,7611,Genepiën,Genappe
+25031,VROUW,6360,1456,7816,Genepiën,Genappe
+25037,TOTAL,11104,2564,13668,Graven,Grez-Doiceau
+25037,MAN,5552,1139,6691,Graven,Grez-Doiceau
+25037,VROUW,5552,1425,6977,Graven,Grez-Doiceau
+25043,TOTAL,4607,880,5487,Incourt,Incourt
+25043,MAN,2291,409,2700,Incourt,Incourt
+25043,VROUW,2316,471,2787,Incourt,Incourt
+25044,TOTAL,5565,1324,6889,Itter,Ittre
+25044,MAN,2803,552,3355,Itter,Ittre
+25044,VROUW,2762,772,3534,Itter,Ittre
+25048,TOTAL,11571,2552,14123,Geldenaken,Jodoigne
+25048,MAN,5817,1096,6913,Geldenaken,Jodoigne
+25048,VROUW,5754,1456,7210,Geldenaken,Jodoigne
+25050,TOTAL,5703,1640,7343,Terhulpen,La Hulpe
+25050,MAN,2843,702,3545,Terhulpen,La Hulpe
+25050,VROUW,2860,938,3798,Terhulpen,La Hulpe
+25068,TOTAL,6561,1210,7771,Mont-Saint-Guibert,Mont-Saint-Guibert
+25068,MAN,3305,514,3819,Mont-Saint-Guibert,Mont-Saint-Guibert
+25068,VROUW,3256,696,3952,Mont-Saint-Guibert,Mont-Saint-Guibert
+25072,TOTAL,22792,5942,28734,Nijvel,Nivelles
+25072,MAN,11230,2423,13653,Nijvel,Nivelles
+25072,VROUW,11562,3519,15081,Nijvel,Nivelles
+25084,TOTAL,7782,1521,9303,Perwijs (Nijvel),Perwez (Nivelles)
+25084,MAN,3847,651,4498,Perwijs (Nijvel),Perwez (Nivelles)
+25084,VROUW,3935,870,4805,Perwijs (Nijvel),Perwez (Nivelles)
+25091,TOTAL,17705,4853,22558,Rixensart,Rixensart
+25091,MAN,8667,2064,10731,Rixensart,Rixensart
+25091,VROUW,9038,2789,11827,Rixensart,Rixensart
+25105,TOTAL,21602,4631,26233,Tubeke,Tubize
+25105,MAN,10839,1976,12815,Tubeke,Tubize
+25105,VROUW,10763,2655,13418,Tubeke,Tubize
+25107,TOTAL,8988,1714,10702,Villers-la-Ville,Villers-la-Ville
+25107,MAN,4549,756,5305,Villers-la-Ville,Villers-la-Ville
+25107,VROUW,4439,958,5397,Villers-la-Ville,Villers-la-Ville
+25110,TOTAL,23182,7146,30328,Waterloo,Waterloo
+25110,MAN,11358,2998,14356,Waterloo,Waterloo
+25110,VROUW,11824,4148,15972,Waterloo,Waterloo
+25112,TOTAL,27118,7278,34396,Waver,Wavre
+25112,MAN,13449,3056,16505,Waver,Wavre
+25112,VROUW,13669,4222,17891,Waver,Wavre
+25117,TOTAL,6449,1198,7647,Chastre,Chastre
+25117,MAN,3254,540,3794,Chastre,Chastre
+25117,VROUW,3195,658,3853,Chastre,Chastre
+25118,TOTAL,2961,592,3553,Hélécine,Hélécine
+25118,MAN,1508,263,1771,Hélécine,Hélécine
+25118,VROUW,1453,329,1782,Hélécine,Hélécine
+25119,TOTAL,11192,3052,14244,Lasne,Lasne
+25119,MAN,5545,1429,6974,Lasne,Lasne
+25119,VROUW,5647,1623,7270,Lasne,Lasne
+25120,TOTAL,7405,1519,8924,Orp-Jauche,Orp-Jauche
+25120,MAN,3696,668,4364,Orp-Jauche,Orp-Jauche
+25120,VROUW,3709,851,4560,Orp-Jauche,Orp-Jauche
+25121,TOTAL,25923,5520,31443,Ottignies-Louvain-la-Neuve,Ottignies-Louvain-la-Neuve
+25121,MAN,12974,2334,15308,Ottignies-Louvain-la-Neuve,Ottignies-Louvain-la-Neuve
+25121,VROUW,12949,3186,16135,Ottignies-Louvain-la-Neuve,Ottignies-Louvain-la-Neuve
+25122,TOTAL,5479,1043,6522,Ramillies,Ramillies
+25122,MAN,2784,487,3271,Ramillies,Ramillies
+25122,VROUW,2695,556,3251,Ramillies,Ramillies
+25123,TOTAL,9124,1855,10979,Rebecq,Rebecq
+25123,MAN,4611,828,5439,Rebecq,Rebecq
+25123,VROUW,4513,1027,5540,Rebecq,Rebecq
+25124,TOTAL,6088,1099,7187,Walhain,Walhain
+25124,MAN,3075,493,3568,Walhain,Walhain
+25124,VROUW,3013,606,3619,Walhain,Walhain
+30000,TOTAL,918155,277641,1195796,Provincie West-Vlaanderen,Province de Flandre occidentale
+30000,MAN,468092,124601,592693,Provincie West-Vlaanderen,Province de Flandre occidentale
+30000,VROUW,450063,153040,603103,Provincie West-Vlaanderen,Province de Flandre occidentale
+31000,TOTAL,212155,70054,282209,Arrondissement Brugge,Arrondissement de Bruges
+31000,MAN,107376,31455,138831,Arrondissement Brugge,Arrondissement de Bruges
+31000,VROUW,104779,38599,143378,Arrondissement Brugge,Arrondissement de Bruges
+31003,TOTAL,12464,3299,15763,Beernem,Beernem
+31003,MAN,6437,1609,8046,Beernem,Beernem
+31003,VROUW,6027,1690,7717,Beernem,Beernem
+31004,TOTAL,14037,6399,20436,Blankenberge,Blankenberge
+31004,MAN,7205,2853,10058,Blankenberge,Blankenberge
+31004,VROUW,6832,3546,10378,Blankenberge,Blankenberge
+31005,TOTAL,90233,28092,118325,Brugge,Bruges
+31005,MAN,45321,12277,57598,Brugge,Bruges
+31005,VROUW,44912,15815,60727,Brugge,Bruges
+31006,TOTAL,8482,2511,10993,Damme,Damme
+31006,MAN,4305,1171,5476,Damme,Damme
+31006,VROUW,4177,1340,5517,Damme,Damme
+31012,TOTAL,10755,3110,13865,Jabbeke,Jabbeke
+31012,MAN,5433,1445,6878,Jabbeke,Jabbeke
+31012,VROUW,5322,1665,6987,Jabbeke,Jabbeke
+31022,TOTAL,18619,5079,23698,Oostkamp,Oostkamp
+31022,MAN,9492,2313,11805,Oostkamp,Oostkamp
+31022,VROUW,9127,2766,11893,Oostkamp,Oostkamp
+31033,TOTAL,15962,4501,20463,Torhout,Torhout
+31033,MAN,8185,2075,10260,Torhout,Torhout
+31033,VROUW,7777,2426,10203,Torhout,Torhout
+31040,TOTAL,18055,4764,22819,Zedelgem,Zedelgem
+31040,MAN,9154,2230,11384,Zedelgem,Zedelgem
+31040,VROUW,8901,2534,11435,Zedelgem,Zedelgem
+31042,TOTAL,2123,598,2721,Zuienkerke,Zuienkerke
+31042,MAN,1065,309,1374,Zuienkerke,Zuienkerke
+31042,VROUW,1058,289,1347,Zuienkerke,Zuienkerke
+31043,TOTAL,21425,11701,33126,Knokke-Heist,Knokke-Heist
+31043,MAN,10779,5173,15952,Knokke-Heist,Knokke-Heist
+31043,VROUW,10646,6528,17174,Knokke-Heist,Knokke-Heist
+32000,TOTAL,40859,10666,51525,Arrondissement Diksmuide,Arrondissement de Dixmude
+32000,MAN,20957,4828,25785,Arrondissement Diksmuide,Arrondissement de Dixmude
+32000,VROUW,19902,5838,25740,Arrondissement Diksmuide,Arrondissement de Dixmude
+32003,TOTAL,13180,3563,16743,Diksmuide,Dixmude
+32003,MAN,6762,1614,8376,Diksmuide,Dixmude
+32003,VROUW,6418,1949,8367,Diksmuide,Dixmude
+32006,TOTAL,8204,1894,10098,Houthulst,Houthulst
+32006,MAN,4229,839,5068,Houthulst,Houthulst
+32006,VROUW,3975,1055,5030,Houthulst,Houthulst
+32010,TOTAL,6926,1851,8777,Koekelare,Koekelare
+32010,MAN,3561,837,4398,Koekelare,Koekelare
+32010,VROUW,3365,1014,4379,Koekelare,Koekelare
+32011,TOTAL,9916,2700,12616,Kortemark,Kortemark
+32011,MAN,5067,1233,6300,Kortemark,Kortemark
+32011,VROUW,4849,1467,6316,Kortemark,Kortemark
+32030,TOTAL,2633,658,3291,Lo-Reninge,Lo-Reninge
+32030,MAN,1338,305,1643,Lo-Reninge,Lo-Reninge
+32030,VROUW,1295,353,1648,Lo-Reninge,Lo-Reninge
+33000,TOTAL,83267,23012,106279,Arrondissement Ieper,Arrondissement d’Ypres
+33000,MAN,42737,10416,53153,Arrondissement Ieper,Arrondissement d’Ypres
+33000,VROUW,40530,12596,53126,Arrondissement Ieper,Arrondissement d’Ypres
+33011,TOTAL,26809,8036,34845,Ieper,Ypres
+33011,MAN,13570,3570,17140,Ieper,Ypres
+33011,VROUW,13239,4466,17705,Ieper,Ypres
+33016,TOTAL,881,184,1065,Mesen,Messines
+33016,MAN,454,82,536,Mesen,Messines
+33016,VROUW,427,102,529,Mesen,Messines
+33021,TOTAL,15194,4508,19702,Poperinge,Poperinge
+33021,MAN,7762,2050,9812,Poperinge,Poperinge
+33021,VROUW,7432,2458,9890,Poperinge,Poperinge
+33029,TOTAL,14711,4056,18767,Wervik,Wervik
+33029,MAN,7620,1814,9434,Wervik,Wervik
+33029,VROUW,7091,2242,9333,Wervik,Wervik
+33037,TOTAL,10072,2409,12481,Zonnebeke,Zonnebeke
+33037,MAN,5179,1105,6284,Zonnebeke,Zonnebeke
+33037,VROUW,4893,1304,6197,Zonnebeke,Zonnebeke
+33039,TOTAL,6339,1570,7909,Heuvelland,Heuvelland
+33039,MAN,3322,742,4064,Heuvelland,Heuvelland
+33039,VROUW,3017,828,3845,Heuvelland,Heuvelland
+33040,TOTAL,6301,1518,7819,Langemark-Poelkapelle,Langemark-Poelkapelle
+33040,MAN,3290,709,3999,Langemark-Poelkapelle,Langemark-Poelkapelle
+33040,VROUW,3011,809,3820,Langemark-Poelkapelle,Langemark-Poelkapelle
+33041,TOTAL,2960,731,3691,Vleteren,Vleteren
+33041,MAN,1540,344,1884,Vleteren,Vleteren
+33041,VROUW,1420,387,1807,Vleteren,Vleteren
+34000,TOTAL,229775,60931,290706,Arrondissement Kortrijk,Arrondissement de Courtrai
+34000,MAN,116830,26953,143783,Arrondissement Kortrijk,Arrondissement de Courtrai
+34000,VROUW,112945,33978,146923,Arrondissement Kortrijk,Arrondissement de Courtrai
+34002,TOTAL,11750,2966,14716,Anzegem,Anzegem
+34002,MAN,6042,1345,7387,Anzegem,Anzegem
+34002,VROUW,5708,1621,7329,Anzegem,Anzegem
+34003,TOTAL,8142,2016,10158,Avelgem,Avelgem
+34003,MAN,4160,855,5015,Avelgem,Avelgem
+34003,VROUW,3982,1161,5143,Avelgem,Avelgem
+34009,TOTAL,9494,2452,11946,Deerlijk,Deerlijk
+34009,MAN,4826,1078,5904,Deerlijk,Deerlijk
+34009,VROUW,4668,1374,6042,Deerlijk,Deerlijk
+34013,TOTAL,22380,5778,28158,Harelbeke,Harelbeke
+34013,MAN,11466,2644,14110,Harelbeke,Harelbeke
+34013,VROUW,10914,3134,14048,Harelbeke,Harelbeke
+34022,TOTAL,60332,16403,76735,Kortrijk,Courtrai
+34022,MAN,30703,7101,37804,Kortrijk,Courtrai
+34022,VROUW,29629,9302,38931,Kortrijk,Courtrai
+34023,TOTAL,10554,2930,13484,Kuurne,Kuurne
+34023,MAN,5375,1291,6666,Kuurne,Kuurne
+34023,VROUW,5179,1639,6818,Kuurne,Kuurne
+34025,TOTAL,4417,1330,5747,Lendelede,Lendelede
+34025,MAN,2235,599,2834,Lendelede,Lendelede
+34025,VROUW,2182,731,2913,Lendelede,Lendelede
+34027,TOTAL,26357,7028,33385,Menen,Menin
+34027,MAN,13443,3049,16492,Menen,Menin
+34027,VROUW,12914,3979,16893,Menen,Menin
+34040,TOTAL,30126,8140,38266,Waregem,Waregem
+34040,MAN,15164,3681,18845,Waregem,Waregem
+34040,VROUW,14962,4459,19421,Waregem,Waregem
+34041,TOTAL,24850,6556,31406,Wevelgem,Wevelgem
+34041,MAN,12600,2918,15518,Wevelgem,Wevelgem
+34041,VROUW,12250,3638,15888,Wevelgem,Wevelgem
+34042,TOTAL,19651,5005,24656,Zwevegem,Zwevegem
+34042,MAN,9971,2251,12222,Zwevegem,Zwevegem
+34042,VROUW,9680,2754,12434,Zwevegem,Zwevegem
+34043,TOTAL,1722,327,2049,Spiere-Helkijn,Espierres-Helchin
+34043,MAN,845,141,986,Spiere-Helkijn,Espierres-Helchin
+34043,VROUW,877,186,1063,Spiere-Helkijn,Espierres-Helchin
+35000,TOTAL,115017,42183,157200,Arrondissement Oostende,Arrondissement d’Ostende
+35000,MAN,58656,18980,77636,Arrondissement Oostende,Arrondissement d’Ostende
+35000,VROUW,56361,23203,79564,Arrondissement Oostende,Arrondissement d’Ostende
+35002,TOTAL,14038,4057,18095,Bredene,Bredene
+35002,MAN,7113,1917,9030,Bredene,Bredene
+35002,VROUW,6925,2140,9065,Bredene,Bredene
+35005,TOTAL,9806,2372,12178,Gistel,Gistel
+35005,MAN,4978,1075,6053,Gistel,Gistel
+35005,VROUW,4828,1297,6125,Gistel,Gistel
+35006,TOTAL,11239,2811,14050,Ichtegem,Ichtegem
+35006,MAN,5720,1330,7050,Ichtegem,Ichtegem
+35006,VROUW,5519,1481,7000,Ichtegem,Ichtegem
+35011,TOTAL,12836,6500,19336,Middelkerke,Middelkerke
+35011,MAN,6575,3010,9585,Middelkerke,Middelkerke
+35011,VROUW,6261,3490,9751,Middelkerke,Middelkerke
+35013,TOTAL,51376,20118,71494,Oostende,Ostende
+35013,MAN,26305,8735,35040,Oostende,Ostende
+35013,VROUW,25071,11383,36454,Oostende,Ostende
+35014,TOTAL,7304,2077,9381,Oudenburg,Oudenburg
+35014,MAN,3743,957,4700,Oudenburg,Oudenburg
+35014,VROUW,3561,1120,4681,Oudenburg,Oudenburg
+35029,TOTAL,8418,4248,12666,De Haan,De Haan
+35029,MAN,4222,1956,6178,De Haan,De Haan
+35029,VROUW,4196,2292,6488,De Haan,De Haan
+36000,TOTAL,121595,31720,153315,Arrondissement Roeselare,Arrondissement de Roulers
+36000,MAN,62261,14149,76410,Arrondissement Roeselare,Arrondissement de Roulers
+36000,VROUW,59334,17571,76905,Arrondissement Roeselare,Arrondissement de Roulers
+36006,TOTAL,7940,2047,9987,Hooglede,Hooglede
+36006,MAN,4111,928,5039,Hooglede,Hooglede
+36006,VROUW,3829,1119,4948,Hooglede,Hooglede
+36007,TOTAL,8676,2320,10996,Ingelmunster,Ingelmunster
+36007,MAN,4396,1042,5438,Ingelmunster,Ingelmunster
+36007,VROUW,4280,1278,5558,Ingelmunster,Ingelmunster
+36008,TOTAL,21886,6132,28018,Izegem,Izegem
+36008,MAN,11061,2734,13795,Izegem,Izegem
+36008,VROUW,10825,3398,14223,Izegem,Izegem
+36010,TOTAL,7679,2016,9695,Ledegem,Ledegem
+36010,MAN,3936,920,4856,Ledegem,Ledegem
+36010,VROUW,3743,1096,4839,Ledegem,Ledegem
+36011,TOTAL,7159,1767,8926,Lichtervelde,Lichtervelde
+36011,MAN,3671,821,4492,Lichtervelde,Lichtervelde
+36011,VROUW,3488,946,4434,Lichtervelde,Lichtervelde
+36012,TOTAL,8797,2453,11250,Moorslede,Moorslede
+36012,MAN,4533,1077,5610,Moorslede,Moorslede
+36012,VROUW,4264,1376,5640,Moorslede,Moorslede
+36015,TOTAL,50302,12652,62954,Roeselare,Roulers
+36015,MAN,25837,5557,31394,Roeselare,Roulers
+36015,VROUW,24465,7095,31560,Roeselare,Roulers
+36019,TOTAL,9156,2333,11489,Staden,Staden
+36019,MAN,4716,1070,5786,Staden,Staden
+36019,VROUW,4440,1263,5703,Staden,Staden
+37000,TOTAL,73908,18997,92905,Arrondissement Tielt,Arrondissement de Tielt
+37000,MAN,38028,8596,46624,Arrondissement Tielt,Arrondissement de Tielt
+37000,VROUW,35880,10401,46281,Arrondissement Tielt,Arrondissement de Tielt
+37002,TOTAL,6904,1651,8555,Dentergem,Dentergem
+37002,MAN,3550,738,4288,Dentergem,Dentergem
+37002,VROUW,3354,913,4267,Dentergem,Dentergem
+37007,TOTAL,8594,2266,10860,Meulebeke,Meulebeke
+37007,MAN,4430,1026,5456,Meulebeke,Meulebeke
+37007,VROUW,4164,1240,5404,Meulebeke,Meulebeke
+37010,TOTAL,6390,1542,7932,Oostrozebeke,Oostrozebeke
+37010,MAN,3228,696,3924,Oostrozebeke,Oostrozebeke
+37010,VROUW,3162,846,4008,Oostrozebeke,Oostrozebeke
+37011,TOTAL,5355,1383,6738,Pittem,Pittem
+37011,MAN,2801,619,3420,Pittem,Pittem
+37011,VROUW,2554,764,3318,Pittem,Pittem
+37012,TOTAL,4248,1110,5358,Ruiselede,Ruiselede
+37012,MAN,2183,495,2678,Ruiselede,Ruiselede
+37012,VROUW,2065,615,2680,Ruiselede,Ruiselede
+37015,TOTAL,16021,4481,20502,Tielt (Tielt),Tielt (Tielt)
+37015,MAN,8234,1993,10227,Tielt (Tielt),Tielt (Tielt)
+37015,VROUW,7787,2488,10275,Tielt (Tielt),Tielt (Tielt)
+37017,TOTAL,7937,1704,9641,Wielsbeke,Wielsbeke
+37017,MAN,4085,789,4874,Wielsbeke,Wielsbeke
+37017,VROUW,3852,915,4767,Wielsbeke,Wielsbeke
+37018,TOTAL,11426,2837,14263,Wingene,Wingene
+37018,MAN,5922,1321,7243,Wingene,Wingene
+37018,VROUW,5504,1516,7020,Wingene,Wingene
+37020,TOTAL,7033,2023,9056,Ardooie,Ardooie
+37020,MAN,3595,919,4514,Ardooie,Ardooie
+37020,VROUW,3438,1104,4542,Ardooie,Ardooie
+38000,TOTAL,41579,20078,61657,Arrondissement Veurne,Arrondissement de Furnes
+38000,MAN,21247,9224,30471,Arrondissement Veurne,Arrondissement de Furnes
+38000,VROUW,20332,10854,31186,Arrondissement Veurne,Arrondissement de Furnes
+38002,TOTAL,4160,887,5047,Alveringem,Alveringem
+38002,MAN,2162,432,2594,Alveringem,Alveringem
+38002,VROUW,1998,455,2453,Alveringem,Alveringem
+38008,TOTAL,7704,3472,11176,De Panne,La Panne
+38008,MAN,3925,1572,5497,De Panne,La Panne
+38008,VROUW,3779,1900,5679,De Panne,La Panne
+38014,TOTAL,13143,8767,21910,Koksijde,Koksijde
+38014,MAN,6712,4083,10795,Koksijde,Koksijde
+38014,VROUW,6431,4684,11115,Koksijde,Koksijde
+38016,TOTAL,7586,4035,11621,Nieuwpoort,Nieuport
+38016,MAN,3854,1860,5714,Nieuwpoort,Nieuport
+38016,VROUW,3732,2175,5907,Nieuwpoort,Nieuport
+38025,TOTAL,8986,2917,11903,Veurne,Furnes
+38025,MAN,4594,1277,5871,Veurne,Furnes
+38025,VROUW,4392,1640,6032,Veurne,Furnes
+40000,TOTAL,1216197,298867,1515064,Provincie Oost-Vlaanderen,Province de Flandre orientale
+40000,MAN,615566,132743,748309,Provincie Oost-Vlaanderen,Province de Flandre orientale
+40000,VROUW,600631,166124,766755,Provincie Oost-Vlaanderen,Province de Flandre orientale
+41000,TOTAL,232436,58793,291229,Arrondissement Aalst,Arrondissement d’Alost
+41000,MAN,117380,25669,143049,Arrondissement Aalst,Arrondissement d’Alost
+41000,VROUW,115056,33124,148180,Arrondissement Aalst,Arrondissement d’Alost
+41002,TOTAL,69406,17039,86445,Aalst (Aalst),Alost (Alost)
+41002,MAN,35081,7342,42423,Aalst (Aalst),Alost (Alost)
+41002,VROUW,34325,9697,44022,Aalst (Aalst),Alost (Alost)
+41011,TOTAL,16805,3533,20338,Denderleeuw,Denderleeuw
+41011,MAN,8407,1555,9962,Denderleeuw,Denderleeuw
+41011,VROUW,8398,1978,10376,Denderleeuw,Denderleeuw
+41018,TOTAL,26557,6882,33439,Geraardsbergen,Grammont
+41018,MAN,13454,3006,16460,Geraardsbergen,Grammont
+41018,VROUW,13103,3876,16979,Geraardsbergen,Grammont
+41024,TOTAL,14810,3823,18633,Haaltert,Haaltert
+41024,MAN,7488,1686,9174,Haaltert,Haaltert
+41024,VROUW,7322,2137,9459,Haaltert,Haaltert
+41027,TOTAL,14508,3519,18027,Herzele,Herzele
+41027,MAN,7342,1551,8893,Herzele,Herzele
+41027,VROUW,7166,1968,9134,Herzele,Herzele
+41034,TOTAL,14817,3884,18701,Lede,Lede
+41034,MAN,7477,1758,9235,Lede,Lede
+41034,VROUW,7340,2126,9466,Lede,Lede
+41048,TOTAL,30920,7991,38911,Ninove,Ninove
+41048,MAN,15540,3529,19069,Ninove,Ninove
+41048,VROUW,15380,4462,19842,Ninove,Ninove
+41063,TOTAL,8296,2046,10342,Sint-Lievens-Houtem,Sint-Lievens-Houtem
+41063,MAN,4206,907,5113,Sint-Lievens-Houtem,Sint-Lievens-Houtem
+41063,VROUW,4090,1139,5229,Sint-Lievens-Houtem,Sint-Lievens-Houtem
+41081,TOTAL,20784,5798,26582,Zottegem,Zottegem
+41081,MAN,10468,2441,12909,Zottegem,Zottegem
+41081,VROUW,10316,3357,13673,Zottegem,Zottegem
+41082,TOTAL,15533,4278,19811,Erpe-Mere,Erpe-Mere
+41082,MAN,7917,1894,9811,Erpe-Mere,Erpe-Mere
+41082,VROUW,7616,2384,10000,Erpe-Mere,Erpe-Mere
+42000,TOTAL,160554,40659,201213,Arrondissement Dendermonde,Arrondissement de Termonde
+42000,MAN,80940,18148,99088,Arrondissement Dendermonde,Arrondissement de Termonde
+42000,VROUW,79614,22511,102125,Arrondissement Dendermonde,Arrondissement de Termonde
+42003,TOTAL,11927,3031,14958,Berlare,Berlare
+42003,MAN,5965,1403,7368,Berlare,Berlare
+42003,VROUW,5962,1628,7590,Berlare,Berlare
+42004,TOTAL,11498,3019,14517,Buggenhout,Buggenhout
+42004,MAN,5818,1352,7170,Buggenhout,Buggenhout
+42004,VROUW,5680,1667,7347,Buggenhout,Buggenhout
+42006,TOTAL,36323,9446,45769,Dendermonde,Termonde
+42006,MAN,18216,4108,22324,Dendermonde,Termonde
+42006,VROUW,18107,5338,23445,Dendermonde,Termonde
+42008,TOTAL,19948,4917,24865,Hamme (Dendermonde),Hamme (Termonde)
+42008,MAN,10114,2223,12337,Hamme (Dendermonde),Hamme (Termonde)
+42008,VROUW,9834,2694,12528,Hamme (Dendermonde),Hamme (Termonde)
+42010,TOTAL,9650,2720,12370,Laarne,Laarne
+42010,MAN,4841,1267,6108,Laarne,Laarne
+42010,VROUW,4809,1453,6262,Laarne,Laarne
+42011,TOTAL,15495,3826,19321,Lebbeke,Lebbeke
+42011,MAN,7825,1692,9517,Lebbeke,Lebbeke
+42011,VROUW,7670,2134,9804,Lebbeke,Lebbeke
+42023,TOTAL,8562,2239,10801,Waasmunster,Waasmunster
+42023,MAN,4360,1038,5398,Waasmunster,Waasmunster
+42023,VROUW,4202,1201,5403,Waasmunster,Waasmunster
+42025,TOTAL,20665,5150,25815,Wetteren,Wetteren
+42025,MAN,10400,2222,12622,Wetteren,Wetteren
+42025,VROUW,10265,2928,13193,Wetteren,Wetteren
+42026,TOTAL,9392,2280,11672,Wichelen,Wichelen
+42026,MAN,4720,1021,5741,Wichelen,Wichelen
+42026,VROUW,4672,1259,5931,Wichelen,Wichelen
+42028,TOTAL,17094,4031,21125,Zele,Zele
+42028,MAN,8681,1822,10503,Zele,Zele
+42028,VROUW,8413,2209,10622,Zele,Zele
+43000,TOTAL,66594,18641,85235,Arrondissement Eeklo,Arrondissement d’Eeklo
+43000,MAN,34042,8469,42511,Arrondissement Eeklo,Arrondissement d’Eeklo
+43000,VROUW,32552,10172,42724,Arrondissement Eeklo,Arrondissement d’Eeklo
+43002,TOTAL,11187,3069,14256,Assenede,Assenede
+43002,MAN,5705,1388,7093,Assenede,Assenede
+43002,VROUW,5482,1681,7163,Assenede,Assenede
+43005,TOTAL,16295,4839,21134,Eeklo,Eeklo
+43005,MAN,8277,2147,10424,Eeklo,Eeklo
+43005,VROUW,8018,2692,10710,Eeklo,Eeklo
+43007,TOTAL,5018,1416,6434,Kaprijke,Kaprijke
+43007,MAN,2535,659,3194,Kaprijke,Kaprijke
+43007,VROUW,2483,757,3240,Kaprijke,Kaprijke
+43010,TOTAL,18651,5123,23774,Maldegem,Maldegem
+43010,MAN,9524,2365,11889,Maldegem,Maldegem
+43010,VROUW,9127,2758,11885,Maldegem,Maldegem
+43014,TOTAL,5292,1491,6783,Sint-Laureins,Sint-Laureins
+43014,MAN,2738,677,3415,Sint-Laureins,Sint-Laureins
+43014,VROUW,2554,814,3368,Sint-Laureins,Sint-Laureins
+43018,TOTAL,10151,2703,12854,Zelzate,Zelzate
+43018,MAN,5263,1233,6496,Zelzate,Zelzate
+43018,VROUW,4888,1470,6358,Zelzate,Zelzate
+44000,TOTAL,454695,105827,560522,Arrondissement Gent,Arrondissement de Gand
+44000,MAN,231024,46820,277844,Arrondissement Gent,Arrondissement de Gand
+44000,VROUW,223671,59007,282678,Arrondissement Gent,Arrondissement de Gand
+44012,TOTAL,8239,2444,10683,De Pinte,De Pinte
+44012,MAN,4034,1091,5125,De Pinte,De Pinte
+44012,VROUW,4205,1353,5558,De Pinte,De Pinte
+44013,TOTAL,14136,4135,18271,Destelbergen,Destelbergen
+44013,MAN,7079,1850,8929,Destelbergen,Destelbergen
+44013,VROUW,7057,2285,9342,Destelbergen,Destelbergen
+44019,TOTAL,28176,7271,35447,Evergem,Evergem
+44019,MAN,14164,3286,17450,Evergem,Evergem
+44019,VROUW,14012,3985,17997,Evergem,Evergem
+44020,TOTAL,10176,2629,12805,Gavere,Gavere
+44020,MAN,5110,1210,6320,Gavere,Gavere
+44020,VROUW,5066,1419,6485,Gavere,Gavere
+44021,TOTAL,218877,43342,262219,Gent,Gand
+44021,MAN,112147,18571,130718,Gent,Gand
+44021,VROUW,106730,24771,131501,Gent,Gand
+44034,TOTAL,17970,4519,22489,Lochristi,Lochristi
+44034,MAN,9048,2058,11106,Lochristi,Lochristi
+44034,VROUW,8922,2461,11383,Lochristi,Lochristi
+44040,TOTAL,9431,2305,11736,Melle,Melle
+44040,MAN,4652,1000,5652,Melle,Melle
+44040,VROUW,4779,1305,6084,Melle,Melle
+44043,TOTAL,19708,4952,24660,Merelbeke,Merelbeke
+44043,MAN,9870,2238,12108,Merelbeke,Merelbeke
+44043,VROUW,9838,2714,12552,Merelbeke,Merelbeke
+44045,TOTAL,5228,1253,6481,Moerbeke (Gent),Moerbeke (Gand)
+44045,MAN,2653,587,3240,Moerbeke (Gent),Moerbeke (Gand)
+44045,VROUW,2575,666,3241,Moerbeke (Gent),Moerbeke (Gand)
+44048,TOTAL,9102,2517,11619,Nazareth,Nazareth
+44048,MAN,4577,1125,5702,Nazareth,Nazareth
+44048,VROUW,4525,1392,5917,Nazareth,Nazareth
+44052,TOTAL,11033,2557,13590,Oosterzele,Oosterzele
+44052,MAN,5638,1166,6804,Oosterzele,Oosterzele
+44052,VROUW,5395,1391,6786,Oosterzele,Oosterzele
+44064,TOTAL,6198,2194,8392,Sint-Martens-Latem,Sint-Martens-Latem
+44064,MAN,3066,991,4057,Sint-Martens-Latem,Sint-Martens-Latem
+44064,VROUW,3132,1203,4335,Sint-Martens-Latem,Sint-Martens-Latem
+44073,TOTAL,6026,1745,7771,Wachtebeke,Wachtebeke
+44073,MAN,3025,786,3811,Wachtebeke,Wachtebeke
+44073,VROUW,3001,959,3960,Wachtebeke,Wachtebeke
+44081,TOTAL,12945,2775,15720,Zulte,Zulte
+44081,MAN,6624,1273,7897,Zulte,Zulte
+44081,VROUW,6321,1502,7823,Zulte,Zulte
+44083,TOTAL,34622,8949,43571,Deinze,Deinze
+44083,MAN,17650,3975,21625,Deinze,Deinze
+44083,VROUW,16972,4974,21946,Deinze,Deinze
+44084,TOTAL,22763,6143,28906,Aalter,Aalter
+44084,MAN,11689,2808,14497,Aalter,Aalter
+44084,VROUW,11074,3335,14409,Aalter,Aalter
+44085,TOTAL,20065,6097,26162,Lievegem,Lievegem
+44085,MAN,9998,2805,12803,Lievegem,Lievegem
+44085,VROUW,10067,3292,13359,Lievegem,Lievegem
+45000,TOTAL,99182,25160,124342,Arrondissement Oudenaarde,Arrondissement d’Audenarde
+45000,MAN,50303,11077,61380,Arrondissement Oudenaarde,Arrondissement d’Audenarde
+45000,VROUW,48879,14083,62962,Arrondissement Oudenaarde,Arrondissement d’Audenarde
+45035,TOTAL,24914,6479,31393,Oudenaarde,Audenarde
+45035,MAN,12679,2845,15524,Oudenaarde,Audenarde
+45035,VROUW,12235,3634,15869,Oudenaarde,Audenarde
+45041,TOTAL,21544,4935,26479,Ronse,Renaix
+45041,MAN,10890,2114,13004,Ronse,Renaix
+45041,VROUW,10654,2821,13475,Ronse,Renaix
+45059,TOTAL,11593,3208,14801,Brakel,Brakel
+45059,MAN,5895,1369,7264,Brakel,Brakel
+45059,VROUW,5698,1839,7537,Brakel,Brakel
+45060,TOTAL,5204,1284,6488,Kluisbergen,Kluisbergen
+45060,MAN,2663,558,3221,Kluisbergen,Kluisbergen
+45060,VROUW,2541,726,3267,Kluisbergen,Kluisbergen
+45061,TOTAL,5135,1262,6397,Wortegem-Petegem,Wortegem-Petegem
+45061,MAN,2596,597,3193,Wortegem-Petegem,Wortegem-Petegem
+45061,VROUW,2539,665,3204,Wortegem-Petegem,Wortegem-Petegem
+45062,TOTAL,1485,551,2036,Horebeke,Horebeke
+45062,MAN,752,228,980,Horebeke,Horebeke
+45062,VROUW,733,323,1056,Horebeke,Horebeke
+45063,TOTAL,5286,1330,6616,Lierde,Lierde
+45063,MAN,2693,618,3311,Lierde,Lierde
+45063,VROUW,2593,712,3305,Lierde,Lierde
+45064,TOTAL,4845,1498,6343,Maarkedal,Maarkedal
+45064,MAN,2434,643,3077,Maarkedal,Maarkedal
+45064,VROUW,2411,855,3266,Maarkedal,Maarkedal
+45065,TOTAL,6545,1603,8148,Zwalm,Zwalin
+45065,MAN,3286,732,4018,Zwalm,Zwalin
+45065,VROUW,3259,871,4130,Zwalm,Zwalin
+45068,TOTAL,12631,3010,15641,Kruisem,Kruisem
+45068,MAN,6415,1373,7788,Kruisem,Kruisem
+45068,VROUW,6216,1637,7853,Kruisem,Kruisem
+46000,TOTAL,202736,49787,252523,Arrondissement Sint-Niklaas,Arrondissement de Saint-Nicolas
+46000,MAN,101877,22560,124437,Arrondissement Sint-Niklaas,Arrondissement de Saint-Nicolas
+46000,VROUW,100859,27227,128086,Arrondissement Sint-Niklaas,Arrondissement de Saint-Nicolas
+46003,TOTAL,38433,10235,48668,Beveren (Sint-Niklaas),Beveren (Saint-Nicolas)
+46003,MAN,19384,4720,24104,Beveren (Sint-Niklaas),Beveren (Saint-Nicolas)
+46003,VROUW,19049,5515,24564,Beveren (Sint-Niklaas),Beveren (Saint-Nicolas)
+46013,TOTAL,13384,3361,16745,Kruibeke,Kruibeke
+46013,MAN,6716,1560,8276,Kruibeke,Kruibeke
+46013,VROUW,6668,1801,8469,Kruibeke,Kruibeke
+46014,TOTAL,34175,7515,41690,Lokeren,Lokeren
+46014,MAN,17115,3405,20520,Lokeren,Lokeren
+46014,VROUW,17060,4110,21170,Lokeren,Lokeren
+46020,TOTAL,15496,3874,19370,Sint-Gillis-Waas,Sint-Gillis-Waas
+46020,MAN,7842,1787,9629,Sint-Gillis-Waas,Sint-Gillis-Waas
+46020,VROUW,7654,2087,9741,Sint-Gillis-Waas,Sint-Gillis-Waas
+46021,TOTAL,62326,15353,77679,Sint-Niklaas (Sint-Niklaas),Saint-Nicolas (Saint-Nicolas)
+46021,MAN,31310,6735,38045,Sint-Niklaas (Sint-Niklaas),Saint-Nicolas (Saint-Nicolas)
+46021,VROUW,31016,8618,39634,Sint-Niklaas (Sint-Niklaas),Saint-Nicolas (Saint-Nicolas)
+46024,TOTAL,14642,3803,18445,Stekene,Stekene
+46024,MAN,7300,1741,9041,Stekene,Stekene
+46024,VROUW,7342,2062,9404,Stekene,Stekene
+46025,TOTAL,24280,5646,29926,Temse,Tamise
+46025,MAN,12210,2612,14822,Temse,Tamise
+46025,VROUW,12070,3034,15104,Temse,Tamise
+50000,TOTAL,1093995,250246,1344241,Provincie Henegouwen,Province du Hainaut
+50000,MAN,549812,104373,654185,Provincie Henegouwen,Province du Hainaut
+50000,VROUW,544183,145873,690056,Provincie Henegouwen,Province du Hainaut
+51000,TOTAL,104157,23758,127915,Arrondissement Aat,Arrondissement d’Ath
+51000,MAN,52502,10125,62627,Arrondissement Aat,Arrondissement d’Ath
+51000,VROUW,51655,13633,65288,Arrondissement Aat,Arrondissement d’Ath
+51004,TOTAL,23552,5759,29311,Aat,Ath
+51004,MAN,11792,2376,14168,Aat,Ath
+51004,VROUW,11760,3383,15143,Aat,Ath
+51008,TOTAL,11626,2442,14068,Beloeil,Beloeil
+51008,MAN,5906,1032,6938,Beloeil,Beloeil
+51008,VROUW,5720,1410,7130,Beloeil,Beloeil
+51009,TOTAL,9751,2108,11859,Bernissart,Bernissart
+51009,MAN,4890,903,5793,Bernissart,Bernissart
+51009,VROUW,4861,1205,6066,Bernissart,Bernissart
+51012,TOTAL,3179,549,3728,Brugelette,Brugelette
+51012,MAN,1631,242,1873,Brugelette,Brugelette
+51012,VROUW,1548,307,1855,Brugelette,Brugelette
+51014,TOTAL,5788,1128,6916,Chièvres,Chièvres
+51014,MAN,2934,470,3404,Chièvres,Chièvres
+51014,VROUW,2854,658,3512,Chièvres,Chièvres
+51017,TOTAL,4754,1221,5975,Elzele,Ellezelles
+51017,MAN,2415,538,2953,Elzele,Ellezelles
+51017,VROUW,2339,683,3022,Elzele,Ellezelles
+51019,TOTAL,2705,742,3447,Vloesberg,Flobecq
+51019,MAN,1378,322,1700,Vloesberg,Flobecq
+51019,VROUW,1327,420,1747,Vloesberg,Flobecq
+51065,TOTAL,9530,2284,11814,Frasnes-lez-Anvaing,Frasnes-lez-Anvaing
+51065,MAN,4808,1001,5809,Frasnes-lez-Anvaing,Frasnes-lez-Anvaing
+51065,VROUW,4722,1283,6005,Frasnes-lez-Anvaing,Frasnes-lez-Anvaing
+51067,TOTAL,11230,2587,13817,Edingen,Enghien
+51067,MAN,5621,1089,6710,Edingen,Enghien
+51067,VROUW,5609,1498,7107,Edingen,Enghien
+51068,TOTAL,6794,1530,8324,Opzullik,Silly
+51068,MAN,3448,705,4153,Opzullik,Silly
+51068,VROUW,3346,825,4171,Opzullik,Silly
+51069,TOTAL,15248,3408,18656,Lessen,Lessines
+51069,MAN,7679,1447,9126,Lessen,Lessines
+51069,VROUW,7569,1961,9530,Lessen,Lessines
+52000,TOTAL,324375,72264,396639,Arrondissement Charleroi,Arrondissement de Charleroi
+52000,MAN,162713,30001,192714,Arrondissement Charleroi,Arrondissement de Charleroi
+52000,VROUW,161662,42263,203925,Arrondissement Charleroi,Arrondissement de Charleroi
+52010,TOTAL,11928,2809,14737,Chapelle-lez-Herlaimont,Chapelle-lez-Herlaimont
+52010,MAN,5910,1157,7067,Chapelle-lez-Herlaimont,Chapelle-lez-Herlaimont
+52010,VROUW,6018,1652,7670,Chapelle-lez-Herlaimont,Chapelle-lez-Herlaimont
+52011,TOTAL,166645,35622,202267,Charleroi,Charleroi
+52011,MAN,84167,14635,98802,Charleroi,Charleroi
+52011,VROUW,82478,20987,103465,Charleroi,Charleroi
+52012,TOTAL,29108,6795,35903,Châtelet,Châtelet
+52012,MAN,14595,2763,17358,Châtelet,Châtelet
+52012,VROUW,14513,4032,18545,Châtelet,Châtelet
+52015,TOTAL,25882,5417,31299,Courcelles,Courcelles
+52015,MAN,12920,2274,15194,Courcelles,Courcelles
+52015,VROUW,12962,3143,16105,Courcelles,Courcelles
+52018,TOTAL,9527,1789,11316,Farciennes,Farciennes
+52018,MAN,4740,755,5495,Farciennes,Farciennes
+52018,VROUW,4787,1034,5821,Farciennes,Farciennes
+52021,TOTAL,18693,4225,22918,Fleurus,Fleurus
+52021,MAN,9323,1774,11097,Fleurus,Fleurus
+52021,VROUW,9370,2451,11821,Fleurus,Fleurus
+52022,TOTAL,14518,3288,17806,Fontaine-l’Evêque,Fontaine-l’Evêque
+52022,MAN,7252,1323,8575,Fontaine-l’Evêque,Fontaine-l’Evêque
+52022,VROUW,7266,1965,9231,Fontaine-l’Evêque,Fontaine-l’Evêque
+52025,TOTAL,9656,3060,12716,Gerpinnes,Gerpinnes
+52025,MAN,4790,1336,6126,Gerpinnes,Gerpinnes
+52025,VROUW,4866,1724,6590,Gerpinnes,Gerpinnes
+52048,TOTAL,7680,2432,10112,Montigny-le-Tilleul,Montigny-le-Tilleul
+52048,MAN,3758,1028,4786,Montigny-le-Tilleul,Montigny-le-Tilleul
+52048,VROUW,3922,1404,5326,Montigny-le-Tilleul,Montigny-le-Tilleul
+52055,TOTAL,14283,3088,17371,Pont-à-Celles,Pont-à-Celles
+52055,MAN,7095,1342,8437,Pont-à-Celles,Pont-à-Celles
+52055,VROUW,7188,1746,8934,Pont-à-Celles,Pont-à-Celles
+52074,TOTAL,8773,1970,10743,Aiseau-Presles,Aiseau-Presles
+52074,MAN,4328,848,5176,Aiseau-Presles,Aiseau-Presles
+52074,VROUW,4445,1122,5567,Aiseau-Presles,Aiseau-Presles
+52075,TOTAL,7682,1769,9451,Les Bons Villers,Les Bons Villers
+52075,MAN,3835,766,4601,Les Bons Villers,Les Bons Villers
+52075,VROUW,3847,1003,4850,Les Bons Villers,Les Bons Villers
+53000,TOTAL,211514,47485,258999,Arrondissement Bergen,Arrondissement de Mons
+53000,MAN,105665,19369,125034,Arrondissement Bergen,Arrondissement de Mons
+53000,VROUW,105849,28116,133965,Arrondissement Bergen,Arrondissement de Mons
+53014,TOTAL,16123,3701,19824,Boussu,Boussu
+53014,MAN,7949,1461,9410,Boussu,Boussu
+53014,VROUW,8174,2240,10414,Boussu,Boussu
+53020,TOTAL,13586,3058,16644,Dour,Dour
+53020,MAN,6781,1217,7998,Dour,Dour
+53020,VROUW,6805,1841,8646,Dour,Dour
+53028,TOTAL,17909,4025,21934,Frameries,Frameries
+53028,MAN,8807,1617,10424,Frameries,Frameries
+53028,VROUW,9102,2408,11510,Frameries,Frameries
+53039,TOTAL,5546,1282,6828,Hensies,Hensies
+53039,MAN,2761,537,3298,Hensies,Hensies
+53039,VROUW,2785,745,3530,Hensies,Hensies
+53044,TOTAL,8529,1854,10383,Jurbeke,Jurbise
+53044,MAN,4218,834,5052,Jurbeke,Jurbise
+53044,VROUW,4311,1020,5331,Jurbeke,Jurbise
+53046,TOTAL,3785,740,4525,Lens,Lens
+53046,MAN,1895,322,2217,Lens,Lens
+53046,VROUW,1890,418,2308,Lens,Lens
+53053,TOTAL,78443,17170,95613,Bergen,Mons
+53053,MAN,39490,6944,46434,Bergen,Mons
+53053,VROUW,38953,10226,49179,Bergen,Mons
+53065,TOTAL,15616,3391,19007,Quaregnon,Quaregnon
+53065,MAN,7779,1364,9143,Quaregnon,Quaregnon
+53065,VROUW,7837,2027,9864,Quaregnon,Quaregnon
+53068,TOTAL,5532,1290,6822,Quiévrain,Quiévrain
+53068,MAN,2756,511,3267,Quiévrain,Quiévrain
+53068,VROUW,2776,779,3555,Quiévrain,Quiévrain
+53070,TOTAL,18445,4866,23311,Saint-Ghislain,Saint-Ghislain
+53070,MAN,9166,1994,11160,Saint-Ghislain,Saint-Ghislain
+53070,VROUW,9279,2872,12151,Saint-Ghislain,Saint-Ghislain
+53082,TOTAL,17217,3594,20811,Colfontaine,Colfontaine
+53082,MAN,8628,1469,10097,Colfontaine,Colfontaine
+53082,VROUW,8589,2125,10714,Colfontaine,Colfontaine
+53083,TOTAL,4223,936,5159,Honnelles,Honnelles
+53083,MAN,2159,428,2587,Honnelles,Honnelles
+53083,VROUW,2064,508,2572,Honnelles,Honnelles
+53084,TOTAL,6560,1578,8138,Quévy,Quévy
+53084,MAN,3276,671,3947,Quévy,Quévy
+53084,VROUW,3284,907,4191,Quévy,Quévy
+55000,TOTAL,85855,18678,104533,Arrondissement Zinnik,Arrondissement de Soignies
+55000,MAN,43146,7989,51135,Arrondissement Zinnik,Arrondissement de Soignies
+55000,VROUW,42709,10689,53398,Arrondissement Zinnik,Arrondissement de Soignies
+55004,TOTAL,18149,3752,21901,’s Gravenbrakel,Braine-le-Comte
+55004,MAN,9139,1631,10770,’s Gravenbrakel,Braine-le-Comte
+55004,VROUW,9010,2121,11131,’s Gravenbrakel,Braine-le-Comte
+55035,TOTAL,7109,1607,8716,Le Roeulx,Le Roeulx
+55035,MAN,3580,700,4280,Le Roeulx,Le Roeulx
+55035,VROUW,3529,907,4436,Le Roeulx,Le Roeulx
+55040,TOTAL,22768,5248,28016,Zinnik,Soignies
+55040,MAN,11385,2210,13595,Zinnik,Soignies
+55040,VROUW,11383,3038,14421,Zinnik,Soignies
+55050,TOTAL,9226,1933,11159,Ecaussinnes,Ecaussinnes
+55050,MAN,4620,814,5434,Ecaussinnes,Ecaussinnes
+55050,VROUW,4606,1119,5725,Ecaussinnes,Ecaussinnes
+55085,TOTAL,9328,2105,11433,Seneffe,Seneffe
+55085,MAN,4704,901,5605,Seneffe,Seneffe
+55085,VROUW,4624,1204,5828,Seneffe,Seneffe
+55086,TOTAL,19275,4033,23308,Manage,Manage
+55086,MAN,9718,1733,11451,Manage,Manage
+55086,VROUW,9557,2300,11857,Manage,Manage
+56000,TOTAL,73501,18177,91678,Arrondissement Thuin,Arrondissement de Thuin
+56000,MAN,37161,7933,45094,Arrondissement Thuin,Arrondissement de Thuin
+56000,VROUW,36340,10244,46584,Arrondissement Thuin,Arrondissement de Thuin
+56001,TOTAL,9944,2317,12261,Anderlues,Anderlues
+56001,MAN,5041,963,6004,Anderlues,Anderlues
+56001,VROUW,4903,1354,6257,Anderlues,Anderlues
+56005,TOTAL,5785,1339,7124,Beaumont,Beaumont
+56005,MAN,2987,580,3567,Beaumont,Beaumont
+56005,VROUW,2798,759,3557,Beaumont,Beaumont
+56016,TOTAL,7792,2013,9805,Chimay,Chimay
+56016,MAN,3941,884,4825,Chimay,Chimay
+56016,VROUW,3851,1129,4980,Chimay,Chimay
+56022,TOTAL,8236,1767,10003,Erquelinnes,Erquelinnes
+56022,MAN,4124,731,4855,Erquelinnes,Erquelinnes
+56022,VROUW,4112,1036,5148,Erquelinnes,Erquelinnes
+56029,TOTAL,3209,750,3959,Froidchapelle,Froidchapelle
+56029,MAN,1674,338,2012,Froidchapelle,Froidchapelle
+56029,VROUW,1535,412,1947,Froidchapelle,Froidchapelle
+56044,TOTAL,4770,1062,5832,Lobbes,Lobbes
+56044,MAN,2390,462,2852,Lobbes,Lobbes
+56044,VROUW,2380,600,2980,Lobbes,Lobbes
+56049,TOTAL,3561,705,4266,Merbes-le-Château,Merbes-le-Château
+56049,MAN,1804,312,2116,Merbes-le-Château,Merbes-le-Château
+56049,VROUW,1757,393,2150,Merbes-le-Château,Merbes-le-Château
+56051,TOTAL,4307,998,5305,Momignies,Momignies
+56051,MAN,2231,436,2667,Momignies,Momignies
+56051,VROUW,2076,562,2638,Momignies,Momignies
+56078,TOTAL,11488,3214,14702,Thuin,Thuin
+56078,MAN,5829,1409,7238,Thuin,Thuin
+56078,VROUW,5659,1805,7464,Thuin,Thuin
+56086,TOTAL,10568,3055,13623,Ham-sur-Heure-Nalinnes,Ham-sur-Heure-Nalinnes
+56086,MAN,5215,1363,6578,Ham-sur-Heure-Nalinnes,Ham-sur-Heure-Nalinnes
+56086,VROUW,5353,1692,7045,Ham-sur-Heure-Nalinnes,Ham-sur-Heure-Nalinnes
+56088,TOTAL,3841,957,4798,Sivry-Rance,Sivry-Rance
+56088,MAN,1925,455,2380,Sivry-Rance,Sivry-Rance
+56088,VROUW,1916,502,2418,Sivry-Rance,Sivry-Rance
+57000,TOTAL,180047,43370,223417,Arrondissement Doornik-Moeskroen,Arrondissement de Tournai-Mouscron
+57000,MAN,91378,17937,109315,Arrondissement Doornik-Moeskroen,Arrondissement de Tournai-Mouscron
+57000,VROUW,88669,25433,114102,Arrondissement Doornik-Moeskroen,Arrondissement de Tournai-Mouscron
+57003,TOTAL,6228,1459,7687,Antoing,Antoing
+57003,MAN,3147,595,3742,Antoing,Antoing
+57003,VROUW,3081,864,3945,Antoing,Antoing
+57018,TOTAL,4656,1010,5666,Celles (Doornik),Celles (Tournai)
+57018,MAN,2373,429,2802,Celles (Doornik),Celles (Tournai)
+57018,VROUW,2283,581,2864,Celles (Doornik),Celles (Tournai)
+57027,TOTAL,8657,1821,10478,Estaimpuis,Estaimpuis
+57027,MAN,4366,773,5139,Estaimpuis,Estaimpuis
+57027,VROUW,4291,1048,5339,Estaimpuis,Estaimpuis
+57062,TOTAL,4622,1076,5698,Pecq,Pecq
+57062,MAN,2358,466,2824,Pecq,Pecq
+57062,VROUW,2264,610,2874,Pecq,Pecq
+57064,TOTAL,14031,3128,17159,Péruwelz,Péruwelz
+57064,MAN,7098,1296,8394,Péruwelz,Péruwelz
+57064,VROUW,6933,1832,8765,Péruwelz,Péruwelz
+57072,TOTAL,4127,1040,5167,Rumes,Rumes
+57072,MAN,2096,454,2550,Rumes,Rumes
+57072,VROUW,2031,586,2617,Rumes,Rumes
+57081,TOTAL,55143,14227,69370,Doornik,Tournai
+57081,MAN,28200,5841,34041,Doornik,Tournai
+57081,VROUW,26943,8386,35329,Doornik,Tournai
+57093,TOTAL,6652,1428,8080,Brunehaut,Brunehaut
+57093,MAN,3407,610,4017,Brunehaut,Brunehaut
+57093,VROUW,3245,818,4063,Brunehaut,Brunehaut
+57094,TOTAL,11208,2642,13850,Leuze-en-Hainaut,Leuze-en-Hainaut
+57094,MAN,5658,1080,6738,Leuze-en-Hainaut,Leuze-en-Hainaut
+57094,VROUW,5550,1562,7112,Leuze-en-Hainaut,Leuze-en-Hainaut
+57095,TOTAL,3089,675,3764,Mont-de-l’Enclus,Mont-de-l’Enclus
+57095,MAN,1600,301,1901,Mont-de-l’Enclus,Mont-de-l’Enclus
+57095,VROUW,1489,374,1863,Mont-de-l’Enclus,Mont-de-l’Enclus
+57096,TOTAL,47415,11059,58474,Moeskroen,Mouscron
+57096,MAN,23860,4528,28388,Moeskroen,Mouscron
+57096,VROUW,23555,6531,30086,Moeskroen,Mouscron
+57097,TOTAL,14219,3805,18024,Komen-Waasten,Comines-Warneton
+57097,MAN,7215,1564,8779,Komen-Waasten,Comines-Warneton
+57097,VROUW,7004,2241,9245,Komen-Waasten,Comines-Warneton
+58000,TOTAL,114546,26514,141060,Arrondissement La Louvière,Arrondissement de La Louvière
+58000,MAN,57247,11019,68266,Arrondissement La Louvière,Arrondissement de La Louvière
+58000,VROUW,57299,15495,72794,Arrondissement La Louvière,Arrondissement de La Louvière
+58001,TOTAL,66030,14727,80757,La Louvière,La Louvière
+58001,MAN,32981,6186,39167,La Louvière,La Louvière
+58001,VROUW,33049,8541,41590,La Louvière,La Louvière
+58002,TOTAL,26719,6754,33473,Binche,Binche
+58002,MAN,13269,2786,16055,Binche,Binche
+58002,VROUW,13450,3968,17418,Binche,Binche
+58003,TOTAL,6379,1386,7765,Estinnes,Estinnes
+58003,MAN,3242,586,3828,Estinnes,Estinnes
+58003,VROUW,3137,800,3937,Estinnes,Estinnes
+58004,TOTAL,15418,3647,19065,Morlanwelz,Morlanwelz
+58004,MAN,7755,1461,9216,Morlanwelz,Morlanwelz
+58004,VROUW,7663,2186,9849,Morlanwelz,Morlanwelz
+60000,TOTAL,899694,207298,1106992,Provincie Luik,Province de Liège
+60000,MAN,452049,89726,541775,Provincie Luik,Province de Liège
+60000,VROUW,447645,117572,565217,Provincie Luik,Province de Liège
+61000,TOTAL,93208,20201,113409,Arrondissement Hoei,Arrondissement de Huy
+61000,MAN,46871,8908,55779,Arrondissement Hoei,Arrondissement de Huy
+61000,VROUW,46337,11293,57630,Arrondissement Hoei,Arrondissement de Huy
+61003,TOTAL,11822,2590,14412,Amay,Amay
+61003,MAN,5890,1121,7011,Amay,Amay
+61003,VROUW,5932,1469,7401,Amay,Amay
+61010,TOTAL,2777,461,3238,Burdinne,Burdinne
+61010,MAN,1425,206,1631,Burdinne,Burdinne
+61010,VROUW,1352,255,1607,Burdinne,Burdinne
+61012,TOTAL,3847,790,4637,Clavier,Clavier
+61012,MAN,1929,347,2276,Clavier,Clavier
+61012,VROUW,1918,443,2361,Clavier,Clavier
+61019,TOTAL,4021,914,4935,Ferrières,Ferrières
+61019,MAN,2074,436,2510,Ferrières,Ferrières
+61019,VROUW,1947,478,2425,Ferrières,Ferrières
+61024,TOTAL,3068,812,3880,Hamoir,Hamoir
+61024,MAN,1574,375,1949,Hamoir,Hamoir
+61024,VROUW,1494,437,1931,Hamoir,Hamoir
+61028,TOTAL,4647,728,5375,Héron,Héron
+61028,MAN,2317,340,2657,Héron,Héron
+61028,VROUW,2330,388,2718,Héron,Héron
+61031,TOTAL,16967,4260,21227,Hoei,Huy
+61031,MAN,8590,1694,10284,Hoei,Huy
+61031,VROUW,8377,2566,10943,Hoei,Huy
+61039,TOTAL,4609,860,5469,Marchin,Marchin
+61039,MAN,2289,411,2700,Marchin,Marchin
+61039,VROUW,2320,449,2769,Marchin,Marchin
+61041,TOTAL,3572,640,4212,Modave,Modave
+61041,MAN,1804,306,2110,Modave,Modave
+61041,VROUW,1768,334,2102,Modave,Modave
+61043,TOTAL,4583,1170,5753,Nandrin,Nandrin
+61043,MAN,2290,537,2827,Nandrin,Nandrin
+61043,VROUW,2293,633,2926,Nandrin,Nandrin
+61048,TOTAL,2282,494,2776,Ouffet,Ouffet
+61048,MAN,1142,222,1364,Ouffet,Ouffet
+61048,VROUW,1140,272,1412,Ouffet,Ouffet
+61063,TOTAL,3559,669,4228,Verlaine,Verlaine
+61063,MAN,1782,316,2098,Verlaine,Verlaine
+61063,VROUW,1777,353,2130,Verlaine,Verlaine
+61068,TOTAL,5533,963,6496,Villers-Le-Bouillet,Villers-Le-Bouillet
+61068,MAN,2779,436,3215,Villers-Le-Bouillet,Villers-Le-Bouillet
+61068,VROUW,2754,527,3281,Villers-Le-Bouillet,Villers-Le-Bouillet
+61072,TOTAL,11118,2620,13738,Wanze,Wanze
+61072,MAN,5579,1137,6716,Wanze,Wanze
+61072,VROUW,5539,1483,7022,Wanze,Wanze
+61079,TOTAL,3439,750,4189,Anthisnes,Anthisnes
+61079,MAN,1730,346,2076,Anthisnes,Anthisnes
+61079,VROUW,1709,404,2113,Anthisnes,Anthisnes
+61080,TOTAL,5149,989,6138,Engis,Engis
+61080,MAN,2577,462,3039,Engis,Engis
+61080,VROUW,2572,527,3099,Engis,Engis
+61081,TOTAL,2215,491,2706,Tinlot,Tinlot
+61081,MAN,1100,216,1316,Tinlot,Tinlot
+61081,VROUW,1115,275,1390,Tinlot,Tinlot
+62000,TOTAL,505963,118459,624422,Arrondissement Luik,Arrondissement de Liège
+62000,MAN,253933,50381,304314,Arrondissement Luik,Arrondissement de Liège
+62000,VROUW,252030,68078,320108,Arrondissement Luik,Arrondissement de Liège
+62003,TOTAL,22523,5850,28373,Ans,Ans
+62003,MAN,11137,2380,13517,Ans,Ans
+62003,VROUW,11386,3470,14856,Ans,Ans
+62006,TOTAL,7248,2070,9318,Awans,Awans
+62006,MAN,3574,881,4455,Awans,Awans
+62006,VROUW,3674,1189,4863,Awans,Awans
+62009,TOTAL,10143,2293,12436,Aywaille,Aywaille
+62009,MAN,5083,1041,6124,Aywaille,Aywaille
+62009,VROUW,5060,1252,6312,Aywaille,Aywaille
+62011,TOTAL,7242,1663,8905,Bitsingen,Bassenge
+62011,MAN,3685,737,4422,Bitsingen,Bassenge
+62011,VROUW,3557,926,4483,Bitsingen,Bassenge
+62015,TOTAL,9667,2262,11929,Beyne-Heusay,Beyne-Heusay
+62015,MAN,4764,981,5745,Beyne-Heusay,Beyne-Heusay
+62015,VROUW,4903,1281,6184,Beyne-Heusay,Beyne-Heusay
+62022,TOTAL,15461,5339,20800,Chaudfontaine,Chaudfontaine
+62022,MAN,7670,2299,9969,Chaudfontaine,Chaudfontaine
+62022,VROUW,7791,3040,10831,Chaudfontaine,Chaudfontaine
+62026,TOTAL,4361,1043,5404,Comblain-au-Pont,Comblain-au-Pont
+62026,MAN,2207,422,2629,Comblain-au-Pont,Comblain-au-Pont
+62026,VROUW,2154,621,2775,Comblain-au-Pont,Comblain-au-Pont
+62027,TOTAL,6155,1253,7408,Dalhem,Dalhem
+62027,MAN,3036,601,3637,Dalhem,Dalhem
+62027,VROUW,3119,652,3771,Dalhem,Dalhem
+62032,TOTAL,10005,2912,12917,Esneux,Esneux
+62032,MAN,4971,1281,6252,Esneux,Esneux
+62032,VROUW,5034,1631,6665,Esneux,Esneux
+62038,TOTAL,12655,3871,16526,Fléron,Fléron
+62038,MAN,6196,1619,7815,Fléron,Fléron
+62038,VROUW,6459,2252,8711,Fléron,Fléron
+62051,TOTAL,32633,7356,39989,Herstal,Herstal
+62051,MAN,16247,3081,19328,Herstal,Herstal
+62051,VROUW,16386,4275,20661,Herstal,Herstal
+62060,TOTAL,7461,1834,9295,Juprelle,Juprelle
+62060,MAN,3750,864,4614,Juprelle,Juprelle
+62060,VROUW,3711,970,4681,Juprelle,Juprelle
+62063,TOTAL,162881,34446,197327,Luik,Liège
+62063,MAN,83532,14321,97853,Luik,Liège
+62063,VROUW,79349,20125,99474,Luik,Liège
+62079,TOTAL,20227,5219,25446,Oupeye,Oupeye
+62079,MAN,10080,2294,12374,Oupeye,Oupeye
+62079,VROUW,10147,2925,13072,Oupeye,Oupeye
+62093,TOTAL,19884,4379,24263,Saint-Nicolas (Luik),Saint-Nicolas (Liège)
+62093,MAN,9799,1827,11626,Saint-Nicolas (Luik),Saint-Nicolas (Liège)
+62093,VROUW,10085,2552,12637,Saint-Nicolas (Luik),Saint-Nicolas (Liège)
+62096,TOTAL,52607,11652,64259,Seraing,Seraing
+62096,MAN,26165,4791,30956,Seraing,Seraing
+62096,VROUW,26442,6861,33303,Seraing,Seraing
+62099,TOTAL,13787,3138,16925,Soumagne,Soumagne
+62099,MAN,6857,1392,8249,Soumagne,Soumagne
+62099,VROUW,6930,1746,8676,Soumagne,Soumagne
+62100,TOTAL,12010,2702,14712,Sprimont,Sprimont
+62100,MAN,5898,1184,7082,Sprimont,Sprimont
+62100,VROUW,6112,1518,7630,Sprimont,Sprimont
+62108,TOTAL,14277,3535,17812,Wezet,Visé
+62108,MAN,7067,1526,8593,Wezet,Visé
+62108,VROUW,7210,2009,9219,Wezet,Visé
+62118,TOTAL,18575,4085,22660,Grâce-Hollogne,Grâce-Hollogne
+62118,MAN,9312,1776,11088,Grâce-Hollogne,Grâce-Hollogne
+62118,VROUW,9263,2309,11572,Grâce-Hollogne,Grâce-Hollogne
+62119,TOTAL,10615,2677,13292,Blegny,Blegny
+62119,MAN,5316,1190,6506,Blegny,Blegny
+62119,VROUW,5299,1487,6786,Blegny,Blegny
+62120,TOTAL,21275,5029,26304,Flémalle,Flémalle
+62120,MAN,10461,2155,12616,Flémalle,Flémalle
+62120,VROUW,10814,2874,13688,Flémalle,Flémalle
+62121,TOTAL,7482,2441,9923,Neupré,Neupré
+62121,MAN,3738,1094,4832,Neupré,Neupré
+62121,VROUW,3744,1347,5091,Neupré,Neupré
+62122,TOTAL,6789,1410,8199,Trooz,Trooz
+62122,MAN,3388,644,4032,Trooz,Trooz
+62122,VROUW,3401,766,4167,Trooz,Trooz
+63000,TOTAL,233919,53853,287772,Arrondissement Verviers,Arrondissement de Verviers
+63000,MAN,117940,24012,141952,Arrondissement Verviers,Arrondissement de Verviers
+63000,VROUW,115979,29841,145820,Arrondissement Verviers,Arrondissement de Verviers
+63001,TOTAL,4441,1033,5474,Amel,Amblève
+63001,MAN,2324,488,2812,Amel,Amblève
+63001,VROUW,2117,545,2662,Amel,Amblève
+63003,TOTAL,3409,879,4288,Aubel,Aubel
+63003,MAN,1733,364,2097,Aubel,Aubel
+63003,VROUW,1676,515,2191,Aubel,Aubel
+63004,TOTAL,3732,722,4454,Baelen,Baelen
+63004,MAN,1883,338,2221,Baelen,Baelen
+63004,VROUW,1849,384,2233,Baelen,Baelen
+63012,TOTAL,4340,1138,5478,Büllingen,Bullange
+63012,MAN,2277,544,2821,Büllingen,Bullange
+63012,VROUW,2063,594,2657,Büllingen,Bullange
+63013,TOTAL,4467,1143,5610,Bütgenbach,Butgenbach
+63013,MAN,2302,512,2814,Bütgenbach,Butgenbach
+63013,VROUW,2165,631,2796,Bütgenbach,Butgenbach
+63020,TOTAL,13098,2150,15248,Dison,Dison
+63020,MAN,6556,938,7494,Dison,Dison
+63020,VROUW,6542,1212,7754,Dison,Dison
+63023,TOTAL,15786,3891,19677,Eupen,Eupen
+63023,MAN,7948,1697,9645,Eupen,Eupen
+63023,VROUW,7838,2194,10032,Eupen,Eupen
+63035,TOTAL,14221,3388,17609,Herve,Herve
+63035,MAN,7077,1478,8555,Herve,Herve
+63035,VROUW,7144,1910,9054,Herve,Herve
+63038,TOTAL,6971,1614,8585,Jalhay,Jalhay
+63038,MAN,3538,755,4293,Jalhay,Jalhay
+63038,VROUW,3433,859,4292,Jalhay,Jalhay
+63040,TOTAL,8929,2179,11108,Kelmis,La Calamine
+63040,MAN,4487,982,5469,Kelmis,La Calamine
+63040,VROUW,4442,1197,5639,Kelmis,La Calamine
+63045,TOTAL,2958,656,3614,Lierneux,Lierneux
+63045,MAN,1497,313,1810,Lierneux,Lierneux
+63045,VROUW,1461,343,1804,Lierneux,Lierneux
+63046,TOTAL,4881,1031,5912,Limburg,Limbourg
+63046,MAN,2490,457,2947,Limburg,Limbourg
+63046,VROUW,2391,574,2965,Limburg,Limbourg
+63048,TOTAL,4753,1011,5764,Lontzen,Lontzen
+63048,MAN,2415,479,2894,Lontzen,Lontzen
+63048,VROUW,2338,532,2870,Lontzen,Lontzen
+63049,TOTAL,10063,2678,12741,Malmedy,Malmedy
+63049,MAN,5016,1138,6154,Malmedy,Malmedy
+63049,VROUW,5047,1540,6587,Malmedy,Malmedy
+63057,TOTAL,3358,722,4080,Olne,Olne
+63057,MAN,1700,353,2053,Olne,Olne
+63057,VROUW,1658,369,2027,Olne,Olne
+63058,TOTAL,8075,1697,9772,Pepinster,Pepinster
+63058,MAN,4047,723,4770,Pepinster,Pepinster
+63058,VROUW,4028,974,5002,Pepinster,Pepinster
+63061,TOTAL,8732,2027,10759,Raeren,Raeren
+63061,MAN,4361,948,5309,Raeren,Raeren
+63061,VROUW,4371,1079,5450,Raeren,Raeren
+63067,TOTAL,7909,1813,9722,Sankt Vith,Saint-Vith
+63067,MAN,4046,823,4869,Sankt Vith,Saint-Vith
+63067,VROUW,3863,990,4853,Sankt Vith,Saint-Vith
+63072,TOTAL,7705,2524,10229,Spa,Spa
+63072,MAN,3908,1073,4981,Spa,Spa
+63072,VROUW,3797,1451,5248,Spa,Spa
+63073,TOTAL,5813,1356,7169,Stavelot,Stavelot
+63073,MAN,2981,605,3586,Stavelot,Stavelot
+63073,VROUW,2832,751,3583,Stavelot,Stavelot
+63075,TOTAL,2579,588,3167,Stoumont,Stoumont
+63075,MAN,1304,271,1575,Stoumont,Stoumont
+63075,VROUW,1275,317,1592,Stoumont,Stoumont
+63076,TOTAL,9761,2270,12031,Theux,Theux
+63076,MAN,4835,1025,5860,Theux,Theux
+63076,VROUW,4926,1245,6171,Theux,Theux
+63079,TOTAL,45110,10097,55207,Verviers,Verviers
+63079,MAN,22617,4311,26928,Verviers,Verviers
+63079,VROUW,22493,5786,28279,Verviers,Verviers
+63080,TOTAL,6113,1312,7425,Weismes,Waimes
+63080,MAN,3168,601,3769,Weismes,Waimes
+63080,VROUW,2945,711,3656,Weismes,Waimes
+63084,TOTAL,8086,1916,10002,Welkenraedt,Welkenraedt
+63084,MAN,4032,869,4901,Welkenraedt,Welkenraedt
+63084,VROUW,4054,1047,5101,Welkenraedt,Welkenraedt
+63086,TOTAL,2079,474,2553,Trois-Ponts,Trois-Ponts
+63086,MAN,1059,213,1272,Trois-Ponts,Trois-Ponts
+63086,VROUW,1020,261,1281,Trois-Ponts,Trois-Ponts
+63087,TOTAL,3195,740,3935,Burg-Reuland,Burg-Reuland
+63087,MAN,1627,360,1987,Burg-Reuland,Burg-Reuland
+63087,VROUW,1568,380,1948,Burg-Reuland,Burg-Reuland
+63088,TOTAL,8534,1925,10459,Plombières,Plombières
+63088,MAN,4283,933,5216,Plombières,Plombières
+63088,VROUW,4251,992,5243,Plombières,Plombières
+63089,TOTAL,4821,879,5700,Thimister-Clermont,Thimister-Clermont
+63089,MAN,2429,421,2850,Thimister-Clermont,Thimister-Clermont
+63089,VROUW,2392,458,2850,Thimister-Clermont,Thimister-Clermont
+64000,TOTAL,66604,14785,81389,Arrondissement Borgworm,Arrondissement de Waremme
+64000,MAN,33305,6425,39730,Arrondissement Borgworm,Arrondissement de Waremme
+64000,VROUW,33299,8360,41659,Arrondissement Borgworm,Arrondissement de Waremme
+64008,TOTAL,2640,492,3132,Berloz,Berloz
+64008,MAN,1342,226,1568,Berloz,Berloz
+64008,VROUW,1298,266,1564,Berloz,Berloz
+64015,TOTAL,5384,991,6375,Braives,Braives
+64015,MAN,2718,437,3155,Braives,Braives
+64015,VROUW,2666,554,3220,Braives,Braives
+64021,TOTAL,2777,635,3412,Crisnée,Crisnée
+64021,MAN,1379,285,1664,Crisnée,Crisnée
+64021,VROUW,1398,350,1748,Crisnée,Crisnée
+64023,TOTAL,2578,482,3060,Donceel,Donceel
+64023,MAN,1311,242,1553,Donceel,Donceel
+64023,VROUW,1267,240,1507,Donceel,Donceel
+64025,TOTAL,2672,561,3233,Fexhe-le-Haut-Clocher,Fexhe-le-Haut-Clocher
+64025,MAN,1366,261,1627,Fexhe-le-Haut-Clocher,Fexhe-le-Haut-Clocher
+64025,VROUW,1306,300,1606,Fexhe-le-Haut-Clocher,Fexhe-le-Haut-Clocher
+64029,TOTAL,3016,469,3485,Geer,Geer
+64029,MAN,1524,216,1740,Geer,Geer
+64029,VROUW,1492,253,1745,Geer,Geer
+64034,TOTAL,13377,3194,16571,Hannuit,Hannut
+64034,MAN,6632,1346,7978,Hannuit,Hannut
+64034,VROUW,6745,1848,8593,Hannuit,Hannut
+64047,TOTAL,2733,578,3311,Lijsem,Lincent
+64047,MAN,1370,256,1626,Lijsem,Lincent
+64047,VROUW,1363,322,1685,Lijsem,Lincent
+64056,TOTAL,3254,641,3895,Oerle,Oreye
+64056,MAN,1588,286,1874,Oerle,Oreye
+64056,VROUW,1666,355,2021,Oerle,Oreye
+64063,TOTAL,4863,1043,5906,Remicourt,Remicourt
+64063,MAN,2437,438,2875,Remicourt,Remicourt
+64063,VROUW,2426,605,3031,Remicourt,Remicourt
+64065,TOTAL,5555,1248,6803,Saint-Georges-sur-Meuse,Saint-Georges-sur-Meuse
+64065,MAN,2812,561,3373,Saint-Georges-sur-Meuse,Saint-Georges-sur-Meuse
+64065,VROUW,2743,687,3430,Saint-Georges-sur-Meuse,Saint-Georges-sur-Meuse
+64074,TOTAL,12000,3334,15334,Borgworm,Waremme
+64074,MAN,5944,1361,7305,Borgworm,Waremme
+64074,VROUW,6056,1973,8029,Borgworm,Waremme
+64075,TOTAL,2467,470,2937,Wasseiges,Wasseiges
+64075,MAN,1225,211,1436,Wasseiges,Wasseiges
+64075,VROUW,1242,259,1501,Wasseiges,Wasseiges
+64076,TOTAL,3288,647,3935,Faimes,Faimes
+64076,MAN,1657,299,1956,Faimes,Faimes
+64076,VROUW,1631,348,1979,Faimes,Faimes
+70000,TOTAL,697412,176636,874048,Provincie Limburg,Province du Limbourg
+70000,MAN,353479,81791,435270,Provincie Limburg,Province du Limbourg
+70000,VROUW,343933,94845,438778,Provincie Limburg,Province du Limbourg
+71000,TOTAL,334081,84415,418496,Arrondissement Hasselt,Arrondissement de Hasselt
+71000,MAN,168849,38424,207273,Arrondissement Hasselt,Arrondissement de Hasselt
+71000,VROUW,165232,45991,211223,Arrondissement Hasselt,Arrondissement de Hasselt
+71002,TOTAL,6672,1530,8202,As,As
+71002,MAN,3351,706,4057,As,As
+71002,VROUW,3321,824,4145,As,As
+71004,TOTAL,38010,8336,46346,Beringen,Beringen
+71004,MAN,19311,3948,23259,Beringen,Beringen
+71004,VROUW,18699,4388,23087,Beringen,Beringen
+71011,TOTAL,15266,3765,19031,Diepenbeek,Diepenbeek
+71011,MAN,7794,1750,9544,Diepenbeek,Diepenbeek
+71011,VROUW,7472,2015,9487,Diepenbeek,Diepenbeek
+71016,TOTAL,53548,12679,66227,Genk,Genk
+71016,MAN,27122,5580,32702,Genk,Genk
+71016,VROUW,26426,7099,33525,Genk,Genk
+71017,TOTAL,6800,1605,8405,Gingelom,Gingelom
+71017,MAN,3456,748,4204,Gingelom,Gingelom
+71017,VROUW,3344,857,4201,Gingelom,Gingelom
+71020,TOTAL,7390,2037,9427,Halen,Halen
+71020,MAN,3782,922,4704,Halen,Halen
+71020,VROUW,3608,1115,4723,Halen,Halen
+71022,TOTAL,60926,17370,78296,Hasselt,Hasselt
+71022,MAN,30613,7699,38312,Hasselt,Hasselt
+71022,VROUW,30313,9671,39984,Hasselt,Hasselt
+71024,TOTAL,10095,2541,12636,Herk-de-Stad,Herck-la-Ville
+71024,MAN,5052,1185,6237,Herk-de-Stad,Herck-la-Ville
+71024,VROUW,5043,1356,6399,Herk-de-Stad,Herck-la-Ville
+71034,TOTAL,12720,3035,15755,Leopoldsburg,Bourg-Léopold
+71034,MAN,6468,1390,7858,Leopoldsburg,Bourg-Léopold
+71034,VROUW,6252,1645,7897,Leopoldsburg,Bourg-Léopold
+71037,TOTAL,11808,3082,14890,Lummen,Lummen
+71037,MAN,6064,1478,7542,Lummen,Lummen
+71037,VROUW,5744,1604,7348,Lummen,Lummen
+71045,TOTAL,5509,1438,6947,Nieuwerkerken (Hasselt),Nieuwerkerken (Hasselt)
+71045,MAN,2750,662,3412,Nieuwerkerken (Hasselt),Nieuwerkerken (Hasselt)
+71045,VROUW,2759,776,3535,Nieuwerkerken (Hasselt),Nieuwerkerken (Hasselt)
+71053,TOTAL,31531,9059,40590,Sint-Truiden,Saint-Trond
+71053,MAN,15985,4036,20021,Sint-Truiden,Saint-Trond
+71053,VROUW,15546,5023,20569,Sint-Truiden,Saint-Trond
+71057,TOTAL,14768,3845,18613,Tessenderlo,Tessenderlo
+71057,MAN,7342,1808,9150,Tessenderlo,Tessenderlo
+71057,VROUW,7426,2037,9463,Tessenderlo,Tessenderlo
+71066,TOTAL,17049,4188,21237,Zonhoven,Zonhoven
+71066,MAN,8559,1916,10475,Zonhoven,Zonhoven
+71066,VROUW,8490,2272,10762,Zonhoven,Zonhoven
+71067,TOTAL,5721,1568,7289,Zutendaal,Zutendaal
+71067,MAN,2918,750,3668,Zutendaal,Zutendaal
+71067,VROUW,2803,818,3621,Zutendaal,Zutendaal
+71069,TOTAL,8815,2082,10897,Ham,Ham
+71069,MAN,4452,968,5420,Ham,Ham
+71069,VROUW,4363,1114,5477,Ham,Ham
+71070,TOTAL,27453,6255,33708,Heusden-Zolder,Heusden-Zolder
+71070,MAN,13830,2878,16708,Heusden-Zolder,Heusden-Zolder
+71070,VROUW,13623,3377,17000,Heusden-Zolder,Heusden-Zolder
+72000,TOTAL,201590,49999,251589,Arrondissement Maaseik,Arrondissement de Maaseik
+72000,MAN,102425,23839,126264,Arrondissement Maaseik,Arrondissement de Maaseik
+72000,VROUW,99165,26160,125325,Arrondissement Maaseik,Arrondissement de Maaseik
+72003,TOTAL,10422,2688,13110,Bocholt,Bocholt
+72003,MAN,5247,1310,6557,Bocholt,Bocholt
+72003,VROUW,5175,1378,6553,Bocholt,Bocholt
+72004,TOTAL,12766,3319,16085,Bree,Bree
+72004,MAN,6420,1547,7967,Bree,Bree
+72004,VROUW,6346,1772,8118,Bree,Bree
+72018,TOTAL,9766,2408,12174,Kinrooi,Kinrooi
+72018,MAN,5013,1173,6186,Kinrooi,Kinrooi
+72018,VROUW,4753,1235,5988,Kinrooi,Kinrooi
+72020,TOTAL,26990,7089,34079,Lommel,Lommel
+72020,MAN,13705,3415,17120,Lommel,Lommel
+72020,VROUW,13285,3674,16959,Lommel,Lommel
+72021,TOTAL,20063,5254,25317,Maaseik,Maaseik
+72021,MAN,10183,2402,12585,Maaseik,Maaseik
+72021,VROUW,9880,2852,12732,Maaseik,Maaseik
+72030,TOTAL,13287,3070,16357,Peer,Peer
+72030,MAN,6795,1482,8277,Peer,Peer
+72030,VROUW,6492,1588,8080,Peer,Peer
+72037,TOTAL,11164,3205,14369,Hamont-Achel,Hamont-Achel
+72037,MAN,5755,1542,7297,Hamont-Achel,Hamont-Achel
+72037,VROUW,5409,1663,7072,Hamont-Achel,Hamont-Achel
+72038,TOTAL,10104,2315,12419,Hechtel-Eksel,Hechtel-Eksel
+72038,MAN,5142,1157,6299,Hechtel-Eksel,Hechtel-Eksel
+72038,VROUW,4962,1158,6120,Hechtel-Eksel,Hechtel-Eksel
+72039,TOTAL,25135,5520,30655,Houthalen-Helchteren,Houthalen-Helchteren
+72039,MAN,12703,2605,15308,Houthalen-Helchteren,Houthalen-Helchteren
+72039,VROUW,12432,2915,15347,Houthalen-Helchteren,Houthalen-Helchteren
+72041,TOTAL,16767,3823,20590,Dilsen-Stokkem,Dilsen-Stokkem
+72041,MAN,8468,1815,10283,Dilsen-Stokkem,Dilsen-Stokkem
+72041,VROUW,8299,2008,10307,Dilsen-Stokkem,Dilsen-Stokkem
+72042,TOTAL,19019,4513,23532,Oudsbergen,Oudsbergen
+72042,MAN,9759,2137,11896,Oudsbergen,Oudsbergen
+72042,VROUW,9260,2376,11636,Oudsbergen,Oudsbergen
+72043,TOTAL,26107,6795,32902,Pelt,Pelt
+72043,MAN,13235,3254,16489,Pelt,Pelt
+72043,VROUW,12872,3541,16413,Pelt,Pelt
+73000,TOTAL,161741,42222,203963,Arrondissement Tongeren,Arrondissement de Tongres
+73000,MAN,82205,19528,101733,Arrondissement Tongeren,Arrondissement de Tongres
+73000,VROUW,79536,22694,102230,Arrondissement Tongeren,Arrondissement de Tongres
+73001,TOTAL,9075,2424,11499,Alken,Alken
+73001,MAN,4628,1125,5753,Alken,Alken
+73001,VROUW,4447,1299,5746,Alken,Alken
+73006,TOTAL,25800,6528,32328,Bilzen,Bilzen
+73006,MAN,13040,2982,16022,Bilzen,Bilzen
+73006,VROUW,12760,3546,16306,Bilzen,Bilzen
+73009,TOTAL,8592,2314,10906,Borgloon,Looz
+73009,MAN,4404,1061,5465,Borgloon,Looz
+73009,VROUW,4188,1253,5441,Borgloon,Looz
+73022,TOTAL,5924,1467,7391,Heers,Heers
+73022,MAN,3002,688,3690,Heers,Heers
+73022,VROUW,2922,779,3701,Heers,Heers
+73028,TOTAL,62,21,83,Herstappe,Herstappe
+73028,MAN,38,12,50,Herstappe,Herstappe
+73028,VROUW,24,9,33,Herstappe,Herstappe
+73032,TOTAL,7719,1969,9688,Hoeselt,Hoeselt
+73032,MAN,3900,910,4810,Hoeselt,Hoeselt
+73032,VROUW,3819,1059,4878,Hoeselt,Hoeselt
+73040,TOTAL,6718,1724,8442,Kortessem,Kortessem
+73040,MAN,3399,831,4230,Kortessem,Kortessem
+73040,VROUW,3319,893,4212,Kortessem,Kortessem
+73042,TOTAL,20134,5707,25841,Lanaken,Lanaken
+73042,MAN,10277,2730,13007,Lanaken,Lanaken
+73042,VROUW,9857,2977,12834,Lanaken,Lanaken
+73066,TOTAL,13170,3585,16755,Riemst,Riemst
+73066,MAN,6754,1673,8427,Riemst,Riemst
+73066,VROUW,6416,1912,8328,Riemst,Riemst
+73083,TOTAL,23949,7047,30996,Tongeren,Tongres
+73083,MAN,12084,3181,15265,Tongeren,Tongres
+73083,VROUW,11865,3866,15731,Tongeren,Tongres
+73098,TOTAL,5826,1546,7372,Wellen,Wellen
+73098,MAN,2959,733,3692,Wellen,Wellen
+73098,VROUW,2867,813,3680,Wellen,Wellen
+73107,TOTAL,31497,7019,38516,Maasmechelen,Maasmechelen
+73107,MAN,16048,3194,19242,Maasmechelen,Maasmechelen
+73107,VROUW,15449,3825,19274,Maasmechelen,Maasmechelen
+73109,TOTAL,3275,871,4146,Voeren,Fourons
+73109,MAN,1672,408,2080,Voeren,Fourons
+73109,VROUW,1603,463,2066,Voeren,Fourons
+80000,TOTAL,236169,48469,284638,Provincie Luxemburg,Province du Luxembourg
+80000,MAN,120276,21413,141689,Provincie Luxemburg,Province du Luxembourg
+80000,VROUW,115893,27056,142949,Provincie Luxemburg,Province du Luxembourg
+81000,TOTAL,52845,9778,62623,Arrondissement Aarlen,Arrondissement d’Arlon
+81000,MAN,27007,4175,31182,Arrondissement Aarlen,Arrondissement d’Arlon
+81000,VROUW,25838,5603,31441,Arrondissement Aarlen,Arrondissement d’Arlon
+81001,TOTAL,25092,4766,29858,Aarlen,Arlon
+81001,MAN,12863,2017,14880,Aarlen,Arlon
+81001,VROUW,12229,2749,14978,Aarlen,Arlon
+81003,TOTAL,4857,721,5578,Attert,Attert
+81003,MAN,2451,324,2775,Attert,Attert
+81003,VROUW,2406,397,2803,Attert,Attert
+81004,TOTAL,14400,2693,17093,Aubange,Aubange
+81004,MAN,7344,1143,8487,Aubange,Aubange
+81004,VROUW,7056,1550,8606,Aubange,Aubange
+81013,TOTAL,1629,247,1876,Martelange,Martelange
+81013,MAN,853,106,959,Martelange,Martelange
+81013,VROUW,776,141,917,Martelange,Martelange
+81015,TOTAL,6867,1351,8218,Messancy,Messancy
+81015,MAN,3496,585,4081,Messancy,Messancy
+81015,VROUW,3371,766,4137,Messancy,Messancy
+82000,TOTAL,40723,7690,48413,Arrondissement Bastenaken,Arrondissement de Bastogne
+82000,MAN,20787,3375,24162,Arrondissement Bastenaken,Arrondissement de Bastogne
+82000,VROUW,19936,4315,24251,Arrondissement Bastenaken,Arrondissement de Bastogne
+82003,TOTAL,13550,2435,15985,Bastenaken,Bastogne
+82003,MAN,6905,1030,7935,Bastenaken,Bastogne
+82003,VROUW,6645,1405,8050,Bastenaken,Bastogne
+82005,TOTAL,3201,458,3659,Bertogne,Bertogne
+82005,MAN,1638,215,1853,Bertogne,Bertogne
+82005,VROUW,1563,243,1806,Bertogne,Bertogne
+82009,TOTAL,1991,290,2281,Fauvillers,Fauvillers
+82009,MAN,980,138,1118,Fauvillers,Fauvillers
+82009,VROUW,1011,152,1163,Fauvillers,Fauvillers
+82014,TOTAL,4232,961,5193,Houffalize,Houffalize
+82014,MAN,2206,424,2630,Houffalize,Houffalize
+82014,VROUW,2026,537,2563,Houffalize,Houffalize
+82032,TOTAL,6348,1466,7814,Vielsalm,Vielsalm
+82032,MAN,3226,647,3873,Vielsalm,Vielsalm
+82032,VROUW,3122,819,3941,Vielsalm,Vielsalm
+82036,TOTAL,4920,720,5640,Vaux-sur-Sûre,Vaux-sur-Sûre
+82036,MAN,2500,314,2814,Vaux-sur-Sûre,Vaux-sur-Sûre
+82036,VROUW,2420,406,2826,Vaux-sur-Sûre,Vaux-sur-Sûre
+82037,TOTAL,4384,902,5286,Gouvy,Gouvy
+82037,MAN,2250,404,2654,Gouvy,Gouvy
+82037,VROUW,2134,498,2632,Gouvy,Gouvy
+82038,TOTAL,2097,458,2555,Sainte-Ode,Sainte-Ode
+82038,MAN,1082,203,1285,Sainte-Ode,Sainte-Ode
+82038,VROUW,1015,255,1270,Sainte-Ode,Sainte-Ode
+83000,TOTAL,46027,10449,56476,Arrondissement Marche-en-Famenne,Arrondissement de Marche-en-Famenne
+83000,MAN,23505,4699,28204,Arrondissement Marche-en-Famenne,Arrondissement de Marche-en-Famenne
+83000,VROUW,22522,5750,28272,Arrondissement Marche-en-Famenne,Arrondissement de Marche-en-Famenne
+83012,TOTAL,9068,2327,11395,Durbuy,Durbuy
+83012,MAN,4567,1108,5675,Durbuy,Durbuy
+83012,VROUW,4501,1219,5720,Durbuy,Durbuy
+83013,TOTAL,2621,663,3284,Erezée,Erezée
+83013,MAN,1351,322,1673,Erezée,Erezée
+83013,VROUW,1270,341,1611,Erezée,Erezée
+83028,TOTAL,4603,953,5556,Hotton,Hotton
+83028,MAN,2337,406,2743,Hotton,Hotton
+83028,VROUW,2266,547,2813,Hotton,Hotton
+83031,TOTAL,3349,904,4253,La Roche-en-Ardenne,La Roche-en-Ardenne
+83031,MAN,1734,413,2147,La Roche-en-Ardenne,La Roche-en-Ardenne
+83031,VROUW,1615,491,2106,La Roche-en-Ardenne,La Roche-en-Ardenne
+83034,TOTAL,14328,3137,17465,Marche-en-Famenne,Marche-en-Famenne
+83034,MAN,7275,1332,8607,Marche-en-Famenne,Marche-en-Famenne
+83034,VROUW,7053,1805,8858,Marche-en-Famenne,Marche-en-Famenne
+83040,TOTAL,4556,942,5498,Nassogne,Nassogne
+83040,MAN,2412,425,2837,Nassogne,Nassogne
+83040,VROUW,2144,517,2661,Nassogne,Nassogne
+83044,TOTAL,2183,454,2637,Rendeux,Rendeux
+83044,MAN,1125,204,1329,Rendeux,Rendeux
+83044,VROUW,1058,250,1308,Rendeux,Rendeux
+83049,TOTAL,2327,505,2832,Tenneville,Tenneville
+83049,MAN,1150,242,1392,Tenneville,Tenneville
+83049,VROUW,1177,263,1440,Tenneville,Tenneville
+83055,TOTAL,2992,564,3556,Manhay,Manhay
+83055,MAN,1554,247,1801,Manhay,Manhay
+83055,VROUW,1438,317,1755,Manhay,Manhay
+84000,TOTAL,52138,11237,63375,Arrondissement Neufchâteau,Arrondissement de Neufchâteau
+84000,MAN,26515,5056,31571,Arrondissement Neufchâteau,Arrondissement de Neufchâteau
+84000,VROUW,25623,6181,31804,Arrondissement Neufchâteau,Arrondissement de Neufchâteau
+84009,TOTAL,7228,1565,8793,Bertrix,Bertrix
+84009,MAN,3648,710,4358,Bertrix,Bertrix
+84009,VROUW,3580,855,4435,Bertrix,Bertrix
+84010,TOTAL,4112,1299,5411,Bouillon,Bouillon
+84010,MAN,2081,587,2668,Bouillon,Bouillon
+84010,VROUW,2031,712,2743,Bouillon,Bouillon
+84016,TOTAL,1061,334,1395,Daverdisse,Daverdisse
+84016,MAN,552,151,703,Daverdisse,Daverdisse
+84016,VROUW,509,183,692,Daverdisse,Daverdisse
+84029,TOTAL,1321,303,1624,Herbeumont,Herbeumont
+84029,MAN,695,148,843,Herbeumont,Herbeumont
+84029,VROUW,626,155,781,Herbeumont,Herbeumont
+84033,TOTAL,4861,610,5471,Léglise,Léglise
+84033,MAN,2541,282,2823,Léglise,Léglise
+84033,VROUW,2320,328,2648,Léglise,Léglise
+84035,TOTAL,4347,876,5223,Libin,Libin
+84035,MAN,2196,412,2608,Libin,Libin
+84035,VROUW,2151,464,2615,Libin,Libin
+84043,TOTAL,6566,1133,7699,Neufchâteau (Neufchâteau),Neufchâteau (Neufchâteau)
+84043,MAN,3325,510,3835,Neufchâteau (Neufchâteau),Neufchâteau (Neufchâteau)
+84043,VROUW,3241,623,3864,Neufchâteau (Neufchâteau),Neufchâteau (Neufchâteau)
+84050,TOTAL,4347,1042,5389,Paliseul,Paliseul
+84050,MAN,2218,473,2691,Paliseul,Paliseul
+84050,VROUW,2129,569,2698,Paliseul,Paliseul
+84059,TOTAL,4454,1115,5569,Saint-Hubert,Saint-Hubert
+84059,MAN,2253,497,2750,Saint-Hubert,Saint-Hubert
+84059,VROUW,2201,618,2819,Saint-Hubert,Saint-Hubert
+84068,TOTAL,1979,453,2432,Tellin,Tellin
+84068,MAN,1016,193,1209,Tellin,Tellin
+84068,VROUW,963,260,1223,Tellin,Tellin
+84075,TOTAL,2412,681,3093,Wellin,Wellin
+84075,MAN,1218,303,1521,Wellin,Wellin
+84075,VROUW,1194,378,1572,Wellin,Wellin
+84077,TOTAL,9450,1826,11276,Libramont-Chevigny,Libramont-Chevigny
+84077,MAN,4772,790,5562,Libramont-Chevigny,Libramont-Chevigny
+84077,VROUW,4678,1036,5714,Libramont-Chevigny,Libramont-Chevigny
+85000,TOTAL,44436,9315,53751,Arrondissement Virton,Arrondissement de Virton
+85000,MAN,22462,4108,26570,Arrondissement Virton,Arrondissement de Virton
+85000,VROUW,21974,5207,27181,Arrondissement Virton,Arrondissement de Virton
+85007,TOTAL,4234,946,5180,Chiny,Chiny
+85007,MAN,2189,430,2619,Chiny,Chiny
+85007,VROUW,2045,516,2561,Chiny,Chiny
+85009,TOTAL,5084,793,5877,Etalle,Etalle
+85009,MAN,2569,373,2942,Etalle,Etalle
+85009,VROUW,2515,420,2935,Etalle,Etalle
+85011,TOTAL,4212,1366,5578,Florenville,Florenville
+85011,MAN,2130,587,2717,Florenville,Florenville
+85011,VROUW,2082,779,2861,Florenville,Florenville
+85024,TOTAL,2285,524,2809,Meix-devant-Virton,Meix-devant-Virton
+85024,MAN,1144,232,1376,Meix-devant-Virton,Meix-devant-Virton
+85024,VROUW,1141,292,1433,Meix-devant-Virton,Meix-devant-Virton
+85026,TOTAL,3819,732,4551,Musson,Musson
+85026,MAN,1904,351,2255,Musson,Musson
+85026,VROUW,1915,381,2296,Musson,Musson
+85034,TOTAL,3065,543,3608,Saint-Léger (Virton),Saint-Léger (Virton)
+85034,MAN,1523,245,1768,Saint-Léger (Virton),Saint-Léger (Virton)
+85034,VROUW,1542,298,1840,Saint-Léger (Virton),Saint-Léger (Virton)
+85039,TOTAL,3675,625,4300,Tintigny,Tintigny
+85039,MAN,1865,278,2143,Tintigny,Tintigny
+85039,VROUW,1810,347,2157,Tintigny,Tintigny
+85045,TOTAL,9146,2186,11332,Virton,Virton
+85045,MAN,4606,927,5533,Virton,Virton
+85045,VROUW,4540,1259,5799,Virton,Virton
+85046,TOTAL,7221,1188,8409,Habay,Habay
+85046,MAN,3660,520,4180,Habay,Habay
+85046,VROUW,3561,668,4229,Habay,Habay
+85047,TOTAL,1695,412,2107,Rouvroy,Rouvroy
+85047,MAN,872,165,1037,Rouvroy,Rouvroy
+85047,VROUW,823,247,1070,Rouvroy,Rouvroy
+90000,TOTAL,402442,91883,494325,Provincie Namen,Province de Namur
+90000,MAN,202436,39765,242201,Provincie Namen,Province de Namur
+90000,VROUW,200006,52118,252124,Provincie Namen,Province de Namur
+91000,TOTAL,89700,21308,111008,Arrondissement Dinant,Arrondissement de Dinant
+91000,MAN,45336,9399,54735,Arrondissement Dinant,Arrondissement de Dinant
+91000,VROUW,44364,11909,56273,Arrondissement Dinant,Arrondissement de Dinant
+91005,TOTAL,5657,1389,7046,Anhée,Anhée
+91005,MAN,2826,630,3456,Anhée,Anhée
+91005,VROUW,2831,759,3590,Anhée,Anhée
+91013,TOTAL,7315,1844,9159,Beauraing,Beauraing
+91013,MAN,3663,765,4428,Beauraing,Beauraing
+91013,VROUW,3652,1079,4731,Beauraing,Beauraing
+91015,TOTAL,2721,634,3355,Bièvre,Bièvre
+91015,MAN,1379,289,1668,Bièvre,Bièvre
+91015,VROUW,1342,345,1687,Bièvre,Bièvre
+91030,TOTAL,13505,3075,16580,Ciney,Ciney
+91030,MAN,6698,1253,7951,Ciney,Ciney
+91030,VROUW,6807,1822,8629,Ciney,Ciney
+91034,TOTAL,10627,2824,13451,Dinant,Dinant
+91034,MAN,5431,1181,6612,Dinant,Dinant
+91034,VROUW,5196,1643,6839,Dinant,Dinant
+91054,TOTAL,3629,1003,4632,Gedinne,Gedinne
+91054,MAN,1826,448,2274,Gedinne,Gedinne
+91054,VROUW,1803,555,2358,Gedinne,Gedinne
+91059,TOTAL,6266,1091,7357,Hamois,Hamois
+91059,MAN,3139,500,3639,Hamois,Hamois
+91059,VROUW,3127,591,3718,Hamois,Hamois
+91064,TOTAL,4253,922,5175,Havelange,Havelange
+91064,MAN,2163,416,2579,Havelange,Havelange
+91064,VROUW,2090,506,2596,Havelange,Havelange
+91072,TOTAL,4099,857,4956,Houyet,Houyet
+91072,MAN,2065,378,2443,Houyet,Houyet
+91072,VROUW,2034,479,2513,Houyet,Houyet
+91103,TOTAL,2619,622,3241,Onhaye,Onhaye
+91103,MAN,1325,299,1624,Onhaye,Onhaye
+91103,VROUW,1294,323,1617,Onhaye,Onhaye
+91114,TOTAL,10174,2437,12611,Rochefort,Rochefort
+91114,MAN,5136,1074,6210,Rochefort,Rochefort
+91114,VROUW,5038,1363,6401,Rochefort,Rochefort
+91120,TOTAL,4672,969,5641,Somme-Leuze,Somme-Leuze
+91120,MAN,2371,443,2814,Somme-Leuze,Somme-Leuze
+91120,VROUW,2301,526,2827,Somme-Leuze,Somme-Leuze
+91141,TOTAL,7578,1589,9167,Yvoir,Yvoir
+91141,MAN,3857,727,4584,Yvoir,Yvoir
+91141,VROUW,3721,862,4583,Yvoir,Yvoir
+91142,TOTAL,4627,1395,6022,Hastière,Hastière
+91142,MAN,2427,696,3123,Hastière,Hastière
+91142,VROUW,2200,699,2899,Hastière,Hastière
+91143,TOTAL,1958,657,2615,Vresse-sur-Semois,Vresse-sur-Semois
+91143,MAN,1030,300,1330,Vresse-sur-Semois,Vresse-sur-Semois
+91143,VROUW,928,357,1285,Vresse-sur-Semois,Vresse-sur-Semois
+92000,TOTAL,259506,57456,316962,Arrondissement Namen,Arrondissement de Namur
+92000,MAN,130169,24603,154772,Arrondissement Namen,Arrondissement de Namur
+92000,VROUW,129337,32853,162190,Arrondissement Namen,Arrondissement de Namur
+92003,TOTAL,22621,4770,27391,Andenne,Andenne
+92003,MAN,11298,2033,13331,Andenne,Andenne
+92003,VROUW,11323,2737,14060,Andenne,Andenne
+92006,TOTAL,5925,1107,7032,Assesse,Assesse
+92006,MAN,3016,529,3545,Assesse,Assesse
+92006,VROUW,2909,578,3487,Assesse,Assesse
+92035,TOTAL,13478,2859,16337,Eghezée,Eghezée
+92035,MAN,6721,1242,7963,Eghezée,Eghezée
+92035,VROUW,6757,1617,8374,Eghezée,Eghezée
+92045,TOTAL,6761,1383,8144,Floreffe,Floreffe
+92045,MAN,3351,624,3975,Floreffe,Floreffe
+92045,VROUW,3410,759,4169,Floreffe,Floreffe
+92048,TOTAL,8682,1706,10388,Fosses-la-Ville,Fosses-la-Ville
+92048,MAN,4390,788,5178,Fosses-la-Ville,Fosses-la-Ville
+92048,VROUW,4292,918,5210,Fosses-la-Ville,Fosses-la-Ville
+92054,TOTAL,6108,1094,7202,Gesves,Gesves
+92054,MAN,3095,490,3585,Gesves,Gesves
+92054,VROUW,3013,604,3617,Gesves,Gesves
+92087,TOTAL,10860,2242,13102,Mettet,Mettet
+92087,MAN,5470,995,6465,Mettet,Mettet
+92087,VROUW,5390,1247,6637,Mettet,Mettet
+92094,TOTAL,88405,22374,110779,Namen,Namur
+92094,MAN,44292,9229,53521,Namen,Namur
+92094,VROUW,44113,13145,57258,Namen,Namur
+92097,TOTAL,4366,761,5127,Ohey,Ohey
+92097,MAN,2212,354,2566,Ohey,Ohey
+92097,VROUW,2154,407,2561,Ohey,Ohey
+92101,TOTAL,9950,2270,12220,Profondeville,Profondeville
+92101,MAN,4982,1017,5999,Profondeville,Profondeville
+92101,VROUW,4968,1253,6221,Profondeville,Profondeville
+92114,TOTAL,7127,1313,8440,Sombreffe,Sombreffe
+92114,MAN,3587,585,4172,Sombreffe,Sombreffe
+92114,VROUW,3540,728,4268,Sombreffe,Sombreffe
+92137,TOTAL,22995,5293,28288,Sambreville,Sambreville
+92137,MAN,11457,2160,13617,Sambreville,Sambreville
+92137,VROUW,11538,3133,14671,Sambreville,Sambreville
+92138,TOTAL,6815,1217,8032,Fernelmont,Fernelmont
+92138,MAN,3447,541,3988,Fernelmont,Fernelmont
+92138,VROUW,3368,676,4044,Fernelmont,Fernelmont
+92140,TOTAL,16089,3101,19190,Jemeppe-sur-Sambre,Jemeppe-sur-Sambre
+92140,MAN,8118,1376,9494,Jemeppe-sur-Sambre,Jemeppe-sur-Sambre
+92140,VROUW,7971,1725,9696,Jemeppe-sur-Sambre,Jemeppe-sur-Sambre
+92141,TOTAL,7805,1471,9276,La Bruyère,La Bruyère
+92141,MAN,3848,670,4518,La Bruyère,La Bruyère
+92141,VROUW,3957,801,4758,La Bruyère,La Bruyère
+92142,TOTAL,21519,4495,26014,Gembloux,Gembloux
+92142,MAN,10885,1970,12855,Gembloux,Gembloux
+92142,VROUW,10634,2525,13159,Gembloux,Gembloux
+93000,TOTAL,53236,13119,66355,Arrondissement Philippeville,Arrondissement de Philippeville
+93000,MAN,26931,5763,32694,Arrondissement Philippeville,Arrondissement de Philippeville
+93000,VROUW,26305,7356,33661,Arrondissement Philippeville,Arrondissement de Philippeville
+93010,TOTAL,4080,843,4923,Cerfontaine,Cerfontaine
+93010,MAN,2091,368,2459,Cerfontaine,Cerfontaine
+93010,VROUW,1989,475,2464,Cerfontaine,Cerfontaine
+93014,TOTAL,10815,2932,13747,Couvin,Couvin
+93014,MAN,5436,1268,6704,Couvin,Couvin
+93014,VROUW,5379,1664,7043,Couvin,Couvin
+93018,TOTAL,2379,618,2997,Doische,Doische
+93018,MAN,1191,285,1476,Doische,Doische
+93018,VROUW,1188,333,1521,Doische,Doische
+93022,TOTAL,9206,2104,11310,Florennes,Florennes
+93022,MAN,4655,925,5580,Florennes,Florennes
+93022,VROUW,4551,1179,5730,Florennes,Florennes
+93056,TOTAL,7451,1838,9289,Philippeville,Philippeville
+93056,MAN,3835,810,4645,Philippeville,Philippeville
+93056,VROUW,3616,1028,4644,Philippeville,Philippeville
+93088,TOTAL,14920,3510,18430,Walcourt,Walcourt
+93088,MAN,7474,1573,9047,Walcourt,Walcourt
+93088,VROUW,7446,1937,9383,Walcourt,Walcourt
+93090,TOTAL,4385,1274,5659,Viroinval,Viroinval
+93090,MAN,2249,534,2783,Viroinval,Viroinval
+93090,VROUW,2136,740,2876,Viroinval,Viroinval

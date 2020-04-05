@@ -127,7 +127,7 @@ legend(22.2, 10.28, provinces@data$NAME_2, col=cols, text.col="gray30", pch=16, 
 	# 2.1. Preparation at the commune level
 
 communes = shapefile("Shapefile_communes/Shapefile_communes.shp")
-data = read.csv("Data_Sciensano_0104/COVID19BE_CASES_MUNI_CUM_20200401.csv")
+data = read.csv("Data_Sciensano_0404/COVID19BE_CASES_MUNI_CUM.csv")
 communes@data$cases = rep(0,dim(communes@data)[1])
 for (i in 1:dim(communes@data)[1])
 	{
@@ -202,11 +202,11 @@ communes@data$sectorT = rep(0,dim(communes@data)[1])
 for (i in 1:dim(communes@data)[1])
 	{
 		index = which((data[,"CD_REFNIS"]==communes@data[i,"NISCode"])&(data[,"CD_SECT"]=="P"))
-		if (length(index) == 1) communes@data[i,"sectorP"] = data[index,"MS_PROP"]
+		if (length(index) == 1) communes@data[i,"sectorP"] = data[index,"MS_PROP"]*100
 		index = which((data[,"CD_REFNIS"]==communes@data[i,"NISCode"])&(data[,"CD_SECT"]=="S"))
-		if (length(index) == 1) communes@data[i,"sectorS"] = data[index,"MS_PROP"]
+		if (length(index) == 1) communes@data[i,"sectorS"] = data[index,"MS_PROP"]*100
 		index = which((data[,"CD_REFNIS"]==communes@data[i,"NISCode"])&(data[,"CD_SECT"]=="T"))
-		if (length(index) == 1) communes@data[i,"sectorT"] = data[index,"MS_PROP"]
+		if (length(index) == 1) communes@data[i,"sectorT"] = data[index,"MS_PROP"]*100
 	}
 if (!file.exists("PM10_anmean_2017.asc"))
 	{
@@ -271,18 +271,18 @@ if (!file.exists("CLC_propUrbanArea.csv"))
 					}	else	{
 						propUrbanArea[i,2] = communes@data[i,"population"]/greenAreas
 					}
-				propUrbanArea[i,3] = urbanAreas/length(rast[is.na(rast[])])
+				propUrbanArea[i,3] = urbanAreas/length(rast[!is.na(rast[])])
 			}
 		colnames(propUrbanArea) = c("NIS","popGreenArea","propUrbanArea")
 		write.csv(propUrbanArea, "CLC_propUrbanArea.csv", row.names=F, quote=F)
 	}
 communes@data$propUrbanArea = read.csv("CLC_propUrbanArea.csv")[,3]
 
-variables = c("cases","popDensityLog","medianIncome","sectorP","sectorS","sectorT",
+variables = c("incidences","popDensityLog","medianIncome","sectorP","sectorS","sectorT",
 			  "medianAge","moreThan65","pm25")
-variableNames = c("COVID-19 incidence","Population density (log)","Median declared income",
-				  "Primary sector","Secundary sector","Tertiary sector",
-				  "Median age",">= 65 years (proportion)","PM 2.5 emission")
+variableNames = c("# cases per 1000 persons","Population density (log)","Median declared income (€)",
+				  "% in primary sector","% in secundary sector","% in tertiary sector",
+				  "Median age (years)",">= 65 years (proportion)","PM 2.5 emission")
 communes_light = gSimplify(communes, 100); colourScales = list()
 colourScales[[1]] = c("#E5E5E5",colorRampPalette(brewer.pal(9,"YlOrRd"))(151)[1:101])
 colourScales[[2]] = c(colorRampPalette(brewer.pal(9,"BuPu"))(151)[1:101])

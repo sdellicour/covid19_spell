@@ -15,7 +15,7 @@ selectedDays2 = as.numeric(selectedDays1-firstDay)
 provinces = getData("GADM", country="BEL", level=2)
 provinces@data$NAME_3 = c("Brussels","Antwerpen","Limburg","OostVlaanderen","VlaamsBrabant",
 				 "WestVlaanderen","BrabantWallon","Hainaut","Li\xe8ge","Luxembourg","Namur")
-data = read.csv("Data_Sciensano_0104/COVID19BE_HOSP_20200401.csv")
+data = read.csv("Data_Sciensano_0404/COVID19BE_HOSP.csv")
 data = data[!is.na(data[,"DATE"]),]; firstDay = ymd("2020-01-30")
 data$DAYS = as.numeric(ymd(data[,"DATE"])-firstDay)
 cumulatedHosCases = matrix(nrow=dim(provinces@data)[1], ncol=selectedDays2[length(selectedDays2)])
@@ -34,7 +34,12 @@ for (i in 1:dim(provinces@data)[1])
 				if ((i == 1)&(j == 3)) provinces@data$DT3 = rep(NA,dim(provinces@data)[1])
 				index1 = which(temp[,"DAYS"]==(selectedDays2[j]-D))
 				index2 = which(temp[,"DAYS"]==selectedDays2[j])
-				QTD1 = temp[index1,"TOTAL_IN"]
+				if (length(index1) == 0)	
+					{
+						QTD1 = 0
+					}	else	{
+						QTD1 = temp[index1,"TOTAL_IN"]
+					}
 				QTD2 = temp[index2,"TOTAL_IN"]
 				DT = (D*log(2))/(log(QTD2/QTD1))
 				provinces@data[i,paste0("DT",j)] = DT
@@ -53,7 +58,8 @@ for (i in 1:dim(provinces@data)[1])
 			}
 	}
 
-DTmax = ceiling(max(provinces@data[,c("DT1","DT2","DT3")]))
+DTmax = 30 # ceiling(max(provinces@data[,c("DT1","DT2","DT3")]))
+provinces@data[which(provinces@data[,"DT3"]>DTmax),"DT3"] = DTmax
 colourScale = colorRampPalette(brewer.pal(9,"YlGn"))(151)[1:101]; cols = list()
 dev.new(width=3.2,height=7); legendRast = raster(as.matrix(seq(0,DTmax,1)))
 par(mfrow=c(3,1), mar=c(0,0,0,0), oma=c(2,2,2,2), mgp=c(0,0.4,0), lwd=0.2, bty="o")
@@ -64,23 +70,22 @@ for (i in 1:length(selectedDays2))
 		mtext(paste0("Doubling time - ",periods[i]), cex=0.54, col="gray30", at=3.55, line=-14.2)
 		plot(legendRast, legend.only=T, col=colourScale, legend.width=0.5, legend.shrink=0.3, smallplot=c(0.05,0.5,0.10,0.12),
 	 		 alpha=1, horizontal=T, legend.args=list(text="", cex=0.7, line=0.5, col="gray30"), axis.args=list(cex.axis=0.7, lwd=0,
-	 		 lwd.tick=0.2, tck=-1, col.axis="gray30", line=0, mgp=c(0,0.2,0), at=seq(0,DTmax,1)))
+	 		 lwd.tick=0.2, tck=-1, col.axis="gray30", line=0, mgp=c(0,0.2,0), at=seq(0,DTmax,5), labels=c("0","5","10","15","20","25",">30 days")))
 	}
-
-tab = provinces@data[,c("DT1","DT2","DT3")]
-row.names(tab) = provinces@data$NAME_2; colnames(tab) = periods
+tab = provinces@data[,c("DT1","DT2","DT3")]; row.names(tab) = provinces@data$NAME_2; colnames(tab) = periods
 if (writingFiles) write.csv(round(tab,2), "Doubling_times_provinces.csv", quote=F)
+
 for (i in 1:dim(cumulatedHosCases)[1])
 	{
-		for (j in (7+1):dim(cumulatedHosCases)[2])
+		for (j in (D+1):dim(cumulatedHosCases)[2])
 			{
-				QTD1 = cumulatedHosCases[i,j-7]
+				QTD1 = cumulatedHosCases[i,j-D]
 				QTD2 = cumulatedHosCases[i,j]
-				DT = (7*log(2))/(log(QTD2/QTD1))
+				DT = (D*log(2))/(log(QTD2/QTD1))
 				doublingTHosCases[i,j] = DT
-				QTD1 = cumulatedICUCases[i,j-7]
+				QTD1 = cumulatedICUCases[i,j-D]
 				QTD2 = cumulatedICUCases[i,j]
-				DT = (7*log(2))/(log(QTD2/QTD1))
+				DT = (D*log(2))/(log(QTD2/QTD1))
 				doublingTICUCases[i,j] = DT
 			}
 	}
@@ -105,22 +110,22 @@ cols = c("#a6cee3","#1f78b4","#b2df8a","#33a02c","#fb9a99","#e31a1c","#fdbf6f","
 DTmax = ceiling(max(c(max(doublingTHosCases))))
 dev.new(width=5,height=3.9); legendRast = raster(as.matrix(seq(0,DTmax,1)))
 par(mfrow=c(1,1), mar=c(2.9,3.1,1,1), oma=c(0,0,0,0), mgp=c(0,0.4,0), lwd=0.2, bty="o")
-dates = c(22:31); xLabels = paste0(c(21:31),"-03")
+xLabels = c(paste0(c(21:31),"-03"),paste0("0",c(1:3),"-03")); dates = c(1:length(xLabels))
 for (i in 1:dim(doublingTHosCases)[1])
 	{
 		if (i == 1)
 			{
-				plot(dates,doublingTHosCases[i,], col=cols[i], lwd=1, ylim=c(1.8,10), axes=F, ann=F, type="l")
+				plot(dates,doublingTHosCases[i,], col=cols[i], lwd=1, ylim=c(1.8,26), axes=F, ann=F, type="l")
 			}	else	{
 				lines(dates,doublingTHosCases[i,], col=cols[i], lwd=1)
 			}
 		points(dates,doublingTHosCases[i,], col=cols[i], cex=0.7, pch=16)
 	}
-axis(side=1, lwd.tick=0.2, cex.axis=0.6, lwd=0.2, tck=-0.013, col.axis="gray30", mgp=c(0,0.05,0), at=c(21:31), labels=xLabels)
-axis(side=2, lwd.tick=0.2, cex.axis=0.6, lwd=0.2, tck=-0.015, col.axis="gray30", mgp=c(0,0.30,0), at=c(-1:10))
+axis(side=1, lwd.tick=0.2, cex.axis=0.6, lwd=0.2, tck=-0.013, col.axis="gray30", mgp=c(0,0.05,0), at=c(-1,dates), labels=c(-1,xLabels))
+axis(side=2, lwd.tick=0.2, cex.axis=0.6, lwd=0.2, tck=-0.015, col.axis="gray30", mgp=c(0,0.30,0), at=seq(-2,30,2))
 title(ylab="doubling time", cex.lab=0.7, mgp=c(1.2,0,0), col.lab="gray30")
 title(xlab="day", cex.lab=0.7, mgp=c(0.8,0,0), col.lab="gray30")
-legend(22.2, 10.28, provinces@data$NAME_2, col=cols, text.col="gray30", pch=16, pt.cex=1.0, box.lty=0, cex=0.65, y.intersp=1.1)
+legend(1, 27.7, provinces@data$NAME_2, col=cols, text.col="gray30", pch=16, pt.cex=1.0, box.lty=0, cex=0.65, y.intersp=1.1)
 
 # 2. Preparation of different covariates to test
 

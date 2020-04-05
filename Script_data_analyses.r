@@ -124,17 +124,22 @@ legend(22.2, 10.28, provinces@data$NAME_2, col=cols, text.col="gray30", pch=16, 
 
 # 2. Preparation of different covariates to test
 
+	# 2.1. Preparation at the commune level
+
 communes = shapefile("Shapefile_communes/Shapefile_communes.shp")
 data = read.csv("Data_Sciensano_0104/COVID19BE_CASES_MUNI_CUM_20200401.csv")
 communes@data$cases = rep(0,dim(communes@data)[1])
 for (i in 1:dim(communes@data)[1])
 	{
-		index = which(data[,"NIS5"]==communes@data[i,"NISCode"])
+		index = which(data[,"NIS5"]==communes@data[i,"NIS5"])
 		if (length(index) != 1)
 			{
 				# cat(i,"\n")
 			}	else		{
-				communes@data[i,"cases"] = data[index,"CASES"]
+				if (as.character(data[index,"CASES"]) != "<5")
+					{
+						communes@data[i,"cases"] = as.numeric(as.character(data[index,"CASES"]))
+					}
 			}
 	}
 data = read.csv("Data_SPF_Economie/SPF_total_population.csv")
@@ -149,6 +154,10 @@ for (i in 1:dim(communes@data)[1])
 				communes@data[i,"population"] = data[index,"TOTAL"]
 			}
 	}
+communes@data$incidences = communes@data$cases/(communes@data$population/1000)
+communes@data$popDensity = communes@data$population/(communes@data$Shape_Area/(10^6))
+communes@data$populationLog = log(communes@data$population)
+communes@data$popDensityLog = log(communes@data$popDensity)
 data = read.csv("Data_SPF_Economie/SPF_pop_median_age.csv")
 communes@data$medianAge = rep(0,dim(communes@data)[1])
 for (i in 1:dim(communes@data)[1])
@@ -199,8 +208,14 @@ for (i in 1:dim(communes@data)[1])
 		index = which((data[,"CD_REFNIS"]==communes@data[i,"NISCode"])&(data[,"CD_SECT"]=="T"))
 		if (length(index) == 1) communes@data[i,"sectorT"] = data[index,"MS_PROP"]
 	}
-pm10 = aggregate(raster("Rasters_de_irceline_be/PM10_anmean_2017_v564.tif"),100)
-pm25 = aggregate(raster("Rasters_de_irceline_be/PM25_anmean_2017_v564.tif"),100)
+if (!file.exists("PM10_anmean_2017.asc"))
+	{
+		pm10 = aggregate(raster("Rasters_de_irceline_be/PM10_anmean_2017_v564.tif"),100)
+		pm25 = aggregate(raster("Rasters_de_irceline_be/PM25_anmean_2017_v564.tif"),100)
+		writeRaster(pm10,"PM10_anmean_2017.asc"); writeRaster(pm25,"PM25_anmean_2017.asc")		
+	}
+pm10 = raster("PM10_anmean_2017.asc")
+pm25 = raster("PM10_anmean_2017.asc")
 communes@data$pm10 = rep(0,dim(communes@data)[1])
 communes@data$pm25 = rep(0,dim(communes@data)[1])
 for (i in 1:dim(communes@data)[1])
@@ -216,14 +231,56 @@ for (i in 1:dim(communes@data)[1])
 		pol = communes@polygons[[i]]@Polygons[[polIndex]]
 		p = Polygon(pol@coords); ps = Polygons(list(p),1); sps = SpatialPolygons(list(ps))
 		pol = sps; proj4string(pol) = communes@proj4string
-		# pol = spTransform(pol, CRS("+init=epsg:4326"))
 		pol_light = gSimplify(pol, 100)
 		communes@data[i,"pm10"] = mean(raster::extract(pm10,pol_light)[[1]], na.rm=T)
 		communes@data[i,"pm25"] = mean(raster::extract(pm25,pol_light)[[1]], na.rm=T)
 	}
+if (!file.exists("CorineLandCover.asc"))
+	{
+		clc = crop(raster("CorineLandCover18.tif"), extent(3500000,4500000,2500000,4000000))
+		clc_crs = clc@crs; communes_clc = spTransform(communes, clc_crs)
+		clc = mask(crop(clc, communes_clc), communes_clc)
+		clc@crs = clc_crs; writeRaster(clc, "CorineLandCover.asc")
+	}
+if (!file.exists("CLC_propUrbanArea.csv"))
+	{
+		clc = raster("CorineLandCover.asc")
+		communes_clc = spTransform(communes, raster("CorineLandCover18.tif")@crs)
+		propUrbanArea = matrix(nrow=dim(communes@data)[1], ncol=3)
+		for (i in 1:dim(communes@data)[1])
+			{
+				maxArea = 0; polIndex = 0
+				for (j in 1:length(communes_clc@polygons[[i]]@Polygons))
+					{
+						if (maxArea < communes_clc@polygons[[i]]@Polygons[[j]]@area)
+							{
+								maxArea = communes_clc@polygons[[i]]@Polygons[[j]]@area; polIndex = j
+							}
+					}
+				pol = communes_clc@polygons[[i]]@Polygons[[polIndex]]
+				p = Polygon(pol@coords); ps = Polygons(list(p),1); sps = SpatialPolygons(list(ps))
+				pol = sps; proj4string(pol) = communes_clc@proj4string
+				pol_light = gSimplify(pol, 100)
+				rast = mask(crop(clc,pol_light),pol_light)
+				greenAreas = sum(rast[]==141, na.rm=T)
+				urbanAreas = sum(rast[]==111, na.rm=T)+sum(rast[]==112, na.rm=T)
+				propUrbanArea[i,1] = communes@data[i,"NIS5"]
+				if (greenAreas == 0)
+					{
+						propUrbanArea[i,2] = 0
+					}	else	{
+						propUrbanArea[i,2] = communes@data[i,"population"]/greenAreas
+					}
+				propUrbanArea[i,3] = urbanAreas/length(rast[is.na(rast[])])
+			}
+		colnames(propUrbanArea) = c("NIS","popGreenArea","propUrbanArea")
+		write.csv(propUrbanArea, "CLC_propUrbanArea.csv", row.names=F, quote=F)
+	}
+communes@data$propUrbanArea = read.csv("CLC_propUrbanArea.csv")[,3]
 
-variables = c("cases","population","medianIncome","sectorP","sectorS","sectorT","medianAge","moreThan65","pm25")
-variableNames = c("Positive cases","Number of people","Median declared income",
+variables = c("cases","popDensityLog","medianIncome","sectorP","sectorS","sectorT",
+			  "medianAge","moreThan65","pm25")
+variableNames = c("COVID-19 incidence","Population density (log)","Median declared income",
 				  "Primary sector","Secundary sector","Tertiary sector",
 				  "Median age",">= 65 years (proportion)","PM 2.5 emission")
 communes_light = gSimplify(communes, 100); colourScales = list()
@@ -231,19 +288,19 @@ colourScales[[1]] = c("#E5E5E5",colorRampPalette(brewer.pal(9,"YlOrRd"))(151)[1:
 colourScales[[2]] = c(colorRampPalette(brewer.pal(9,"BuPu"))(151)[1:101])
 colourScales[[3]] = c(colorRampPalette(brewer.pal(9,"RdPu"))(151)[1:101])
 colourScales[[4]] = c(colorRampPalette(brewer.pal(9,"Greens"))(151)[1:101])
-colourScales[[5]] = c(colorRampPalette(brewer.pal(9,"Purples"))(151)[1:101])
+colourScales[[5]] = c(colorRampPalette(brewer.pal(9,"Oranges"))(151)[1:101])
 colourScales[[6]] = c(colorRampPalette(brewer.pal(9,"Blues"))(151)[1:101])
 colourScales[[7]] = c(colorRampPalette(brewer.pal(9,"PuBuGn"))(151)[1:101])
-colourScales[[8]] = c(colorRampPalette(brewer.pal(9,"PuBu"))(151)[1:101])
+colourScales[[8]] = c(colorRampPalette(brewer.pal(9,"PuBuGn"))(151)[1:101])
 colourScales[[9]] = c(colorRampPalette(brewer.pal(9,"YlOrBr"))(151)[1:101])
-dev.new(width=7,height=6); par(mfrow=c(3,3), mar=c(0,0,0,0), oma=c(2,2,2,2), mgp=c(0,0.4,0), lwd=0.2, bty="o")
+dev.new(width=7,height=6); par(mfrow=c(3,3), mar=c(0,0,0,0), oma=c(2,2,1,2), mgp=c(0,0.4,0), lwd=0.2, bty="o")
 for (i in 1:length(variables))
 	{
 		minV = min(communes@data[,variables[i]]); maxV = max(communes@data[,variables[i]])
 		legendCols = colourScales[[i]][1:length(colourScales[[i]])]; legendRast = raster(as.matrix(c(minV,maxV)))		
 		cols = colourScales[[i]][(((communes@data[,variables[i]]-minV)/(maxV-minV))*100)+1]
 		plot(communes_light, border="gray30", col=cols, lwd=0.1)
-		mtext(variableNames[i], cex=0.54, col="gray30", at=92000, line=-11.8)
+		mtext(variableNames[i], cex=0.54, col="gray30", at=92000, line=-12.2)
 		plot(legendRast, legend.only=T, col=legendCols, legend.width=0.5, legend.shrink=0.3, smallplot=c(0.05,0.5,0.10,0.12),
 	 		 alpha=1, horizontal=T, legend.args=list(text="", cex=0.7, line=0.5, col="gray30"), axis.args=list(cex.axis=0.7, lwd=0,
 			 lwd.tick=0.2, tck=-1, col.axis="gray30", line=0, mgp=c(0,0.13,0)))

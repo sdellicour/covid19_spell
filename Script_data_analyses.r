@@ -130,7 +130,7 @@ for (i in 1:dim(provinces@data)[1])
 
 if (showingPlots)
 	{
-		DTmax = 30 # ceiling(max(provinces@data[,c("DT1","DT2","DT3")]))
+		DTmax = ceiling(max(provinces@data[,c("DT1","DT2","DT3")])); DTmax = 30
 		colourScale = colorRampPalette(brewer.pal(9,"YlGn"))(151)[1:101]; cols = list()
 		dev.new(width=3.2,height=7); legendRast = raster(as.matrix(seq(0,DTmax,1)))
 		par(mfrow=c(3,1), mar=c(0,0,0,0), oma=c(2,2,2,2), mgp=c(0,0.4,0), lwd=0.2, bty="o")
@@ -242,20 +242,16 @@ for (i in 1:dim(communes@data)[1])
 		cumulatedCases = rep(0, length(daysSinceTheFirstCase))
 		NIS = communes@data[i,"NIS5"]
 		indices1 = which(equivalence[,"code_INS"]==NIS)
-		if (length(indices1) == 0)
+		if (length(indices1) != 0)
 			{
-				# cat(1,i,"\n")
-			}	else		{
 				indices2 = c()
 				for (j in 1:length(indices1))
 					{
 						postalCode = equivalence[indices1[j],"code_Postal"]
 						indices2 = c(indices2, which(data[,"Postcode"]==postalCode))
 					}
-				if (length(indices2) == 0)
+				if (length(indices2) != 0)
 					{
-						# cat(2,i,"\n")
-					}	else	{
 						temp = data[indices2,]
 						temp = temp[which(temp[,"dateusedforstatistics"]!=""),]
 						dates = temp[,"dateusedforstatistics"]
@@ -306,7 +302,7 @@ for (i in 1:dim(communes@data)[1])
 	}
 if (showingPlots)
 	{
-		DTmax = 32 # ceiling(max(communes@data[,c("DT1","DT2")], na.rm=T))
+		DTmax = ceiling(max(communes@data[,c("DT1","DT2")], na.rm=T)); DTmax = 32
 		colourScale1 = colorRampPalette(brewer.pal(9,"YlGn"))(151)[1:101]; cols = list()
 		colourScale2 = c("gray90",colorRampPalette(brewer.pal(9,"YlGn"))(151)[1:101])
 		dev.new(width=7,height=3); legendRast = raster(as.matrix(seq(0,DTmax,1)))
@@ -465,8 +461,6 @@ for (i in 1:dim(communes@data)[1])
 		p = Polygon(pol@coords); ps = Polygons(list(p),1); sps = SpatialPolygons(list(ps))
 		pol = sps; proj4string(pol) = communes@proj4string
 		pol_light = gSimplify(pol, 100)
-		# communes@data[i,"pm10"] = mean(exact_extract(sf::st_as_sfc(pm10,pol_light))[[1]][,"value"], na.rm=T)
-		# communes@data[i,"pm25"] = mean(exact_extract(sf::st_as_sfc(pm25,pol_light))[[1]][,"value"], na.rm=T)
 		communes@data[i,"pm10"] = exact_extract(pm10, sf::st_as_sfc(pol_light), fun='mean')
 		communes@data[i,"pm25"] = exact_extract(pm10, sf::st_as_sfc(pol_light), fun='mean')
 	}
@@ -509,9 +503,9 @@ if (!file.exists("Communes_urbanP.csv"))
 				propUrbanArea[i,3] = urbanAreas/length(rast[!is.na(rast[])])
 			}
 		colnames(propUrbanArea) = c("NIS","popGreenArea","propUrbanArea")
-		write.csv(propUrbanArea, "Communes_urbanP.csv", row.names=F, quote=F)
+		write.csv(propUrbanArea, "Shapefile_communes/Proportions_urbanA.csv", row.names=F, quote=F)
 	}
-communes@data$propUrbanArea = read.csv("Communes_urbanP.csv")[,3]
+communes@data$propUrbanArea = read.csv("Shapefile_communes/Proportions_urbanA.csv")[,3]
 
 variables = c("popDensityLog","medianIncome","sectorP","sectorS","sectorT",
 			  "medianAge","moreThan65","pm10","pm25","propUrbanArea"); dfs = list()
@@ -850,8 +844,6 @@ for (i in 1:dim(catchmentAreas@data)[1])
 		pol = catchmentAreas@polygons[[i]]@Polygons[[polIndex]]
 		p = Polygon(pol@coords); ps = Polygons(list(p),1); sps = SpatialPolygons(list(ps))
 		pol = sps; proj4string(pol) = communes@proj4string
-		# catchmentAreas@data[i,"pm10"] = mean(exact_extract(sf::st_as_sfc(pm10,pol))[[1]][,"value"], na.rm=T)
-		# catchmentAreas@data[i,"pm25"] = mean(exact_extract(sf::st_as_sfc(pm25,pol))[[1]][,"value"], na.rm=T)
 		catchmentAreas@data[i,"pm10"] = exact_extract(pm10, sf::st_as_sfc(pol), fun='mean')
 		catchmentAreas@data[i,"pm25"] = exact_extract(pm25, sf::st_as_sfc(pol), fun='mean')
 	}
@@ -887,9 +879,9 @@ if (!file.exists("CatchingA_urbanP.csv"))
 				propUrbanArea[i,3] = urbanAreas/length(rast[!is.na(rast[])])
 			}
 		colnames(propUrbanArea) = c("NIS","popGreenArea","propUrbanArea")
-		write.csv(propUrbanArea, "CatchmentA_urbanP.csv", row.names=F, quote=F)
+		write.csv(propUrbanArea, "Hosp_catchment_areas/Proportion_of_urban_areas_080420.csv", row.names=F, quote=F)
 	}
-catchmentAreas@data$propUrbanArea = read.csv("CatchmentA_urbanP.csv")[,3]
+catchmentAreas@data$propUrbanArea = read.csv("Hosp_catchment_areas/Proportion_of_urban_areas_080420.csv.csv")[,3]
 
 	# 4.3. 	Cumputating doubling times for hospitalisations and ICU
 
@@ -1193,7 +1185,6 @@ for (i in 1:3)
 				for (j in 1:dim(dfs[[i]])[2]) df[,j] = zTransformation(df[,j])
 			}
 		gam = gam(responseVariable ~ s(popDensityLog) + s(propUrbanArea) + s(medianIncome) + s(pm10), data=df, method="REML")
-		# gam = gam(responseVariable ~ s(popDensityLog) + s(propUrbanArea) + s(sectorT) + s(xCentroid,yCentroid), data=df, method="REML")
 		print(summary(gam)); gams[[i]] = gam
 		if (showingPlots)
 			{

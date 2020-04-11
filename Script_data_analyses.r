@@ -1,17 +1,26 @@
 library(ade4)
 library(ape)
+library(castor)
 library(dismo)
 library(exactextractr)
 library(fields)
 library(gbm)
 library(gplots)
 library(lubridate)
+library(mapi)
 library(mgcv)
 library(raster)
 library(RColorBrewer)
 library(rgeos)
 library(seraphim)
 library(spdep)
+library(treeio)
+
+# 1. Analyses of mobility data (aggregated mobile data)
+# 2. Analyses at the province levels (hospitalisations)
+# 3. Analyses at the commune levels (positive cases)
+# 4. Analyses of hospital catchment areas
+# 5. Phylogenetic and phylogeographic analyses
 
 writingFiles = FALSE
 showingPlots = FALSE
@@ -21,7 +30,53 @@ zTransformation = function(x)
 		x = (x-mean(x))/sqrt(var(x))
 	}
 
-# 1. Analyses at the province levels
+# 1. Analyses of mobility data (aggregated mobile data)
+
+communes = shapefile("Shapefile_communes/Shapefile_communes.shp")
+data = read.csv("Data_mobility_Dahlberg/Mobility_data_mean_20200217_20200221.csv")
+NIScodes = unique(data[,"home_nis"]); NIScodes = NIScodes[order(NIScodes)]
+nTrips = matrix(0, nrow=length(NIScodes), ncol=length(NIScodes))
+for (i in 2:dim(nTrips)[1])
+	{
+		for (j in 1:(i-1))
+			{
+				index = which((data[,"home_nis"]==NIScodes[i])&(data[,"trip_nis"]==NIScodes[j]))
+				if (length(index) == 1) nTrips[i,j] = data[index,"trips"]
+			}
+	}
+locations = matrix(nrow=length(NIScodes), ncol=3)
+colnames(locations) = c("ind","x","y"); locations[,1] = NIScodes
+for (i in 1:dim(locations)[1])
+	{
+		index1 = which(communes@data[,"NIS5"]==locations[i,1])
+		if (length(index1) == 1)
+			{
+				maxArea = 0; index2 = 0
+				for (j in 1:length(communes@polygons[[index1]]@Polygons))
+					{
+						if (maxArea < communes@polygons[[index1]]@Polygons[[j]]@area)
+							{
+								maxArea = communes@polygons[[index1]]@Polygons[[j]]@area; index2 = j
+							}
+					}
+				pol = communes@polygons[[index1]]@Polygons[[index2]]
+				p = Polygon(pol@coords); ps = Polygons(list(p),1); sps = SpatialPolygons(list(ps))
+				pol = sps; proj4string(pol) = communes@proj4string
+				locations[i,c("x","y")] = coordinates(pol)
+			}
+	}
+indices = which(!is.na(locations[,"x"]))
+locations = data.frame(locations[indices,])
+nTrips = as.matrix(nTrips[indices,indices])
+row.names(nTrips) = locations$ind; colnames(nTrips) = locations$ind
+hw = MAPI_EstimateHalfwidth(locations, crs=2154, beta=0.25)
+grid = MAPI_GridHexagonal(locations, crs=31370, hw=hw, buf=0, shift=F)
+mapi = MAPI_RunOnGrid(locations, metric=nTrips, grid, isMatrix=T, nbPermuts=1000)
+tails = MAPI_Tails(mapi, alpha=0.05); MAPI_Plot(mapi, tails=tails)
+st_write(mapi, dsn=".", layer="MAPI_shapefile", driver="ESRI Shapefile", update=T, delete_layer=T)
+st_write(tails, dsn=".", layer="Tails_shapefile", driver="ESRI Shapefile", update=T, delete_layer=T)
+
+# 2. Analyses at the province levels (hospitalisations)
 
 periods = c("16/03-22/03/2020","23/03-29/03/2020","30/03-05/04/2020")
 selectedDays1 = ymd(c("2020-03-22","2020-03-29","2020-04-05"))
@@ -167,13 +222,13 @@ if (showingPlots)
 		legend(1, 33, provinces@data$NAME_2, col=cols, text.col="gray30", pch=16, pt.cex=1.2, box.lty=0, cex=0.7, y.intersp=1.3)
 	}
 
-# 2. Analyses at the commune levels
+# 3. Analyses at the commune levels (positive cases)
 
 communes = shapefile("Shapefile_communes/Shapefile_communes.shp")
 communes_light = gSimplify(communes, 100)
-equivalence = read.csv("Postal_codes_INS.csv", header=T)
+equivalence = read.csv("Shapefile_communes/Postal_codes_vs_NIS.csv", header=T)
 
-	# 2.1. Computing positive cases doubling times for two time periods
+	# 3.1. Computing positive cases doubling times for two time periods
 
 periods = c("18-26/03/2020","27/03-04/04/2020")
 selectedDays1 = ymd(c("2020-03-26","2020-04-04"))
@@ -284,7 +339,7 @@ if (showingPlots)
 			   col=colourScale1, text.col="gray30", pch=16, pt.cex=1.0, box.lty=0, cex=0.65, y.intersp=1.1)
 	}
 
-	# 2.2. Extracting and assigning covariate values to each commune
+	# 3.2. Extracting and assigning covariate values to each commune
 
 communes@data$xCentroid = rep(0,dim(communes@data)[1])
 communes@data$yCentroid = rep(0,dim(communes@data)[1])
@@ -469,7 +524,7 @@ if (writingFiles == TRUE)
 		write.csv(df, "Covariate_values_commune.csv", row.names=F, quote=F)		
 	}
 
-	# 2.3. Plotting the doubling time estimates and each covariate
+	# 3.3. Plotting the doubling time estimates and each covariate
 
 if (showingPlots)
 	{
@@ -511,7 +566,7 @@ if (showingPlots)
 			}
 	}
 
-	# 2.4. Performing and plotting the first axes of an exploratory PCA
+	# 3.4. Performing and plotting the first axes of an exploratory PCA
 
 if (showingPlots)
 	{
@@ -533,7 +588,7 @@ if (showingPlots)
 			 lwd.tick=0.2, tck=-0.8, col.axis="gray30", line=0, mgp=c(0,0.0,0)))
 	}
 
-	# 2.5. Assessing spatial autocorrelation with the Moran's I test
+	# 3.5. Assessing spatial autocorrelation with the Moran's I test
 
 for (i in 1:length(dfs))
 	{
@@ -542,7 +597,7 @@ for (i in 1:length(dfs))
 		print(Moran.I(dfs[[i]][,paste0("DT",i)], weights))
 	}
 
-	# 2.6. Univariate (LR) followed by multivariate regression (GLM) analyses
+	# 3.6. Univariate (LR) followed by multivariate regression (GLM) analyses
 
 selectedVariables = list()
 for (i in 1:length(dfs))
@@ -578,7 +633,7 @@ for (i in 1:length(dfs))
 		glm = glm(formula, data=df_z); print(summary(glm))
 	}
 
-	# 2.7. GAM (generalised additive model) analyses
+	# 3.7. GAM (generalised additive model) analyses
 
 gams = list()
 zTransformations = FALSE
@@ -645,13 +700,13 @@ if (showingPlots)
 			}
 	}
 
-# 3. Analyses of hospital catchment areas
+# 4. Analyses of hospital catchment areas
 
 catchmentAreas = shapefile("Hosp_catchment_areas/Hospital_catchment_areas_080420.shp")
 catchmentAreas@data[,"X_ID"] = gsub(" ","",catchmentAreas@data[,"X_ID"])
 catchmentAreas@data$area = as.numeric(catchmentAreas@data$area)
 
-	# 3.1. Establishing the link between catchment areas and communes
+	# 4.1. Establishing the link between catchment areas and communes
 
 population_1km = raster("Total_population_1km.tif")
 population_WP = raster("WorldPop_pop_raster.tif")
@@ -738,7 +793,7 @@ proportions = matrix(nrow=dim(communes@data)[1], ncol=length(catchmentAreas@poly
 for (i in 1:dim(proportions)[1]) proportions[i,] = populations[i,]/sum(populations[i,])
 row.names(proportions) = communes@data[,"NIS5"]
 
-	# 3.2. 	Extracting and assigning covariate values to each catchment area
+	# 4.2. 	Extracting and assigning covariate values to each catchment area
 
 catchmentAreas@data$xCentroid = rep(0,dim(catchmentAreas@data)[1])
 catchmentAreas@data$yCentroid = rep(0,dim(catchmentAreas@data)[1])
@@ -836,7 +891,7 @@ if (!file.exists("CatchingA_urbanP.csv"))
 	}
 catchmentAreas@data$propUrbanArea = read.csv("CatchmentA_urbanP.csv")[,3]
 
-	# 3.3. 	Cumputating doubling times for hospitalisations and ICU
+	# 4.3. 	Cumputating doubling times for hospitalisations and ICU
 
 data = read.csv("Google_Drive_N_Hens/Data_Hospit_2_05-04.csv", head=T, sep=";")
 data$date = rep(NA, dim(data)[1])
@@ -948,7 +1003,7 @@ for (i in 1:dim(catchmentAreas@data)[1])
 			}
 	}
 
-	# 3.4. Plotting the doubling time estimates and each covariate
+	# 4.4. Plotting the doubling time estimates and each covariate
 
 if (showingPlots)
 	{
@@ -1060,7 +1115,7 @@ if (writingFiles == TRUE)
 		write.csv(df, "Covariate_values_catchAreas.csv", row.names=F, quote=F)		
 	}
 
-	# 3.5. Performing and plotting the first axes of an exploratory PCA
+	# 4.5. Performing and plotting the first axes of an exploratory PCA
 
 if (showingPlots)
 	{
@@ -1082,7 +1137,7 @@ if (showingPlots)
 			 lwd.tick=0.2, tck=-0.8, col.axis="gray30", line=0, mgp=c(0,0.0,0)))
 	}
 
-	# 3.6. Assessing spatial autocorrelation with the Moran's I test
+	# 4.6. Assessing spatial autocorrelation with the Moran's I test
 
 responseVariable = "hospDT"; responseVariable = "hospIncidence"
 for (i in 1:length(dfs))
@@ -1092,7 +1147,7 @@ for (i in 1:length(dfs))
 		print(Moran.I(dfs[[i]][,paste0(responseVariable,i)], weights))
 	}
 
-	# 3.7. Univariate (LR) followed by multivariate regression (GLM) analyses
+	# 4.7. Univariate (LR) followed by multivariate regression (GLM) analyses
 
 selectedVariables = list()
 for (i in 1:length(dfs))
@@ -1127,7 +1182,7 @@ for (i in 1:length(dfs))
 			}
 	}
 
-	# 3.8. GAM (generalised additive model) analyses
+	# 4.8. GAM (generalised additive model) analyses
 
 gams = list(); zTransformations = FALSE
 for (i in 1:3)
@@ -1193,7 +1248,7 @@ if (showingPlots)
 			}
 	}
 
-	# 3.9. Classic correlation analyses
+	# 4.9. Classic correlation analyses
 
 variables = c("popDensityLog","propUrbanArea","pm10","pm25","medianIncome",
 			  "sectorP","sectorS","sectorT","medianAge","moreThan65")
@@ -1243,10 +1298,12 @@ if (showingPlots)
 				  colRow=rep("gray30",length(variableNames)), colCol=rep("gray30",length(variableNames)))
 	}
 	
-# 4. Plotting time tree downloaded from Nextstrain
+# 5. Phylogenetic and phylogeographic analyses
 
-tree = read.tree("Nextstrain_070420.tree")
-data = read.csv("Nextstrain_070420.csv", sep=";")
+tree = read.tree("Phylogenetic_analyses/Nextstrain_070420.tree")
+data = read.csv("Phylogenetic_analyses/Nextstrain_070420.csv", sep=";")
+labs = unique(data[which(data[,"Country"]=="Belgium"),"Submitting.Lab"])
+print(unique(subset[]))
 if (showingPlots)
 	{
 		dev.new(width=7, height=7); par(oma=c(0,0,0,0), mar=c(0,0,0,0.0), lwd=0.1)
@@ -1277,19 +1334,19 @@ for (i in 1:length(tree$tip.label))
 		if (location != "Belgium") location = "other"
 		tab3 = rbind(tab3, cbind(tree$tip.label[i],location,date))
 	}
-write(txt, "Nextstrain_070420.fasta")
+write(txt, "Phylogenetic_analyses/Nextstrain_070420.fasta")
 colnames(tab1) = c("trait","location","collection_date")
 colnames(tab2) = c("trait","location","collection_date")
 colnames(tab3) = c("trait","location","collection_date")
-write.table(tab1, "Nextstrain_070420_1.txt", row.names=F, quote=F, sep="\t")
-write.table(tab2, "Nextstrain_070420_2.txt", row.names=F, quote=F, sep="\t")
-write.table(tab3, "Nextstrain_070420_3.txt", row.names=F, quote=F, sep="\t")
+write.table(tab1, "Phylogenetic_analyses/Nextstrain_070420_1.txt", row.names=F, quote=F, sep="\t")
+write.table(tab2, "Phylogenetic_analyses/Nextstrain_070420_2.txt", row.names=F, quote=F, sep="\t")
+write.table(tab3, "Phylogenetic_analyses/Nextstrain_070420_3.txt", row.names=F, quote=F, sep="\t")
 samplingDates = decimal_date(ymd(tab1[,"collection_date"]))
 mostRecentSamplingYear = max(samplingDates)
 selectedDates = decimal_date(ymd(c("2020-01-01","2020-01-15","2020-02-01","2020-02-15","2020-03-01","2020-03-15")))
 selectedLabels = c("01-01","15-01","01-02","15-02","01-03","15-03")
 
-tree = readAnnotatedNexus("Nextstrain_0704_3_MCC.tree")
+tree = readAnnotatedNexus("Phylogenetic_analyses/Nextstrain_0704_3_MCC.tree")
 rootHeight = max(nodeHeights(tree))
 root_time = mostRecentSamplingYear-rootHeight
 if (showingPlots)
@@ -1315,10 +1372,14 @@ if (showingPlots)
 						nodelabels(node=tree$edge[i,2], pch=16, cex=0.3, col="chartreuse3")
 						nodelabels(node=tree$edge[i,2], pch=1, cex=0.3, col="gray30", lwd=0.5)
 					}
-				if ((tree$edge[i,2]%in%tree$edge[,1]) & (tree$annotations[[i]]$location=="Belgium"))
+				if (tree$annotations[[i]]$location == "Belgium")
 					{
-						nodelabels(node=tree$edge[i,2], pch=16, cex=0.6, col="chartreuse3")
-						nodelabels(node=tree$edge[i,2], pch=1, cex=0.6, col="gray30", lwd=0.5)
+						index = which(tree$edge[,2]==tree$edge[i,1])
+						if (tree$annotations[[index]]$location != "Belgium")
+							{
+								nodelabels(node=tree$edge[i,2], pch=16, cex=0.6, col="chartreuse3")
+								nodelabels(node=tree$edge[i,2], pch=1, cex=0.6, col="gray30", lwd=0.5)
+							}
 					}
 			}
 		add.scale.bar(x=0.0, y=-0.01, length=NULL, ask=F, lwd=0.5 , lcol ="gray30", cex=0.7)
@@ -1348,10 +1409,7 @@ if (showingPlots)
 								nodelabels(node=tree$edge[i,2], pch=1, cex=0.6, col="gray30", lwd=0.5)
 							}	else	{
 								if (!tree$edge[i,2]%in%tree$edge[,1])
-									{
-										# nodelabels(node=tree$edge[i,2], pch=16, cex=0.3, col="chartreuse3")
-										# nodelabels(node=tree$edge[i,2], pch=1, cex=0.3, col="gray30", lwd=0.5)
-									}
+									{	}
 							}
 					}
 			}
@@ -1359,8 +1417,15 @@ if (showingPlots)
 			 col.lab="gray30", col="gray30", tck=-0.01, side=1)
 	}
 
-tree = readAnnotatedNexus("Nextstrain_0704_3_MCC.tree")
-belgianBranches = c(); belgianIntroductions = c(); belgianTipBranches = c()
+tree = readAnnotatedNexus("Phylogenetic_analyses/Nextstrain_0704_3_MCC.tree")
+data = read.csv("Sequences_Piet_Maes/SARS-CoV-2_Belgium_080420.csv")
+rast = projectRaster(raster("WorldPop_pop_raster.tif"), crs=crs(communes)); rast[] = log(rast[])
+belgium = spTransform(raster::getData("GADM", country="BEL", level=0), crs(communes))
+provinces = spTransform(raster::getData("GADM", country="BEL", level=2), crs(communes))
+communes = shapefile("Shapefile_communes/Shapefile_communes.shp")
+equivalence = read.csv("Shapefile_communes/Postal_codes_vs_NIS.csv", header=T)
+belgianBranches = c(); belgianIntroductions = c()
+belgianTipBranches = c(); sampledSequences = c()
 for (i in 1:dim(tree$edge)[1])
 	{
 		if (tree$annotations[[i]]$location == "Belgium")
@@ -1374,10 +1439,119 @@ for (i in 1:dim(tree$edge)[1])
 				if (!tree$edge[i,2]%in%tree$edge[,1])
 					{
 						belgianTipBranches = c(belgianTipBranches, i)
+						sampledSequences = c(sampledSequences, tree$tip.label[tree$edge[i,2]])
 					}
 			}
 	}
-trees = readAnnotatedNexus("Nextstrain_0704_3.trees")
+for (i in 1:length(belgianIntroductions))
+	{
+		if (i == 1) clusters1 = list()
+		if (tree$edge[belgianIntroductions[i],2]%in%tree$edge[,1])
+			{
+				subtree = tree_subset(tree, tree$edge[belgianIntroductions[i],2], levels_back=0)
+				clusters1[[i]] = subtree$tip.label
+			}	else		{
+				clusters1[[i]] = tree$tip.label[tree$edge[belgianIntroductions[i],2]]	
+			}
+	}
+samplingData = matrix(nrow=length(sampledSequences), ncol=5)
+colnames(samplingData) = c("sequenceID","postCode","NIS5","longitude","latitude")
+samplingData[,1] = sampledSequences
+for (i in 1:dim(samplingData)[1])
+	{
+		ID = unlist(strsplit(samplingData[i,"sequenceID"],"\\/"))[2]
+		index1 = which(grepl(ID,data[,"sequence.name"]))
+		if (length(index1) == 1)
+			{
+				samplingData[i,"postCode"] = data[index1,"Post.code"]
+				index2 = which(equivalence[,"code_Postal"] == data[index1,"Post.code"])
+				samplingData[i,"NIS5"] = equivalence[index2[1],"code_INS"]
+				index3 = which(communes@data[,"NIS5"] == equivalence[index2[1],"code_INS"])
+				if (length(index3) == 1)
+					{
+						maxArea = 0; polIndex = 0
+						for (j in 1:length(communes@polygons[[index3]]@Polygons))
+							{
+								if (maxArea < communes@polygons[[index3]]@Polygons[[j]]@area)
+									{
+										maxArea = communes@polygons[[index3]]@Polygons[[j]]@area; polIndex = j
+									}
+							}
+						pol = communes@polygons[[index3]]@Polygons[[polIndex]]
+						p = Polygon(pol@coords); ps = Polygons(list(p),1); sps = SpatialPolygons(list(ps))
+						pol = sps; proj4string(pol) = communes@proj4string
+						samplingData[i,c("longitude","latitude")] = coordinates(pol)
+					}
+			}
+	}
+for (i in 1:length(belgianIntroductions))
+	{
+		tab = c()
+		if (i == 1)
+			{
+				clusters2 = list(); centroids = list()
+			}
+		for (j in 1:length(clusters1[[i]]))
+			{
+				index = which(samplingData[,"sequenceID"]==clusters1[[i]][j])
+				if (length(index) == 1)
+					{
+						line = cbind(as.numeric(samplingData[index,"longitude"]),as.numeric(samplingData[index,"latitude"]))
+						row.names(line) = clusters1[[i]][j]; tab = rbind(tab, line)
+					}
+			}
+		clusters2[[i]] = tab
+		centroids[[i]] = cbind(mean(tab[!is.na(tab[,1]),1]), mean(tab[!is.na(tab[,2]),2]))
+	}
+dev.new(width=7, height=6); par(oma=c(0,0,0,0), mar=c(0.5,4,1,0), lwd=0.2, col="gray30")
+cols = c(colorRampPalette(brewer.pal(9,"YlGnBu"))(161)[1:101])
+plot(rast, col=cols, axes=F, ann=F, box=F, legend=F)
+plot(belgium, border="gray40", lwd=0.4, add=T)
+for (i in 1:length(clusters1))
+	{
+		if (!is.na(centroids[[i]][,1]))
+			{
+				if (length(clusters1[[i]]) > 1)
+					{
+						for (j in 1:dim(clusters2[[i]])[1])
+							{
+								if (!is.na(clusters2[[i]][j,1]))
+									{
+										segments(centroids[[i]][,1],centroids[[i]][,2],clusters2[[i]][j,1],clusters2[[i]][j,2], lwd=0.5, col="gray30")	
+									}
+							}
+					}
+			}
+	}
+for (i in 1:length(clusters1))
+	{
+		if (!is.na(centroids[[i]][,1]))
+			{
+				for (j in 1:dim(clusters2[[i]])[1])
+					{
+						points(clusters2[[i]][,1], clusters2[[i]][,2], pch=16, cex=0.8, col="chartreuse3")
+						points(clusters2[[i]][,1], clusters2[[i]][,2], pch=1, cex=0.8, col="gray30", lwd=0.2)
+					}
+			}
+	}
+for (i in 1:length(clusters1))
+	{
+		if (!is.na(centroids[[i]][,1]))
+			{
+				if (length(clusters1[[i]]) > 1)
+					{
+						points(centroids[[i]][,1], centroids[[i]][,2], pch=16, cex=0.6, col="red")
+						points(centroids[[i]][,1], centroids[[i]][,2], pch=1, cex=0.6, col="gray30", lwd=0.2)
+					}
+			}
+	}
+legendRast = raster(as.matrix(c(min(rast[],na.rm=T),max(rast[],na.rm=T))))
+mtext("Human population (log-transformed)", col="gray30", cex=0.7, line=-23, at=78000)
+plot(legendRast, legend.only=T, col=cols, legend.width=0.5, legend.shrink=0.3, smallplot=c(0.141,0.409,0.18,0.19),
+	 alpha=1, horizontal=T, legend.args=list(text="", cex=0.7, line=0.5, col="gray30"), axis.args=list(cex.axis=0.55, lwd=0,
+	 lwd.tick=0.2, tck=-0.8, col.axis="gray30", line=0, mgp=c(0,-0.05,0)))
+
+trees = readAnnotatedNexus("Phylogenetic_analyses/Nextstrain_0704_3.trees")
 belgianBranches_list = rep(NA,length(trees))
 belgianIntroductions_list = rep(NA,length(trees))
 belgianTipBranches_list = rep(NA,length(trees))

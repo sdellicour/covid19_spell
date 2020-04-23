@@ -2230,8 +2230,8 @@ if (computingHPDInterval)
 			}
 		quantiles = quantile(belgianIntroductions_list,probs=c(0.025,0.975))
 		cat("A minimum number of ",median(belgianIntroductions_list)," lineage introductions (95% HPD interval = [",quantiles[1],"-",quantiles[2],"])",
-			" identified from the global phylogenetic analysis of ",belgianTipBranches," SARS-CoV-2 sampled in Belgium (07-04-2020)",sep="")
-		# A minimum number of 125 lineage introductions (95% HPD interval = [112-139]) identified from the global phylogenetic analysis of 253 SARS-CoV-2 sampled in Belgium 
+			" identified from the global phylogenetic analysis of ",belgianTipBranches," SARS-CoV-2 sampled in Belgium (20-04-2020)",sep="")
+		# A minimum number of 165 lineage introductions (95% HPD interval = [155-177]) identified from the global phylogenetic analysis of 391 SARS-CoV-2 sampled in Belgium 
 	}
 if (showingPlots)
 	{
@@ -2426,6 +2426,26 @@ for (i in 1:length(belgianIntroductions))
 			}
 		colnames(tab) = c("collectionDate","longitude","latitude"); clusters2[[i]] = tab
 		centroids[[i]] = cbind(mean(tab[!is.na(tab[,1]),1]), mean(tab[!is.na(tab[,2]),2]))
+	}
+clusterSizes = rep(NA, length(clusters1))
+collectionDates = c()
+for (i in 1:length(clusters1))
+	{
+		clusterSizes[i] = length(clusters1[[i]])
+		collectionDates = c(collectionDates, clusters2[[i]][,"collectionDate"])
+	}
+if (showingPlots)
+	{
+		dev.new(width=4, height=5); par(oma=c(0,0,0,0), mar=c(2,2,1,1), lwd=0.2, col="gray30")
+		hist(clusterSizes, breaks=35, axes=F, ann=F, title=NULL, col="chartreuse3", border="gray30")
+		axis(side=2, lwd.tick=0.2, cex.axis=0.6, mgp=c(0,0.20,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30")
+		axis(side=1, lwd.tick=0.2, cex.axis=0.6, mgp=c(0,0.00,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30")
+		dev.new(width=4, height=5); par(oma=c(0,0,0,0), mar=c(2,2,1,1), lwd=0.2, col="gray30")
+		hist(collectionDates, breaks=50, axes=F, ann=F, title=NULL, col="chartreuse3", border="gray30")
+		axis(side=2, lwd.tick=0.2, cex.axis=0.6, mgp=c(0,0.20,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30")
+		axis(side=1, lwd.tick=0.2, cex.axis=0.6, mgp=c(0,0.00,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30",
+			 at=decimal_date(ymd(c("2020-02-03","2020-02-18","2020-03-03","2020-03-18","2020-04-03"))),
+			 labels=c("03-02-2020","18-02-2020","03-03-2020","18-03-2020","03-04-2020"))
 	}
 if (showingPlots)
 	{
@@ -2796,6 +2816,28 @@ if (showingPlots)
 		ats = c(minYear, decimal_date(ymd("2020-03-14")), decimal_date(ymd("2020-03-18")), maxYear)
 		axis(side=1, lwd.tick=0.2, cex.axis=0.6, mgp=c(0,0.00,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30", at=ats)
 		axis(side=2, lwd.tick=0.2, cex.axis=0.6, mgp=c(0,0.20,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30")
+	}
+
+mcc = read.csv("Phylogenetic_analyses/Phylogeographic_runs/All_clades.csv", head=T)
+geoDistances = rep(NA, dim(mcc)[1]); branchDurations = rep(NA, dim(mcc)[1])
+colours = c("#FAA521","#4676BB"); cols = rep(NA, dim(mcc)[1])
+for (i in 1:dim(mcc)[1])
+	{
+		geoDistances[i] = sqrt(((mcc[i,"startLon"]-mcc[i,"endLon"])^2)+((mcc[i,"startLat"]-mcc[i,"endLat"])^2))
+		dt = mcc[i,"endYear"]-mcc[i,"startYear"]; branchDurations[i] = dt*366
+		if (mcc[i,"endYear"] < decimal_date(ymd("2020-03-18"))) cols[i] = colours[1]
+		if (mcc[i,"startYear"] > decimal_date(ymd("2020-03-18"))) cols[i] = colours[2]
+	}
+if (showingPlots)
+	{
+		dev.new(width=5, height=4); par(mgp=c(0,0,0), oma=c(0,0,0,0), mar=c(3,3.5,1.5,2))
+		cols1 = cols; cols2 = cols1; cols2[which(!is.na(cols2))] = paste0(cols2[which(!is.na(cols2))],"50")
+		plot(log(geoDistances), log(branchDurations), col=cols2, pch=16, cex=0.8, xlim=c(3.1,11.7), ylim=c(-5.9,3.2), axes=F, ann=F)
+		points(log(geoDistances), log(branchDurations), col=cols1, pch=1, cex=0.8)
+		axis(side=1, lwd.tick=0.2, cex.axis=0.6, mgp=c(0,0.00,0), lwd=0.2, tck=-0.015, at=seq(2,12,1), col.tick="gray30", col.axis="gray30", col="gray30")
+		axis(side=2, lwd.tick=0.2, cex.axis=0.6, mgp=c(0,0.20,0), lwd=0.2, tck=-0.015, at=seq(-7,4,1), col.tick="gray30", col.axis="gray30", col="gray30")
+		title(ylab="phylogenetic branch durations (days, log-transformed)", cex.lab=0.7, mgp=c(1.2,0,0), col.lab="gray30")
+		title(xlab="geographic distance (km, log-transformed)", cex.lab=0.7, mgp=c(0.8,0,0), col.lab="gray30")
 	}
 
 	# 6.9. Analysing the outputs of the overall discrete phylogeographic analysis

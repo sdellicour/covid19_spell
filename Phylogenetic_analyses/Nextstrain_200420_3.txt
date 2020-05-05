@@ -694,7 +694,6 @@ Wuhan/IVDC-HB-01/2019	other	30/12/2019
 Wuhan/WIV04/2019	other	30/12/2019
 Shanghai/SH0060/2020	other	01/02/2020
 Sweden/RV-FOI-1/2020	other	15/03/2020
-Belgium/MSE-0324121/2020	Belgium	24/03/2020
 Wuhan/IPBCAMS-WH-04/2019	other	30/12/2019
 Wuhan/WIV06/2019	other	30/12/2019
 Jiangsu/JS01/2020	other	23/01/2020
@@ -859,7 +858,6 @@ Portugal/PT0054/2020	other	18/03/2020
 Belgium/ULG-6743/2020	Belgium	14/03/2020
 Senegal/306/2020	other	17/03/2020
 Germany/NRW-06/2020	other	27/02/2020
-Belgium/MJP-0306100/2020	Belgium	06/03/2020
 Germany/NRW-03/2020	other	26/02/2020
 Austria/CeMM0002/2020	other	26/02/2020
 Netherlands/Gelderland_11/2020	other	21/03/2020
@@ -1416,7 +1414,6 @@ England/20128011804/2020	other	19/03/2020
 Australia/VIC378/2020	other	22/03/2020
 Australia/NSW175/2020	other	18/03/2020
 Australia/NSW174/2020	other	21/03/2020
-Belgium/DV-0324117/2020	Belgium	24/03/2020
 Scotland/CVR101/2020	other	14/03/2020
 Scotland/CVR200/2020	other	17/03/2020
 Australia/NSW176/2020	other	18/03/2020
@@ -1730,7 +1727,6 @@ Brazil/SPBR-10/2020	other	04/03/2020
 USA/MA_1355/2020	other	05/03/2020
 Belgium/VRJM-0323114/2020	Belgium	23/03/2020
 Belgium/VHV-0324118/2020	Belgium	24/03/2020
-Belgium/SR-0319112/2020	Belgium	19/03/2020
 Belgium/DME-0324135/2020	Belgium	24/03/2020
 Belgium/MNL-0324130/2020	Belgium	24/03/2020
 Belgium/ULG-10022/2020	Belgium	31/03/2020
@@ -1774,8 +1770,6 @@ Canada/ON_PHL0976/2020	other	13/03/2020
 Italy/UniMI01/2020	other	24/02/2020
 Belgium/DA-030691/2020	Belgium	06/03/2020
 Belgium/DB-03023/2020	Belgium	02/03/2020
-Belgium/HP-0319108/2020	Belgium	19/03/2020
-Belgium/QOJ-030751/2020	Belgium	07/03/2020
 Spain/CastillayLeon201061/2020	other	26/02/2020
 Spain/Madrid201105/2020	other	25/02/2020
 France/ARA10876/2020	other	18/03/2020
@@ -1793,7 +1787,6 @@ Belgium/VLM-03011/2020	Belgium	03/03/2020
 Denmark/SSI-04/2020	other	02/03/2020
 Belgium/RS-030257/2020	Belgium	02/03/2020
 Denmark/SSI-02/2020	other	28/02/2020
-Belgium/MS-0324134/2020	Belgium	24/03/2020
 Portugal/PT0090/2020	other	21/03/2020
 Zhejiang/HZ103/2020	other	24/01/2020
 Luxembourg/LNS0000001/2020	other	29/02/2020
@@ -1828,7 +1821,6 @@ Australia/VIC828/2020	other	03/04/2020
 Canada/ON_PHL3458/2020	other	12/03/2020
 Netherlands/ZuidHolland_28/2020	other	09/03/2020
 Wales/PHWC-26A15/2020	other	29/03/2020
-Belgium/RC-0324168/2020	Belgium	24/03/2020
 Scotland/EDB378/2020	other	30/03/2020
 USA/GA_2742/2020	other	29/02/2020
 Scotland/EDB560/2020	other	01/04/2020
@@ -1894,10 +1886,7 @@ Belgium/TG-030757/2020	Belgium	07/03/2020
 Belgium/DBD-03024/2020	Belgium	02/03/2020
 Belgium/QKJ-03015/2020	Belgium	01/03/2020
 Belgium/DJ-030452/2020	Belgium	04/03/2020
-Belgium/RA-030664/2020	Belgium	06/03/2020
-Belgium/KN-030756/2020	Belgium	07/03/2020
 Belgium/RJ-030552/2020	Belgium	05/03/2020
-Belgium/VJP-030463/2020	Belgium	04/03/2020
 USA/MI-SC2-0002/2020	other	10/03/2020
 Wales/PHWC-265F6/2020	other	27/03/2020
 SouthAfrica/KRISP_0012/2020	other	01/04/2020
@@ -2029,7 +2018,6 @@ Wales/PHWC-26DC1/2020	other	30/03/2020
 Wales/PHWC-2590A/2020	other	24/03/2020
 Wales/PHWC-26F07/2020	other	30/03/2020
 Wales/PHWC-24F09/2020	other	20/03/2020
-Belgium/SEM-0324120/2020	Belgium	24/03/2020
 Hungary/49/2020	other	20/03/2020
 Iceland/507/2020	other	20/03/2020
 Iceland/513/2020	other	21/03/2020
@@ -2086,7 +2074,6 @@ CzechRepublic/IAB_16/2020	other	26/03/2020
 CzechRepublic/2556/2020	other	22/03/2020
 Belgium/MTR-03026/2020	Belgium	02/03/2020
 Belgium/BC-03016/2020	Belgium	01/03/2020
-Belgium/MTR-03021/2020	Belgium	02/03/2020
 Netherlands/ZuidHolland_20/2020	other	03/03/2020
 Netherlands/NoordBrabant_36/2020	other	03/03/2020
 Netherlands/ZuidHolland_15/2020	other	08/03/2020
@@ -2498,7 +2485,6 @@ Germany/BAV-V2012856/2020	other	21/03/2020
 Belgium/NMA-0324169/2020	Belgium	24/03/2020
 Germany/NRW-48/2020	other	23/03/2020
 Belgium/DRV-0325157/2020	Belgium	25/03/2020
-Belgium/HC-030760/2020	Belgium	07/03/2020
 Italy/INMI9/2020	other	23/03/2020
 Netherlands/ZuidHolland_5/2020	other	04/03/2020
 Netherlands/ZuidHolland_9/2020	other	03/03/2020
@@ -2512,7 +2498,6 @@ Belgium/SN-03031/2020	Belgium	03/03/2020
 Belgium/JLJ-0320101/2020	Belgium	20/03/2020
 Belgium/GE-0317105/2020	Belgium	17/03/2020
 Belgium/VL-0318104/2020	Belgium	18/03/2020
-Belgium/VNP-0320107/2020	Belgium	20/03/2020
 Belgium/DA-0319106/2020	Belgium	18/03/2020
 Belgium/LY-030575/2020	Belgium	05/03/2020
 Belgium/MJP-030684/2020	Belgium	06/03/2020
@@ -2649,7 +2634,6 @@ SouthAfrica/KRISP_0011/2020	other	01/04/2020
 Italy/CDG1/2020	other	20/02/2020
 France/GE1973/2020	other	04/03/2020
 Brazil/SPBR-09/2020	other	04/03/2020
-Belgium/BJ-030767/2020	Belgium	07/03/2020
 SouthAfrica/R03006-20/2020	other	07/03/2020
 India/GBRC1/2020	other	05/04/2020
 India/GBRC1s/2020	other	05/04/2020
@@ -2811,7 +2795,6 @@ France/IDF2536/2020	other	14/03/2020
 Scotland/EDB517/2020	other	01/04/2020
 France/IDF3230/2020	other	22/03/2020
 France/IDF2278/2020	other	11/03/2020
-Belgium/RDC-030961/2020	Belgium	09/03/2020
 Belgium/OT-0319109/2020	Belgium	19/03/2020
 Belgium/PJM-0325166/2020	Belgium	25/03/2020
 Belgium/ULG-8595/2020	Belgium	19/03/2020
@@ -3102,7 +3085,6 @@ Belgium/CK-0324150/2020	Belgium	24/03/2020
 Belgium/ULG-10047/2020	Belgium	30/03/2020
 Belgium/ULG-10038/2020	Belgium	30/03/2020
 Belgium/ULG-10033/2020	Belgium	31/03/2020
-Belgium/EC-0325128/2020	Belgium	25/03/2020
 DRC/376/2020	other	25/03/2020
 Belgium/ULG-10122/2020	Belgium	07/04/2020
 Belgium/ULG-10143/2020	Belgium	07/04/2020
@@ -3436,7 +3418,6 @@ Australia/VIC98/2020	other	16/03/2020
 Iceland/183/2020	other	16/03/2020
 Australia/QLDID923/2020	other	14/03/2020
 Iceland/363/2020	other	19/03/2020
-Belgium/VHC-030655/2020	Belgium	06/03/2020
 Netherlands/NA_61/2020	other	09/03/2020
 India/3118/2020	other	17/03/2020
 Italy/TE4836/2020	other	16/03/2020
@@ -4030,7 +4011,6 @@ Netherlands/Friesland_10/2020	other	30/03/2020
 Netherlands/Friesland_3/2020	other	28/03/2020
 France/IDF3163/2020	other	20/03/2020
 USA/UT-00035/2020	other	18/03/2020
-Belgium/BM-030687/2020	Belgium	06/03/2020
 Luxembourg/LNS8124566/2020	other	17/03/2020
 Belgium/GOF-030578/2020	Belgium	05/03/2020
 Belgium/BCM-0324160/2020	Belgium	24/03/2020
@@ -4047,7 +4027,6 @@ Luxembourg/LNS8489624/2020	other	18/03/2020
 Luxembourg/LNS2013896/2020	other	18/03/2020
 Luxembourg/LNS7537751/2020	other	16/03/2020
 Belgium/ULG-8715/2020	Belgium	19/03/2020
-Belgium/BGM-030444/2020	Belgium	04/03/2020
 Belgium/ULG-10121/2020	Belgium	07/04/2020
 Belgium/ULG-3162/2020	Belgium	05/03/2020
 Belgium/ULG-10041/2020	Belgium	31/03/2020

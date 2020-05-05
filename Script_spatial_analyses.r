@@ -32,7 +32,9 @@ data_cases = read.csv("https://epistat.sciensano.be/Data/COVID19BE_CASES_AGESEX.
 data_hosps = read.csv("https://epistat.sciensano.be/Data/COVID19BE_HOSP.csv")
 data_death = read.csv("https://epistat.sciensano.be/Data/COVID19BE_MORT.csv")
 data_tests = read.csv("https://epistat.sciensano.be/Data/COVID19BE_tests.csv")
-dates = unique(data_cases$DATE)[!is.na(unique(data_cases$DATE))]
+dates1 = unique(data_hosps$DATE)[!is.na(unique(data_hosps$DATE))]
+dates2 = unique(data_cases$DATE)[!is.na(unique(data_cases$DATE))]
+dates = unique(c(as.character(dates1),as.character(dates2)))
 dates = as.character(dates[order(dates)])
 dates = dates[which(dates=="2020-03-13"):length(dates)]
 columns = c("Date","Day","Tests","CasesN","CasesT","C5DDT","CasesTL","CasesRt",
@@ -114,7 +116,9 @@ write.csv(tab, "Last_data_Sciensano.csv", row.names=F, quote=F)
 provinceNames = unique(data_hosps[,"PROVINCE"])
 for (h in 1:length(provinceNames))
 	{
-		dates = unique(data_cases$DATE)[!is.na(unique(data_cases$DATE))]
+		dates1 = unique(data_hosps$DATE)[!is.na(unique(data_hosps$DATE))]
+		dates2 = unique(data_cases$DATE)[!is.na(unique(data_cases$DATE))]
+		dates = unique(c(as.character(dates1),as.character(dates2)))
 		dates = as.character(dates[order(dates)])
 		dates = dates[which(dates=="2020-03-13"):length(dates)]
 		columns = c("Date","Day","CasesN","CasesT","C5DDT","CasesTL","CasesRt",
@@ -567,7 +571,7 @@ if (showingPlots)
 
 # 4. Analyses at the commune levels (positive cases)
 
-communes = shapefile("Shapefile_communes/Shapefile_communes.shp")
+communes = shapefile("Shapefile_communes/Shapefile_NIS5_codes.shp")
 communes_light = gSimplify(communes, 100)
 equivalence = read.csv("Shapefile_communes/Postal_codes_vs_NIS.csv", header=T)
 
@@ -577,7 +581,7 @@ periods = c("18-26/03/2020","27/03-04/04/2020")
 selectedDays1 = ymd(c("2020-03-26","2020-04-04"))
 firstDay = ymd("2020-01-30"); D = 9 # time interval
 selectedDays2 = as.numeric(selectedDays1-firstDay)
-data = read.csv("Google_Drive_N_Hens/Data_Hospit_1_05-04.csv", sep=";")
+data = read.csv("Google_Drive_N_Hens/Data_Hospit_1_29-04.csv", sep=";")
 daysSinceTheFirstCase = seq(1,200,1)
 cumulatedCases_list = list()
 for (i in 1:dim(communes@data)[1])
@@ -602,7 +606,7 @@ for (i in 1:dim(communes@data)[1])
 						dates = gsub("Feb","-02-",dates)
 						dates = gsub("Mar","-03-",dates)
 						dates = gsub("Apr","-04-",dates)
-						days = as.numeric(dmy(dates)-firstDay)
+						days = as.numeric(ymd(dates)-firstDay)
 						for (j in 1:length(daysSinceTheFirstCase))
 							{
 								cumulatedCases[j] = sum(days <= j) 
@@ -699,7 +703,7 @@ for (i in 1:dim(communes@data)[1])
 		communes@data[i,"xCentroid"] = centroidCoordinates[1,1]
 		communes@data[i,"yCentroid"] = centroidCoordinates[1,2]
 	}
-data = read.csv("Data_Sciensano_1704/COVID19BE_CASES_MUNI_CUM.csv")
+data = read.csv("Data_Sciensano_0305/COVID19BE_CASES_MUNI_CUM.csv")
 communes@data$cases = rep(0,dim(communes@data)[1])
 for (i in 1:dim(communes@data)[1])
 	{
@@ -817,7 +821,7 @@ if (!file.exists("CorineLandCover.asc"))
 		clc = mask(crop(clc, communes_clc), communes_clc)
 		clc@crs = clc_crs; writeRaster(clc, "CorineLandCover.asc")
 	}
-if (!file.exists("Communes_urbanP.csv"))
+if (!file.exists("Shapefile_communes/Proportions_urban_A.csv"))
 	{
 		clc = raster("CorineLandCover.asc")
 		communes_clc = spTransform(communes, raster("CorineLandCover18.tif")@crs)
@@ -851,7 +855,7 @@ if (!file.exists("Communes_urbanP.csv"))
 		colnames(propUrbanArea) = c("NIS","popGreenArea","propUrbanArea")
 		write.csv(propUrbanArea, "Shapefile_communes/Proportions_urbanA.csv", row.names=F, quote=F)
 	}
-communes@data$propUrbanArea = read.csv("Shapefile_communes/Proportions_urbanA.csv")[,3]
+communes@data$propUrbanArea = read.csv("Shapefile_communes/Proportions_urban_A.csv")[,3]
 
 variables = c("popDensityLog","medianIncome","sectorP","sectorS","sectorT",
 			  "medianAge","moreThan65","pm10","pm25","propUrbanArea"); dfs = list()
@@ -1075,10 +1079,10 @@ for (i in 1:dim(communes@data)[1])
 				geoDistances[i,j] = sqrt(((d1)^2)+((d2)^2))
 			}
 	}
-data = read.csv("Google_Drive_N_Hens/Commune_cases_13-04.csv", head=T)
+data = read.csv("Google_Drive_N_Hens/Commune_cases_29-04.csv", head=T, sep=";")
 communes@data$casesLastFiveDays = rep(0,dim(communes@data)[1])
 communes@data$cumulatedCases = rep(0,dim(communes@data)[1])
-lastFiveDays = c("07-04-2020","08-04-2020","09-04-2020","10-04-2020","11-04-2020")
+lastFiveDays = c("2020-04-24","2020-04-25","2020-04-26","2020-04-27","2020-04-28")
 data[,"dateusedforstatistics"] = gsub("Jan","-01-",data[,"dateusedforstatistics"])
 data[,"dateusedforstatistics"] = gsub("Feb","-02-",data[,"dateusedforstatistics"])
 data[,"dateusedforstatistics"] = gsub("Mar","-03-",data[,"dateusedforstatistics"])
@@ -1140,7 +1144,7 @@ if (showingPlots)
 		dev.new(width=7,height=8); par(mfrow=c(4,3), mar=c(0,0,0,0), oma=c(2,2,1,2), mgp=c(0,0.4,0), lwd=0.2, bty="o")
 		for (h in 1:3)
 			{
-				variableNames = c("# cases 07-11/04/2020",paste0("# cases (smoothing ",h,")"),"Community health workers")
+				variableNames = c("# cases 24-29/04/2020",paste0("# cases (smoothing ",h,")"),"Community health workers")
 				# variables = c("cumulatedCases","cumulatedCases","popDensityLog"); colourScales = list()
 				variables = c("casesLastFiveDays",paste0("slidingWindow",h),paste0("healthWorker",h)); colourScales = list()
 				colourScales[[1]] = colorRampPalette(brewer.pal(9,"YlOrBr"))(121)[1:101]
@@ -1171,7 +1175,7 @@ if (showingPlots)
 if (writingFiles)
 	{
 		df = communes@data[,c("NIS5","population","casesLastFiveDays","slidingWindow1","slidingWindow2","slidingWindow3","healthWorker1","healthWorker2","healthWorker3")]
-		colnames(df) = c("NIS","population","cases_07-11-20","smoothing_5_communes","smoothing_10_communes","smoothing_by_pronvinces",
+		colnames(df) = c("NIS","population","cases_24-29-04-2020","smoothing_5_communes","smoothing_10_communes","smoothing_by_pronvinces",
 						 "health_workers_smoothing_5_communes","health_workers_smoothing_10_communes","health_workers_smoothing_by_provinces")
 		df$population = round(df$population); write.csv(df, "Community_health_workers.csv", row.names=F, quote=F)
 	}

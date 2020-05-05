@@ -11,52 +11,64 @@
 	<!-- The list of taxa to be analysed (can also include dates/ages).          -->
 	<!-- ntax=3087                                                               -->
 	<taxa id="taxa">
-		<taxon id="Belgium/DAL-030650/2020">
-			<date value="2020.17759562842" direction="forwards" units="years"/>
+		<taxon id="Belgium/ULG-10031/2020">
+			<date value="2020.24590163934" direction="forwards" units="years"/>
 			<attr name="latitude">
-				678850.902938695
+				646197.368620406
 			</attr>
 			<attr name="longitude">
-				577748.190653825
+				761103.287007353
 			</attr>
 			<attr name="coordinates">
-				678850.902938695 577748.190653825
+				646197.368620406 761103.287007353
 			</attr>
 		</taxon>
-		<taxon id="Belgium/GMH-03022/2020">
-			<date value="2020.16666666667" direction="forwards" units="years"/>
+		<taxon id="Belgium/ULG-8634/2020">
+			<date value="2020.2131147541" direction="forwards" units="years"/>
 			<attr name="latitude">
-				680367.816773175
+				645362.233391974
 			</attr>
 			<attr name="longitude">
-				678695.257577037
+				729956.634809497
 			</attr>
 			<attr name="coordinates">
-				680367.816773175 678695.257577037
+				645362.233391974 729956.634809497
 			</attr>
 		</taxon>
-		<taxon id="Belgium/GSA-030454/2020">
-			<date value="2020.17213114754" direction="forwards" units="years"/>
+		<taxon id="Belgium/ULG-10063/2020">
+			<date value="2020.25956284153" direction="forwards" units="years"/>
 			<attr name="latitude">
-				673757.807724076
+				643830.476929286
 			</attr>
 			<attr name="longitude">
-				680753.929730989
+				724647.459794639
 			</attr>
 			<attr name="coordinates">
-				673757.807724076 680753.929730989
+				643830.476929286 724647.459794639
 			</attr>
 		</taxon>
-		<taxon id="Belgium/MF-030546/2020">
-			<date value="2020.17486338798" direction="forwards" units="years"/>
+		<taxon id="Belgium/ULG-10108/2020">
+			<date value="2020.26229508197" direction="forwards" units="years"/>
 			<attr name="latitude">
-				672083.43696515
+				643297.193596727
 			</attr>
 			<attr name="longitude">
-				738220.096821161
+				731341.638056529
 			</attr>
 			<attr name="coordinates">
-				672083.43696515 738220.096821161
+				643297.193596727 731341.638056529
+			</attr>
+		</taxon>
+		<taxon id="Belgium/ULG-10107/2020">
+			<date value="2020.26229508197" direction="forwards" units="years"/>
+			<attr name="latitude">
+				642827.619418556
+			</attr>
+			<attr name="longitude">
+				730558.921742627
+			</attr>
+			<attr name="coordinates">
+				642827.619418556 730558.921742627
 			</attr>
 		</taxon>
 	</taxa>
@@ -65,19 +77,23 @@
 	<!-- ntax=3087 nchar=4                                                       -->
 	<alignment id="alignment" dataType="nucleotide">
 		<sequence>
-			<taxon idref="Belgium/DAL-030650/2020"/>
+			<taxon idref="Belgium/ULG-10031/2020"/>
 			NNNN
 		</sequence>
 		<sequence>
-			<taxon idref="Belgium/GMH-03022/2020"/>
+			<taxon idref="Belgium/ULG-8634/2020"/>
 			NNNN
 		</sequence>
 		<sequence>
-			<taxon idref="Belgium/GSA-030454/2020"/>
+			<taxon idref="Belgium/ULG-10063/2020"/>
 			NNNN
 		</sequence>
 		<sequence>
-			<taxon idref="Belgium/MF-030546/2020"/>
+			<taxon idref="Belgium/ULG-10108/2020"/>
+			NNNN
+		</sequence>
+		<sequence>
+			<taxon idref="Belgium/ULG-10107/2020"/>
 			NNNN
 		</sequence>
 	</alignment>
@@ -89,7 +105,7 @@
 	</patterns>
 
 	<newick id="startingTree">
-		(Belgium/DAL-030650/2020:0.02248917247,(Belgium/GMH-03022/2020:0.0001921358075,(Belgium/GSA-030454/2020:8.26561757e-05,Belgium/MF-030546/2020:0.002814896613):0.005573960506):0.01136807491):0.2113867684;
+		((Belgium/ULG-10031/2020:0.0330228577,Belgium/ULG-8634/2020:0.0002359724563):0.02216005487,(Belgium/ULG-10063/2020:0.04966211475,(Belgium/ULG-10108/2020:0.04365235519,Belgium/ULG-10107/2020:0.04365235519):0.008742):0.019182):0.246927159;
 	</newick>
  
 	<!-- Generate a tree model                                                   --> 

@@ -1,6 +1,6 @@
 
 Operator analysis
 Operator                                          Tuning   Count      Time     Time/Op  Pr(accept) 
-scale(coordinates.diffusion.rates)                0.092   1031270    2600     0.0      0.2405      
-precisionGibbsOperator                                    68730      436      0.01     1.0         
+scale(coordinates.diffusion.rates)                0.105   1031683    2905     0.0      0.2401      
+precisionGibbsOperator                                    68317      455      0.01     1.0         
 

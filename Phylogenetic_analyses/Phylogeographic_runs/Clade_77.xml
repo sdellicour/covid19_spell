@@ -11,64 +11,64 @@
 	<!-- The list of taxa to be analysed (can also include dates/ages).          -->
 	<!-- ntax=3087                                                               -->
 	<taxa id="taxa">
-		<taxon id="Belgium/ULG-10068/2020">
-			<date value="2020.25409836066" direction="forwards" units="years"/>
+		<taxon id="Belgium/ULG-10031/2020">
+			<date value="2020.24590163934" direction="forwards" units="years"/>
 			<attr name="latitude">
-				646444.156327348
+				646197.368620406
 			</attr>
 			<attr name="longitude">
-				735956.543014309
+				761103.287007353
 			</attr>
 			<attr name="coordinates">
-				646444.156327348 735956.543014309
+				646197.368620406 761103.287007353
 			</attr>
 		</taxon>
-		<taxon id="Belgium/ULG-3843/2020">
-			<date value="2020.18306010929" direction="forwards" units="years"/>
+		<taxon id="Belgium/ULG-8634/2020">
+			<date value="2020.2131147541" direction="forwards" units="years"/>
 			<attr name="latitude">
-				653973.281993078
+				645362.233391974
 			</attr>
 			<attr name="longitude">
-				735569.831548714
+				729956.634809497
 			</attr>
 			<attr name="coordinates">
-				653973.281993078 735569.831548714
+				645362.233391974 729956.634809497
 			</attr>
 		</taxon>
-		<taxon id="Belgium/ULG-2971/2020">
-			<date value="2020.17486338798" direction="forwards" units="years"/>
+		<taxon id="Belgium/ULG-10063/2020">
+			<date value="2020.25956284153" direction="forwards" units="years"/>
 			<attr name="latitude">
-				646790.24708192
+				643830.476929286
 			</attr>
 			<attr name="longitude">
-				745012.319407183
+				724647.459794639
 			</attr>
 			<attr name="coordinates">
-				646790.24708192 745012.319407183
+				643830.476929286 724647.459794639
 			</attr>
 		</taxon>
-		<taxon id="Belgium/RYR-030649/2020">
-			<date value="2020.17759562842" direction="forwards" units="years"/>
+		<taxon id="Belgium/ULG-10108/2020">
+			<date value="2020.26229508197" direction="forwards" units="years"/>
 			<attr name="latitude">
-				635182.405974618
+				643297.193596727
 			</attr>
 			<attr name="longitude">
-				727659.563192284
+				731341.638056529
 			</attr>
 			<attr name="coordinates">
-				635182.405974618 727659.563192284
+				643297.193596727 731341.638056529
 			</attr>
 		</taxon>
-		<taxon id="Belgium/GJ-030458/2020">
-			<date value="2020.17213114754" direction="forwards" units="years"/>
+		<taxon id="Belgium/ULG-10107/2020">
+			<date value="2020.26229508197" direction="forwards" units="years"/>
 			<attr name="latitude">
-				616443.504790455
+				642827.619418556
 			</attr>
 			<attr name="longitude">
-				650028.21605081
+				730558.921742627
 			</attr>
 			<attr name="coordinates">
-				616443.504790455 650028.21605081
+				642827.619418556 730558.921742627
 			</attr>
 		</taxon>
 	</taxa>
@@ -77,23 +77,23 @@
 	<!-- ntax=3087 nchar=4                                                       -->
 	<alignment id="alignment" dataType="nucleotide">
 		<sequence>
-			<taxon idref="Belgium/ULG-10068/2020"/>
+			<taxon idref="Belgium/ULG-10031/2020"/>
 			NNNN
 		</sequence>
 		<sequence>
-			<taxon idref="Belgium/ULG-3843/2020"/>
+			<taxon idref="Belgium/ULG-8634/2020"/>
 			NNNN
 		</sequence>
 		<sequence>
-			<taxon idref="Belgium/ULG-2971/2020"/>
+			<taxon idref="Belgium/ULG-10063/2020"/>
 			NNNN
 		</sequence>
 		<sequence>
-			<taxon idref="Belgium/RYR-030649/2020"/>
+			<taxon idref="Belgium/ULG-10108/2020"/>
 			NNNN
 		</sequence>
 		<sequence>
-			<taxon idref="Belgium/GJ-030458/2020"/>
+			<taxon idref="Belgium/ULG-10107/2020"/>
 			NNNN
 		</sequence>
 	</alignment>
@@ -105,7 +105,7 @@
 	</patterns>
 
 	<newick id="startingTree">
-		((Belgium/ULG-10068/2020:0.07115002679,Belgium/ULG-3843/2020:0.0001117754216):0.02510175376,(Belgium/ULG-2971/2020:0.0168546612,(Belgium/RYR-030649/2020:0.005794105131,Belgium/GJ-030458/2020:0.0003296242563):0.01379279651):0.0001621466725):0.2140550123;
+		((Belgium/ULG-10031/2020:0.03280997263,Belgium/ULG-8634/2020:2.308738345e-05):0.02237246086,(Belgium/ULG-10063/2020:0.04966199186,(Belgium/ULG-10108/2020:0.04365218833,Belgium/ULG-10107/2020:0.04365218833):0.008742043963):0.01918164382):0.2469995184;
 	</newick>
  
 	<!-- Generate a tree model                                                   --> 

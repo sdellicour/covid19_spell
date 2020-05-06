@@ -12,11 +12,11 @@ library(treeio)
 # 7. Estimating and plotting dispersal statistics associated with lineages
 # 8. Analysing the outputs of the overall discrete phylogeographic analysis
 
-writingFiles = FALSE; showingPlots = FALSE
-analysis = "TreeTime_260420_1"; removeSuspiciousHomoplasies = FALSE
-analysis = "Nextstrain_200420"; removeSuspiciousHomoplasies = TRUE
+analysis = "Nextstrain_200420"; removeSuspiciousHomoplasies = FALSE # 1st analysis
+analysis = "Nextstrain_200420"; removeSuspiciousHomoplasies = TRUE  # 2nd analysis	
 data1 = read.csv("Sequences_metadata/SARS-CoV-2_KULeuven_080420.csv")
 data2 = read.csv("Sequences_metadata/SARS-CoV-2_ULiegeSeq_220420.csv")
+writingFiles = FALSE; showingPlots = FALSE
 
 # 1. Preparing the input files for the discrete phylogeographic analyses 
 
@@ -43,6 +43,11 @@ if (showingPlots)
 		for (i in 1:dim(tree$edge)[1])
 			{
 				if ((!tree$edge[i,2]%in%tree$edge[,1]) & (grepl("Belgium",tree$tip.label[tree$edge[i,2]])))
+					{
+						nodelabels(node=tree$edge[i,2], pch=16, cex=0.6, col="chartreuse3")
+						nodelabels(node=tree$edge[i,2], pch=1, cex=0.6, col="gray30", lwd=0.5)
+					}
+				if ((!tree$edge[i,2]%in%tree$edge[,1]) & (grepl("ULG-",tree$tip.label[tree$edge[i,2]])))
 					{
 						nodelabels(node=tree$edge[i,2], pch=16, cex=0.6, col="chartreuse3")
 						nodelabels(node=tree$edge[i,2], pch=1, cex=0.6, col="gray30", lwd=0.5)
@@ -93,10 +98,21 @@ for (i in 1:length(tree$tip.label))
 		if (date != "")
 			{
 				txt = c(txt, paste0(">",tree$tip.label[i]),"NNNN")
-				location = unlist(strsplit(tree$tip.label[i],"\\/"))[1]
+				if (grepl("Nextstrain",analysis))
+					{
+						location = unlist(strsplit(tree$tip.label[i],"\\/"))[1]
+					}
+				if (grepl("TreeTime",analysis))
+					{
+						elements = unlist(strsplit(tree$tip.label[i],"\\|"))
+						location = elements[length(elements)-1]
+					}
 				tab1 = rbind(tab1, cbind(tree$tip.label[i],location,date))
 				region = gsub(" ","",as.character(data[index,"Region"]))
-				if (!location%in%selectedCountries) location = region
+				if (grepl("Nextstrain",analysis))
+					{
+						if (!location%in%selectedCountries) location = region
+					}
 				tab2 = rbind(tab2, cbind(tree$tip.label[i],location,date))
 				if (location != "Belgium") location = "other"
 				tab3 = rbind(tab3, cbind(tree$tip.label[i],location,date))
@@ -145,10 +161,12 @@ if (computingHPDInterval)
 		quantiles = quantile(belgianIntroductions_list[!is.na(belgianIntroductions_list)],probs=c(0.025,0.975))
 		cat("A minimum number of ",median(belgianIntroductions_list[!is.na(belgianIntroductions_list)])," lineage introductions (95% HPD interval = [",
 			quantiles[1],"-",quantiles[2],"])"," identified from the global phylogenetic analysis of ",belgianTipBranches," SARS-CoV-2 sampled in Belgium (20-04-2020)",sep="")
-		# Analysis "Nextstrain_200420" without removing tip branches associated with suspicious homoplasies (20-04-2020):
-			# a minimum number of 165 lineage introductions (95% HPD interval = [155-177]) identified from the global phylogenetic analysis of 391 SARS-CoV-2 sampled in Belgium
-		# Analysis "Nextstrain_200420" after removing tip branches associated with suspicious homoplasies (20-04-2020):
+		# Results for the 1st analysis based on the Nextstrain tree of the 20-04-20 (without removing tip branches associated with suspicious homoplasie):
+			# a minimum number of 166 lineage introductions (95% HPD interval = [161-171]) identified from the global phylogenetic analysis of 391 SARS-CoV-2 sampled in Belgium
+		# Results for the 2nd analysis based on the Nextstrain tree of the 20-04-20 (when dropping tip branches associated with suspicious homoplasie):
 			# a minimum number of 157 lineage introductions (95% HPD interval = [151-162]) identified from the global phylogenetic analysis of 370 SARS-CoV-2 sampled in Belgium
+		# Results for the 3rd analysis based on the Nextstrain tree of the 20-04-20 (based on a lignment without sequences associated with suspicious homoplasie):
+			# a minimum number of XXX lineage introductions (95% HPD interval = [XXX-XXX]) identified from the global phylogenetic analysis of 370 SARS-CoV-2 sampled in Belgium
 	}
 if (showingPlots)
 	{
@@ -838,19 +856,23 @@ if (showingPlots)
 	
 localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/All_clades_ext2")
 timSlices = 50; onlyTipBranches = FALSE; showingPlots = FALSE; nberOfCores = 5; slidingWindow = 1/(365/7)
-nberOfExtractionFiles = 1000; outputName = "Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_all_180320_ext2/Nextstrain_2004"
+nberOfExtractionFiles = 1000; outputName = "Phylogenetic_analyses/All_dispersal_statistics/50_time_slices_7days_sliding_window/Nextstrain_2004"
+spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
+timSlices = 100; onlyTipBranches = FALSE; showingPlots = FALSE; nberOfCores = 5; slidingWindow = 1/(365/14)
+nberOfExtractionFiles = 1000; outputName = "Phylogenetic_analyses/All_dispersal_statistics/100_time_slices_14days_sliding_window/Nextstrain_2004"
 spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
 if (showingPlots)
 	{
 		dev.new(width=5, height=4); par(mgp=c(0,0,0), oma=c(1,1,0.5,0.5), mar=c(1.5,1.5,1,1))
 		col1 = rgb(100, 100, 100, 255, maxColorValue=255); col2 = rgb(100, 100, 100, 100, maxColorValue=255)
-		directory = "Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_all_180320_ext2/"
+		directory = "Phylogenetic_analyses/All_dispersal_statistics/50_time_slices_7days_sliding_window/"
+		directory = "Phylogenetic_analyses/All_dispersal_statistics/100_time_slices_14days_sliding_window/"
 		tab1 = read.table(paste0(directory,"Nextstrain_2004_median_weighted_branch_dispersal_velocity.txt"), header=T)
 		tab2 = read.table(paste0(directory,"Nextstrain_2004_95%HPD_weighted_branch_dispersal_velocity.txt"), header=T)
 		tab1[,2] = tab1[,2]/366; tab2[,2:3] = tab2[,2:3]/366 # to have the lineage dispersal velocity in km/day
 		mcc = read.csv("Phylogenetic_analyses/Phylogeographic_runs/All_clades.csv", head=T)
 		minYear = min(mcc[,"startYear"]); maxYear = max(mcc[,"endYear"])
-		plot(tab1[,1], tab1[,2], type="l", axes=F, ann=F, ylim=c(0,3000/366), xlim=c(minYear,maxYear), col=NA)
+		plot(tab1[,1], tab1[,2], type="l", axes=F, ann=F, ylim=c(0,9000/366), xlim=c(minYear,maxYear), col=NA)
 		slicedTimes = tab1[,1]; branchDispersalVelocityMeanValue = tab1[,2]; lower_l_1 = tab2[,2]; upper_l_1 = tab2[,3]
 		xx_l = c(slicedTimes,rev(slicedTimes)); yy_l = c(lower_l_1,rev(upper_l_1))
 		getOption("scipen"); opt = options("scipen"=20); polygon(xx_l, yy_l, col=col2, border=0)
@@ -862,6 +884,10 @@ if (showingPlots)
 	}
 
 timSlices = 50; onlyTipBranches = FALSE; showingPlots = FALSE; nberOfCores = 5; slidingWindow = NA
+localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/All_clades_ext2")
+outputName = "Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_All_180320_ext2/Nextstrain_2004"
+dir.create(file.path("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_All_180320_ext2/"), showWarnings=F)
+spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
 localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/Bf_180320_ext2")
 outputName = "Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Bf_180320_ext2/Nextstrain_2004"
 dir.create(file.path("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Bf_180320_ext2/"), showWarnings=F)

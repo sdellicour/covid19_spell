@@ -161,12 +161,6 @@ if (computingHPDInterval)
 		quantiles = quantile(belgianIntroductions_list[!is.na(belgianIntroductions_list)],probs=c(0.025,0.975))
 		cat("A minimum number of ",median(belgianIntroductions_list[!is.na(belgianIntroductions_list)])," lineage introductions (95% HPD interval = [",
 			quantiles[1],"-",quantiles[2],"])"," identified from the global phylogenetic analysis of ",belgianTipBranches," SARS-CoV-2 sampled in Belgium (20-04-2020)",sep="")
-		# Results for the 1st analysis based on the Nextstrain tree of the 20-04-20 (without removing tip branches associated with suspicious homoplasie):
-			# a minimum number of 166 lineage introductions (95% HPD interval = [161-171]) identified from the global phylogenetic analysis of 391 SARS-CoV-2 sampled in Belgium
-		# Results for the 2nd analysis based on the Nextstrain tree of the 20-04-20 (when dropping tip branches associated with suspicious homoplasie):
-			# a minimum number of 157 lineage introductions (95% HPD interval = [151-162]) identified from the global phylogenetic analysis of 370 SARS-CoV-2 sampled in Belgium
-		# Results for the 3rd analysis based on the Nextstrain tree of the 20-04-20 (based on a lignment without sequences associated with suspicious homoplasie):
-			# a minimum number of XXX lineage introductions (95% HPD interval = [XXX-XXX]) identified from the global phylogenetic analysis of 370 SARS-CoV-2 sampled in Belgium
 	}
 if (showingPlots)
 	{

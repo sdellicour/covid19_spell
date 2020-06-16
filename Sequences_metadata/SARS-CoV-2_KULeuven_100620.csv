@@ -1,0 +1,457 @@
+﻿#;RUN;BARCODE;Name abbr.;symptoms;Sample #1;Sample #2;Sex;Age;ZIP;Town;sample date;Full length;Corrected?;Coverage;sequence name;GisAID
+185;run0_BEcase01;none;PS;asymptomatic;GHB conf.;GHB conf.;M;54;8560;Wevelgem;03/02/2020;yes;;12000x;SARS2-CoV/Belgium/Human/GHB-03021/2020;OK
+1;multiplex_1-7;NB1;VLM;;86333663;PF-20-1968;F;48;3040;Huldenberg;01/03/2020;yes;yes;;SARS2-CoV/Belgium/Human/VLM-03011/2020;OK
+2;multiplex_1-7;NB2;BM;;65529518;PF-20-1938;M;47;1950;Kraainem;01/03/2020;yes;yes;;SARS2-CoV/Belgium/Human/BM-03012/2020;OK
+3;multiplex_1-7;NB3;VAG;;64516730;PF-20-1966;F;14;3040;Huldenberg;01/03/2020;yes;yes;;SARS2-CoV/Belgium/Human/VAG-03013/2020;OK
+4;multiplex_1-7;NB5;SH;;64236817;PF-20-1967;M;56;3040;Huldenberg;01/03/2020;yes;yes;;SARS2-CoV/Belgium/Human/SH-03014/2020;OK
+5;multiplex_1-7;NB6;QKJ;;60133276;PF-20-1971;M;49;1000;Brussel;01/03/2020;yes;yes;;SARS2-CoV/Belgium/Human/QKJ-03015/2020;OK
+6;multiplex_1-7;NB10;BC;;77208460;REGA;M;46;9100;Sint-Niklaas;01/03/2020;yes;yes;;SARS2-CoV/Belgium/Human/BC-03016/2020;OK
+7;multiplex_1-7;NB12;BA;;70414313;PF-20-1890;F;48;3000;Leuven;29/02/2020;yes;yes;;SARS2-CoV/Belgium/Human/BA-02291/2020;OK
+8;multiplex_2-8;NB1;MTR;;85417244;PF-20-2001;M;16;3220;Holsbeek;02/03/2020;yes;yes;;SARS2-Cov/Belgium/Human/MTR-03021/2020;OK
+9;multiplex_2-8;NB2;GMH;;75408757;PF-20-2002;F;48;3220;Holsbeek;02/03/2020;yes;yes;;SARS2-Cov/Belgium/Human/GMH-03022/2020;OK
+10;multiplex_2-8;NB3;SN;;65530219;PF-20-2108;M;45;3010;Kessel-Lo;03/03/2020;yes;yes;;SARS2-Cov/Belgium/Human/SN-03031/2020;OK
+11;multiplex_2-8;NB5;DB;;65530194;PF-20-2110;F;12;4218;Couthuin;02/03/2020;yes;yes;;SARS2-Cov/Belgium/Human/DB-03023/2020;OK
+12;multiplex_2-8;NB6;DBD;;61672978;PF-20-2204;F;41;3010;Kessel-Lo;02/03/2020;yes;yes;;SARS2-Cov/Belgium/Human/DBD-03024/2020;OK
+13;multiplex_2-8;NB10;UMF;;72156987;PF-20-2205;M;45;3010;Kessel-Lo;02/03/2020;yes;yes;;SARS2-Cov/Belgium/Human/UMF-03025/2020;OK
+14;multiplex_2-8;NB11;DBA;;80460900;PF-20-2691;F;50;3000;Leuven;03/03/2020;yes;yes;;SARS2-Cov/Belgium/Human/DBA-03032/2020;OK
+15;multiplex_2-8;NB12;MTR;;85936961;PF-20-2692;F;16;3220;Holsbeek;02/03/2020;yes;yes;;SARS2-Cov/Belgium/Human/MTR-03026/2020;OK
+16;multiplex_3-11;ARB01;DHWM;;65827313;ZIDU001;M;55;1700;Dilbeek;04/03/2020;yes;yes;;SARS2-CoV/Belgium/Human/DHWM-03041/2020;OK
+17;multiplex_3-11;ARB03;KA;;73742009;ZIDU003;F;51;2460;Kasterlee;04/03/2020;yes;yes;;SARS2-CoV/Belgium/Human/KA-03042/2020;OK
+18;multiplex_3-11;ARB04;VBK;;61641805;ZIDU004;M;20;2900;Schoten;06/03/2020;yes;yes;;SARS2-CoV/Belgium/Human/VBK-03061/2020;OK
+19;multiplex_3-11;ARB05;SQ;;62285745;ZIDU005;M;11;3000;Leuven;04/03/2020;yes;yes;;SARS2-CoV/Belgium/Human/SQ-03043/2020;OK
+20;multiplex_3-11;ARB06;VI;;70007836;PF-20-2048;F;43;1150;Sint-Pieters-Woluwe;02/03/2020;yes;yes;;SARS2-CoV/Belgium/Human/VI-03027/2020;OK
+;multiplex_3-11;ARB07;RSD;;60381563;PF-20-2084;M;18;1180;Ukkel;02/03/2020;NO;n/a;none;n/a;NO
+;multiplex_3-11;ARB08;CGJ;;65529451;PF-20-2161;M;65;4837;Baelen;03/03/2020;NO;n/a;none;n/a;NO
+;multiplex_3-11;ARB09;JRH;;60130107;PF-20-2894;M;51;3550;Zolder;04/03/2020;NO;n/a;none;n/a;NO
+21;multiplex_3-11;ARB10;FR;;65531922;PF-20-2907;M;19;1330;Rixensart;02/03/2020;yes;yes;;SARS2-CoV/Belgium/Human/FR-03029/2020;OK
+22;multiplex_3-11;ARB11;MMJ;;74077983;PF-20-2951;M;51;3220;Holsbeek;03/03/2020;yes;yes;;SARS2-CoV/Belgium/Human/MMJ-03034/2020;OK
+23;multiplex_3-11;ARB12;RT;;65532049;PF-20-2960;M;34;1190;Vorst;03/03/2020;yes;yes;;SARS2-CoV/Belgium/Human/RT-03035/2020;OK
+24;multiplex_4-7;ARB01;JL;;86185725;ZIDU002;F;31;2000;Antwerpen;04/03/2020;yes;yes;1704x;SARS2-CoV/Belgium/Human/JL-03044/2020;OK
+;multiplex_6-18;NB01;DBOM;;64121489;ZIDU037;F;34;1050;Elsene;06/03/2020;NO;n/a;none;n/a;NO
+;multiplex_6-18;NB02;BJ;;65536673;ZIDU038;M;24;1410;Waterloo;07/03/2020;NO;n/a;none;n/a;NO
+;multiplex_6-18;NB03;DVBJ;;65533062;ZIDU039;M;43;1440;Braine-le-Château;04/03/2020;NO;n/a;none;n/a;NO
+;multiplex_6-18;NB04;DLDJ;;61476214;ZIDU040;M;51;2382;Poppel;05/03/2020;NO;n/a;none;n/a;NO
+;multiplex_6-18;NB05;AKM;;60581279;ZIDU041;F;40;3020;Winksele;06/03/2020;NO;n/a;none;n/a;NO
+;multiplex_6-18;NB06;HL;;65128570;ZIDU042;F;13;3520;Zonhoven;07/03/2020;NO;n/a;none;n/a;NO
+;multiplex_6-18;NB07;GE;;86706926;ZIDU044;M;35;3770;Riemst;05/03/2020;NO;n/a;none;n/a;NO
+;multiplex_6-18;NB08;MCW;;61380816;ZIDU045;M;44;3910;Neerpelt;05/03/2020;NO;n/a;none;n/a;NO
+;multiplex_6-18;NB09;GOF;;61147882;ZIDU049;M;46;4257;Berloz;05/03/2020;NO;n/a;none;n/a;NO
+;multiplex_6-18;NB10;CD;;65536362;ZIDU050;M;59;4460;Bierset;06/03/2020;NO;n/a;none;n/a;NO
+;multiplex_6-18;NB11;PA;;65534862;ZIDU051;M;37;4630;Soumagne;06/03/2020;NO;n/a;none;n/a;NO
+;multiplex_6-18;NB12;PAN;;65534601;ZIDU052;F;25;4651;Herve;05/03/2020;NO;n/a;none;n/a;NO
+;multiplex_6-18;NB13;AC;;65537788;ZIDU053;F;49;4671;Saive;09/03/2020;NO;n/a;none;n/a;NO
+;multiplex_6-18;NB14;SJ;;65533525;ZIDU054;M;62;4830;Limbourg;05/03/2020;NO;n/a;none;n/a;NO
+;multiplex_6-18;NB15;MJP;;65536371;ZIDU055;M;33;4841;Henri-chapelle;06/03/2020;NO;n/a;none;n/a;NO
+;multiplex_6-18;NB16;LM;;65534640;ZIDU056;M;54;4910;Theux;06/03/2020;NO;n/a;none;n/a;NO
+;multiplex_6-18;NB17;ECC;;65535527;ZIDU057;F;42;5020;Temploux;06/03/2020;NO;n/a;none;n/a;NO
+25;multiplex_6-18;NB18;VS;;64935250;ZIDU073;F;44;7780;Komen;05/03/2020;yes;yes;15375x;SARS2-CoV/Belgium/Human/VS-030542/2020;OK
+26;multiplex_7-18;NB01;VRAR;;65539842;ZIDU074;M;9;9820;Merelbeke;06/03/2020;yes;yes;26685x;SARS2-CoV/Belgium/Human/VRAR-030643/2020;OK
+27;multiplex_7-18;NB02;VHRA;;64412141;ZIDU075;M;59;9850;Nevele;06/03/2020;yes;yes;10000x;SARS2-CoV/Belgium/Human/VHRA-030644/2020;OK
+28;multiplex_7-18;NB03;NKR;;65539840;ZIDU076;F;34;1083;Ganshoren;06/03/2020;yes;yes;9500x;SARS2-CoV/Belgium/Human/NKR-030645/2020;OK
+29;multiplex_7-18;NB04;GL;;64520360;ZIDU077;F;12;3530;Houthalen-Helchteren;05/03/2020;yes;yes;8100x;SARS2-CoV/Belgium/Human/GL-030546/2020;OK
+30;multiplex_7-18;NB05;SS;;64377748;ZIDU078;M;41;3520;Zonhoven;10/03/2020;yes;yes;8700x;SARS2-CoV/Belgium/Human/SS-031047/2020;OK
+31;multiplex_7-18;NB06;VDLH;;65538705;ZIDU079;M;24;2920;Kalmthout;05/03/2020;yes;yes;10300x;SARS2-CoV/Belgium/Human/VDLH-030548/2020;OK
+32;multiplex_7-18;NB07;GS;;65539851;ZIDU080;F;36;4650;Chaineux;05/03/2020;yes;yes;10000x;SARS2-CoV/Belgium/Human/GS-030549/2020;OK
+33;multiplex_7-18;NB08;VPE;;65539846;ZIDU081;M;28;9800;Deinze;06/03/2020;yes;yes;11800x;SARS2-CoV/Belgium/Human/VPE-030650/2020;OK
+34;multiplex_7-18;NB09;BG;;65539853;ZIDU082;F;42;1650;Beersel;05/03/2020;yes;yes;11260x;SARS2-CoV/Belgium/Human/BG-030551/2020;OK
+35;multiplex_7-18;NB10;CS;fever, cough, dysnpeu;ZIDU083;#37;F;41;2275;Gierle;10/03/2020;yes;yes;10700x;SARS2-CoV/Belgium/Human/CS-031052/2020;OK
+36;multiplex_7-18;NB11;HAA;;60863552;ZIDU084;M;74;2260;Oevel;09/03/2020;yes;yes;11940x;SARS2-CoV/Belgium/Human/HAA-030953/2020;OK
+37;multiplex_7-18;NB12;DWAEE;;79962346;ZIDU085;F;52;1730;Asse;09/03/2020;yes;yes;10655x;SARS2-CoV/Belgium/Human/DWAEE-030954/2020;OK
+38;multiplex_7-18;NB13;BG;;61390627;ZIDU086;M;68;3950;Kaulille;09/03/2020;yes;yes;10775x;SARS2-CoV/Belgium/Human/BG-030955/2020;OK
+39;multiplex_7-18;NB14;LT;pneumonia, fever, cough,;63217290;ZIDU087;M;58;7890;Ellezelles;09/03/2020;yes;yes;10900x;SARS2-CoV/Belgium/Human/LT-030956/2020;OK
+40;multiplex_7-18;NB15;RS;fever, cough and headache;60381563;PF-20-2084;M;18;3320;Hoegaarden;02/03/2020;yes;yes;10950x;SARS2-CoV/Belgium/Human/RS-030257/2020;OK
+41;multiplex_7-18;NB16;CG;pneumonia;65529451;PF-20-2161;M;65;4837;Eupen;01/03/2020;yes;yes;11440x;SARS2-CoV/Belgium/Human/CG-030158/2020;OK
+42;multiplex_7-18;NB17;JRH;fever, cough;60130107;PF-20-2894;M;51;3550;Zolder;04/03/2020;yes;yes;11820x;SARS2-CoV/Belgium/Human/JRH-030459/2020;OK
+43;multiplex_7-18;NB18;RT;Fever and cough;65532049;PF-20-2960;M;34;1190;Vorst;04/03/2020;yes;yes;9940x;SARS2-CoV/Belgium/Human/RT-030460/2020;OK
+;multiplex_8-144_pool_1;NB01;JL;;86185725;ZIDU002;F;31;2000;Antwerpen;04/03/2020;NO;n/a;none;n/a;NO
+44;multiplex_8-144_pool_1;NB02;BGM;;75421826;ZIDU007;M;53;3210;Lubbeek;04/03/2020;yes;yes;17290x;SARS2-CoV/Belgium/Human/BGM-030444/2020;OK
+45;multiplex_8-144_pool_1;NB03;RA;;65530888;ZIDU008;F;26;3500;Hasselt;04/03/2020;yes;yes;17360x;SARS2-CoV/Belgium/Human/RA-030445/2020;OK
+46;multiplex_8-144_pool_1;NB04;MF;;62648811;ZIDU009;M;45;3620;Lanaken;05/03/2020;yes;yes;21250x;SARS2-CoV/Belgium/Human/MF-030546/2020;OK
+47;multiplex_8-144_pool_1;NB05;NL;;65533199;ZIDU010;F;50;1000;Brussel;04/03/2020;yes;yes;21380x;SARS2-CoV/Belgium/Human/NL-030447/2020;OK
+48;multiplex_8-144_pool_1;NB06;FAE;;65537248;ZIDU011;F;57;4020;Wandre;09/03/2020;yes;yes;17225x;SARS2-CoV/Belgium/Human/FAE-030948/2020;OK
+49;multiplex_8-144_pool_1;NB07;RYR;;65534533;ZIDU012;M;35;4550;Yernée-fraineux;06/03/2020;yes;yes;19650x;SARS2-CoV/Belgium/Human/RYR-030649/2020;OK
+50;multiplex_8-144_pool_1;NB08;DAL;;62546252;ZIDU013;F;30;8780;Oostrozebeke;06/03/2020;yes;yes;19940x;SARS2-CoV/Belgium/Human/DAL-030650/2020;OK
+51;multiplex_8-144_pool_1;NB09;QOJ;;65536806;ZIDU014;M;44;1700;Dilbeek;07/03/2020;yes;yes;17890x;SARS2-CoV/Belgium/Human/QOJ-030751/2020;OK
+52;multiplex_8-144_pool_1;NB10;DJ;;67229773;ZIDU015;F;28;9200;Dendermonde;04/03/2020;yes;yes;14596x;SARS2-CoV/Belgium/Human/DJ-030452/2020;OK
+;multiplex_8-144_pool_1;NB11;DRR;;65535618;ZIDU016;F;40;2180;Ekeren;06/03/2020;NO;n/a;none;n/a;NO
+53;multiplex_8-144_pool_1;NB12;RJ;;82568320;ZIDU017;M;18;3001;Heverlee;05/03/2020;yes;yes;17460x;SARS2-CoV/Belgium/Human/RJ-030552/2020;OK
+54;multiplex_8-144_pool_1;NB13;GSA;;88331376;ZIDU018;M;55;3210;Lubbeek;04/03/2020;yes;yes;21430x;SARS2-CoV/Belgium/Human/GSA-030454/2020;OK
+55;multiplex_8-144_pool_1;NB14;VHC;;65536407;ZIDU019;M;62;4607;Dalhem;06/03/2020;yes;yes;19020x;SARS2-CoV/Belgium/Human/VHC-030655/2020;OK
+56;multiplex_8-144_pool_1;NB15;KN;;65536581;ZIDU020;M;46;1082;Sint-Agatha-Berchem;07/03/2020;yes;yes;13650x;SARS2-CoV/Belgium/Human/KN-030756/2020;OK
+57;multiplex_8-144_pool_1;NB16;TG;;65536829;ZIDU021;M;19;5170;Arbre;07/03/2020;yes;yes;16900x;SARS2-CoV/Belgium/Human/TG-030757/2020;OK
+;multiplex_8-144_pool_1;NB17;PA;;64885286;ZIDU027;F;57;1755;Gooik;04/03/2020;NO;n/a;none;n/a;NO
+58;multiplex_8-144_pool_1;NB18;GJ;;65533039;ZIDU028;M;34;6110;Montigny-le-Tilleul;04/03/2020;yes;yes;17110x;SARS2-CoV/Belgium/Human/GJ-030458/2020;OK
+59;multiplex_8-144_pool_1;NB19;DJ;;65537807;ZIDU029;M;75;1180;Ukkel;09/03/2020;yes;yes;6825x;SARS2-CoV/Belgium/Human/030959/2020;OK
+60;multiplex_8-144_pool_1;NB20;HC;;65536648;ZIDU031;F;41;7000;Mons;07/03/2020;yes;yes;13620x;SARS2-CoV/Belgium/Human/HC-030760/2020;OK
+61;multiplex_8-144_pool_1;NB21;RDC;;65537604;ZIDU032;F;72;1170;Watermaal-Bosvoorde;09/03/2020;yes;yes;17050x;SARS2-CoV/Belgium/Human/RDC-030961/2020;OK
+62;multiplex_8-144_pool_1;NB22;VF;;68944867;ZIDU033;M;55;8560;Wevelgem;05/03/2020;yes;yes;17565x;SARS2-CoV/Belgium/Human/VF-030562/2020;OK
+63;multiplex_8-144_pool_1;NB23;VJP;;84546548;ZIDU034;M;60;2820;Bonheiden;04/03/2020;yes;yes;16500x;SARS2-CoV/Belgium/Human/VJP-030463/2020;OK
+64;multiplex_8-144_pool_1;NB24;RA;;65535756;ZIDU035;F;49;1640;Sint-Genesius-Rode;06/03/2020;yes;yes;17540x;SARS2-CoV/Belgium/Human/RA-030664/2020;OK
+65;multiplex_8-144_pool_2;NB01;WWM;;65536370;ZIDU036;M;24;1330;Rixensart;06/03/2020;yes;yes;13000x;SARS2-CoV/Belgium/Human/WWM-030665/2020;OK
+66;multiplex_8-144_pool_2;NB02;DBOM;;64121489;ZIDU037;F;34;1050;Elsene;05/03/2020;yes;yes;13485x;SARS2-CoV/Belgium/Human/DBOM-030566/2020;OK
+67;multiplex_8-144_pool_2;NB03;BJ;;65536673;ZIDU038;M;24;1410;Waterloo;07/03/2020;yes;yes;12590x;SARS2-CoV/Belgium/Human/BJ-030767/2020;OK
+68;multiplex_8-144_pool_2;NB04;DVBJ;;65533062;ZIDU039;M;43;1440;Braine-le-Château;04/03/2020;yes;yes;12845x;SARS2-CoV/Belgium/Human/DVBJ-030468/2020;OK
+69;multiplex_8-144_pool_2;NB05;DLDJ;;61476214;ZIDU040;M;51;2382;Poppel;05/03/2020;yes;yes;11490x;SARS2-CoV/Belgium/Human/DLDJ-030569/2020;OK
+70;multiplex_8-144_pool_2;NB06;AKM;;60581279;ZIDU041;F;40;3020;Winksele;06/03/2020;yes;yes;13463x;SARS2-CoV/Belgium/Human/AKM-030670/2020;OK
+71;multiplex_8-144_pool_2;NB07;HL;;65128570;ZIDU042;F;13;3520;Zonhoven;07/03/2020;yes;yes;14100x;SARS2-CoV/Belgium/Human/HL-030771/2020;OK
+72;multiplex_8-144_pool_2;NB08;VGA;;72733389;ZIDU043;F;46;3570;Alken;06/03/2020;yes;yes;7890x;SARS2-CoV/Belgium/Human/VGA-030672/2020;OK
+73;multiplex_8-144_pool_2;NB09;GE;;86706926;ZIDU044;M;35;3770;Riemst;05/03/2020;yes;yes;14868x;SARS2-CoV/Belgium/Human/GE-030573/2020;OK
+74;multiplex_8-144_pool_2;NB10;MCW;;61380816;ZIDU045;M;44;3910;Neerpelt;05/03/2020;yes;yes;10580x;SARS2-CoV/Belgium/Human/MCW-030574/2020;OK
+75;multiplex_8-144_pool_2;NB11;LY;;65138152;ZIDU046;M;41;3960;Bree;05/03/2020;yes;yes;13310x;SARS2-CoV/Belgium/Human/LY-030575/2020;OK
+76;multiplex_8-144_pool_2;NB12;WAM;;65534913;ZIDU047;F;39;4040;Herstal;06/03/2020;yes;yes;11550x;SARS2-CoV/Belgium/Human/WAM-030676/2020;OK
+77;multiplex_8-144_pool_2;NB13;RS;;65534597;ZIDU048;M;40;4100;Seraing;06/03/2020;yes;yes;13875x;SARS2-CoV/Belgium/Human/RS-030677/2020;OK
+78;multiplex_8-144_pool_2;NB14;GOF;;61147882;ZIDU049;M;46;4257;Berloz;05/03/2020;yes;yes;12890x;SARS2-CoV/Belgium/Human/GOF-030578/2020;OK
+79;multiplex_8-144_pool_2;NB15;CD;;65536362;ZIDU050;M;59;4460;Bierset;06/03/2020;yes;yes;9910x;SARS2-CoV/Belgium/Human/CD-030679/2020;OK
+80;multiplex_8-144_pool_2;NB16;PA;;65534862;ZIDU051;M;37;4630;Soumagne;06/03/2020;yes;yes;12860x;SARS2-CoV/Belgium/Human/PA-030680/2020;OK
+81;multiplex_8-144_pool_2;NB17;PAN;;65534601;ZIDU052;F;25;4651;Herve;05/03/2020;yes;yes;13506x;SARS2-CoV/Belgium/Human/PAN-030681/2020;OK
+82;multiplex_8-144_pool_2;NB18;AC;;65537788;ZIDU053;F;49;4671;Saive;09/03/2020;yes;yes;12865x;SARS2-CoV/Belgium/Human/AC-030982/2020;OK
+83;multiplex_8-144_pool_2;NB19;SJ;;65533525;ZIDU054;M;62;4830;Limbourg;05/03/2020;yes;yes;12540x;SARS2-CoV/Belgium/Human/SJ-030583/2020;OK
+84;multiplex_8-144_pool_2;NB20;MJP;;65536371;ZIDU055;M;33;4841;Henri-chapelle;06/03/2020;yes;yes;12410x;SARS2-CoV/Belgium/Human/MJP-030684/2020;OK
+85;multiplex_8-144_pool_2;NB21;LM;;65534640;ZIDU056;M;54;4910;Theux;06/03/2020;yes;yes;12070x;SARS2-CoV/Belgium/Human/LM-030685/2020;OK
+86;multiplex_8-144_pool_2;NB22;ECC;;65535527;ZIDU057;F;42;5020;Temploux;06/03/2020;yes;yes;12650x;SARS2-CoV/Belgium/Human/ECC-030686/2020;OK
+87;multiplex_8-144_pool_2;NB23;BM;;65535293;ZIDU058;F;91;5300;Andenne;06/03/2020;yes;yes;8980x;SARS2-CoV/Belgium/Human/BM-030687/2020;OK
+88;multiplex_8-144_pool_2;NB24;RJL;;65533516;ZIDU059;M;50;5370;Havelange;05/03/2020;yes;yes;9340x;SARS2-CoV/Belgium/Human/RJL-030588/2020;OK
+89;multiplex_8-144_pool_3;NB01;MC;;65536365;ZIDU060;M;53;5660;Couvin;06/03/2020;yes;yes;15050x;SARS2-CoV/Belgium/Human/MC-030689/2020;OK
+90;multiplex_8-144_pool_3;NB02;SB;;65537197;ZIDU061;M;38;6040;Charleroi;09/03/2020;yes;yes;22760x;SARS2-CoV/Belgium/Human/SB-030990/2020;OK
+91;multiplex_8-144_pool_3;NB03;DA;;65533025;ZIDU062;F;23;6180;Courcelles;06/03/2020;yes;yes;16000x;SARS2-CoV/Belgium/Human/DA-030691/2020;OK
+92;multiplex_8-144_pool_3;NB04;FM;;65533220;ZIDU063;F;63;7021;Havre;05/03/2020;yes;yes;20430x;SARS2-CoV/Belgium/Human/FM-030592/2020;OK
+93;multiplex_8-144_pool_3;NB05;DD;;65533295;ZIDU064;F;40;7120;Haulchin;05/03/2020;yes;yes;18970x;SARS2-CoV/Belgium/Human/DD-030593/2020;OK
+;multiplex_8-144_pool_3;NB06;JK;;65532360;ZIDU066;M;33;8300;Knokke-Heist;05/03/2020;NO;n/a;none;n/a;NO
+94;multiplex_8-144_pool_3;NB07;BDW;;86703121;ZIDU067;M;52;8940;Geluwe;06/03/2020;yes;yes;25900x;SARS2-CoV/Belgium/Human/BDW-030694/2020;OK
+95;multiplex_8-144_pool_3;NB08;VMC;;65535003;ZIDU068;F;73;9000;Gent;06/03/2020;yes;yes;23400x;SARS2-CoV/Belgium/Human/VMC-030695/2020;OK
+96;multiplex_8-144_pool_3;NB09;DCS;;78146750;ZIDU069;M;53;9170;Sint-Gillis-Waas;07/03/2020;yes;yes;11940x;SARS2-CoV/Belgium/Human/DCS-030796/2020;OK
+97;multiplex_8-144_pool_3;NB10;LD;;74339995;ZIDU070;F;59;9190;Stekene;05/03/2020;yes;yes;14470x;SARS2-CoV/Belgium/Human/LD-030597/2020;OK
+98;multiplex_8-144_pool_3;NB11;BS;;61099064;ZIDU071;F;40;9250;Waasmunster;05/03/2020;yes;yes;20000x;SARS2-CoV/Belgium/Human/BS-030598/2020;OK
+99;multiplex_8-144_pool_3;NB12;RR;;60941773;ZIDU072;M;26;9600;Ronse;06/03/2020;yes;yes;19360x;SARS2-CoV/Belgium/Human/RR-030699/2020;OK
+100;multiplex_8-144_pool_3;NB13;MJP;;65536371;ZIDU088;M;33;4841;Henri-chapelle;06/03/2020;yes;yes;20744x;SARS2-CoV/Belgium/Human/MJP-0306100/2020;OK
+101;multiplex_8-144_pool_3;NB14;JLJ;;65549655;ZIDU089;F;53;1040;Etterbeek;20/03/2020;yes;yes;12060x;SARS2-CoV/Belgium/Human/JLJ-0320101/2020;OK
+102;multiplex_8-144_pool_3;NB15;VD;;65549736;ZIDU090;M;30;7387;Honnelles;18/03/2020;yes;yes;17345x;SARS2-CoV/Belgium/Human/VD-0318102/2020;OK
+103;multiplex_8-144_pool_3;NB16;UM;;65549730;ZIDU091;M;48;7387;Honnelles;18/03/2020;yes;yes;21600x;SARS2-CoV/Belgium/Human/UM-0318103/2020;OK
+104;multiplex_8-144_pool_3;NB17;VL;;65549741;ZIDU092;M;28;7540;Doornik;18/03/2020;yes;yes;20300x;SARS2-CoV/Belgium/Human/VL-0318104/2020;OK
+105;multiplex_8-144_pool_3;NB18;GE;;65549746;ZIDU093;F;37;7334;Villerot;17/03/2020;yes;yes;15900x;SARS2-CoV/Belgium/Human/GE-0317105/2020;OK
+;multiplex_8-144_pool_3;NB19;CA;;65549627;ZIDU094;F;31;7300;Boussu;19/03/2020;NO;n/a;none;n/a;NO
+106;multiplex_8-144_pool_3;NB20;DA;;65549752;ZIDU095;F;56;7040;Quévy;19/03/2020;yes;yes;16800x;SARS2-CoV/Belgium/Human/DA-0319106/2020;OK
+107;multiplex_8-144_pool_3;NB21;VNP;;65549656;ZIDU096;M;51;1170;Watermaal-Bosvoorde;20/03/2020;yes;yes;20700x;SARS2-CoV/Belgium/Human/VNP-0320107/2020;OK
+108;multiplex_8-144_pool_3;NB22;HP;;65549186;ZIDU097;M;86;1070;Anderlecht;19/03/2020;yes;yes;17600x;SARS2-CoV/Belgium/Human/HP-0319108/2020;OK
+109;multiplex_8-144_pool_3;NB23;OT;;65549406;ZIDU098;M;57;4020;Liège;19/03/2020;yes;yes;19350x;SARS2-CoV/Belgium/Human/OT-0319109/2020;OK
+184;multiplex_8-144_pool_3;NB24;KKN;;65395795;ZIDU099;F;40;1160;Oudergem;19/03/2020;yes;yes;17340x;SARS2-CoV/Belgium/Human/KKN-0319184/2020;OK
+110;multiplex_8_144_pool_3B;NB06;JK;;65532360;ZIDU066;M;22;8300;Knokke-Heist;05/03/2020;yes;yes;32325x;SARS2-CoV/Belgium/Human/JK-0305110/2020;OK
+111;multiplex_8_144_pool_3B;NB19;CA;;65549627;ZIDU094;F;31;7300;Boussu;19/03/2020;yes;yes;54150x;SARS2-CoV/Belgium/Human/CA-0319111/2020;OK
+112;multiplex_8-144_pool_4;NB01;SR;;65549567;ZIDU100;F;31;7100;La Louvière;19/03/2020;yes;yes;14440x;SARS2-CoV/Belgium/Human/SR-0319112/2020;OK
+113;multiplex_8-144_pool_4;NB02;SC;;65549391;ZIDU101;F;45;5000;Namur;19/03/2020;yes;yes;14495x;SARS2-CoV/Belgium/Human/SC-0319113/2020;OK
+114;multiplex_8-144_pool_4;NB03;VRJM;;61343411;ZIDU102;M;62;2620;Hemisem;23/03/2020;yes;yes;18350x;SARS2-CoV/Belgium/Human/VRJM-0323114/2020;OK
+115;multiplex_8-144_pool_4;NB04;LPDC;;65551417;ZIDU103;F;32;1190;Vorst;23/03/2020;yes;yes;15300x;SARS2-CoV/Belgium/Human/LPDC-0323115/2020;OK
+116;multiplex_8-144_pool_4;NB05;EBN;;65552384;ZIDU104;M;37;6010;Couillet;23/03/2020;yes;yes;20920x;SARS2-CoV/Belgium/Human/EBN-0323116/2020;OK
+117;multiplex_8-144_pool_4;NB06;DV;;65552421;ZIDU105;F;49;1652;Beersel;24/03/2020;yes;yes;19010x;SARS2-CoV/Belgium/Human/DV-0324117/2020;OK
+118;multiplex_8-144_pool_4;NB07;VHV;;89198998;ZIDU106;F;38;3080;Tervuren;24/03/2020;yes;yes;18390x;SARS2-CoV/Belgium/Human/VHV-0324118/2020;OK
+119;multiplex_8-144_pool_4;NB08;CF;;65552470;ZIDU107;M;61;7060;Zinnik;24/03/2020;yes;yes;20000x;SARS2-CoV/Belgium/Human/CF-0324119/2020;OK
+120;multiplex_8-144_pool_4;NB09;SEM;;62615438;ZIDU108;M;78;3583;Beringen;24/03/2020;yes;yes;22128x;SARS2-CoV/Belgium/Human/SEM-0324120/2020;OK
+121;multiplex_8-144_pool_4;NB10;MSE;;65552571;ZIDU109;M;64;7340;Frameries;24/03/2020;yes;yes;18420x;SARS2-CoV/Belgium/Human/MSE-0324121/2020;OK
+122;multiplex_8-144_pool_4;NB11;RGE;;84007871;ZIDU110;M;48;3300;Tienen;25/03/2020;yes;yes;19500x;SARS2-CoV/Belgium/Human/RGE-0325122/2020;OK
+123;multiplex_8-144_pool_4;NB12;DPG;;65552588;ZIDU111;M;54;7012;Jemappes;25/03/2020;yes;yes;15490x;SARS2-CoV/Belgium/Human/DPG-0325123/2020;OK
+124;multiplex_8-144_pool_4;NB13;FFJ;;65552587;ZIDU112;M;90;7061;Saisinne;24/03/2020;yes;yes;17600x;SARS2-CoV/Belgium/Human/FFJ-0324124/2020;OK
+125;multiplex_8-144_pool_4;NB14;UNJP;;61855359;ZIDU113;M;26;1160;Oudergem;24/03/2020;yes;yes;9920x;SARS2-CoV/Belgium/Human/UNJP-0324125/2020;OK
+126;multiplex_8-144_pool_4;NB15;NJC;;65552612;ZIDU114;M;65;7830;Bassilly;24/03/2020;yes;yes;12330x;SARS2-CoV/Belgium/Human/NJC-0324126/2020;OK
+127;multiplex_8-144_pool_4;NB16;NML;;85438315;ZIDU115;V;76;1800;Vilvoorde;25/03/2020;yes;yes;16780x;SARS2-CoV/Belgium/Human/NML-0325127/2020;OK
+128;multiplex_8-144_pool_4;NB17;EC;;65553111;ZIDU116;F;43;1470;Genappe;25/03/2020;yes;yes;12520x;SARS2-CoV/Belgium/Human/EC-0325128/2020;OK
+129;multiplex_8-144_pool_4;NB18;MC;;65551413;ZIDU117;F;25;1170;Watermaal-Bosvoorde;23/03/2020;yes;yes;18916x;SARS2-CoV/Belgium/Human/MC-0323129/2020;OK
+130;multiplex_8-144_pool_4;NB19;MNL;;65552413;ZIDU118;F;51;1082;Sint-Agatha-Berchem;24/03/2020;yes;yes;17630x;SARS2-CoV/Belgium/Human/MNL-0324130/2020;OK
+131;multiplex_8-144_pool_4;NB20;MSE;;65552577;ZIDU119;M;44;1800;Vilvoorde;24/03/2020;yes;yes;16680x;SARS2-CoV/Belgium/Human/MSE-0324131/2020;OK
+132;multiplex_8-144_pool_4;NB21;GMJ;;65552603;ZIDU120;F;72;7000;Mons;24/03/2020;yes;yes;16680x;SARS2-CoV/Belgium/Human/GMJ-0324132/2020;OK
+133;multiplex_8-144_pool_4;NB22;LV;;65552619;ZIDU121;F;45;7000;Mons;24/03/2020;yes;yes;20700x;SARS2-CoV/Belgium/Human/LV-0324133/2020;OK
+134;multiplex_8-144_pool_4;NB23;MS;;65552596;ZIDU122;F;64;7390;Quaregnon;24/03/2020;yes;yes;17470x;SARS2-CoV/Belgium/Human/MS-0324134/2020;OK
+135;multiplex_8-144_pool_4;NB24;DME;;EA-20-8250;ZIDU123;M;76;3350;Linter;24/03/2020;yes;yes;18346x;SARS2-CoV/Belgium/Human/DME-0324135/2020;OK
+136;multiplex_8-144_pool_5;NB01;VWJM;;87449500;ZIDU124;M;72;3360;Bierbeek;24/03/2020;yes;yes;17630x (average);SARS2-CoV/Belgium/Human/VWJM-0324136/2020;OK
+137;multiplex_8-144_pool_5;NB02;OS;;65552914;ZIDU125;F;27;1150;Sint-Pieter-Woluwe;25/03/2020;yes;yes;11825x (average);SARS2-CoV/Belgium/Human/OS-0325137/2020;OK
+138;multiplex_8-144_pool_5;NB03;RS;;65553040;ZIDU126;F;45;6183;Trazegnies;24/03/2020;yes;yes;8330x (average);SARS2-CoV/Belgium/Human/RS-0324138/2020;OK
+139;multiplex_8-144_pool_5;NB04;GM;;65551511;ZIDU127;F;67;7340;Colfontaine;23/03/2020;yes;yes;17300x (average);SARS2-CoV/Belgium/Human/GM-0323139/2020;OK
+140;multiplex_8-144_pool_5;NB05;DB;;65551470;ZIDU128;F;74;1180;Ukkel;23/03/2020;yes;yes;14600x (average);SARS2-CoV/Belgium/Human/DB-0323140/2020;OK
+141;multiplex_8-144_pool_5;NB06;NA;;65551439;ZIDU129;F;53;1410;Waterloo;23/03/2020;yes;yes;14800x (average);SARS2-CoV/Belgium/Human/NA-0323141/2020;OK
+142;multiplex_8-144_pool_5;NB07;MAC;;87662052;ZIDU130;F;56;3440;Zoutleeuw;24/03/2020;yes;yes;13570x (average);SARS2-CoV/Belgium/Human/MAC-0324142/2020;OK
+143;multiplex_8-144_pool_5;NB08;VT;;78600897;ZIDU131;F;79;3560;Lummen;25/03/2020;yes;yes;15070x (average);SARS2-CoV/Belgium/Human/VT-0325143/2020;OK
+144;multiplex_8-144_pool_5;NB09;PM;;65551258;ZIDU132;F;98;7800;Ath;24/03/2020;yes;yes;11470x (average);SARS2-CoV/Belgium/Human/PM-0324144/2020;OK
+145;multiplex_8-144_pool_5;NB10;GJJ;;64482884;ZIDU133;M;63;3550;Zolder;25/03/2020;yes;yes;14780x (average);SARS2-CoV/Belgium/Human/GJJ-0325145/2020;OK
+146;multiplex_8-144_pool_5;NB11;DVG;;63882891;ZIDU134;M;56;9500;Geraardsbergen;25/03/2020;yes;yes;12100x (average);SARS2-CoV/Belgium/Human/DVG-0325146/2020;OK
+147;multiplex_8-144_pool_5;NB12;PC;;65552592;ZIDU135;M;73;7390;Quaregnon;25/03/2020;yes;yes;13845x (average);SARS2-CoV/Belgium/Human/PC-0325147/2020;OK
+148;multiplex_8-144_pool_5;NB13;LJ;;63128315;ZIDU136;M;26;3800;Sint-Truiden;25/03/2020;yes;yes;15730x (average);SARS2-CoV/Belgium/Human/LJ-0325148/2020;OK
+149;multiplex_8-144_pool_5;NB14;BEG;;65545073;ZIDU137;M;58;7340;Confontaine;24/03/2020;yes;yes;14450x (average);SARS2-CoV/Belgium/Human/BEG-0324149/2020;OK
+150;multiplex_8-144_pool_5;NB15;CK;;65552617;ZIDU138;M;51;7972;Quevaucamps;24/03/2020;yes;yes;13060x (average);SARS2-CoV/Belgium/Human/CK-0324150/2020;OK
+151;multiplex_8-144_pool_5;NB16;HCM;;64989241;ZIDU139;F;60;1420;Braine-l'alleud;24/03/2020;yes;yes;14070x (average);SARS2-CoV/Belgium/Human/HCM-0324151/2020;OK
+152;multiplex_8-144_pool_5;NB17;ZF;;65553064;ZIDU140;F;86;7522;Blandain;25/03/2020;yes;yes;17400x (average);SARS2-CoV/Belgium/Human/ZF-0325152/2020;OK
+153;multiplex_8-144_pool_5;NB18;VPMV;;63263974;ZIDU141;M;17;3040;Huldenberg;25/03/2020;yes;yes;15700x (average);SARS2-CoV/Belgium/Human/VPMV-0325153/2020;OK
+154;multiplex_8-144_pool_5;NB19;BEG;;65255580;ZIDU142;M;44;1480;Tubize;23/03/2020;yes;yes;16045x (average);SARS2-CoV/Belgium/Human/BEG-0323154/2020;OK
+155;multiplex_8-144_pool_5;NB20;BJ;;64499226;ZIDU143;M;72;3582;Koersel;24/03/2020;yes;yes;8540x (average);SARS2-CoV/Belgium/Human/BJ-0324192/2020;OK
+156;multiplex_8-144_pool_5;NB21;DJMG;;62918386;ZIDU144;M;63;7700;Mouscron;25/03/2020;yes;yes;15135x (average);SARS2-CoV/Belgium/Human/DJMG-0325156/2020;OK
+157;multiplex_8-144_pool_5;NB22;DRV;;60551807;ZIDU145;M;29;4520;Wanze;25/03/2020;yes;yes;16480x (average);SARS2-CoV/Belgium/Human/DRV-0325157/2020;OK
+158;multiplex_8-144_pool_5;NB23;DCS;;65553047;ZIDU146;F;43;6061;Montignies-Sur-Sambre;25/03/2020;yes;yes;15360x (average);SARS2-CoV/Belgium/Human/DCS-0325158/2020;OK
+159;multiplex_8-144_pool_5;NB24;FMC;;65552223;ZIDU147;F;55;1380;Lasne;23/03/2020;yes;yes;16240x (average);SARS2-CoV/Belgium/Human/FMC-0323159/2020;OK
+160;multiplex_8-144_pool_6;NB01;BCM;;65552575;ZIDU148;M;80;7330;Saint-Ghislain;24/03/2020;yes;yes;14530x (average);SARS2-CoV/Belgium/Human/BCM-0324160/2020;OK
+161;multiplex_8-144_pool_6;NB02;NIM;;60730121;ZIDU149;F;44;3850;Nieuwerkerken;24/03/2020;yes;yes;11690x (average);SARS2-CoV/Belgium/Human/NIM-0324161/2020;OK
+162;multiplex_8-144_pool_6;NB03;VLG;;70014550;ZIDU150;M;62;3020;Winksele;25/03/2020;yes;yes;13235x (average);SARS2-CoV/Belgium/Human/VLG-0325162/2020;OK
+163;multiplex_8-144_pool_6;NB04;DCB;;65553044;ZIDU151;M;64;6141;Forchies-la-marche;24/03/2020;yes;yes;13600x (average);SARS2-CoV/Belgium/Human/DCB-0324163/2020;OK
+164;multiplex_8-144_pool_6;NB05;ML;;79197620;ZIDU152;F;64;3440;Zoutleeuw;24/03/2020;yes;yes;14490x (average);SARS2-CoV/Belgium/Human/ML-0324164/2020;OK
+165;multiplex_8-144_pool_6;NB06;JJC;;87230108;ZIDU153;M;91;3390;Tielt-Winge;25/03/2020;yes;yes;13550x (average);SARS2-CoV/Belgium/Human/JJC-0325165/2020;OK
+166;multiplex_8-144_pool_6;NB07;PJM;;73253957;ZIDU154;M;53;7060;Soignies;25/03/2020;yes;yes;12990x (average);SARS2-CoV/Belgium/Human/PJM-0325166/2020;OK
+167;multiplex_8-144_pool_6;NB08;CCM;;65552593;ZIDU155;F;57;7000;Mons;24/03/2020;yes;yes;15000x (average);SARS2-CoV/Belgium/Human/CCM-0324167/2020;OK
+168;multiplex_8-144_pool_6;NB09;RC;;65553043;ZIDU156;F;34;6110;Montigny-le-Tilleul;24/03/2020;yes;yes;9990x (average);SARS2-CoV/Belgium/Human/RC-0324168/2020;OK
+169;multiplex_8-144_pool_6;NB10;NMA;;65552203;ZIDU157;M;77;1380;Lasne;24/03/2020;yes;yes;13430x (average);SARS2-CoV/Belgium/Human/NMA-0324169/2020;OK
+170;multiplex_8-144_pool_6;NB11;STM;;65552590;ZIDU158;F;60;7300;Boussu;24/03/2020;yes;yes;14300x (average);SARS2-CoV/Belgium/Human/STM-0324170/2020;OK
+171;multiplex_8-144_pool_6;NB12;VM;;88492749;ZIDU159;M;84;3370;Boutersem;25/03/2020;yes;yes;9770x (average);SARS2-CoV/Belgium/Human/VM-0325171/2020;OK
+172;multiplex_8-144_pool_6;NB13;NKMA;;65553027;ZIDU160;F;35;7950;Ladeuze;24/03/2020;yes;yes;14780x (average);SARS2-CoV/Belgium/Human/NKMA-0324172/2020;OK
+173;multiplex_8-144_pool_6;NB14;QL;;65552601;ZIDU161;M;52;7033;Cuesmes;24/03/2020;yes;yes;14350x (average);SARS2-CoV/Belgium/Human/QL-0324173/2020;OK
+174;multiplex_8-144_pool_6;NB15;AGR;;73907818;ZIDU162;M;64;59880;Saint-Saulve;24/03/2020;yes;yes;14230x (average);SARS2-CoV/Belgium/Human/AGR-0324174/2020;OK
+175;multiplex_8-144_pool_6;NB16;CJM;;65552695;ZIDU163;M;46;5988;Helden;23/03/2020;yes;yes;13750x (average);SARS2-CoV/Belgium/Human/CJM-0323175/2020;OK
+176;multiplex_8-144_pool_6;NB17;DNS;;65553055;ZIDU164;M;41;6140;Fontaine-l'Evêque;24/03/2020;yes;yes;17050x (average);SARS2-CoV/Belgium/Human/DNS-0324176/2020;OK
+177;multiplex_8-144_pool_6;NB18;RHA;;65552597;ZIDU165;F;71;7333;Tertre;24/03/2020;yes;yes;11590x (average);SARS2-CoV/Belgium/Human/RHA-0324177/2020;OK
+178;multiplex_8-144_pool_6;NB19;CJE;;65552610;ZIDU166;M;84;7340;Colfontaine;25/03/2020;yes;yes;17610x (average);SARS2-CoV/Belgium/Human/CJE-0325178/2020;OK
+179;multiplex_8-144_pool_6;NB20;GLA;;65553035;ZIDU167;F;27;6040;Jumet;24/03/2020;yes;yes;15740x (average);SARS2-CoV/Belgium/Human/GLA-0324179/2020;OK
+180;multiplex_8-144_pool_6;NB21;DMM;;73727653;ZIDU168;M;38;1850;Grimbergen;25/03/2020;yes;yes;15535x (average);SARS2-CoV/Belgium/Human/DMM-0325180/2020;OK
+181;multiplex_8-144_pool_6;NB22;BJ;;75424556;ZIDU169;M;85;2230;Herselt;25/03/2020;yes;yes;12810x (average);SARS2-CoV/Belgium/Human/BJ-0325181/2020;OK
+182;multiplex_8-144_pool_6;NB23;PC;;65552592;ZIDU170;M;73;7390;Quaregnon;25/03/2020;yes;yes;17400x (average);SARS2-CoV/Belgium/Human/PC-0325182/2020;OK
+183;multiplex_8-144_pool_6;NB24;BS;;65552892;ZIDU171;F;52;7540;Kain;25/03/2020;yes;yes;15522x (average);SARS2-CoV/Belgium/Human/BS-0325183/2020;OK
+186;multiplex_9_pool_1;NBD01;REGA;;82964537;ZIDU172;F;53;3293;Kaggevinne;28/03/2020;yes;n/a;2804x (average);SARS2-CoV/Belgium/Human/rega-0328186/2020;OK
+187;multiplex_9_pool_1;NBD02;REGA;;76596311;ZIDU173;M;82;1933;Sterrebeek;28/03/2020;yes;n/a;3175x (average);SARS2-CoV/Belgium/Human/rega-0328187/2020;OK
+188;multiplex_9_pool_1;NBD03;REGA;;61054866;ZIDU174;F;50;3450;Geetbets;28/03/2020;yes;n/a;3221x (average);SARS2-CoV/Belgium/Human/rega-0328188/2020;OK
+189;multiplex_9_pool_1;NBD04;REGA;;65555895;ZIDU175;F;48;7080;Frameries;28/03/2020;yes;n/a;3125x (average);SARS2-CoV/Belgium/Human/rega-0328189/2020;OK
+190;multiplex_9_pool_1;NBD05;REGA;;65555939;ZIDU176;M;59;7340;Colfontaine;28/03/2020;yes;n/a;2943x (average);SARS2-CoV/Belgium/Human/rega-0328190/2020;OK
+191;multiplex_9_pool_1;NBD06;REGA;;65555899;ZIDU177;M;39;7370;Dour;28/03/2020;yes;n/a;3416x (average);SARS2-CoV/Belgium/Human/rega-0328191/2020;OK
+192;multiplex_9_pool_1;NBD07;REGA;;65555896;ZIDU178;F;63;7100;La louvière;28/03/2020;yes;n/a;3046x (average);SARS2-CoV/Belgium/Human/rega-0328192/2020;OK
+193;multiplex_9_pool_1;NBD08;REGA;;65542223;ZIDU179;F;70;7000;Mon;28/03/2020;yes;n/a;3768x (average);SARS2-CoV/Belgium/Human/rega-0328193/2020;OK
+194;multiplex_9_pool_1;NBD09;REGA;;65555916;ZIDU180;M;49;7180;Seneffe;28/03/2020;yes;n/a;2257x (average);SARS2-CoV/Belgium/Human/rega-0328194/2020;OK
+195;multiplex_9_pool_1;NBD10;REGA;;65555921;ZIDU181;M;71;7370;Dour;28/03/2020;yes;n/a;3421x (average);SARS2-CoV/Belgium/Human/rega-0328195/2020;OK
+196;multiplex_9_pool_1;NBD11;REGA;;65555903;ZIDU182;M;33;7021;Havre;28/03/2020;yes;n/a;2517x (average);SARS2-CoV/Belgium/Human/rega-0328196/2020;OK
+197;multiplex_9_pool_1;NBD12;REGA;;65555901;ZIDU183;F;87;7331;Baudour;28/03/2020;yes;n/a;2626x (average);SARS2-CoV/Belgium/Human/rega-0328197/2020;OK
+198;multiplex_9_pool_1;NBD13;REGA;;65555929;ZIDU184;M;31;1420;Braine-l'alleud;28/03/2020;yes;n/a;1994x (average);SARS2-CoV/Belgium/Human/rega-0328198/2020;OK
+;multiplex_9_pool_1;NBD14;REGA;;65555920;ZIDU185;F;57;7300;Boussu;28/03/2020;NO;;412x (average);n/a;
+199;multiplex_9_pool_1;NBD15;REGA;;65555918;ZIDU186;M;90;7000;Mons;28/03/2020;yes;n/a;2749x (average);SARS2-CoV/Belgium/Human/rega-0328199/2020;OK
+200;multiplex_9_pool_1;NBD16;REGA;;82865429;ZIDU187;F;78;1830;Machelen;28/03/2020;yes;n/a;2475x (average);SARS2-CoV/Belgium/Human/rega-0328200/2020;OK
+201;multiplex_9_pool_1;NBD17;REGA;;65104302;ZIDU188;M;31;3550;Zolder;28/03/2020;yes;n/a;2882x (average);SARS2-CoV/Belgium/Human/rega-0328201/2020;OK
+202;multiplex_9_pool_1;NBD18;REGA;;65554853;ZIDU189;M;35;7340;Colfontaine;28/03/2020;yes;n/a;2441x (average);SARS2-CoV/Belgium/Human/rega-0328202/2020;OK
+203;multiplex_9_pool_1;NBD19;REGA;;60430236;ZIDU190;M;72;3020;Veltem-beisem;28/03/2020;yes;n/a;3359x (average);SARS2-CoV/Belgium/Human/rega-0328203/2020;OK
+204;multiplex_9_pool_1;NBD20;REGA;;65555947;ZIDU191;F;67;1150;Sint-pieters-woluwe;28/03/2020;yes;n/a;2549x (average);SARS2-CoV/Belgium/Human/rega-0328204/2020;OK
+205;multiplex_9_pool_1;NBD21;REGA;;65555945;ZIDU192;F;84;1020;Laken;28/03/2020;yes;n/a;3192x (average);SARS2-CoV/Belgium/Human/rega-0328205/2020;OK
+206;multiplex_9_pool_1;NBD22;REGA;;65549604;ZIDU193;F;40;7010;Shape;20/03/2020;yes;n/a;1780x (average);SARS2-CoV/Belgium/Human/rega-0328206/2020;OK
+207;multiplex_9_pool_1;NBD23;REGA;;65555943;ZIDU194;F;45;1160;Oudergem;28/03/2020;yes;n/a;1597x (average);SARS2-CoV/Belgium/Human/rega-0328207/2020;OK
+208;multiplex_9_pool_1;NBD24;REGA;;65555941;ZIDU195;F;67;1040;Etterbeek;28/03/2020;yes;n/a;1233x (average);SARS2-CoV/Belgium/Human/rega-0328208/2020;OK
+209;multiplex_9_pool_2;NBD01;REGA;;65547933;ZIDU196;M;38;7012;Flénu;28/03/2020;yes;n/a;3666x (average);SARS2-CoV/Belgium/Human/rega-0328209/2020;OK
+210;multiplex_9_pool_2;NBD02;REGA;;60452915;ZIDU197;M;74;1090;Jette;27/03/2020;yes;n/a;3262x (average);SARS2-CoV/Belgium/Human/rega-0327210/2020;OK
+211;multiplex_9_pool_2;NBD03;REGA;;60619848;ZIDU198;F;44;3294;Molenstede;27/03/2020;yes;n/a;3292x (average);SARS2-CoV/Belgium/Human/rega-0327211/2020;OK
+212;multiplex_9_pool_2;NBD04;REGA;;60946468;ZIDU199;M;72;7060;Soignies;27/03/2020;yes;n/a;2597x (average);SARS2-CoV/Belgium/Human/rega-0327212/2020;OK
+213;multiplex_9_pool_2;NBD05;REGA;;65547209;ZIDU200;F;88;6238;Luttre;27/03/2020;yes;n/a;3197x (average);SARS2-CoV/Belgium/Human/rega-0327213/2020;OK
+214;multiplex_9_pool_2;NBD06;REGA;;65555405;ZIDU201;M;84;7300;Boussu;27/03/2020;yes;n/a;3207x (average);SARS2-CoV/Belgium/Human/rega-0327214/2020;OK
+;multiplex_9_pool_2;NBD07;REGA;;65553054;ZIDU202;M;34;6001;;27/03/2020;NO;;7x (average);n/a;
+215;multiplex_9_pool_2;NBD08;REGA;;64719065;ZIDU203;M;35;2610;Wilrijk;27/03/2020;yes;n/a;2877x (average);SARS2-CoV/Belgium/Human/rega-0327215/2020;OK
+216;multiplex_9_pool_2;NBD09;REGA;;65555471;ZIDU204;M;80;7041;Givry;27/03/2020;yes;n/a;3511x (average);SARS2-CoV/Belgium/Human/rega-0327216/2020;OK
+217;multiplex_9_pool_2;NBD10;REGA;;83910232;ZIDU205;F;81;3582;Koersel;29/03/2020;yes;n/a;3721x (average);SARS2-CoV/Belgium/Human/rega-0329217/2020;OK
+218;multiplex_9_pool_2;NBD11;REGA;;65556351;ZIDU206;M;67;7941;Mepel;29/03/2020;yes;n/a;3495x (average);SARS2-CoV/Belgium/Human/rega-0329218/2020;OK
+219;multiplex_9_pool_2;NBD12;REGA;;65556370;ZIDU207;M;56;7000;Mons;29/03/2020;yes;n/a;3168x (average);SARS2-CoV/Belgium/Human/rega-0329219/2020;OK
+220;multiplex_9_pool_2;NBD13;REGA;;65556366;ZIDU208;F;88;7041;Givry;29/03/2020;yes;n/a;3725x (average);SARS2-CoV/Belgium/Human/rega-0329220/2020;OK
+221;multiplex_9_pool_2;NBD14;REGA;;65556053;ZIDU209;F;55;3040;Huldenberg;29/03/2020;yes;n/a;3396x (average);SARS2-CoV/Belgium/Human/rega-0329221/2020;OK
+222;multiplex_9_pool_2;NBD15;REGA;;65556164;ZIDU210;F;45;7070;Le roeulx ;29/03/2020;yes;n/a;3454x (average);SARS2-CoV/Belgium/Human/rega-0329222/2020;OK
+223;multiplex_9_pool_2;NBD16;REGA;;65556054;ZIDU211;M;35;7080;Frameries;29/03/2020;yes;n/a;1722x (average);SARS2-CoV/Belgium/Human/rega-0329223/2020;OK
+224;multiplex_9_pool_2;NBD17;REGA;;65556165;ZIDU212;F;43;9149;Temse;29/03/2020;yes;n/a;2512x (average);SARS2-CoV/Belgium/Human/rega-0329224/2020;OK
+225;multiplex_9_pool_2;NBD18;REGA;;65556377;ZIDU213;M;42;7332;Neufmaison;29/03/2020;yes;n/a;3578x (average);SARS2-CoV/Belgium/Human/rega-0329225/2020;OK
+226;multiplex_9_pool_2;NBD19;REGA;;64980229;ZIDU214;F;51;7080;Frameries;29/03/2020;yes;n/a;2897x (average);SARS2-CoV/Belgium/Human/rega-0329226/2020;OK
+227;multiplex_9_pool_2;NBD20;REGA;;65556374;ZIDU215;F;32;7050;Jurbise;29/03/2020;yes;n/a;3712x (average);SARS2-CoV/Belgium/Human/rega-0329227/2020;OK
+228;multiplex_9_pool_2;NBD21;REGA;;65556386;ZIDU216;F;28;9880;Lotenhulle;29/03/2020;yes;n/a;3054x (average);SARS2-CoV/Belgium/Human/rega-0329228/2020;OK
+229;multiplex_9_pool_2;NBD22;REGA;;60522267;ZIDU217;F;43;7332;Saint-Ghislain;29/03/2020;yes;n/a;3378x (average);SARS2-CoV/Belgium/Human/rega-0329229/2020;OK
+230;multiplex_9_pool_2;NBD23;REGA;;65556385;ZIDU218;M;61;7850;Edingen;29/03/2020;yes;n/a;3335x (average);SARS2-CoV/Belgium/Human/rega-0329230/2020;OK
+231;multiplex_9_pool_2;NBD24;REGA;;65554234;ZIDU219;F;35;7350;Thulin;29/03/2020;yes;n/a;2991x (average);SARS2-CoV/Belgium/Human/rega-0329231/2020;OK
+232;multiplex_9_pool_3;NBD01;REGA;;86868759;ZIDU220;M;88;3012;Wilsele;29/03/2020;yes;n/a;1228x (average);SARS2-CoV/Belgium/Human/rega-0329232/2020;OK
+233;multiplex_9_pool_3;NBD02;REGA;;77361517;ZIDU221;F;25;3012;Wilsele;29/03/2020;yes;n/a;2060x (average);SARS2-CoV/Belgium/Human/rega-0329233/2020;OK
+234;multiplex_9_pool_3;NBD03;REGA;;62161039;ZIDU222;F;23;3583;Paal;29/03/2020;yes;n/a;1968x (average);SARS2-CoV/Belgium/Human/rega-0329234/2020;OK
+235;multiplex_9_pool_3;NBD04;REGA;;65555804;ZIDU223;F;26;7971;Wadelincourt;29/03/2020;yes;n/a;2426x (average);SARS2-CoV/Belgium/Human/rega-0329235/2020;OK
+236;multiplex_9_pool_3;NBD05;REGA;;65556723;ZIDU224;M;46;9990;Madegem;29/03/2020;yes;n/a;2184x (average);SARS2-CoV/Belgium/Human/rega-0329236/2020;OK
+237;multiplex_9_pool_3;NBD06;REGA;;65555913;ZIDU225;F;43;7040;Quévy;29/03/2020;yes;n/a;2663x (average);SARS2-CoV/Belgium/Human/rega-0329237/2020;OK
+238;multiplex_9_pool_3;NBD07;REGA;;65556233;ZIDU226;F;68;1050;Elsene;29/03/2020;yes;n/a;1187x (average);SARS2-CoV/Belgium/Human/rega-0329238/2020;OK
+239;multiplex_9_pool_3;NBD08;REGA;;88568522;ZIDU227;F;49;3370;Boutersem;29/03/2020;yes;n/a;1222x (average);SARS2-CoV/Belgium/Human/rega-0329239/2020;OK
+240;multiplex_9_pool_3;NBD09;REGA;;65556736;ZIDU228;F;51;7011;Ghlin;29/03/2020;yes;n/a;1293x (average);SARS2-CoV/Belgium/Human/rega-0329240/2020;OK
+241;multiplex_9_pool_3;NBD10;REGA;;86356532;ZIDU229;F;28;3550;Zolder;29/03/2020;yes;n/a;1396x (average);SARS2-CoV/Belgium/Human/rega-0329241/2020;OK
+242;multiplex_9_pool_3;NBD11;REGA;;65556758;ZIDU230;M;61;5031;Grand-Leez;29/03/2020;yes;n/a;2170x (average);SARS2-CoV/Belgium/Human/rega-0329242/2020;OK
+243;multiplex_9_pool_3;NBD12;REGA;;65556750;ZIDU231;M;88;7700;Mouscron;29/03/2020;yes;n/a;533x (average);SARS2-CoV/Belgium/Human/rega-0329243/2020;OK
+244;multiplex_9_pool_3;NBD13;REGA;;65556766;ZIDU232;F;83;5100;Namur;29/03/2020;yes;n/a;1730x (average);SARS2-CoV/Belgium/Human/rega-0329244/2020;OK
+245;multiplex_9_pool_3;NBD14;REGA;;65556790;ZIDU233;M;24;7140;Morlanwelz;29/03/2020;yes;n/a;1413x (average);SARS2-CoV/Belgium/Human/rega-0329245/2020;OK
+246;multiplex_9_pool_3;NBD15;REGA;;65556765;ZIDU234;M;11;1480;Tubize;29/03/2020;yes;n/a;1486x (average);SARS2-CoV/Belgium/Human/rega-0329246/2020;OK
+247;multiplex_9_pool_3;NBD16;REGA;;86662830;ZIDU235;F;47;7850;Edingen;30/03/2020;yes;n/a;1325x (average);SARS2-CoV/Belgium/Human/rega-0330247/2020;OK
+248;multiplex_9_pool_3;NBD17;REGA;;64072179;ZIDU236;F;49;7602;Bury;30/03/2020;yes;n/a;1853x (average);SARS2-CoV/Belgium/Human/rega-0330248/2020;OK
+249;multiplex_9_pool_3;NBD18;REGA;;76740828;ZIDU237;M;78;3300;Tienen;30/03/2020;yes;n/a;1391x (average);SARS2-CoV/Belgium/Human/rega-0330249/2020;OK
+250;multiplex_9_pool_3;NBD19;REGA;;65556897;ZIDU238;M;42;7540;Kain;30/03/2020;yes;n/a;1323x (average);SARS2-CoV/Belgium/Human/rega-0330250/2020;OK
+251;multiplex_9_pool_3;NBD20;REGA;;65557129;ZIDU239;F;29;2390;Malle;30/03/2020;yes;n/a;1704x (average);SARS2-CoV/Belgium/Human/rega-0330251/2020;OK
+252;multiplex_9_pool_3;NBD21;REGA;;74346032;ZIDU240;F;56;3220;Holsbeek;30/03/2020;yes;n/a;738x (average);SARS2-CoV/Belgium/Human/rega-0330252/2020;OK
+253;multiplex_9_pool_3;NBD22;REGA;;71424824;ZIDU241;F;45;1640;Sint-Genesius-Rode;30/03/2020;yes;n/a;687x (average);SARS2-CoV/Belgium/Human/rega-0330253/2020;OK
+254;multiplex_9_pool_3;NBD23;REGA;;87633855;ZIDU242;M;58;3200;Aarschot;30/03/2020;yes;n/a;1935x (average);SARS2-CoV/Belgium/Human/rega-0330254/2020;OK
+255;multiplex_9_pool_3;NBD24;REGA;;60839923;ZIDU243;F;26;3500;Hasselt;30/03/2020;yes;n/a;1658x (average);SARS2-CoV/Belgium/Human/rega-0330255/2020;OK
+;multiplex_10;NBD17;n/a;;Isolate_passage_#1 ;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;NO
+;multiplex_10;NBD18;n/a;;Isolate_passage_#2 ;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;NO
+;multiplex_10;NBD19;n/a;;Isolate_passage_#3 ;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;NO
+;multiplex_10;NBD20;n/a;;Isolate_passage_#4;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;NO
+;multiplex_10;NBD21;n/a;;Isolate_passage_#5 ;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;NO
+;multiplex_10;NBD22;n/a;;Isolate_passage_#6;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;NO
+256;multiplex_10;NBD23;REGA;;77316867;ZIDU244;F;25;3010;Wilsele;30/03/2020;yes;n/a;3484x  (average);SARS2-CoV/Belgium/Human/rega-0330256/2020;OK
+257;multiplex_10;NBD24;REGA;;88708839;ZIDU245;F;40;3980;Tessenderlo;30/03/2020;yes;n/a;2353x (average);SARS2-CoV/Belgium/Human/rega-0330257/2020;OK
+258;multiplex_11;NBD13;REGA;;88204995;ZIDU246;F;81;3080;Tervuren;20/03/2020;yes;n/a;3263x (average);SARS2-CoV/Belgium/Human/rega-0320258/2020;OK
+259;multiplex_11;NBD14;REGA;;82247008;ZIDU247;M;62;3270;Scherpenheuvel-Zichem;19/03/2020;yes;n/a;2608x (average);SARS2-CoV/Belgium/Human/rega-0319259/2020;OK
+260;multiplex_11;NBD15;REGA;;80054935;ZIDU248;F;73;3090;Overijse;16/03/2020;yes;n/a;1508x (average);SARS2-CoV/Belgium/Human/rega-0316260/2020;OK
+261;multiplex_11;NBD16;REGA;;76451350;ZIDU249;F;78;3150;Wespelaar;26/03/2020;yes;n/a;1792x (average);SARS2-CoV/Belgium/Human/rega-0326261/2020;OK
+262;multiplex_11;NBD19;REGA;;75994335;ZIDU250;F;69;3210;Lubbeek;20/03/2020;yes;n/a;2372x (average);SARS2-CoV/Belgium/Human/rega-0320262/2020;OK
+263;multiplex_11;NBD20;REGA;;75857151;ZIDU251;F;78;2230;Ramsel;31/03/2020;yes;n/a;1746x (average);SARS2-CoV/Belgium/Human/rega-0331263/2020;OK
+264;multiplex_11;NBD21;REGA;;70352968;ZIDU252;F;91;3000;Leuven;31/03/2020;yes;n/a;2199x (average);SARS2-CoV/Belgium/Human/rega-0331264/2020;OK
+265;multiplex_11;NBD22;REGA;;60555193;ZIDU253;M;59;3800;Sint-Truiden;19/03/2020;yes;n/a;496x (average);SARS2-CoV/Belgium/Human/rega-0319265/2020;OK
+266;multiplex_12;NBD01;REGA;;test-148;ZIDU254;n/a;n/a;n/a;n/a;30/03/2020;yes;n/a;2574x (average);n/a;NO
+267;multiplex_12;NBD02;REGA;;test-154;ZIDU255;n/a;n/a;n/a;n/a;30/03/2020;yes;n/a;2762x (average);n/a;NO
+268;multiplex_12;NBD03;REGA;;test-160;ZIDU256;n/a;n/a;n/a;n/a;30/03/2020;yes;n/a;1973x (average);n/a;NO
+269;multiplex_12;NBD04;REGA;;test-163;ZIDU257;n/a;n/a;n/a;n/a;30/03/2020;yes;n/a;2329x (average);n/a;NO
+270;multiplex_12;NBD05;REGA;;test-167;ZIDU258;n/a;n/a;n/a;n/a;30/03/2020;yes;n/a;2098x (average);n/a;NO
+271;multiplex_12;NBD06;BT;;80748551;ZIDU259;M;21;3530;Houthalen-Helchteren;07/04/2020;yes;n/a;2593x (average);SARS2-CoV/Belgium/Human/BT-0407271/2020;OK
+272;multiplex_12;NBD07;GSS;;75979278;ZIDU260;F;40;3350;Linter;07/04/2020;yes;n/a;2893x (average);SARS2-CoV/Belgium/Human/GSS-0407272/2020;OK
+273;multiplex_12;NBD08;MA;;65566311;ZIDU261;F;36;1180;Ukkel;06/04/2020;yes;n/a;3292x (average);SARS2-CoV/Belgium/Human/MA-0406273/2020;OK
+274;multiplex_12;NBD09;MI;;72238710;ZIDU262;F;47;3052;Blanden;07/04/2020;yes;n/a;2058x (average);SARS2-CoV/Belgium/Human/MI-0407274/2020;OK
+275;multiplex_12;NBD10;WLM;;65432680;ZIDU263;M;22;4280;Hannut;06/04/2020;yes;n/a;3141x (average);SARS2-CoV/Belgium/Human/WLM-0406275/2020;OK
+276;multiplex_12;NBD11;CK;;65566197;ZIDU264;F;39;7940;Brugelette;04/04/2020;yes;n/a;3572x (average);SARS2-CoV/Belgium/Human/CK-0404276/2020;OK
+277;multiplex_12;NBD12;TVMT;;65566189;ZIDU265;F;43;5590;Ciney;04/04/2020;yes;n/a;2392x (average);SARS2-CoV/Belgium/Human/TVMT-0404277/2020;OK
+278;multiplex_12;NBD13;LC;;65566178;ZIDU266;F;42;7500;Doornik;06/04/2020;yes;n/a;2794x (average);SARS2-CoV/Belgium/Human/LC-0406278/2020;OK
+279;multiplex_12;NBD14;VSL;;60269225;ZIDU267;F;29;7880;Vloesberg;06/04/2020;yes;n/a;1380x (average);SARS2-CoV/Belgium/Human/VSL-0407279/2020;OK
+280;multiplex_12;NBD15;BD;;64239348;ZIDU268;F;31;7370;Dour;07/04/2020;yes;n/a;1436x (average);SARS2-CoV/Belgium/Human/BD-0407280/2020;OK
+281;multiplex_12;NBD16;REGA;;60153368;ZIDU269;F;20;3550;Zolder;8/04/2020;yes;n/a;2659x (average);SARS2-CoV/Belgium/Human/rega-0408281/2020;OK
+282;multiplex_12;NBD17;REGA;;65567332;ZIDU270;M;20;1430;Rebecq;7/04/2020;yes;n/a;3051x (average);SARS2-CoV/Belgium/Human/rega-0407282/2020;OK
+283;multiplex_12;NBD18;REGA;;65567201;ZIDU271;M;50;7050;Jurbise;7/04/2020;yes;n/a;2537x (average);SARS2-CoV/Belgium/Human/rega-0407283/2020;OK
+284;multiplex_12;NBD19;REGA;;78102746;ZIDU272;F;53;3971;Heppen;8/04/2020;yes;n/a;3005x (average);SARS2-CoV/Belgium/Human/rega-0408284/2020;OK
+285;multiplex_12;NBD20;REGA;;65566466;ZIDU273;F;47;7060;Soignies;6/04/2020;yes;n/a;2926x (average);SARS2-CoV/Belgium/Human/rega-0406285/2020;OK
+286;multiplex_12;NBD21;REGA;;71384895;ZIDU274;F;49;3070;Kortenberg;8/04/2020;yes;n/a;2430x (average);SARS2-CoV/Belgium/Human/rega-0408286/2020;OK
+287;multiplex_12;NBD22;REGA;;65567022;ZIDU275;F;27;7911;Buissenal ;7/04/2020;yes;n/a;3315x (average);SARS2-CoV/Belgium/Human/rega-0407287/2020;OK
+288;multiplex_12;NBD23;REGA;;65567064;ZIDU276;F;28;6031;Monceau-sur-sambre;7/04/2020;yes;n/a;3082x (average);SARS2-CoV/Belgium/Human/rega-0405288/2020;OK
+289;multiplex_12;NBD24;REGA;;65564856;ZIDU277;F;48;7850;Edingen;5/04/2020;yes;n/a;2444x (average);SARS2-CoV/Belgium/Human/rega-0405289/2020;OK
+290;multiplex_13;NBD01;REGA;;65567129;ZIDU278;F;63;7340;Colfontaine;3/04/2020;yes;n/a;3717x (average);SARS2-CoV/Belgium/Human/rega-0403290/2020;OK
+291;multiplex_13;NBD02;VJ;;64509496;ZIDU279;M;33;3530;Houthalen-Helchteren;9/04/2020;yes;n/a;3760x (average);SARS2-CoV/Belgium/Human/VJ-0409291/2020;OK
+292;multiplex_13;NBD03;RD;;65567826;ZIDU280;F;41;7620;Brunehaut;8/04/2020;yes;n/a;3400x (average);SARS2-CoV/Belgium/Human/RD-0408292/2020;OK
+293;multiplex_13;NBD04;HC;;65565895;ZIDU281;F;53;7080;Frameries;8/04/2020;yes;n/a;3679x (average);SARS2-CoV/Belgium/Human/HC-0408293/2020;OK
+294;multiplex_13;NBD05;LEV;;64498805;ZIDU282;F;30;3550;Zolder;9/04/2020;yes;n/a;3521x (average);SARS2-CoV/Belgium/Human/LEV-0409294/2020;OK
+295;multiplex_13;NBD06;LKJ;;60367684;ZIDU283;F;56;3560;Lummen;9/04/2020;yes;n/a;3528x (average);SARS2-CoV/Belgium/Human/LKJ-0409295/2020;OK
+296;multiplex_13;NBD07;SA;;65568267;ZIDU284;F;29;1428;Lillois-witterzée;9/04/2020;yes;n/a;3714x (average);SARS2-CoV/Belgium/Human/SA-0409296/2020;OK
+297;multiplex_13;NBD13;REGA;;EA-20-19649;ZIDU285;M;28;4720;La Calamine;23/04/2020;yes;n/a;3723x (average);SARS2-CoV/Belgium/Human/rega-0423297/2020;OK
+298;multiplex_13;NBD14;REGA;;EA-20-19650;ZIDU286;M;30;4700;Eupen;23/04/2020;yes;n/a;3459x (average);SARS2-CoV/Belgium/Human/rega-0423298/2020;OK
+299;multiplex_13;NBD15;REGA;;EA-20-19645;ZIDU287;F;46;4760;Bullingen;23/04/2020;yes;n/a;3523x (average);SARS2-CoV/Belgium/Human/rega-0423299/2020;OK
+300;multiplex_13;NBD16;REGA;;EA-20-19651;ZIDU288;F;26;4720;La Calamine;23/04/2020;yes;n/a;3558x (average);SARS2-CoV/Belgium/Human/rega-0423300/2020;OK
+301;multiplex_13;NBD17;REGA;;EA-20-19647;ZIDU289;M;51;4720;La Calamine;23/04/2020;yes;n/a;3604x (average);SARS2-CoV/Belgium/Human/rega-0423301/2020;OK
+302;multiplex_13;NBD18;REGA;;EA-20-19646;ZIDU290;M;47;4700;Eupen;23/04/2020;yes;n/a;3545x (average);SARS2-CoV/Belgium/Human/rega-0423302/2020;OK
+303;multiplex_13;NBD19;REGA;;EA-20-19648;ZIDU291;M;48;4837;Membach;23/04/2020;yes;n/a;3615x (average);SARS2-CoV/Belgium/Human/rega-0423303/2020;OK
+;multiplex_14_pool_1;NBD01;REGA;;DJ_isolate_P7;GHB_P7;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;NO
+;multiplex_14_pool_1;NBD02;REGA;;DJ_isolate_P2D;GHB_P2D;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;n/a;NO
+304;multiplex_14_pool_1;NBD03;RM;;86659505;ZIDU292;M;61;2460;Kasterlee;30/03/2020;yes;n/a;3237x (average);SARS2-CoV/Belgium/Human/RM-0330304/2020;OK
+305;multiplex_14_pool_1;NBD04;VDLM;;60953612;ZIDU293;F;65;2250;Olen;30/03/2020;yes;n/a;3405x (average);SARS2-CoV/Belgium/Human/VDLM-0330305/2020;OK
+306;multiplex_14_pool_1;NBD05;DWW;;86235397;ZIDU294;M;73;2260;Oevel;30/03/2020;yes;n/a;2517x (average);SARS2-CoV/Belgium/Human/DWW-0330306/2020;OK
+307;multiplex_14_pool_1;NBD06;DJS;;82622648;ZIDU295;M;86;2490;Balen;30/03/2020;yes;n/a;3041x (average);SARS2-CoV/Belgium/Human/DJS-0330307/2020;OK
+308;multiplex_14_pool_1;NBD07;VRS;;62086350;ZIDU296;M;49;2310;Rijkevorsel;20/03/2020;yes;n/a;3388x (average);SARS2-CoV/Belgium/Human/VRS-0320308/2020;OK
+309;multiplex_14_pool_1;NBD08;GQL;;65557299;ZIDU297;M;38;5590;Ciney;28/03/2020;yes;n/a;3394x (average);SARS2-CoV/Belgium/Human/GQL-0328309/2020;OK
+310;multiplex_14_pool_1;NBD09;LJ;;65556065;ZIDU298;F;85;7110;La Louvière;28/03/2020;yes;n/a;3584x (average);SARS2-CoV/Belgium/Human/LJ-0328310/2020;OK
+311;multiplex_14_pool_1;NBD10;FA;;65556067;ZIDU299;F;59;7300;Boussu;28/03/2020;yes;n/a;3408x (average);SARS2-CoV/Belgium/Human/FA-0328311/2020;OK
+312;multiplex_14_pool_1;NBD11;CFM;;62513993;ZIDU300;M;60;7120;Haulchin;28/03/2020;yes;n/a;3170x (average);SARS2-CoV/Belgium/Human/CFM-0328312/2020;OK
+313;multiplex_14_pool_1;NBD12;GC;;65556066;ZIDU301;F;51;7134;Binche;28/03/2020;yes;n/a;3338x (average);SARS2-CoV/Belgium/Human/GC-0328313/2020;OK
+314;multiplex_14_pool_1;NBD13;SG;;65556064;ZIDU302;M;68;7061;Casteau;28/03/2020;yes;n/a;3374x (average);SARS2-CoV/Belgium/Human/SG-0328314/2020;OK
+315;multiplex_14_pool_1;NBD14;RR;;65555114;ZIDU303;M;60;3090;Overijse;26/03/2020;yes;n/a;3476x (average);SARS2-CoV/Belgium/Human/RR-0326315/2020;OK
+316;multiplex_14_pool_1;NBD15;PF;;65555109;ZIDU304;F;53;1332;Genval;26/03/2020;yes;n/a;3177x (average);SARS2-CoV/Belgium/Human/PF-0326316/2020;OK
+317;multiplex_14_pool_1;NBD16;VJB;;62434423;ZIDU305;M;84;8970;Poperinge;27/03/2020;yes;n/a;3454x (average);SARS2-CoV/Belgium/Human/VJB-0327317/2020;OK
+318;multiplex_14_pool_1;NBD17;DAL;;68638550;ZIDU306;F;41;8570;Anzegem;27/03/2020;yes;n/a;3278x (average);SARS2-CoV/Belgium/Human/DAL-0327318/2020;OK
+319;multiplex_14_pool_1;NBD18;VA;;60513092;ZIDU307;F;40;8520;Kuurne;27/03/2020;yes;n/a;3231x (average);SARS2-CoV/Belgium/Human/VA-0327319/2020;OK
+320;multiplex_14_pool_1;NBD19;BM;;65555428;ZIDU308;F;23;6061;Montignies-sur-sambre;27/03/2020;yes;n/a;3083x (average);SARS2-CoV/Belgium/Human/BM-0327320/2020;OK
+321;multiplex_14_pool_1;NBD20;AF;;65555436;ZIDU309;F;80;6001;Marcinelle;27/03/2020;yes;n/a;3121x (average);SARS2-CoV/Belgium/Human/AF-0327321/2020;OK
+322;multiplex_14_pool_1;NBD21;IL;;65555425;ZIDU310;M;86;6211;Mellet;26/03/2020;yes;n/a;2995x (average);SARS2-CoV/Belgium/Human/IL-0326322/2020;OK
+323;multiplex_14_pool_1;NBD22;BA;;65555431;ZIDU311;F;33;6200;Chatelet;26/03/2020;yes;n/a;2570x (average);SARS2-CoV/Belgium/Human/BA-0326323/2020;OK
+324;multiplex_14_pool_1;NBD23;HN;;61300733;ZIDU312;F;33;4140;Dolembreux;17/03/2020;yes;n/a;2168x (average);SARS2-CoV/Belgium/Human/HN-0317324/2020;OK
+325;multiplex_14_pool_1;NBD24;WVM;;65555693;ZIDU313;F;50;4020;Bressoux;17/03/2020;yes;n/a;2590x (average);SARS2-CoV/Belgium/Human/WVM-0317325/2020;OK
+326;multiplex_14_pool_2;NBD01;JBE;;65555694;ZIDU314;M;58;4000;Liège;17/03/2020;yes;n/a;2759x (average);SARS2-CoV/Belgium/Human/JBE-0317326/2020;OK
+327;multiplex_14_pool_2;NBD02;HMM;;65555699;ZIDU315;F;30;4451;Voroux-les-Liers;17/03/2020;yes;n/a;3487x (average);SARS2-CoV/Belgium/Human/HMM-0317327/2020;OK
+328;multiplex_14_pool_2;NBD03;CGR;;64286379;ZIDU316;F;50;2430;Laakdaal;30/03/2020;yes;n/a;2764x (average);SARS2-CoV/Belgium/Human/CGR-0330328/2020;OK
+329;multiplex_14_pool_2;NBD04;VBWF;;61238571;ZIDU317;M;65;2390;Oostmalle;30/03/2020;yes;n/a;3318x (average);SARS2-CoV/Belgium/Human/VBWF-0330329/2020;OK
+330;multiplex_14_pool_2;NBD05;HMJ;;61299378;ZIDU318;F;84;2340;Beerse;30/03/2020;yes;n/a;2752x (average);SARS2-CoV/Belgium/Human/HMJ-0330330/2020;OK
+331;multiplex_14_pool_2;NBD06;SRL;;88592134;ZIDU319;M;73;2980;Zoersel;30/03/2020;yes;n/a;3068x (average);SARS2-CoV/Belgium/Human/SRL-0330331/2020;OK
+332;multiplex_14_pool_2;NBD07;CL;;61337201;ZIDU320;F;56;2110;Wijnegem;30/03/2020;yes;n/a;2984x (average);SARS2-CoV/Belgium/Human/CL-0330332/2020;OK
+333;multiplex_14_pool_2;NBD08;DWJ;;63827922;ZIDU321;M;74;9000;Gent;24/03/2020;yes;n/a;3171x (average);SARS2-CoV/Belgium/Human/DWJ-0324333/2020;OK
+334;multiplex_14_pool_2;NBD09;CGP;;64035255;ZIDU322;M;88;9820;Bottelare;25/03/2020;yes;n/a;3394x (average);SARS2-CoV/Belgium/Human/CGP-0325334/2020;OK
+335;multiplex_14_pool_2;NBD10;BA;;65557903;ZIDU323;F;55;5020;Champion;30/03/2020;yes;n/a;2373x (average);SARS2-CoV/Belgium/Human/BA-0330335/2020;OK
+336;multiplex_14_pool_2;NBD11;DGL;;62293638;ZIDU324;F;58;8460;Ettelgem;26/03/2020;yes;n/a;3299x (average);SARS2-CoV/Belgium/Human/DGL-0326336/2020;OK
+337;multiplex_14_pool_2;NBD12;VMC;;62289817;ZIDU325;F;59;8400;Oostende;25/03/2020;yes;n/a;2378x (average);SARS2-CoV/Belgium/Human/VMC-0325337/2020;OK
+338;multiplex_14_pool_2;NBD13;HJ;;63738315;ZIDU326;F;83;9890;Asper;28/03/2020;yes;n/a;2898x (average);SARS2-CoV/Belgium/Human/HJ-0328338/2020;OK
+339;multiplex_14_pool_2;NBD14;LAM;;62701538;ZIDU327;F;62;8370;Blankenberge;25/03/2020;yes;n/a;2448x (average);SARS2-CoV/Belgium/Human/LAM-0325339/2020;OK
+340;multiplex_14_pool_2;NBD15;DBWC;;71974604;ZIDU329;M;66;2600;Berchem;25/03/2020;yes;n/a;3531x (average);SARS2-CoV/Belgium/Human/DBWC-0325340/2020;OK
+341;multiplex_14_pool_2;NBD16;LL;;63324504;ZIDU330;M;85;9500;Geraardsbergen;28/03/2020;yes;n/a;3223x (average);SARS2-CoV/Belgium/Human/LL-0328341/2020;OK
+342;multiplex_14_pool_2;NBD17;AM;;82659988;ZIDU331;M;75;3600;Genk;28/03/2020;yes;n/a;1045x (average);SARS2-CoV/Belgium/Human/AM-0328342/2020;OK
+343;multiplex_14_pool_2;NBD18;NA;;65557990;ZIDU332;M;79;3680;Maaseik;28/03/2020;yes;n/a;3215x (average);SARS2-CoV/Belgium/Human/NA-0328342/2020;OK
+344;multiplex_14_pool_2;NBD19;MR;;65126074;ZIDU333;M;71;3630;Eisden;27/03/2020;yes;n/a;3061x (average);SARS2-CoV/Belgium/Human/MR-0327344/2020;OK
+345;multiplex_14_pool_2;NBD20;CF;;65085624;ZIDU334;M;59;3740;Beverst;27/03/2020;yes;n/a;3381x (average);SARS2-CoV/Belgium/Human/CF-0327345/2020;OK
+346;multiplex_14_pool_2;NBD21;VME;;60425824;ZIDU335;F;61;8750;Wingene;27/03/2020;yes;n/a;3516x (average);SARS2-CoV/Belgium/Human/VME-0327346/2020;OK
+347;multiplex_14_pool_2;NBD22;BN;;66983404;ZIDU336;F;37;8820;Torhout;30/03/2020;yes;n/a;3097x (average);SARS2-CoV/Belgium/Human/BN-0330347/2020;OK
+348;multiplex_14_pool_2;NBD23;FCA;;62421013;ZIDU337;M;87;8310;Assebroek;27/03/2020;yes;n/a;3386x (average);SARS2-CoV/Belgium/Human/FCA-0327348/2020;OK
+349;multiplex_14_pool_2;NBD24;GGO;;68958388;ZIDU338;M;80;8000;Brugge;27/03/2020;yes;n/a;2595x (average);SARS2-CoV/Belgium/Human/GGO-0327349/2020;OK
+350;multiplex_15_pool_1;NBD01;DC;;62539017;ZIDU328;M;22;8600;Beerst;26/03/2020;yes;n/a;2024x (average);SARS2-CoV/Belgium/Human/DC-0326350/2020;OK
+351;multiplex_15_pool_1;NBD02;DNM;;65557579;ZIDU339;F;85;4210;Burdinne;30/03/2020;yes;n/a;2264x (average);SARS2-CoV/Belgium/Human/DNM-0330351/2020;OK
+352;multiplex_15_pool_1;NBD03;VEH;;65557447;ZIDU340;M;58;2560;Bevel;29/03/2020;yes;n/a;2092x (average);SARS2-CoV/Belgium/Human/VEH-0329352/2020;OK
+353;multiplex_15_pool_1;NBD04;DV;;64279005;ZIDU341;M;85;4520;Antheit;27/03/2020;yes;n/a;2987x (average);SARS2-CoV/Belgium/Human/DV-0327353/2020;OK
+354;multiplex_15_pool_1;NBD05;GJM;;65557510;ZIDU342;M;60;5300;Andenne;28/03/2020;yes;n/a;1971x (average);SARS2-CoV/Belgium/Human/GJM-0328354/2020;OK
+355;multiplex_15_pool_1;NBD06;DC;;88514716;ZIDU343;F;82;2400;Mol;22/03/2020;yes;n/a;2779x (average);SARS2-CoV/Belgium/Human/DC-0322355/2020;OK
+356;multiplex_15_pool_1;NBD07;BWM;;81364549;ZIDU344;M;46;2470;Retie;11/03/2020;yes;n/a;2784x (average);SARS2-CoV/Belgium/Human/BWM-0311356/2020;OK
+357;multiplex_15_pool_1;NBD08;VHEJ;;63848996;ZIDU345;M;66;2520;Broechem;29/03/2020;yes;n/a;2722x (average);SARS2-CoV/Belgium/Human/VHEJ-0329357/2020;OK
+358;multiplex_15_pool_1;NBD09;TA;;86438801;ZIDU346;M;84;2560;Bevel;30/03/2020;yes;n/a;3220x (average);SARS2-CoV/Belgium/Human/TA-0330358/2020;OK
+359;multiplex_15_pool_1;NBD10;BS;;65558972;ZIDU347;F;28;5170;Arbre;31/03/2020;yes;n/a;3150x (average);SARS2-CoV/Belgium/Human/BS-0331359/2020;OK
+360;multiplex_15_pool_1;NBD11;SN;;65558969;ZIDU348;F;53;1330;Rixensart;31/03/2020;yes;n/a;3533x (average);SARS2-CoV/Belgium/Human/SN-0331360/2020;OK
+361;multiplex_15_pool_1;NBD12;BS;;65558971;ZIDU349;F;41;6230;Buzet;31/03/2020;yes;n/a;2782x (average);SARS2-CoV/Belgium/Human/BS-0331361/2020;OK
+362;multiplex_15_pool_1;NBD13;BD;;65558974;ZIDU350;M;56;6567;Fontaine-Valmont;31/03/2020;yes;n/a;3033x (average);SARS2-CoV/Belgium/Human/BD0331362/2020;OK
+363;multiplex_15_pool_1;NBD14;MFM;;65561242;ZIDU351;F;82;4350;Lamine;30/03/2020;yes;n/a;2945x (average);SARS2-CoV/Belgium/Human/MFM-0330363/2020;OK
+364;multiplex_15_pool_1;NBD15;LPJ;;65561246;ZIDU352;M;57;3401;Waasmont;01/04/2020;yes;n/a;2681x (average);SARS2-CoV/Belgium/Human/LPJ-0401364/2020;OK
+365;multiplex_15_pool_1;NBD16;PBT;;80701469;ZIDU353;M;59;4257;Berloz;30/03/2020;yes;n/a;2872x (average);SARS2-CoV/Belgium/Human/PBT-0330365/2020;OK
+366;multiplex_15_pool_1;NBD17;DRR;;63179874;ZIDU354;M;73;7782;Ploegsteert;01/04/2020;yes;n/a;2928x (average);SARS2-CoV/Belgium/Human/DRR-0401366/2020;OK
+367;multiplex_15_pool_1;NBD18;SAA;;65561255;ZIDU355;M;49;4430;Ans;30/03/2020;yes;n/a;3043x (average);SARS2-CoV/Belgium/Human/SAA-0330367/2020;OK
+368;multiplex_15_pool_1;NBD19;LJA;;63989548;ZIDU356;M;92;8647;Lo;01/04/2020;yes;n/a;2878x (average);SARS2-CoV/Belgium/Human/LJA-0401368/2020;OK
+369;multiplex_15_pool_1;NBD20;DAA;;60474353;ZIDU357;F;58;8540;Deerlijk;27/03/2020;yes;n/a;3232x (average);SARS2-CoV/Belgium/Human/DAA-0327369/2020;OK
+370;multiplex_15_pool_1;NBD21;VAJ;;60469765;ZIDU358;F;54;9700;Bevere;28/03/2020;yes;n/a;3481x (average);SARS2-CoV/Belgium/Human/VAJ-0328370/2020;OK
+371;multiplex_15_pool_1;NBD22;VBMJ;;88464409;ZIDU359;F;60;2830;Blaasveld;01/04/2020;yes;n/a;3172x (average);SARS2-CoV/Belgium/Human/VBMJ-0401430/2020;OK
+372;multiplex_15_pool_1;NBD23;VRMJ;;88320445;ZIDU360;F;67;2870;Breendonk;01/04/2020;yes;n/a;2890x (average);SARS2-CoV/Belgium/Human/VRMJ-0401372/2020;OK
+373;multiplex_15_pool_1;NBD24;IMJ;;74630005;ZIDU361;M;62;2880;Bornem;01/04/2020;yes;n/a;2751x (average);SARS2-CoV/Belgium/Human/IMJ-0401373/2020;OK
+374;multiplex_15_pool_2;NBD01;VGM;;77391100;ZIDU362;F;66;8908;Vlamertinge;02/04/2020;yes;n/a;2968x (average);SARS2-CoV/Belgium/Human/VGM-0402374/2020;OK
+375;multiplex_15_pool_2;NBD02;OTG;;85350858;ZIDU363;F;44;8530;Harelbeke;01/04/2020;yes;n/a;3726x (average);SARS2-CoV/Belgium/Human/OTG-0401375/2020;OK
+376;multiplex_15_pool_2;NBD03;HHC;;65190001;ZIDU364;M;59;8580;Avelgem;01/04/2020;yes;n/a;3086x (average);SARS2-CoV/Belgium/Human/HHC-0401376/2020;OK
+377;multiplex_15_pool_2;NBD04;LL;;75018119;ZIDU365;F;56;2930;Brasschaat;31/03/2020;yes;n/a;3444x (average);SARS2-CoV/Belgium/Human/LL-0331377/2020;OK
+378;multiplex_15_pool_2;NBD05;SC;;79939468;ZIDU366;F;62;2180;Ekeren;31/03/2020;yes;n/a;3020x (average);SARS2-CoV/Belgium/Human/SC-0331378/2020;OK
+379;multiplex_15_pool_2;NBD06;VPP;;61306956;ZIDU367;F;28;2930;Brasschaat;31/03/2020;yes;n/a;3576x (average);SARS2-CoV/Belgium/Human/VPP-0331379/2020;OK
+380;multiplex_15_pool_2;NBD07;SC;;65561504;ZIDU368;F;54;5070;Aisemont;25/03/2020;yes;n/a;3366x (average);SARS2-CoV/Belgium/Human/SC-0325380/2020;OK
+381;multiplex_15_pool_2;NBD08;DEJ;;65564422;ZIDU369;M;86;6030;Goutroux;03/04/2020;yes;n/a;3490x (average);SARS2-CoV/Belgium/Human/DEJ-0403381/2020;OK
+382;multiplex_15_pool_2;NBD09;LA;;64933926;ZIDU370;F;34;5030;Beuzet;03/04/2020;yes;n/a;2981x (average);SARS2-CoV/Belgium/Human/LA-0403382/2020;OK
+383;multiplex_15_pool_2;NBD10;MG;;65564416;ZIDU371;M;74;6043;Ransart;02/04/2020;yes;n/a;3187x (average);SARS2-CoV/Belgium/Human/MG-0402383/2020;OK
+384;multiplex_15_pool_2;NBD11;LMA;;65565207;ZIDU372;F;91;9030;Mariakerke;30/03/2020;yes;n/a;3224x (average);SARS2-CoV/Belgium/Human/LMA-0330384/2020;OK
+385;multiplex_15_pool_2;NBD12;DLM;;65565204;ZIDU373;F;87;9920;Lovendegem;30/03/2020;yes;n/a;2804x (average);SARS2-CoV/Belgium/Human/DLM-0330385/2020;OK
+386;multiplex_15_pool_2;NBD13;RMO;;60463300;ZIDU374;M;87;9270;Kalken;29/03/2020;yes;n/a;3160x (average);SARS2-CoV/Belgium/Human/RMO-0329386/2020;OK
+387;multiplex_15_pool_2;NBD14;VDA;;65350902;ZIDU375;M;27;9050;Gentbrugge;30/03/2020;yes;n/a;2856x (average);SARS2-CoV/Belgium/Human/VDA-0330387/2020;OK
+388;multiplex_15_pool_2;NBD15;VSPE;;83307629;ZIDU376;F;60;3900;Overpelt;28/03/2020;yes;n/a;2414x (average);SARS2-CoV/Belgium/Human/VSPE-0328388/2020;OK
+389;multiplex_15_pool_2;NBD16;LHL;;61442972;ZIDU377;M;63;3920;Lommel;29/03/2020;yes;n/a;2525x (average);SARS2-CoV/Belgium/Human/LHL-0329389/2020;OK
+390;multiplex_15_pool_2;NBD17;HLE;;61428200;ZIDU378;M;55;3971;Heppen;27/03/2020;yes;n/a;2165x (average);SARS2-CoV/Belgium/Human/HLE-0327390/2020;OK
+391;multiplex_15_pool_2;NBD18;TMG;;61494750;ZIDU379;M;64;3990;Grote-Brogel;26/03/2020;yes;n/a;2723x (average);SARS2-CoV/Belgium/Human/TMG-0326391/2020;OK
+392;multiplex_15_pool_2;NBD19;HAJ;;79641288;ZIDU380;F;85;3950;Bocholt;29/03/2020;yes;n/a;2684x (average);SARS2-CoV/Belgium/Human/HAJ-0328392/2020;OK
+393;multiplex_15_pool_2;NBD20;RIM;;60002011;ZIDU381;F;82;3500;Hasselt;07/04/2020;yes;n/a;2518x (average);SARS2-CoV/Belgium/Human/RIM-0407393/2020;OK
+394;multiplex_15_pool_2;NBD21;SB;;63078214;ZIDU382;F;39;3700;Berg;07/04/2020;yes;n/a;2967x (average);SARS2-CoV/Belgium/Human/SB-0407394/2020;OK
+395;multiplex_15_pool_2;NBD22;GM;;65134718;ZIDU383;M;29;3510;Kermt;07/04/2020;yes;n/a;2332x (average);SARS2-CoV/Belgium/Human/GM-0407395/2020;OK
+396;multiplex_15_pool_2;NBD23;JFA;;78483971;ZIDU384;M;79;3290;Deurne;07/04/2020;yes;n/a;2770x (average);SARS2-CoV/Belgium/Human/JFA-0407396/2020;OK
+397;multiplex_15_pool_2;NBD24;SP;;88206867;ZIDU385;M;51;3520;Zonhoven;07/04/2020;yes;n/a;2083x (average);SARS2-CoV/Belgium/Human/SP-0407397/2020;OK
+398;multiplex_16;NBD01;DPR;;85077998;ZIDU386;F;75;2890;Lippelo;06/04/2020;yes;n/a;3320x (average);SARS2-CoV/Belgium/Human/DPR-0406398/2020;OK
+399;multiplex_16;NBD02;WCV;;60683402;ZIDU387;M;74;9255;Buggenhout;08/04/2020;yes;n/a;3560x (average);SARS2-CoV/Belgium/Human/WCV-0408399/2020;OK
+400;multiplex_16;NBD03;VNM;;70989504;ZIDU388;F;78;9220;Hamme;06/04/2020;yes;n/a;3067x (average);SARS2-CoV/Belgium/Human/VNM-0406400/2020;OK
+401;multiplex_16;NBD04;REGA;;-624526;ZIDU389;F;84;3570;Alken;12/03/2020;yes;n/a;3046x (average);SARS2-CoV/Belgium/Human/REGA-0312401/2020;OK
+402;multiplex_16;NBD05;REGA;;-624529;ZIDU390;F;63;6250;Aiseau;25/03/2020;yes;n/a;3044x (average);SARS2-CoV/Belgium/Human/REGA-0325402/2020;OK
+403;multiplex_16;NBD06;EM;;65568013;ZIDU391;M;53;1070;Anderlecht;07/04/2020;yes;n/a;3236x (average);SARS2-CoV/Belgium/Human/EM-0407403/2020;OK
+404;multiplex_16;NBD07;AO;;65568011;ZIDU392;M;77;1080;Sint-Jans-Molenbeek;07/04/2020;yes;n/a;3251x (average);SARS2-CoV/Belgium/Human/AO-04074040/2020;OK
+405;multiplex_16;NBD08;PY;;65568005;ZIDU393;F;77;1170;Watermaal-Bosvoorde;07/04/2020;yes;n/a;3152x (average);SARS2-CoV/Belgium/Human/PY-0407405/2020;OK
+406;multiplex_16;NBD09;BJA;;64756655;ZIDU394;F;89;7500;Ere;09/04/2020;yes;n/a;2977x (average);SARS2-CoV/Belgium/Human/BJA-0409406/2020;OK
+407;multiplex_16;NBD10;DJ;;65570598;ZIDU395;F;81;1970;Wezembeek-Oppem;09/04/2020;yes;n/a;3439x (average);SARS2-CoV/Belgium/Human/DJ-0409407/2020;OK
+408;multiplex_16;NBD11;DMT;;60048461;ZIDU396;F;90;7860;Lessines;11/04/2020;yes;n/a;3638x (average);SARS2-CoV/Belgium/Human/DMT-0411408/2020;OK
+409;multiplex_16;NBD12;DJ;;65117833;ZIDU397;M;46;2020;Antwerpen;23/03/2020;yes;n/a;3003x (average);SARS2-CoV/Belgium/Human/DJ-0323409/2020;OK
+410;multiplex_16;NBD13;KWA;;65023904;ZIDU398;M;70;9100;Sint-Niklaas;23/03/2020;yes;n/a;3217x (average);SARS2-CoV/Belgium/Human/KWA-0323410/2020;OK
+411;multiplex_16;NBD14;MT;;63767958;ZIDU399;F;48;9120;Beveren-Waas;22/03/2020;yes;n/a;3203x (average);SARS2-CoV/Belgium/Human/MT-0322411/2020;OK
+412;multiplex_16;NBD15;AA;;65567830;ZIDU400;F;51;7971;Basecles;08/04/2020;yes;n/a;2925x (average);SARS2-CoV/Belgium/Human/AA-0408412/2020;OK
+413;multiplex_16;NBD16;PS;;65567822;ZIDU401;F;45;7601;Roucourt;08/04/2020;yes;n/a;3398x (average);SARS2-CoV/Belgium/Human/PS-0408413/2020;OK
+414;multiplex_16;NBD17;FM;;65548275;ZIDU402;M;68;9150;Bazel;08/04/2020;yes;n/a;820x (average);SARS2-CoV/Belgium/Human/FM-0408414/2020;OK
+415;multiplex_16;NBD18;DGL;;65544779;ZIDU403;M;72;6200;Chatelet;09/04/2020;yes;n/a;3324x (average);SARS2-CoV/Belgium/Human/DGL-0409415/2020;OK
+416;multiplex_16;NBD19;VAM;;84862994;ZIDU404;F;81;7870;Bauffe;06/05/2020;yes;n/a;2524x (average);SARS2-CoV/Belgium/Human/VAM-0506416/2020;OK
+417;multiplex_16;NBD20;HNF;;60775482;ZIDU405;F;52;2290;Vorselaar;07/05/2020;yes;n/a;2616x (average);SARS2-CoV/Belgium/Human/HNF-0507417/2020;OK
+418;multiplex_16;NBD21;VLS;;65035312;ZIDU406;F;21;2300;Turnhout;07/05/2020;yes;n/a;2121x (average);SARS2-CoV/Belgium/Human/VLS-0507418/2020;OK
+419;multiplex_16;NBD22;RJ;;61052170;ZIDU407;M;86;2360;Oud-Turnhout;07/05/2020;yes;n/a;1723x (average);SARS2-CoV/Belgium/Human/RJ-0507419/2020;OK
+420;multiplex_16;NBD23;SG;;65439085;ZIDU408;F;32;2380;Ravels;07/05/2020;yes;n/a;1707x (average);SARS2-CoV/Belgium/Human/SG-0507420/2020;OK
+421;multiplex_16;NBD24;HI;;61658679;ZIDU409;F;42;2280;Grobbendonk;07/05/2020;yes;n/a;2343x (average);SARS2-CoV/Belgium/Human/HI-0507421/2020;OK

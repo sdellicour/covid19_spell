@@ -11,52 +11,52 @@
 	<!-- The list of taxa to be analysed (can also include dates/ages).          -->
 	<!-- ntax=3087                                                               -->
 	<taxa id="taxa">
-		<taxon id="Belgium/ULG-10088/2020">
-			<date value="2020.25683060109" direction="forwards" units="years"/>
+		<taxon id="hCoV-19/Belgium/Rega-0329234/2020|EPI_ISL_458204|2020-03-29|Europe">
+			<date value="2020.24043715847" direction="forwards" units="years"/>
 			<attr name="latitude">
-				657639.165599063
+				694149.031382167
 			</attr>
 			<attr name="longitude">
-				765889.085372043
+				707001.323415995
 			</attr>
 			<attr name="coordinates">
-				657639.165599063 765889.085372043
+				694149.031382167 707001.323415995
 			</attr>
 		</taxon>
-		<taxon id="Belgium/ULG-10089/2020">
-			<date value="2020.25683060109" direction="forwards" units="years"/>
+		<taxon id="hCoV-19/Belgium/JJC-0325165/2020|EPI_ISL_420422|2020-03-25|Europe">
+			<date value="2020.22950819672" direction="forwards" units="years"/>
 			<attr name="latitude">
-				658158.505482456
+				679229.418318674
 			</attr>
 			<attr name="longitude">
-				766562.929162245
+				685173.330251501
 			</attr>
 			<attr name="coordinates">
-				658158.505482456 766562.929162245
+				679229.418318674 685173.330251501
 			</attr>
 		</taxon>
-		<taxon id="Belgium/ULG-10095/2020">
-			<date value="2020.25956284153" direction="forwards" units="years"/>
+		<taxon id="hCoV-19/Belgium/DC-0322355/2020|EPI_ISL_462209|2020-03-22">
+			<date value="2020.22131147541" direction="forwards" units="years"/>
 			<attr name="latitude">
-				615493.55349295
+				709959.205824516
 			</attr>
 			<attr name="longitude">
-				785629.360417704
+				704434.325019237
 			</attr>
 			<attr name="coordinates">
-				615493.55349295 785629.360417704
+				709959.205824516 704434.325019237
 			</attr>
 		</taxon>
-		<taxon id="Belgium/ULG-10096/2020">
-			<date value="2020.25956284153" direction="forwards" units="years"/>
+		<taxon id="hCoV-19/Belgium/Rega-0330251/2020|EPI_ISL_458221|2020-03-30|Europe">
+			<date value="2020.24316939891" direction="forwards" units="years"/>
 			<attr name="latitude">
-				660504.996233143
+				721119.803803077
 			</attr>
 			<attr name="longitude">
-				767409.876759615
+				671965.519730271
 			</attr>
 			<attr name="coordinates">
-				660504.996233143 767409.876759615
+				721119.803803077 671965.519730271
 			</attr>
 		</taxon>
 	</taxa>
@@ -65,19 +65,19 @@
 	<!-- ntax=3087 nchar=4                                                       -->
 	<alignment id="alignment" dataType="nucleotide">
 		<sequence>
-			<taxon idref="Belgium/ULG-10088/2020"/>
+			<taxon idref="hCoV-19/Belgium/Rega-0329234/2020|EPI_ISL_458204|2020-03-29|Europe"/>
 			NNNN
 		</sequence>
 		<sequence>
-			<taxon idref="Belgium/ULG-10089/2020"/>
+			<taxon idref="hCoV-19/Belgium/JJC-0325165/2020|EPI_ISL_420422|2020-03-25|Europe"/>
 			NNNN
 		</sequence>
 		<sequence>
-			<taxon idref="Belgium/ULG-10095/2020"/>
+			<taxon idref="hCoV-19/Belgium/DC-0322355/2020|EPI_ISL_462209|2020-03-22"/>
 			NNNN
 		</sequence>
 		<sequence>
-			<taxon idref="Belgium/ULG-10096/2020"/>
+			<taxon idref="hCoV-19/Belgium/Rega-0330251/2020|EPI_ISL_458221|2020-03-30|Europe"/>
 			NNNN
 		</sequence>
 	</alignment>
@@ -89,7 +89,7 @@
 	</patterns>
 
 	<newick id="startingTree">
-		(Belgium/ULG-10088/2020:0.05064850265,(Belgium/ULG-10089/2020:0.04218807884,(Belgium/ULG-10095/2020:0.04092634573,Belgium/ULG-10096/2020:0.04092634573):0.003993973548):0.008460423802):0.2624624109;
+		((hCoV-19/Belgium/Rega-0329234/2020|EPI_ISL_458204|2020-03-29|Europe:0.05888437158,hCoV-19/Belgium/JJC-0325165/2020|EPI_ISL_420422|2020-03-25|Europe:0.04795540984):0.000199923969,(hCoV-19/Belgium/DC-0322355/2020|EPI_ISL_462209|2020-03-22:0.03975868852,hCoV-19/Belgium/Rega-0330251/2020|EPI_ISL_458221|2020-03-30|Europe:0.06161661202):0.000199923969):0.425369712;
 	</newick>
  
 	<!-- Generate a tree model                                                   --> 
@@ -196,7 +196,7 @@
 	</operators>
 
 	<!-- Define MCMC                                                             -->
-	<mcmc id="mcmc" chainLength="1100000" autoOptimize="true" operatorAnalysis="Clade_6.ops">
+	<mcmc id="mcmc" chainLength="10000000" autoOptimize="true" operatorAnalysis="Clade_6.ops">
 		<joint id="joint">
 			<prior id="prior">
 <!-- 

@@ -9,32 +9,61 @@ library(treeio)
 # 4. Running BEAST and building the maximum clade consensus (MCC) tree
 # 5. Extracting spatio-temporal information embedded in MCC and posterior trees
 # 6. Generating a dispersal history graph (mapped MCC trees, 80% HPD polygons)
-# 7. Estimating and plotting dispersal statistics associated with lineages
-# 8. Analysing the outputs of the overall discrete phylogeographic analysis
+# 7. Comparing intra- and inter-province/municipality lineage migration events
+# 8. Estimating and plotting dispersal statistics associated with lineages
 
 analysis = "Nextstrain_200420"; removeSuspiciousHomoplasies = FALSE # 1st analysis
-analysis = "Nextstrain_200420"; removeSuspiciousHomoplasies = TRUE  # 2nd analysis	
-data1 = read.csv("Sequences_metadata/SARS-CoV-2_KULeuven_080420.csv")
-data2 = read.csv("Sequences_metadata/SARS-CoV-2_ULiegeSeq_220420.csv")
+analysis = "Nextstrain_200420"; removeSuspiciousHomoplasies = TRUE  # 2nd analysis
+analysis = "Nextstrain_200420"; removeSuspiciousHomoplasies = FALSE # 3rd analysis
+analysis = "TreeTime_260420_1"; removeSuspiciousHomoplasies = FALSE # 4th analysis
+analysis = "TreeTime_260420_2"; removeSuspiciousHomoplasies = FALSE # 5th analysis
+analysis = "TreeTime_100620"; removeSuspiciousHomoplasies = FALSE # 6th analysis
+
+	# 1st analysis: analysis based on the Nextstrain tree of the 20-04-20
+	# 2nd analysis: analysis based on the Nextstrain tree of the 20-04-20 but for which several branches are dropped, i.e. branches corresponding 
+	#		to 21 sequences with suspicious homoplasies: C3130T, A4050C, T8022G, T13402G, C27046T, T28785G (see also the csv file "Suspicious_homopl")
+	# 3rd analysis: analysis based on the Nextstrain tree of the 20-04-20, but which was based on an alignment without these 21 sequences
+	# 4th analysis: analysis based on a new TreeTime tree, which was based on an GISAID alignment of the 26-04-20 but without these 21 sequences
+	# 5th analysis: analysis based on a new TreeTime tree, which was based on an GISAID alignment of the 26-04-20 but with the following sites masked
+	# 		because carrying suspicious homoplasies listed by De Maio and colleagues: 11083, 21575, 11074, 6990, 29353, 16887, 10323, 3145, 4050, 13408,
+	# 		13402, 14408, 3130, 8022, 15324 - and a second-tier list of sites that were also masked: 6255, 21137, 14724, 26681, 28077, 241, 
+	# 		335, 2094, 3037, 8782, 9223, 10741, 11704, 14786, 14805, 17247, 19684, 24034, 24378, 25563, 26461, 27384, 28826, 28854, 29700
+	# 6th analysis: analysis based on a new TreeTime tree, which was based on all the Belgian sequences available on GISAID on the 10-06-20 plus non-Belgian
+	#		sequences available on GISAID and included in Nextstrain (which used a subsampling per country to avoid including too many sequences)
+	
+data1 = read.csv("Sequences_metadata/SARS-CoV-2_KULeuven_100620.csv", sep=";")
+data2 = read.csv("Sequences_metadata/SARS-CoV-2_ULiegeSeq_020620.csv", sep=";")
 writingFiles = FALSE; showingPlots = FALSE
 
 # 1. Preparing the input files for the discrete phylogeographic analyses 
 
-tree = read.tree(paste0("Phylogenetic_analyses/",analysis,".tree"))
+tree = read.tree(paste0("Phylogenetic_analyses/",analysis,".tre"))
 if (grepl("TreeTime",analysis) == TRUE)
 	{
 		seqIDs = tree$tip.label; countries = rep(NA, length(seqIDs)); collectionDates = rep(NA, length(seqIDs))
 		for (i in 1:length(seqIDs))
 			{
-				countries[i] = unlist(strsplit(seqIDs[i],"\\/"))[2]
-				collectionDates[i] = unlist(strsplit(seqIDs[i],"\\|"))[length(unlist(strsplit(seqIDs[i],"\\|")))]
+				if (grepl("hCoV-19",seqIDs[i]))
+					{
+						countries[i] = unlist(strsplit(seqIDs[i],"\\/"))[2]
+					}	else	{
+						countries[i] = unlist(strsplit(seqIDs[i],"\\/"))[1]
+					}
+				if (length(unlist(strsplit(seqIDs[i],"\\|"))) == 3)
+					{
+						collectionDates[i] = unlist(strsplit(seqIDs[i],"\\|"))[length(unlist(strsplit(seqIDs[i],"\\|")))]
+					}
+				if (length(unlist(strsplit(seqIDs[i],"\\|"))) == 4)
+					{
+						collectionDates[i] = unlist(strsplit(seqIDs[i],"\\|"))[length(unlist(strsplit(seqIDs[i],"\\|")))-1]
+					}
 			}
 		tab = cbind(seqIDs,countries,collectionDates); colnames(tab) = c("Strain","Country","Collection Data")
 		write.csv(tab, paste0("Phylogenetic_analyses/",analysis,".csv"), row.names=F, quote=F)
 		data = read.csv(paste0("Phylogenetic_analyses/",analysis,".csv"))
 	}	else	{
 		data = read.csv(paste0("Phylogenetic_analyses/",analysis,".csv"), sep=";")
-		# N.B.: the ".tsv" file has first to be opened in Excel and then exported as comma ".csv"
+		# N.B.: for Nextstrain, the ".tsv" file has first to be opened in Excel and then exported as comma ".csv"
 	}
 if (showingPlots)
 	{
@@ -89,8 +118,7 @@ if (removeSuspiciousHomoplasies)
 		tree = drop.tip(tree, suspicious_homoplasies)
 		if (writingFiles) write.nexus(tree, file="Newick_tree_for_XML_file.tree")
 	}
-txt = c(); tab1 = c(); tab2 = c(); tab3 = c()
-selectedCountries = c("Belgium","Italy","Spain","France","England","Germany","Holland","Luxembourg")
+txt = c(); tab = c()
 for (i in 1:length(tree$tip.label))
 	{
 		index = which(data[,1]==tree$tip.label[i])
@@ -104,26 +132,19 @@ for (i in 1:length(tree$tip.label))
 					}
 				if (grepl("TreeTime",analysis))
 					{
-						elements = unlist(strsplit(tree$tip.label[i],"\\|"))
-						location = elements[length(elements)-1]
+						if (grepl("hCoV-19",tree$tip.label[i]))
+							{
+								location = unlist(strsplit(tree$tip.label[i],"\\/"))[2]
+							}	else	{
+								location = unlist(strsplit(tree$tip.label[i],"\\/"))[1]
+							}
 					}
-				tab1 = rbind(tab1, cbind(tree$tip.label[i],location,date))
-				region = gsub(" ","",as.character(data[index,"Region"]))
-				if (grepl("Nextstrain",analysis))
-					{
-						if (!location%in%selectedCountries) location = region
-					}
-				tab2 = rbind(tab2, cbind(tree$tip.label[i],location,date))
 				if (location != "Belgium") location = "other"
-				tab3 = rbind(tab3, cbind(tree$tip.label[i],location,date))
+				tab = rbind(tab, cbind(tree$tip.label[i],location,date))
 			}
 	}
-colnames(tab1) = c("trait","location","collection_date")
-colnames(tab2) = c("trait","location","collection_date")
-colnames(tab3) = c("trait","location","collection_date")
-if (writingFiles) write.table(tab1, paste0("Phylogenetic_analyses/",analysis,"_1.txt"), row.names=F, quote=F, sep="\t")
-if (writingFiles) write.table(tab2, paste0("Phylogenetic_analyses/",analysis,"_2.txt"), row.names=F, quote=F, sep="\t")
-if (writingFiles) write.table(tab3, paste0("Phylogenetic_analyses/",analysis,"_3.txt"), row.names=F, quote=F, sep="\t")
+colnames(tab) = c("trait","location","collection_date")
+if (writingFiles) write.table(tab, paste0("Phylogenetic_analyses/",analysis,".txt"), row.names=F, quote=F, sep="\t")
 if (writingFiles) write(txt, paste0("Phylogenetic_analyses/",analysis,".fasta"))
 
 # 2. Analysing the outputs of the preliminary discrete phylogeographic analysis 
@@ -131,7 +152,7 @@ if (writingFiles) write(txt, paste0("Phylogenetic_analyses/",analysis,".fasta"))
 burnIn = 101; computingHPDInterval = FALSE # N.B.: long analysis
 if (computingHPDInterval)
 	{
-		trees = readAnnotatedNexus("Phylogenetic_analyses/Nextstrain_2004_3.trees")
+		trees = readAnnotatedNexus("Phylogenetic_analyses/TreeTime_100620.trees")
 		belgianBranches_list = rep(NA,length(trees))
 		belgianIntroductions_list = rep(NA,length(trees))
 		belgianTipBranches_list = rep(NA,length(trees))
@@ -161,14 +182,22 @@ if (computingHPDInterval)
 		quantiles = quantile(belgianIntroductions_list[!is.na(belgianIntroductions_list)],probs=c(0.025,0.975))
 		cat("A minimum number of ",median(belgianIntroductions_list[!is.na(belgianIntroductions_list)])," lineage introductions (95% HPD interval = [",
 			quantiles[1],"-",quantiles[2],"])"," identified from the global phylogenetic analysis of ",belgianTipBranches," SARS-CoV-2 sampled in Belgium (20-04-2020)",sep="")
+		# Results for the 1° analysis based on the Nextstrain tree of the 20-04-20 (without removing tip branches associated with suspicious homoplasie):
+			# a minimum number of 166 lineage introductions (95% HPD interval = [161-171]) identified from the global phylogenetic analysis of 391 SARS-CoV-2 sampled in Belgium
+		# Results for the 2° analysis based on the Nextstrain tree of the 20-04-20 (when dropping tip branches associated with suspicious homoplasie):
+			# a minimum number of 157 lineage introductions (95% HPD interval = [151-162]) identified from the global phylogenetic analysis of 370 SARS-CoV-2 sampled in Belgium
+		# Results for the 3° analysis based on the Nextstrain tree of the 20-04-20 (based on a lignment without sequences associated with suspicious homoplasie):
+			# a minimum number of 144 lineage introductions (95% HPD interval = [138-150]) identified from the global phylogenetic analysis of 370 SARS-CoV-2 sampled in Belgium
+		# Results for the 6° analysis based on the Nextstrain tree of the 10-06-20 (based on a lignment without sequences associated with suspicious homoplasie):
+			# a minimum number of XXX lineage introductions (95% HPD interval = [XXX-XXX]) identified from the global phylogenetic analysis of XXX SARS-CoV-2 sampled in Belgium
 	}
+tree = readAnnotatedNexus("Phylogenetic_analyses/TreeTime_100620.tree")
 if (showingPlots)
 	{
-		tree = readAnnotatedNexus("Phylogenetic_analyses/Nextstrain_2004_3_MCC.tree")
-		samplingDates = decimal_date(dmy(gsub("\\/","-",tab1[,"collection_date"]))); mostRecentSamplingYear = max(samplingDates)
-		selectedDates = decimal_date(ymd(c("2019-12-19","2020-01-01","2020-01-15","2020-02-01","2020-02-15","2020-03-01","2020-03-15","2020-04-01","2020-04-15")))
+		samplingDates = decimal_date(ymd(gsub("\\/","-",tab[,"collection_date"]))); mostRecentSamplingYear = max(samplingDates)
+		selectedDates = decimal_date(ymd(c("2019-11-01","2019-12-01","2020-01-01","2020-02-01","2020-03-01","2020-04-01","2020-05-01","2020-06-01")))
 		rootHeight = max(nodeHeights(tree)); root_time = mostRecentSamplingYear-rootHeight
-		selectedLabels = c("15-19","01-01","15-01","01-02","15-02","01-03","15-03","01-04","15-04")
+		selectedLabels = c("01-11-2019","01-12-2019","01-01-2020","01-02-2020","01-03-2020","01-04-2020","01-05-2020","01-06-2020")
 		cols = rep("gray30",dim(tree$edge)[1]); lwds = rep(0.1,dim(tree$edge)[1])
 		for (i in 1:dim(tree$edge)[1])
 			{
@@ -233,8 +262,6 @@ if (showingPlots)
 		axis(lwd=0.2, at=selectedDates-root_time, labels=selectedLabels, cex.axis=0.65, mgp=c(0,0.1,-0.9), lwd.tick=0.2, 
 			 col.lab="gray30", col="gray30", tck=-0.01, side=1)
 	}
-
-tree = readAnnotatedNexus("Phylogenetic_analyses/Nextstrain_2004_3_MCC.tree")
 communes = shapefile("Shapefile_communes/Shapefile_post_codes.shp")
 provinces = spTransform(raster::getData("GADM", country="BEL", level=2), crs(communes))
 belgium = spTransform(raster::getData("GADM", country="BEL", level=0), crs(communes))
@@ -264,9 +291,9 @@ for (i in 1:length(belgianIntroductions))
 		if (tree$edge[belgianIntroductions[i],2]%in%tree$edge[,1])
 			{
 				subtree = tree_subset(tree, tree$edge[belgianIntroductions[i],2], levels_back=0)
-				clusters1[[i]] = subtree$tip.label
+				clusters1[[i]] = gsub("'","",subtree$tip.label)
 			}	else		{
-				clusters1[[i]] = tree$tip.label[tree$edge[belgianIntroductions[i],2]]	
+				clusters1[[i]] = gsub("'","",tree$tip.label[tree$edge[belgianIntroductions[i],2]])
 			}
 	}
 if (!file.exists(paste0("Phylogenetic_analyses/Sampling_Belgium.csv")))
@@ -277,14 +304,14 @@ if (!file.exists(paste0("Phylogenetic_analyses/Sampling_Belgium.csv")))
 		for (i in 1:dim(samplingData)[1])
 			{
 				index = which(data[,"Strain"]==samplingData[i,"sequenceID"])
-				date = dmy(gsub("\\/","-",data[index,"Collection.Data"]))
+				date = ymd(gsub("\\/","-",data[index,"Collection.Data"]))
 				samplingData[i,"collectionDate"] = decimal_date(date)
-				ID = unlist(strsplit(samplingData[i,"sequenceID"],"\\/"))[2]
-				index1 = which(grepl(ID,data1[,"sequence.name"]))
+				ID = unlist(strsplit(samplingData[i,"sequenceID"],"\\/"))[3]
+				index1 = which(grepl(gsub("Rega","rega",ID),data1[,"sequence.name"]))
 				if (length(index1) == 1)
 					{
-						samplingData[i,"postCode"] = data1[index1,"Post.code"]
-						indices = which(communes@data[,"nouveau_PO"]==data1[index1,"Post.code"])
+						samplingData[i,"postCode"] = data1[index1,"ZIP"]
+						indices = which(communes@data[,"nouveau_PO"]==data1[index1,"ZIP"])
 						if (length(indices) > 0)
 							{
 								maxArea = 0; polIndex1 = 0; polIndex2 = 0
@@ -363,23 +390,24 @@ for (i in 1:length(clusters1))
 	}
 if (showingPlots)
 	{
+		collectionDates_filetered = collectionDates#[which(collectionDates>decimal_date(ymd("2020-03-01")))]
 		dev.new(width=3.3, height=8); par(mfrow=c(2,1), oma=c(0,0,0,0), mar=c(2,2,1,1), lwd=0.2, col="gray30")
-		hist(clusterSizes, breaks=35, axes=F, ann=F, title=NULL, col="#66CD0099", border="gray30")
+		hist(clusterSizes, breaks=40, axes=F, ann=F, title=NULL, col="#66CD0099", border="gray30")
 		axis(side=2, lwd.tick=0.2, cex.axis=0.65, mgp=c(0,0.20,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30")
 		axis(side=1, lwd.tick=0.2, cex.axis=0.65, mgp=c(0,0.00,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30")
-		hist(collectionDates, breaks=50, axes=F, ann=F, title=NULL, col="#66CD0099", border="gray30")
+		hist(collectionDates_filetered, breaks=65, axes=F, ann=F, title=NULL, col="#66CD0099", border="gray30")
 		axis(side=2, lwd.tick=0.2, cex.axis=0.65, mgp=c(0,0.20,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30")
 		axis(side=1, lwd.tick=0.2, cex.axis=0.65, mgp=c(0,0.00,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30",
-			 at=decimal_date(ymd(c("2020-02-03","2020-02-18","2020-03-03","2020-03-18","2020-04-03"))),
-			 labels=c("03-02-2020","18-02-2020","03-03-2020","18-03-2020","03-04-2020"))
+			 at=decimal_date(ymd(c("2020-02-01","2020-03-01","2020-04-01","2020-05-01"))),
+			 labels=c("01-02-2020","01-03-2020","01-04-2020","01-05-2020"))
 	}
 if (showingPlots)
 	{
-		dev.new(width=7, height=6); par(oma=c(0,0,0,0), mar=c(0.5,4,1,0), lwd=0.2, col="gray30")
-		cols = c(colorRampPalette(brewer.pal(9,"BuPu"))(161)[1:101])
-		cols = c(colorRampPalette(brewer.pal(9,"YlGnBu"))(161)[1:101])
+		dev.new(width=7.3, height=6); par(oma=c(0,0,0,0), mar=c(1,1,1,1), lwd=0.2, col="gray30")
+		cols = c(colorRampPalette(brewer.pal(9,"Greys"))(201)[1:101])
 		plot(pop, col=cols, axes=F, ann=F, box=F, legend=F)
-		plot(belgium, border="gray40", lwd=0.4, add=T)
+		plot(provinces, border="white", col=NA, add=T, lwd=1.0)
+		plot(belgium, border="gray30", col=NA, add=T, lwd=0.4)
 		for (i in 1:length(clusters1))
 			{
 				if (!is.na(centroids[[i]][,1]))
@@ -419,56 +447,10 @@ if (showingPlots)
 					}
 			}
 		legendRast = raster(as.matrix(c(min(pop[],na.rm=T),max(pop[],na.rm=T))))
-		mtext("Human population (log-transformed)", col="gray30", cex=0.7, line=-23, at=577000)
+		mtext("Human population (log-transformed)", col="gray30", cex=0.7, line=-23, at=601000)
 		plot(legendRast, legend.only=T, col=cols, legend.width=0.5, legend.shrink=0.3, smallplot=c(0.141,0.409,0.18,0.19),
 			 alpha=1, horizontal=T, legend.args=list(text="", cex=0.7, line=0.5, col="gray30"), axis.args=list(cex.axis=0.55, lwd=0,
 			 lwd.tick=0.2, tck=-0.8, col.axis="gray30", line=0, mgp=c(0,-0.05,0)))
-	}
-tryringIBDlikeAnalysis = FALSE
-if (tryringIBDlikeAnalysis)
-	{
-		phylogeneticDistances = as.matrix(distTips(tree, tips=samplingData[,"sequenceID"], method="patristic"))
-		geographicDistances = matrix(0, nrow=dim(samplingData)[1], ncol=dim(samplingData)[1])
-		for (i in 2:dim(geographicDistances)[1])
-			{
-				for (j in 1:(i-1))
-					{
-						x1 = as.numeric(samplingData[i,"longitude"]); y1 = as.numeric(samplingData[i,"latitude"])
-						x2 = as.numeric(samplingData[j,"longitude"]); y2 = as.numeric(samplingData[j,"latitude"])
-						geographicDistances[i,j] = (sqrt(((x2-x1)^2)+((y2-y1)^2)))/1000
-					}
-			}
-		ibds = matrix(nrow=dim(samplingData)[1], ncol=2)
-		geos = matrix(nrow=dim(samplingData)[1], ncol=2)
-		for (i in 1:dim(samplingData)[1])
-			{
-				for (j in 1:length(clusters1))
-					{
-						if (samplingData[i,"sequenceID"]%in%clusters1[[j]])
-							{
-								if (length(clusters1[[j]]) > 1)
-									{
-										seqIDs = clusters1[[j]][clusters1[[j]][]!=samplingData[i,"sequenceID"]]
-										indices1 = which((samplingData[,"sequenceID"]%in%seqIDs)&(samplingData[,"collectionDate"]<samplingData[i,"collectionDate"]))
-										if (length(indices1) > 0)
-											{
-												phylogeneticDis = phylogeneticDistances[i,indices1]
-												geographicDis = geographicDistances[i,indices1]
-												indices2 = which(phylogeneticDis==min(phylogeneticDis)); vS1 = c(); vS2 = c()
-												for (k in 1:length(indices2))
-													{
-														vS1 = c(vS1, geographicDis[indices2[k]]/phylogeneticDis[indices2[k]])
-														vS2 = c(vS2, geographicDis[indices2[k]])
-													}
-												ibds[i,1] = samplingData[i,"collectionDate"]; ibds[i,2] = mean(vS1)
-												geos[i,1] = samplingData[i,"collectionDate"]; geos[i,2] = mean(vS2)
-											}
-									}
-							}
-					}
-			}
-		ibds = ibds[which(!is.na(ibds[,2])),]; buffer = cbind(as.numeric(ibds[,1]), as.numeric(ibds[,2])); ibds = buffer[order(buffer[,1]),]
-		geos = geos[which(!is.na(geos[,2])),]; buffer = cbind(as.numeric(geos[,1]), as.numeric(geos[,2])); geos = buffer[order(buffer[,1]),]
 	}
 
 # 3. Preparing the continuous phylogeographic analysis (RRW, Cauchy model)
@@ -488,59 +470,56 @@ for (i in 1:dim(tab4)[1])
 if (writingFiles) write.table(tab4, paste0("Phylogenetic_analyses/",analysis,"_4.txt"), row.names=F, quote=F, sep="\t")
 
 analyses = c()
-template = scan("Phylogenetic_analyses/Nextstrain_RRW_temp.xml", what="", sep="\n", quiet=T, blank.lines.skip=F)
+template = scan("Phylogenetic_analyses/RRW_XMLtemplate.xml", what="", sep="\n", quiet=T, blank.lines.skip=F)
 for (i in 1:length(clusters2))
 	{
 		if ((dim(clusters2[[i]])[1] >= 3)&(sum(!is.na(clusters2[[i]][,"longitude"])) >= 3))
 			{
-				analyses = c(analyses, paste0("Clade_",i))
-				if (!file.exists(paste0("Phylogenetic_analyses/Phylogeographic_runs/Clade_",i,".xml")))
+				analyses = c(analyses, paste0("Clade_",i)); cluster = clusters2[[i]][which(!is.na(clusters2[[i]][,"longitude"])),]
+				xml = gsub("TEMPLATE", paste0("Clade_",i), template)
+				tre = tree_subset(tree, tree$edge[belgianIntroductions[i],2], levels_back=0)
+				tips_to_drop = tre$tip.label[which(!tre$tip.label%in%row.names(cluster))]
+				if (length(tips_to_drop) > 0) tre = ape::drop.tip(tre, tips_to_drop)
+				write.tree(tre, paste0("Phylogenetic_analyses/Phylogeographic_runs/Clade_",i,".tre"))
+				tre = scan(paste0("Phylogenetic_analyses/Phylogeographic_runs/Clade_",i,".tre"), what="", sep="\n", quiet=T)
+				sink(file=paste0("Phylogenetic_analyses/Phylogeographic_runs/Clade_",i,".xml"))
+				for (j in 1:length(xml))
 					{
-						xml = gsub("TEMPLATE", paste0("Clade_",i), template)
-						tre = tree_subset(tree, tree$edge[belgianIntroductions[i],2], levels_back=0)
-						tips_to_drop = tre$tip.label[which(!tre$tip.label%in%row.names(clusters2[[i]]))]
-						if (length(tips_to_drop) > 0) tre = ape::drop.tip(tre, tips_to_drop)
-						write.tree(tre, paste0("Phylogenetic_analyses/Phylogeographic_runs/Clade_",i,".tre"))
-						tre = scan(paste0("Phylogenetic_analyses/Phylogeographic_runs/Clade_",i,".tre"), what="", sep="\n", quiet=T)
-						sink(file=paste0("Phylogenetic_analyses/Phylogeographic_runs/Clade_",i,".xml"))
-						for (j in 1:length(xml))
+						cat(xml[j]); cat("\n")
+						if (xml[j]=="\t<taxa id=\"taxa\">")
 							{
-								cat(xml[j]); cat("\n")
-								if (xml[j]=="\t<taxa id=\"taxa\">")
+								for (k in 1:dim(cluster)[1])
 									{
-										for (k in 1:dim(clusters2[[i]])[1])
-											{
-												cat(paste0("\t\t<taxon id=\"",row.names(clusters2[[i]])[k],"\">","\n"))
-												cat(paste0("\t\t\t<date value=\"",clusters2[[i]][k,"collectionDate"],"\" direction=\"forwards\" units=\"years\"/>","\n"))
-												cat("\t\t\t<attr name=\"latitude\">\n")
-												cat(paste0("\t\t\t\t",clusters2[[i]][k,"latitude"],"\n"))
-												cat("\t\t\t</attr>\n")
-												cat("\t\t\t<attr name=\"longitude\">\n")
-												cat(paste0("\t\t\t\t",clusters2[[i]][k,"longitude"],"\n"))
-												cat("\t\t\t</attr>\n")
-												cat("\t\t\t<attr name=\"coordinates\">\n")
-												cat(paste0("\t\t\t\t",clusters2[[i]][k,"latitude"]," ",clusters2[[i]][k,"longitude"],"\n"))
-												cat("\t\t\t</attr>\n")
-												cat("\t\t</taxon>\n")
-											}
-									}
-								if (xml[j]=="\t<alignment id=\"alignment\" dataType=\"nucleotide\">")
-									{
-										for (k in 1:dim(clusters2[[i]])[1])
-											{
-												cat("\t\t<sequence>\n")
-												cat(paste0("\t\t\t<taxon idref=\"",row.names(clusters2[[i]])[k],"\"/>","\n"))
-												cat("\t\t\tNNNN\n")
-												cat("\t\t</sequence>\n")
-											}
-									}
-								if (xml[j]=="\t<newick id=\"startingTree\">")
-									{
-										cat(paste0("\t\t",tre,"\n"))
+										cat(paste0("\t\t<taxon id=\"",row.names(cluster)[k],"\">","\n"))
+										cat(paste0("\t\t\t<date value=\"",cluster[k,"collectionDate"],"\" direction=\"forwards\" units=\"years\"/>","\n"))
+										cat("\t\t\t<attr name=\"latitude\">\n")
+										cat(paste0("\t\t\t\t",cluster[k,"latitude"],"\n"))
+										cat("\t\t\t</attr>\n")
+										cat("\t\t\t<attr name=\"longitude\">\n")
+										cat(paste0("\t\t\t\t",cluster[k,"longitude"],"\n"))
+										cat("\t\t\t</attr>\n")
+										cat("\t\t\t<attr name=\"coordinates\">\n")
+										cat(paste0("\t\t\t\t",cluster[k,"latitude"]," ",cluster[k,"longitude"],"\n"))
+										cat("\t\t\t</attr>\n")
+										cat("\t\t</taxon>\n")
 									}
 							}
-						sink(NULL)
+						if (xml[j]=="\t<alignment id=\"alignment\" dataType=\"nucleotide\">")
+							{
+								for (k in 1:dim(cluster)[1])
+									{
+										cat("\t\t<sequence>\n")
+										cat(paste0("\t\t\t<taxon idref=\"",row.names(cluster)[k],"\"/>","\n"))
+										cat("\t\t\tNNNN\n")
+										cat("\t\t</sequence>\n")
+									}
+							}
+						if (xml[j]=="\t<newick id=\"startingTree\">")
+							{
+								cat(paste0("\t\t",tre,"\n"))
+							}
 					}
+				sink(NULL)
 			}
 	}
 
@@ -558,9 +537,10 @@ wd = getwd(); setwd(paste0(wd,"/Phylogenetic_analyses/Phylogeographic_runs/"))
 if (runningNewAnalyses)
 	{
 		system("bash Analyses.sh", ignore.stdout=T, ignore.stderr=F)
+		burnIns = rep(1001, length(analyses)); burnIns[which(analyses%in%paste0("Clade_",c(5,96,123)))] = 5001
 		for (i in 1:length(analyses))
 			{
-				system(paste0("BEAST_1104/bin/treeannotator -burninTrees 101 -heights keep ",analyses[i],".trees ",analyses[i],".tree"), ignore.stdout=F, ignore.stderr=F)
+system(paste0("BEAST_1104/bin/treeannotator -burninTrees ",burnIns[i]," -heights keep ",analyses[i],".trees ",analyses[i],".tree"), ignore.stdout=F, ignore.stderr=F)
 			}
 	}
 setwd(wd)
@@ -593,13 +573,13 @@ for (i in 1:length(analyses))
 				write.csv(mcc_tab, paste0(analyses[i],".csv"), row.names=F, quote=F)
 			}
 	}
-nberOfTreesToSample = 1000; burnIn = 101; randomSampling = FALSE; coordinateAttributeName = "coordinates"; nberOfCores = 5
+nberOfTreesToSample = 1000; randomSampling = FALSE; coordinateAttributeName = "coordinates"; nberOfCores = 5
 for (i in 1:length(analyses))
 	{
 		localTreesDirectory = paste0(analyses[i],"_ext")
 		if (!file.exists(paste0(localTreesDirectory,"/TreeExtractions_1.csv")))
 			{
-				index = as.numeric(unlist(strsplit(analyses[i],"_"))[2])
+				index = as.numeric(unlist(strsplit(analyses[i],"_"))[2]); burnIn = burnIns[i]
 				mostRecentSamplingDatum = max(clusters2[[index]][which(!is.na(clusters2[[index]][,"longitude"])),"collectionDate"])
 				allTrees = scan(file=paste0(analyses[i],".trees"), what="", sep="\n", quiet=T, blank.lines.skip=F)
 				treeExtractions(localTreesDirectory, allTrees, burnIn, randomSampling, nberOfTreesToSample, mostRecentSamplingDatum, coordinateAttributeName, nberOfCores)
@@ -664,8 +644,8 @@ setwd(wd)
 
 # 6. Generating a dispersal history graph (mapped MCC trees, 80% HPD polygons)
 
-localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/All_clades_ext1")
-percentage = 80; prob = percentage/100; precision = 1/(365/3.5); croppingPolygons = TRUE
+localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/All_clades_ext1"); nberOfExtractionFiles = 1000
+percentage = 80; prob = percentage/100; precision = 1/(365/7); croppingPolygons = TRUE
 mcc = read.csv("Phylogenetic_analyses/Phylogeographic_runs/All_clades.csv", head=T); startDatum = min(mcc[,"startYear"])
 polygons = suppressWarnings(spreadGraphic2(localTreesDirectory, nberOfExtractionFiles, prob, startDatum, precision))
 if (showingPlots)
@@ -780,8 +760,8 @@ if (showingPlots)
 				points(mcc[i,"endLon"], mcc[i,"endLat"], pch=16, col=endYears_colours[i], cex=cexNode)
 				points(mcc[i,"endLon"], mcc[i,"endLat"], pch=1, col="gray10", cex=cexNode, lwd=0.4)
 			}
-		selectedDates = decimal_date(ymd(c("2020-03-03","2020-03-18","2020-04-03")))
-		selectedLabels = c("03-03-2020","18-03-2020","03-04-2020")
+		selectedDates = decimal_date(ymd(c("2020-02-03","2020-03-03","2020-03-14","2020-03-18","2020-04-03","2020-05-03")))
+		selectedLabels = c("03-02-2020","03-03-2020","","18-03-2020","03-04-2020","03-05-2020")
 		rast = raster(matrix(nrow=1, ncol=2)); rast[1] = min(mcc[,"startYear"]); rast[2] = max(mcc[,"endYear"])
 		plot(rast, legend.only=T, add=T, col=colourScale, legend.width=0.5, legend.shrink=0.3, smallplot=c(0.1,0.5,0.100,0.112),
 			 legend.args=list(text="", cex=0.7, line=0.3, col="gray30"), horizontal=T,
@@ -791,7 +771,7 @@ if (showingPlots)
 if (showingPlots)
 	{
 		polIndex1 = which(provinces@data[,"NAME_2"]=="Liège")
-		maxArea = 0; polIndex2 = 0; cexNode = 1.1
+		maxArea = 0; polIndex2 = 0; cexNode = 0.85
 		for (i in 1:length(provinces@polygons[[polIndex1]]@Polygons))
 			{
 				if (maxArea < provinces@polygons[[polIndex1]]@Polygons[[i]]@area)
@@ -812,7 +792,7 @@ if (showingPlots)
 		endYears_indices = (((sub[,"endYear"]-minYear)/(maxYear-minYear))*100)+1
 		startYears_colours = colourScale[startYears_indices]
 		endYears_colours = colourScale[endYears_indices]
-		dev.new(width=12, height=3); par(mfrow=c(1,3), oma=c(0,2,0,0), mar=c(0,0,0,0), lwd=0.2, col="gray30")
+		dev.new(width=11, height=4); par(mfrow=c(1,2), oma=c(0,2,0,0), mar=c(0,0,0,0), lwd=0.2, col="gray30")
 		for (i in 1:2)
 			{
 				cols = c(colorRampPalette(brewer.pal(9,"YlGnBu"))(161)[1:101])
@@ -837,76 +817,249 @@ if (showingPlots)
 						points(sub[j,"endLon"], sub[j,"endLat"], pch=1, col="gray10", cex=cexNode, lwd=0.4)
 					}
 			}
-		plot(pop_liege, col=cols, axes=F, ann=F, box=F, legend=F)
-		plot(pol, border="gray30", col=NA, add=T, lwd=0.4)
-		legendRast = raster(as.matrix(c(min(rast[],na.rm=T),max(rast[],na.rm=T))))
-		mtext("Human population (log-transformed)", col="gray30", cex=0.7, line=-19.5, at=731000)
-		plot(legendRast, legend.only=T, col=cols, legend.width=0.5, legend.shrink=0.3, smallplot=c(0.1,0.58,0.11,0.13),
-			 alpha=1, horizontal=T, legend.args=list(text="", cex=1.5, line=0.5, col="gray30"), axis.args=list(cex.axis=0.9, lwd=0,
-			 lwd.tick=0.2, tck=-0.8, col.axis="gray30", line=0, mgp=c(0,0.3,0)))
 	}
 
-# 7. Estimating and plotting dispersal statistics associated with lineages
-	
+# 7. Comparing intra- and inter-province/municipality lineage migration events
+
+communes = shapefile("Shapefile_communes/Shapefile_post_codes.shp")
+provinces = spTransform(raster::getData("GADM", country="BEL", level=2), crs(communes))
+provinces_sf = sf::st_as_sf(provinces); communes_sf = sf::st_as_sf(communes)
+nberOfExtractionFiles = 1000; localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/All_clades_ext1")
+for (i in 0:nberOfExtractionFiles)
+	{
+		if (i == 0) tab = read.csv("Phylogenetic_analyses/Phylogeographic_runs/All_clades.csv", head=T)
+		if (i >= 1) tab = read.csv(paste0(localTreesDirectory,"/TreeExtractions_",i,".csv"), head=T)
+		startEndProvinces = matrix(nrow=dim(tab)[1], ncol=2); colnames(startEndProvinces) = c("startProvince","endProvince")
+		pts = sf::st_as_sf(tab[,c("startLon","startLat")], coords=c("startLon","startLat"), crs=crs(provinces))
+		indices1 = sf::st_intersects(pts, provinces_sf); indices2 = rep(NA, length(indices1))
+		for (j in 1:length(indices1))
+			{
+				if (length(indices1[[j]]) > 0) indices2[j] = indices1[[j]]
+			}
+		startEndProvinces[,"startProvince"] = gsub(" ","",provinces@data[indices2,"NAME_2"])
+		pts = sf::st_as_sf(tab[,c("endLon","endLat")], coords=c("endLon","endLat"), crs=crs(provinces))
+		indices1 = sf::st_intersects(pts, provinces_sf); indices2 = rep(NA, length(indices1))
+		for (j in 1:length(indices1))
+			{
+				if (length(indices1[[j]]) > 0) indices2[j] = indices1[[j]]
+			}
+		startEndProvinces[,"endProvince"] = gsub(" ","",provinces@data[indices2,"NAME_2"])
+		tab = cbind(tab, startEndProvinces)
+		startEndCommunes = matrix(nrow=dim(tab)[1], ncol=2); colnames(startEndCommunes) = c("startCommune","endCommune")
+		pts = sf::st_as_sf(tab[,c("startLon","startLat")], coords=c("startLon","startLat"), crs=crs(communes))
+		indices1 = sf::st_intersects(pts, communes_sf); indices2 = rep(NA, length(indices1))
+		for (j in 1:length(indices1))
+			{
+				if (length(indices1[[j]]) > 0) indices2[j] = indices1[[j]]
+			}
+		startEndCommunes[,"startCommune"] = gsub(" ","",communes@data[indices2,"nouveau_PO"])
+		pts = sf::st_as_sf(tab[,c("endLon","endLat")], coords=c("endLon","endLat"), crs=crs(communes))
+		indices1 = sf::st_intersects(pts, communes_sf); indices2 = rep(NA, length(indices1))
+		for (j in 1:length(indices1))
+			{
+				if (length(indices1[[j]]) > 0) indices2[j] = indices1[[j]]
+			}
+		startEndCommunes[,"endCommune"] = gsub(" ","",communes@data[indices2,"nouveau_PO"])
+		tab = cbind(tab, startEndCommunes)
+		if (i == 0) write.csv(tab, "Phylogenetic_analyses/Phylogeographic_runs/All_clades.csv", row.names=F, quote=F)
+		if (i >= 1) write.csv(tab, paste0(localTreesDirectory,"/TreeExtractions_",i,".csv"), row.names=F, quote=F)
+	}
+timeSlices = 100; slidingWindow = 14/366
+minStartYear = 2021; maxEndYear = 0
+for (i in 1:nberOfExtractionFiles)
+	{
+		tab = read.csv(paste0(localTreesDirectory,"/TreeExtractions_",i,".csv"), head=T)
+		if (minStartYear > min(tab[,"startYear"])) minStartYear = min(tab[,"startYear"])
+		if (maxEndYear < max(tab[,"endYear"])) maxEndYear = max(tab[,"endYear"])
+	}
+timeInterval = (maxEndYear-minStartYear)/timeSlices
+startEndTimes = matrix(nrow=timeSlices, ncol=3)
+for (i in 1:timeSlices)
+	{
+		time = minStartYear+((i-1)*timeInterval)+(timeInterval/2)
+		startTime = time - (slidingWindow/2)
+		endTime = time + (slidingWindow/2)
+		startEndTimes[i,1:3] = cbind(time, startTime, endTime)
+	}
+directory = "Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_all_branches_ext1/"
+if (!file.exist(paste0(directory,"All_within_province_transition_events.csv")))
+	{
+		withinProvinceTransitions = matrix(0, nrow=timeSlices, ncol=nberOfExtractionFiles)
+		amongProvincesTransitions = matrix(0, nrow=timeSlices, ncol=nberOfExtractionFiles)		
+		amongProvincesProportions = matrix(0, nrow=timeSlices, ncol=nberOfExtractionFiles)
+		withinCommuneTransitions = matrix(0, nrow=timeSlices, ncol=nberOfExtractionFiles)
+		amongCommunesTransitions = matrix(0, nrow=timeSlices, ncol=nberOfExtractionFiles)		
+		amongCommunesProportions = matrix(0, nrow=timeSlices, ncol=nberOfExtractionFiles)
+		for (t in 1:nberOfExtractionFiles)
+			{
+				tab = read.csv(paste0(localTreesDirectory,"/TreeExtractions_",t,".csv"), head=T)
+				tab = tab[with(tab,order(endYear, startYear)),]; tab = tab[order(tab[,"endYear"]),]
+				for (i in 1:timeSlices)
+					{
+						time = startEndTimes[i,1]
+						startTime = startEndTimes[i,2]
+						endTime = startEndTimes[i,3]
+						for (j in 1:dim(tab)[1])
+							{
+								branchInTimeInterval = FALSE
+								if ((tab[j,"startYear"]<startTime)&(tab[j,"endYear"]>endTime)) branchInTimeInterval = TRUE
+								if ((tab[j,"startYear"]>startTime)&(tab[j,"startYear"]<endTime)) branchInTimeInterval = TRUE
+								if ((tab[j,"endYear"]>startTime)&(tab[j,"endYear"]<endTime)) branchInTimeInterval = TRUE
+								if (branchInTimeInterval == TRUE)
+									{
+										if ((!is.na(tab[j,"startProvince"]))&(!is.na(tab[j,"endProvince"])))
+											{
+								if (as.character(tab[j,"startProvince"]) == as.character(tab[j,"endProvince"])) withinProvinceTransitions[i,t] = withinProvinceTransitions[i,t]+1
+								if (as.character(tab[j,"startProvince"]) != as.character(tab[j,"endProvince"])) amongProvincesTransitions[i,t] = amongProvincesTransitions[i,t]+1
+											}
+										if ((!is.na(tab[j,"startCommune"]))&(!is.na(tab[j,"endCommune"])))
+											{
+								if (as.character(tab[j,"startCommune"]) == as.character(tab[j,"endCommune"])) withinCommuneTransitions[i,t] = withinCommuneTransitions[i,t]+1
+								if (as.character(tab[j,"startCommune"]) != as.character(tab[j,"endCommune"])) amongCommunesTransitions[i,t] = amongCommunesTransitions[i,t]+1
+											}
+									}
+							}
+						amongProvincesProportions[i,t] = amongProvincesTransitions[i,t]/(withinProvinceTransitions[i,t]+amongProvincesTransitions[i,t])
+						amongCommunesProportions[i,t] = amongCommunesTransitions[i,t]/(withinCommuneTransitions[i,t]+amongCommunesTransitions[i,t])
+					}
+			}
+		row.names(withinProvinceTransitions) = startEndTimes[,1]; row.names(amongProvincesTransitions) = startEndTimes[,1]
+		write.csv(withinProvinceTransitions, paste0(directory,analysis,"_all_within_province_transition_events.csv"), quote=F)
+		write.csv(amongProvincesTransitions, paste0(directory,analysis,"_all_among_provinces_transition_events.csv"), quote=F)
+		row.names(withinCommuneTransitions) = startEndTimes[,1]; row.names(amongCommunesTransitions) = startEndTimes[,1]
+		write.csv(withinCommuneTransitions, paste0(directory,analysis,"_all_within_commune_transition_events.csv"), quote=F)
+		write.csv(amongCommunesTransitions, paste0(directory,analysis,"_all_among_communes_transition_events.csv"), quote=F)
+		row.names(amongProvincesProportions) = startEndTimes[,1]; row.names(amongCommunesProportions) = startEndTimes[,1]
+		write.csv(amongProvincesProportions, paste0(directory,analysis,"_all_among_provinces_proportion_events.csv"), quote=F)
+		write.csv(amongCommunesProportions, paste0(directory,analysis,"_all_among_communes_proportion_events.csv"), quote=F)
+	}	else	{
+		withinProvinceTransitions = as.matrix(read.csv(paste0(directory,analysis,"_all_within_province_transition_events.csv"), header=T))
+		amongProvincesTransitions = as.matrix(read.csv(paste0(directory,analysis,"_all_among_provinces_transition_events.csv"), header=T))
+		amongProvincesProportions = as.matrix(read.csv(paste0(directory,analysis,"_all_among_provinces_proportion_events.csv"), header=T))
+		withinCommuneTransitions = as.matrix(read.csv(paste0(directory,analysis,"_all_within_commune_transition_events.csv"), header=T))
+		amongCommunesTransitions = as.matrix(read.csv(paste0(directory,analysis,"_all_among_communes_transition_events.csv"), header=T))
+		amongCommunesProportions = as.matrix(read.csv(paste0(directory,analysis,"_all_among_communes_proportion_events.csv"), header=T))
+	}
+withinProvinceTransitions_median_95HPD = matrix(nrow=dim(withinProvinceTransitions)[1], ncol=3)
+amongProvincesTransitions_median_95HPD = matrix(nrow=dim(amongProvincesTransitions)[1], ncol=3)
+amongProvincesProportions_median_95HPD = matrix(nrow=dim(amongProvincesProportions)[1], ncol=3)
+withinCommuneTransitions_median_95HPD = matrix(nrow=dim(withinCommuneTransitions)[1], ncol=3)
+amongCommunesTransitions_median_95HPD = matrix(nrow=dim(amongCommunesTransitions)[1], ncol=3)
+amongCommunesProportions_median_95HPD = matrix(nrow=dim(amongCommunesProportions)[1], ncol=3)
+for (i in 1:dim(withinProvinceTransitions)[1])
+	{
+		withinProvinceTransitions_median_95HPD[i,1] = median(withinProvinceTransitions[i,])
+		withinProvinceTransitions_median_95HPD[i,2] = quantile(withinProvinceTransitions[i,], probs=c(0.025,0.975), na.rm=T)[1]
+		withinProvinceTransitions_median_95HPD[i,3] = quantile(withinProvinceTransitions[i,], probs=c(0.025,0.975), na.rm=T)[2]
+		amongProvincesTransitions_median_95HPD[i,1] = median(amongProvincesTransitions[i,])
+		amongProvincesTransitions_median_95HPD[i,2] = quantile(amongProvincesTransitions[i,], probs=c(0.025,0.975), na.rm=T)[1]
+		amongProvincesTransitions_median_95HPD[i,3] = quantile(amongProvincesTransitions[i,], probs=c(0.025,0.975), na.rm=T)[2]
+		amongProvincesProportions_median_95HPD[i,1] = median(amongProvincesProportions[i,])
+		amongProvincesProportions_median_95HPD[i,2] = quantile(amongProvincesProportions[i,], probs=c(0.025,0.975), na.rm=T)[1]
+		amongProvincesProportions_median_95HPD[i,3] = quantile(amongProvincesProportions[i,], probs=c(0.025,0.975), na.rm=T)[2]
+		withinCommuneTransitions_median_95HPD[i,1] = median(withinCommuneTransitions[i,])
+		withinCommuneTransitions_median_95HPD[i,2] = quantile(withinCommuneTransitions[i,], probs=c(0.025,0.975), na.rm=T)[1]
+		withinCommuneTransitions_median_95HPD[i,3] = quantile(withinCommuneTransitions[i,], probs=c(0.025,0.975), na.rm=T)[2]
+		amongCommunesTransitions_median_95HPD[i,1] = median(amongCommunesTransitions[i,])
+		amongCommunesTransitions_median_95HPD[i,2] = quantile(amongCommunesTransitions[i,], probs=c(0.025,0.975), na.rm=T)[1]
+		amongCommunesTransitions_median_95HPD[i,3] = quantile(amongCommunesTransitions[i,], probs=c(0.025,0.975), na.rm=T)[2]
+		amongCommunesProportions_median_95HPD[i,1] = median(amongCommunesProportions[i,])
+		amongCommunesProportions_median_95HPD[i,2] = quantile(amongCommunesProportions[i,], probs=c(0.025,0.975), na.rm=T)[1]
+		amongCommunesProportions_median_95HPD[i,3] = quantile(amongCommunesProportions[i,], probs=c(0.025,0.975), na.rm=T)[2]
+	}
+if (writingFiles)
+	{
+		tab = cbind(startEndTimes[,1], withinProvinceTransitions_median_95HPD, amongProvincesTransitions_median_95HPD)
+		colnames(tab) = c("time", "within_province_transitions_median", "within_province_transitions_lower95HPD", "within_province_transitions_higher95HPD",
+						  "among_provinces_transitions_median", "among_provinces_transitions_lower95HPD", "among_provinces_transitions_higher95HPD")
+		write.csv(tab, paste0(directory,analysis,"_within_vs_among_provinces_transitions.csv"), row.names=F, quote=F)
+		tab = cbind(startEndTimes[,1], withinCommuneTransitions_median_95HPD, amongCommunesTransitions_median_95HPD)
+		colnames(tab) = c("time", "within_commune_transitions_median", "within_commune_transitions_lower95HPD", "within_commune_transitions_higher95HPD",
+						  "among_communes_transitions_median", "among_communes_transitions_lower95HPD", "among_communes_transitions_higher95HPD")
+		write.csv(tab, paste0(directory,analysis,"_within_vs_among_communes_transitions.csv"), row.names=F, quote=F)
+		tab = cbind(startEndTimes[,1], amongProvincesProportions_median_95HPD, amongCommunesProportions_median_95HPD)
+		colnames(tab) = c("time", "among_provinces_proportion_median", "among_provinces_proportion_lower95HPD", "among_provinces_proportion_higher95HPD",
+						  "among_communes_proportion_median", "among_communes_proportion_lower95HPD", "among_communes_proportion_higher95HPD")
+		write.csv(tab, paste0(directory,analysis,"_among_provinces_communes_proportions.csv"), row.names=F, quote=F)
+	}
+
+# 8. Estimating and plotting dispersal statistics associated with lineages
+
+nberOfExtractionFiles = 1000; timeSlices = 100; onlyTipBranches = FALSE; showingPlots = FALSE; nberOfCores = 5; slidingWindow = 1/(365/14)
 localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/All_clades_ext2")
-timSlices = 50; onlyTipBranches = FALSE; showingPlots = FALSE; nberOfCores = 5; slidingWindow = 1/(365/7)
-nberOfExtractionFiles = 1000; outputName = "Phylogenetic_analyses/All_dispersal_statistics/50_time_slices_7days_sliding_window/Nextstrain_2004"
-spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
-timSlices = 100; onlyTipBranches = FALSE; showingPlots = FALSE; nberOfCores = 5; slidingWindow = 1/(365/14)
-nberOfExtractionFiles = 1000; outputName = "Phylogenetic_analyses/All_dispersal_statistics/100_time_slices_14days_sliding_window/Nextstrain_2004"
-spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
+dir.create(file.path("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_all_branches_ext2/"), showWarnings=F)
+outputName = paste0("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_all_branches_ext2/",analysis)
+spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timeSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
+localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/Bf_180320_ext2")
+outputName = paste0("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Bf_180320_ext2/",analysis)
+dir.create(file.path("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Bf_180320_ext2/"), showWarnings=F)
+spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timeSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
+localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/Af_180320_ext2")
+outputName = paste0("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Af_180320_ext2/",analysis); dir.create(file.path(outputName), showWarnings=F)
+dir.create(file.path("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Af_180320_ext2/"), showWarnings=F)
+spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timeSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
+localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/Bf_180320_Liege")
+outputName = paste0("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Bf_180320_Liege/",analysis); dir.create(file.path(outputName), showWarnings=F)
+dir.create(file.path("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Bf_180320_Liege/"), showWarnings=F)
+spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timeSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
+localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/Af_180320_Liege")
+outputName = paste0("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Af_180320_Liege/",analysis); dir.create(file.path(outputName), showWarnings=F)
+dir.create(file.path("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Af_180320_Liege/"), showWarnings=F)
+spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timeSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
+
+tab = read.table(paste0("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Bf_180320_ext2/",analysis,"_estimated_dispersal_statistics.txt"), header=T)
+vS = round(tab[,"weighted_branch_dispersal_velocity"]/366,1); cat(median(vS)," km/day (95% HPD interval = [",quantile(vS,0.025),"-",quantile(vS,0.975),"])",sep="")
+tab = read.table(paste0("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Af_180320_ext2/",analysis,"_estimated_dispersal_statistics.txt"), header=T)
+vS = round(tab[,"weighted_branch_dispersal_velocity"]/366,1); cat(median(vS)," km/day (95% HPD interval = [",quantile(vS,0.025),"-",quantile(vS,0.975),"])",sep="")
+tab = read.table(paste0("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Bf_180320_Liege/",analysis,"_estimated_dispersal_statistics.txt"), header=T)
+vS = round(tab[,"weighted_branch_dispersal_velocity"]/366,1); cat(median(vS)," km/day (95% HPD interval = [",quantile(vS,0.025),"-",quantile(vS,0.975),"])",sep="")
+tab = read.table(paste0("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Af_180320_Liege/",analysis,"_estimated_dispersal_statistics.txt"), header=T)
+vS = round(tab[,"weighted_branch_dispersal_velocity"]/366,1); cat(median(vS)," km/day (95% HPD interval = [",quantile(vS,0.025),"-",quantile(vS,0.975),"])",sep="")
+
 if (showingPlots)
 	{
-		dev.new(width=5, height=4); par(mgp=c(0,0,0), oma=c(1,1,0.5,0.5), mar=c(1.5,1.5,1,1))
-		col1 = rgb(100, 100, 100, 255, maxColorValue=255); col2 = rgb(100, 100, 100, 100, maxColorValue=255)
-		directory = "Phylogenetic_analyses/All_dispersal_statistics/50_time_slices_7days_sliding_window/"
-		directory = "Phylogenetic_analyses/All_dispersal_statistics/100_time_slices_14days_sliding_window/"
-		tab1 = read.table(paste0(directory,"Nextstrain_2004_median_weighted_branch_dispersal_velocity.txt"), header=T)
-		tab2 = read.table(paste0(directory,"Nextstrain_2004_95%HPD_weighted_branch_dispersal_velocity.txt"), header=T)
-		tab1[,2] = tab1[,2]/366; tab2[,2:3] = tab2[,2:3]/366 # to have the lineage dispersal velocity in km/day
+		directory = "Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_all_branches_ext2/"
 		mcc = read.csv("Phylogenetic_analyses/Phylogeographic_runs/All_clades.csv", head=T)
 		minYear = min(mcc[,"startYear"]); maxYear = max(mcc[,"endYear"])
-		plot(tab1[,1], tab1[,2], type="l", axes=F, ann=F, ylim=c(0,9000/366), xlim=c(minYear,maxYear), col=NA)
-		slicedTimes = tab1[,1]; branchDispersalVelocityMeanValue = tab1[,2]; lower_l_1 = tab2[,2]; upper_l_1 = tab2[,3]
-		xx_l = c(slicedTimes,rev(slicedTimes)); yy_l = c(lower_l_1,rev(upper_l_1))
-		getOption("scipen"); opt = options("scipen"=20); polygon(xx_l, yy_l, col=col2, border=0)
-		lines(slicedTimes, branchDispersalVelocityMeanValue, lwd=1, col=col1)
-		ats = c(minYear, decimal_date(ymd("2020-03-01")), decimal_date(ymd("2020-03-14")), decimal_date(ymd("2020-03-28")), maxYear)
+		tab1 = read.table(paste0(directory,analysis,"_median_weighted_branch_dispersal_velocity.txt"), header=T)
+		tab2 = read.table(paste0(directory,analysis,"_95%HPD_weighted_branch_dispersal_velocity.txt"), header=T)
+		tab1[,2] = tab1[,2]/366; tab2[,2:3] = tab2[,2:3]/366 # to have the lineage dispersal velocity in km/day
+		col1 = rgb(100, 100, 100, 255, maxColorValue=255); col2 = rgb(100, 100, 100, 100, maxColorValue=255)
+		dev.new(width=6, height=4); par(mgp=c(0,0,0), oma=c(1,1,0.5,0.5), mar=c(1.5,1.5,1,1))
+		plot(tab1[,1], tab1[,3], type="l", axes=F, ann=F, ylim=c(0,700), xlim=c(decimal_date(ymd("2020-02-15")),maxYear), col=NA)
+		lines(slicedTimes, numberOfBranchesMedianValue, lwd=1, col="red")
+		ats = c(decimal_date(ymd("2020-02-15")), decimal_date(ymd("2020-03-03")), decimal_date(ymd("2020-03-14")),
+				decimal_date(ymd("2020-03-18")), decimal_date(ymd("2020-04-03")), decimal_date(ymd("2020-05-03")), maxYear)
 		axis(side=2, lwd.tick=0.2, cex.axis=0.6, mgp=c(0,0.20,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30")
 		axis(side=1, lwd.tick=0.2, cex.axis=0.6, mgp=c(0,0.00,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30",
-			 at=ats, labels=c("","01-03","14-03","28-03",""))
+			 at=ats, labels=c("","03-03","14-03","18-03","03-04","03-05",""))
+		dev.new(width=6, height=4); par(mgp=c(0,0,0), oma=c(1,1,0.5,0.5), mar=c(1.5,1.5,1,1))
+		plot(tab1[,1], tab1[,2], type="l", axes=F, ann=F, ylim=c(0,12), xlim=c(decimal_date(ymd("2020-02-15")),maxYear), col=NA)
+		slicedTimes = tab1[,1]; numberOfBranchesMedianValue = tab1[,3]
+		branchDispersalVelocityMedianValue = tab1[,2]; lower_l_1 = tab2[,2]; upper_l_1 = tab2[,3]
+		xx_l = c(slicedTimes,rev(slicedTimes)); yy_l = c(lower_l_1,rev(upper_l_1))
+		getOption("scipen"); opt = options("scipen"=20); polygon(xx_l, yy_l, col=col2, border=0)
+		lines(slicedTimes, branchDispersalVelocityMedianValue, lwd=1, col=col1)
+		ats = c(decimal_date(ymd("2020-02-15")), decimal_date(ymd("2020-03-03")), decimal_date(ymd("2020-03-14")),
+				decimal_date(ymd("2020-03-18")), decimal_date(ymd("2020-04-03")), decimal_date(ymd("2020-05-03")), maxYear)
+		axis(side=2, lwd.tick=0.2, cex.axis=0.6, mgp=c(0,0.20,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30")
+		axis(side=1, lwd.tick=0.2, cex.axis=0.6, mgp=c(0,0.00,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30",
+			 at=ats, labels=c("","03-03","14-03","18-03","03-04","03-05",""))
+		directory = "Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_all_branches_ext1/"
+		tab = read.csv(paste0(directory,analysis,"_among_provinces_communes_proportions.csv"), header=T)
+		col1a = "#FAA521"; col1b = "#FAA52150"; col2a = "#4676BB"; col2b = "#4676BB50"
+		dev.new(width=6, height=2.5); par(mgp=c(0,0,0), oma=c(1,1,0.5,0.5), mar=c(1.5,1.5,1,1))
+		plot(tab[,1], tab[,2], type="l", axes=F, ann=F, ylim=c(0,0.40), xlim=c(decimal_date(ymd("2020-02-15")),maxYear), col=NA)
+		slicedTimes = tab[,1]; lower_l_1 = tab[,3]; upper_l_1 = tab[,4]
+		xx_l = c(slicedTimes,rev(slicedTimes)); yy_l = c(lower_l_1,rev(upper_l_1))
+		getOption("scipen"); opt = options("scipen"=20); polygon(xx_l, yy_l, col=col2b, border=0)
+		lines(slicedTimes, tab[,2], lwd=1, col=col2a)
+		ats = c(decimal_date(ymd("2020-02-15")), decimal_date(ymd("2020-03-03")), decimal_date(ymd("2020-03-14")),
+				decimal_date(ymd("2020-03-18")), decimal_date(ymd("2020-04-03")), decimal_date(ymd("2020-05-03")), maxYear)
+		axis(side=2, lwd.tick=0.2, cex.axis=0.6, mgp=c(0,0.20,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30")
+		axis(side=1, lwd.tick=0.2, cex.axis=0.6, mgp=c(0,0.00,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30",
+			 at=ats, labels=c("","03-03","14-03","18-03","03-04","03-05",""))
 	}
-
-timSlices = 50; onlyTipBranches = FALSE; showingPlots = FALSE; nberOfCores = 5; slidingWindow = NA
-localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/All_clades_ext2")
-outputName = "Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_All_180320_ext2/Nextstrain_2004"
-dir.create(file.path("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_All_180320_ext2/"), showWarnings=F)
-spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
-localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/Bf_180320_ext2")
-outputName = "Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Bf_180320_ext2/Nextstrain_2004"
-dir.create(file.path("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Bf_180320_ext2/"), showWarnings=F)
-spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
-localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/Af_180320_ext2")
-outputName = "Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Af_180320_ext2/Nextstrain_2004"; dir.create(file.path(outputName), showWarnings=F)
-dir.create(file.path("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Af_180320_ext2/"), showWarnings=F)
-spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
-localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/Bf_180320_Liege")
-outputName = "Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Bf_180320_Liege/Nextstrain_2004"; dir.create(file.path(outputName), showWarnings=F)
-dir.create(file.path("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Bf_180320_Liege/"), showWarnings=F)
-spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
-localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/Af_180320_Liege")
-outputName = "Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Af_180320_Liege/Nextstrain_2004"; dir.create(file.path(outputName), showWarnings=F)
-dir.create(file.path("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Af_180320_Liege/"), showWarnings=F)
-spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
-
-tab = read.table("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Bf_180320_ext2/Nextstrain_2004_estimated_dispersal_statistics.txt", header=T)
-vWs = round(tab[,"weighted_branch_dispersal_velocity"]/366,1); cat(median(vWs)," km/day (95% HPD interval = [",quantile(vWs,0.025),"-",quantile(vWs,0.975),"])",sep="")
-tab = read.table("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Af_180320_ext2/Nextstrain_2004_estimated_dispersal_statistics.txt", header=T)
-vWs = round(tab[,"weighted_branch_dispersal_velocity"]/366,1); cat(median(vWs)," km/day (95% HPD interval = [",quantile(vWs,0.025),"-",quantile(vWs,0.975),"])",sep="")
-tab = read.table("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Bf_180320_Liege/Nextstrain_2004_estimated_dispersal_statistics.txt", header=T)
-vWs = round(tab[,"weighted_branch_dispersal_velocity"]/366,1); cat(median(vWs)," km/day (95% HPD interval = [",quantile(vWs,0.025),"-",quantile(vWs,0.975),"])",sep="")
-tab = read.table("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Af_180320_Liege/Nextstrain_2004_estimated_dispersal_statistics.txt", header=T)
-vWs = round(tab[,"weighted_branch_dispersal_velocity"]/366,1); cat(median(vWs)," km/day (95% HPD interval = [",quantile(vWs,0.025),"-",quantile(vWs,0.975),"])",sep="")
 
 mcc = read.csv("Phylogenetic_analyses/Phylogeographic_runs/All_clades.csv", head=T)
 geoDistances = rep(NA, dim(mcc)[1]); branchDurations = rep(NA, dim(mcc)[1])
@@ -922,53 +1075,11 @@ if (showingPlots)
 	{
 		dev.new(width=5, height=4); par(mgp=c(0,0,0), oma=c(0,0,0,0), mar=c(3,3.5,1.5,2))
 		cols1 = cols; cols2 = cols1; cols2[which(!is.na(cols2))] = paste0(cols2[which(!is.na(cols2))],"50")
-		plot(log(geoDistances), log(branchDurations), col=cols2, pch=16, cex=0.8, xlim=c(3.1,11.7), ylim=c(-5.9,3.2), axes=F, ann=F)
+		plot(log(geoDistances), log(branchDurations), col=cols2, pch=16, cex=0.8, xlim=c(1.5,11.5), ylim=c(-7,3.5), axes=F, ann=F)
 		points(log(geoDistances), log(branchDurations), col=cols1, pch=1, cex=0.8)
-		axis(side=1, lwd.tick=0.2, cex.axis=0.6, mgp=c(0,0.00,0), lwd=0.2, tck=-0.015, at=seq(2,12,1), col.tick="gray30", col.axis="gray30", col="gray30")
-		axis(side=2, lwd.tick=0.2, cex.axis=0.6, mgp=c(0,0.20,0), lwd=0.2, tck=-0.015, at=seq(-7,4,1), col.tick="gray30", col.axis="gray30", col="gray30")
+		axis(side=1, lwd.tick=0.2, cex.axis=0.6, mgp=c(0,0.00,0), lwd=0.2, tck=-0.015, at=seq(0,13,1), col.tick="gray30", col.axis="gray30", col="gray30")
+		axis(side=2, lwd.tick=0.2, cex.axis=0.6, mgp=c(0,0.20,0), lwd=0.2, tck=-0.015, at=seq(-8,5,1), col.tick="gray30", col.axis="gray30", col="gray30")
 		title(ylab="phylogenetic branch durations (days, log-transformed)", cex.lab=0.7, mgp=c(1.2,0,0), col.lab="gray30")
 		title(xlab="geographic distance (km, log-transformed)", cex.lab=0.7, mgp=c(0.8,0,0), col.lab="gray30")
-	}
-
-# 8. Analysing the outputs of the overall discrete phylogeographic analysis
-
-tree = readAnnotatedNexus("Phylogenetic_analyses/Nextstrain_2004_2_MCC.tree")
-rootHeight = max(nodeHeights(tree)); root_time = mostRecentSamplingYear-rootHeight
-locations = c("Belgium","Africa","Asia","England","Europe","France","Germany","Italy","Luxembourg","NorthAmerica","Oceania","SouthAmerica","Spain")
-locationNames = c("Belgium","Africa","Asia","England","Europe","France","Germany","Italy","Luxembourg","North America","Oceania","South America","Spain")
-colours = c("gray30",colorRampPalette(brewer.pal(11,"Spectral"))(length(locations)-1)); ancestralLocations = c()
-if (showingPlots)
-	{
-		cols = rep("gray30",dim(tree$edge)[1]); lwds = rep(0.1,dim(tree$edge)[1])
-		for (i in 1:dim(tree$edge)[1])
-			{
-				if (tree$edge[i,1]%in%tree$edge[,2])
-					{
-						location = tree$annotations[[i]]$location
-						cols[i] = colours[which(locations==location)]
-						if (location == "Belgium") lwds[i] = 0.5
-					}
-			}
-		dev.new(width=7, height=7); par(oma=c(0,0,0,0), mar=c(0,0,0,0.0), lwd=0.1)
-		plot(tree, type="fan", show.tip.label=F, show.node.label=F, edge.width=lwds, cex=0.6, align.tip.label=3, col="gray30", edge.color=cols)
-		for (i in 1:dim(tree$edge)[1])
-			{
-				if ((tree$edge[i,2]%in%tree$edge[,1])&(tree$annotations[[i]]$location!="Belgium"))
-					{
-						indices = which(tree$edge[,1]==tree$edge[i,2])
-						tipLocations = c(tree$annotations[[indices[1]]]$location, tree$annotations[[indices[2]]]$location)
-						if (sum(tipLocations=="Belgium") > 0)
-							{
-								location = tree$annotations[[i]]$location
-								col = colours[which(locations==location)]
-								nodelabels(node=tree$edge[i,2], pch=16, cex=0.6, col=col)
-								nodelabels(node=tree$edge[i,2], pch=1, cex=0.6, col="gray30", lwd=0.5)
-								ancestralLocations = c(ancestralLocations, location)
-							}
-					}
-			}
-		add.scale.bar(x=0.0, y=-0.01, length=NULL, ask=F, lwd=0.5 , lcol ="gray30", cex=0.7)
-		dev.new(width=3.5, height=4); par(oma=c(0,0,0,0)); plot.new()
-		legend(0.2, 1.09, locationNames, col=colours, text.col="gray30", pch=16, pt.cex=1.2, box.lty=0, cex=0.7, y.intersp=1.3)
 	}
 

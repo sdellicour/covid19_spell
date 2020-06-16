@@ -12,25 +12,7 @@ library(treeio)
 # 7. Comparing intra- and inter-province/municipality lineage migration events
 # 8. Estimating and plotting dispersal statistics associated with lineages
 
-analysis = "Nextstrain_200420"; removeSuspiciousHomoplasies = FALSE # 1st analysis
-analysis = "Nextstrain_200420"; removeSuspiciousHomoplasies = TRUE  # 2nd analysis
-analysis = "Nextstrain_200420"; removeSuspiciousHomoplasies = FALSE # 3rd analysis
-analysis = "TreeTime_260420_1"; removeSuspiciousHomoplasies = FALSE # 4th analysis
-analysis = "TreeTime_260420_2"; removeSuspiciousHomoplasies = FALSE # 5th analysis
-analysis = "TreeTime_100620"; removeSuspiciousHomoplasies = FALSE # 6th analysis
-
-	# 1st analysis: analysis based on the Nextstrain tree of the 20-04-20
-	# 2nd analysis: analysis based on the Nextstrain tree of the 20-04-20 but for which several branches are dropped, i.e. branches corresponding 
-	#		to 21 sequences with suspicious homoplasies: C3130T, A4050C, T8022G, T13402G, C27046T, T28785G (see also the csv file "Suspicious_homopl")
-	# 3rd analysis: analysis based on the Nextstrain tree of the 20-04-20, but which was based on an alignment without these 21 sequences
-	# 4th analysis: analysis based on a new TreeTime tree, which was based on an GISAID alignment of the 26-04-20 but without these 21 sequences
-	# 5th analysis: analysis based on a new TreeTime tree, which was based on an GISAID alignment of the 26-04-20 but with the following sites masked
-	# 		because carrying suspicious homoplasies listed by De Maio and colleagues: 11083, 21575, 11074, 6990, 29353, 16887, 10323, 3145, 4050, 13408,
-	# 		13402, 14408, 3130, 8022, 15324 - and a second-tier list of sites that were also masked: 6255, 21137, 14724, 26681, 28077, 241, 
-	# 		335, 2094, 3037, 8782, 9223, 10741, 11704, 14786, 14805, 17247, 19684, 24034, 24378, 25563, 26461, 27384, 28826, 28854, 29700
-	# 6th analysis: analysis based on a new TreeTime tree, which was based on all the Belgian sequences available on GISAID on the 10-06-20 plus non-Belgian
-	#		sequences available on GISAID and included in Nextstrain (which used a subsampling per country to avoid including too many sequences)
-	
+analysis = "TreeTime_100620"; removeSuspiciousHomoplasies = FALSE	
 data1 = read.csv("Sequences_metadata/SARS-CoV-2_KULeuven_100620.csv", sep=";")
 data2 = read.csv("Sequences_metadata/SARS-CoV-2_ULiegeSeq_020620.csv", sep=";")
 writingFiles = FALSE; showingPlots = FALSE
@@ -65,6 +47,7 @@ if (grepl("TreeTime",analysis) == TRUE)
 		data = read.csv(paste0("Phylogenetic_analyses/",analysis,".csv"), sep=";")
 		# N.B.: for Nextstrain, the ".tsv" file has first to be opened in Excel and then exported as comma ".csv"
 	}
+numberOfDifferentCountries = length(unique(data[,"Country"]))
 if (showingPlots)
 	{
 		dev.new(width=7, height=7); par(oma=c(0,0,0,0), mar=c(0,0,0,0.0), lwd=0.1)
@@ -995,15 +978,15 @@ outputName = paste0("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_st
 dir.create(file.path("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Bf_180320_ext2/"), showWarnings=F)
 spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timeSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
 localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/Af_180320_ext2")
-outputName = paste0("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Af_180320_ext2/",analysis); dir.create(file.path(outputName), showWarnings=F)
+outputName = paste0("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Af_180320_ext2/",analysis)
 dir.create(file.path("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Af_180320_ext2/"), showWarnings=F)
 spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timeSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
 localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/Bf_180320_Liege")
-outputName = paste0("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Bf_180320_Liege/",analysis); dir.create(file.path(outputName), showWarnings=F)
+outputName = paste0("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Bf_180320_Liege/",analysis)
 dir.create(file.path("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Bf_180320_Liege/"), showWarnings=F)
 spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timeSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
 localTreesDirectory = paste0("Phylogenetic_analyses/Phylogeographic_runs/Af_180320_Liege")
-outputName = paste0("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Af_180320_Liege/",analysis); dir.create(file.path(outputName), showWarnings=F)
+outputName = paste0("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Af_180320_Liege/",analysis)
 dir.create(file.path("Phylogenetic_analyses/All_dispersal_statistics/Dispersal_statistics_Af_180320_Liege/"), showWarnings=F)
 spreadStatistics(localTreesDirectory, nberOfExtractionFiles, timeSlices, onlyTipBranches, showingPlots, outputName, nberOfCores, slidingWindow) 
 

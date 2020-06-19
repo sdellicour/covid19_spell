@@ -11,52 +11,40 @@
 	<!-- The list of taxa to be analysed (can also include dates/ages).          -->
 	<!-- ntax=3087                                                               -->
 	<taxa id="taxa">
-		<taxon id="hCoV-19/Belgium/MTR-03021/2020|EPI_ISL_416467|2020-03-02|Europe">
-			<date value="2020.16666666667" direction="forwards" units="years"/>
+		<taxon id="hCoV-19/Belgium/VHEJ-0329357/2020|EPI_ISL_462211|2020-03-29">
+			<date value="2020.24043715847" direction="forwards" units="years"/>
 			<attr name="latitude">
-				679377.463213542
+				710135.605498291
 			</attr>
 			<attr name="longitude">
-				683321.874530757
+				666833.798610213
 			</attr>
 			<attr name="coordinates">
-				679377.463213542 683321.874530757
+				710135.605498291 666833.798610213
 			</attr>
 		</taxon>
-		<taxon id="hCoV-19/Belgium/MTR-03026/2020|EPI_ISL_416476|2020-03-02|Europe">
-			<date value="2020.16666666667" direction="forwards" units="years"/>
+		<taxon id="hCoV-19/Belgium/Rega-0329217/2020|EPI_ISL_458187|2020-03-29|Europe">
+			<date value="2020.24043715847" direction="forwards" units="years"/>
 			<attr name="latitude">
-				680330.045002455
+				697996.749488315
 			</attr>
 			<attr name="longitude">
-				678912.380150507
+				715084.408491684
 			</attr>
 			<attr name="coordinates">
-				680330.045002455 678912.380150507
+				697996.749488315 715084.408491684
 			</attr>
 		</taxon>
-		<taxon id="hCoV-19/Belgium/VF-030562/2020|EPI_ISL_420453|2020-03-05|Europe">
-			<date value="2020.17486338798" direction="forwards" units="years"/>
+		<taxon id="hCoV-19/Belgium/HMJ-0330330/2020|EPI_ISL_462184|2020-03-30">
+			<date value="2020.24316939891" direction="forwards" units="years"/>
 			<attr name="latitude">
-				669917.853535457
+				724517.22857162
 			</attr>
 			<attr name="longitude">
-				561915.045962201
+				682071.179680302
 			</attr>
 			<attr name="coordinates">
-				669917.853535457 561915.045962201
-			</attr>
-		</taxon>
-		<taxon id="hCoV-19/Belgium/RJ-030552/2020|EPI_ISL_420317|2020-03-05|Europe">
-			<date value="2020.17486338798" direction="forwards" units="years"/>
-			<attr name="latitude">
-				670850.014193383
-			</attr>
-			<attr name="longitude">
-				672958.973788426
-			</attr>
-			<attr name="coordinates">
-				670850.014193383 672958.973788426
+				724517.22857162 682071.179680302
 			</attr>
 		</taxon>
 	</taxa>
@@ -65,19 +53,15 @@
 	<!-- ntax=3087 nchar=4                                                       -->
 	<alignment id="alignment" dataType="nucleotide">
 		<sequence>
-			<taxon idref="hCoV-19/Belgium/MTR-03021/2020|EPI_ISL_416467|2020-03-02|Europe"/>
+			<taxon idref="hCoV-19/Belgium/VHEJ-0329357/2020|EPI_ISL_462211|2020-03-29"/>
 			NNNN
 		</sequence>
 		<sequence>
-			<taxon idref="hCoV-19/Belgium/MTR-03026/2020|EPI_ISL_416476|2020-03-02|Europe"/>
+			<taxon idref="hCoV-19/Belgium/Rega-0329217/2020|EPI_ISL_458187|2020-03-29|Europe"/>
 			NNNN
 		</sequence>
 		<sequence>
-			<taxon idref="hCoV-19/Belgium/VF-030562/2020|EPI_ISL_420453|2020-03-05|Europe"/>
-			NNNN
-		</sequence>
-		<sequence>
-			<taxon idref="hCoV-19/Belgium/RJ-030552/2020|EPI_ISL_420317|2020-03-05|Europe"/>
+			<taxon idref="hCoV-19/Belgium/HMJ-0330330/2020|EPI_ISL_462184|2020-03-30"/>
 			NNNN
 		</sequence>
 	</alignment>
@@ -89,7 +73,7 @@
 	</patterns>
 
 	<newick id="startingTree">
-		((hCoV-19/Belgium/MTR-03021/2020|EPI_ISL_416467|2020-03-02|Europe:4.387978144e-05,hCoV-19/Belgium/MTR-03026/2020|EPI_ISL_416476|2020-03-02|Europe:4.387978144e-05):0.00294,(hCoV-19/Belgium/VF-030562/2020|EPI_ISL_420453|2020-03-05|Europe:4.060109282e-05,hCoV-19/Belgium/RJ-030552/2020|EPI_ISL_420317|2020-03-05|Europe:4.060109282e-05):0.01114);
+		('hCoV-19/Belgium/VHEJ-0329357/2020|EPI_ISL_462211|2020-03-29':0.042244,('hCoV-19/Belgium/Rega-0329217/2020|EPI_ISL_458187|2020-03-29|Europe':0.041354,'hCoV-19/Belgium/HMJ-0330330/2020|EPI_ISL_462184|2020-03-30':0.044087):0.00089);
 	</newick>
  
 	<!-- Generate a tree model                                                   --> 

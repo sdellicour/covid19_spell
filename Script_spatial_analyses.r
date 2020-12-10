@@ -19,6 +19,7 @@ library(spdep)
 # 1. Analyses of Sciensano data (generating tables)
 # 2. Analyses at the province levels (hospitalisations)
 # 3. Analyses of hospital catchment areas (spatial)
+# 4. Analyses of hospital catchment areas (temporal)
 
 writingFiles = FALSE
 showingPlots = FALSE
@@ -706,7 +707,7 @@ selected_dates = dmy(c("31-05-2020","31-08-2020","30-11-2020"))
 data = read.csv("Raw_data_Sciensano/Hosp_surge_overview_03122020_1500.csv", head=T, sep=";")
 hospitalisations = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(selected_dates))
 colnames(hospitalisations) = paste0("hospitalisation_",as.character(selected_dates))
-dates = dmy(gsub("\\/","-",tab[,"Date"]))
+dates = dmy(gsub("\\/","-",data[,"Date"]))
 for (i in 1:dim(hospitalisations)[1])
 	{
 		hospitalIDs = unlist(strsplit(catchmentAreas@data[i,"X_ID"],"-"))
@@ -734,10 +735,6 @@ catchmentAreas@data[,"hosp_10^5_habitants_2020-06-01_2020-08-31"] = (catchmentAr
 catchmentAreas@data[,"hosp_10^5_habitants_2020-09-01_2020-11-30"] = (catchmentAreas@data[,"hospitalisation_2020-09-01_2020-11-30"]/catchmentAreas@data[,"population"])*(10^5)
 
 write.csv(catchmentAreas@data, "Catchment_areas.csv", quote=F, row.names=F)
-
-communes1@data[,"bedsInMRs"]
-cols = c(colorRampPalette(brewer.pal(9,"Reds"))(121)[1:101])[(((communes1@data[,"bedsInMRs"]-min(communes1@data[,"bedsInMRs"]))/(max(communes1@data[,"bedsInMRs"])-min(communes1@data[,"bedsInMRs"])))*100)+1]
-plot(communes1, col=cols)
 
 if (showingPlots)
 	{
@@ -888,8 +885,10 @@ colnames(df) = c("CNHP - 01/03-31/05/20","CNHP - 01/09-30/11/20","CNHP - 01/03-3
 				 "population density","median age","prop. >65 years old","ratio MR beds/population",
 				 "median income","% in primary sector","% in secundary sector","% in tertiary sector",
 				 "PM 10 emission","PM 2.5 emission","prop. urban areas")
-correlations = matrix(nrow=dim(df)[2], ncol=dim(df)[2])
-pValues = matrix(nrow=dim(df)[2], ncol=dim(df)[2])
+correlations_spearman = matrix(nrow=dim(df)[2], ncol=dim(df)[2])
+correlations_ranking = matrix(nrow=dim(df)[2], ncol=dim(df)[2])
+pValues_spearman = matrix(nrow=dim(df)[2], ncol=dim(df)[2])
+pValues_ranking = matrix(nrow=dim(df)[2], ncol=dim(df)[2])
 for (i in 2:dim(correlations)[2])
 	{
 		for (j in 1:(i-1))
@@ -898,30 +897,64 @@ for (i in 2:dim(correlations)[2])
 				vS[is.infinite(vS[,1]),1] = NA
 				vS[is.infinite(vS[,2]),1] = NA
 				vS = vS[which((!is.na(vS[,1]))&(!is.na(vS[,2]))),]	
-				test = cor.test(vS[,1],vS[,2])
-				correlations[j,i] = test$estimate
-				pValues[j,i] = test$p.value
-			}
-	}
-texts = correlations
-for (i in 2:dim(texts)[1])
-	{
-		for (j in 1:(i-1))
-			{
-				if (pValues[j,i] < 0.05)
+				test = cor.test(vS[,1], vS[,2], method="spearman")
+				correlations_spearman[j,i] = test$estimate
+				pValues_spearman[j,i] = test$p.value
+				ranked_1 = vS[order(vS[,1]),1]
+				ranked_2 = vS[order(vS[,2]),2]
+				rS = vS; rS[] = NA
+				for (k in 1:dim(rS)[1])
 					{
-						texts[j,i] = as.character(round(correlations[j,i],1))
-					}	else	{
-						texts[j,i] = NA
+						rS[k,1] = which(ranked_1==vS[k,1])
+						rS[k,2] = which(ranked_2==vS[k,2])
 					}
+				test = cor.test(rS[,1], rS[,2], method="pearson")
+				correlations_ranking[j,i] = test$estimate
+				pValues_ranking[j,i] = test$p.value
 			}
 	}
 if (showingPlots)
 	{
+		texts = correlations_ranking
+		for (i in 2:dim(texts)[1])
+			{
+				for (j in 1:(i-1))
+					{
+						if (pValues[j,i] < 0.05)
+							{
+								texts[j,i] = as.character(round(correlations_spearman[j,i],1))
+							}	else	{
+								texts[j,i] = NA
+							}
+					}
+			}
 		cols = colorRampPalette(brewer.pal(11,"RdYlBu"))(121)[11:111]
-		minV = min(correlations, na.rm=T); maxV = max(correlations, na.rm=T)
+		minV = min(correlations_ranking, na.rm=T); maxV = max(correlations_ranking, na.rm=T)
 		index1 = (50+(minV*50))+1; index2 = (50+(maxV*50))+1; cols = cols[index1:index2]
-		heatmap.2(correlations, cellnote=texts, notecex=0.6, notecol="gray30", main=NULL, density.info="none",
+		heatmap.2(correlations_ranking, cellnote=texts, notecex=0.6, notecol="gray30", main=NULL, density.info="none",
+				  trace="none", margins=c(12,9), col=cols, Rowv=NULL, Colv="NA", dendrogram="none", key=F,
+				  labRow=colnames(df), labCol=colnames(df), cexRow=0.8, cexCol=0.8, offsetRow=0.0,
+				  colRow=rep("gray30",length(variableNames)), colCol=rep("gray30",length(variableNames)))
+		cols = colorRampPalette(brewer.pal(11,"RdYlBu"))(121)[11:111]; par(lwd=0.2)
+		plot(raster(as.matrix(c(-1,1))), legend.only=T, col=cols, legend.lwd=0.2, legend.width=0.2, legend.shrink=0.3, smallplot=c(0.32,0.78,0.80,0.81),
+			 	  alpha=1, horizontal=T, lwd=0.2, legend.args=list(text="", cex=0.7, line=0.2, col="gray30"), axis.args=list(cex.axis=0.65, lwd=0,
+				  lwd.tick=0.2, tck=-0.6, col.axis="gray30", col.tick="gray30", line=0, mgp=c(0,0.07,0)))
+		texts = correlations_spearman
+		for (i in 2:dim(texts)[1])
+			{
+				for (j in 1:(i-1))
+					{
+						if (pValues[j,i] < 0.05)
+							{
+								texts[j,i] = as.character(round(correlations_spearman[j,i],1))
+							}	else	{
+								texts[j,i] = NA
+							}
+					}
+			}
+		minV = min(correlations_spearman, na.rm=T); maxV = max(correlations_spearman, na.rm=T)
+		index1 = (50+(minV*50))+1; index2 = (50+(maxV*50))+1; cols = cols[index1:index2]
+		heatmap.2(correlations_spearman, cellnote=texts, notecex=0.6, notecol="gray30", main=NULL, density.info="none",
 				  trace="none", margins=c(12,9), col=cols, Rowv=NULL, Colv="NA", dendrogram="none", key=F,
 				  labRow=colnames(df), labCol=colnames(df), cexRow=0.8, cexCol=0.8, offsetRow=0.0,
 				  colRow=rep("gray30",length(variableNames)), colCol=rep("gray30",length(variableNames)))
@@ -951,26 +984,33 @@ for (i in 1:length(responseVariables))
 
 	# 3.8. Univariate (LR) followed by multivariate regression (GLM) analyses
 
-variableNames = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-01_2020-11-30","hosp_10^5_habitants_2020-11-30",
-				  "popDensity","medianAge","moreThan65","ratioBedsInMRsPopulation","medianIncome",
-				  "sectorP","sectorS","sectorT","pm10","pm25","propUrbanArea","xCentroid","yCentroid")
+predictors = c("popDensity","medianAge","moreThan65","ratioBedsInMRsPopulation","medianIncome",
+			   "sectorP","sectorS","sectorT","pm10","pm25","propUrbanArea")	
+table1 = matrix(nrow=11, ncol=9); row.names(table1) = predictors
+
+variableNames = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-01_2020-11-30",
+				  "hosp_10^5_habitants_2020-11-30",predictors,"xCentroid","yCentroid")
 responseVariables = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-01_2020-11-30","hosp_10^5_habitants_2020-11-30")
 responseVariables = gsub("\\^","e",gsub("-","",responseVariables)); selectedVariables = list()
 for (i in 1:length(responseVariables))
 	{
-		predictors = c("popDensity","medianAge","moreThan65","ratioBedsInMRsPopulation","medianIncome",
-				  	   "sectorP","sectorS","sectorT","pm10","pm25","propUrbanArea"); buffer = c()
-		df = catchmentAreas@data[,variableNames]; colnames(df) = gsub("\\^","e",gsub("-","",colnames(df)))
+		df = catchmentAreas@data[,variableNames]; buffer = c()
+		colnames(df) = gsub("\\^","e",gsub("-","",colnames(df)))
 		for (j in 1:length(predictors))
 			{
 				values = df[,responseVariables[i]]; tmp = df
 				tmp = tmp[which((!is.na(values))&(!is.infinite(values))),]
 				formula = paste0(responseVariables[i]," ~ ",predictors[j])
-				lr = glm(formula, data=tmp)
-				pValue = summary(lr)$coefficients[2,4]
+				lr = lm(formula, data=tmp)
+				R2 = summary(lr)$r.squared
+				f = summary(lr)$fstatistic
+				pValue = pf(f[1],f[2],f[3],lower.tail=F)
 				if (pValue < 0.05)
 					{
 						buffer = c(buffer, predictors[j])
+						table1[j,((i-1)*3)+1] = paste0(round(R2,2),"*")
+					}	else	{
+						table1[j,((i-1)*3)+1] = round(R2,2)
 					}
 			}
 		selectedVariables[[i]] = buffer
@@ -978,10 +1018,14 @@ for (i in 1:length(responseVariables))
 	}
 for (i in 1:length(responseVariables))
 	{
+		df = catchmentAreas@data[,variableNames]
+		colnames(df) = gsub("\\^","e",gsub("-","",colnames(df)))
+		for (j in 1:dim(df)[2]) df[,j] = (df[,j]-min(df[,j]))/(max(df[,j])-min(df[,j]))
 		if (!is.na(selectedVariables[[i]][1]))
 			{
-				values = df[,responseVariables[i]]; tmp = df
+				values = df[,responseVariables[i]]; tmp = df				
 				tmp = tmp[which((!is.na(values))&(!is.infinite(values))),]
+				
 				formula = paste0(responseVariables[i]," ~ ",selectedVariables[[i]][1])
 				if (length(selectedVariables[[i]]) > 1)
 					{
@@ -990,7 +1034,18 @@ for (i in 1:length(responseVariables))
 								formula = paste0(formula," + ",selectedVariables[[i]][j])
 							}
 					}
-				glm = glm(formula, data=tmp); print(summary(glm)); cat("\n\n")
+				lrm = lm(formula, data=tmp); print(round(summary(lrm)$r.squared,2)); cat("\n")
+				for (j in 2:length(row.names(summary(lrm)$coefficients)))
+					{
+						pValue = summary(lrm)$coefficients[j,4]
+						beta = summary(lrm)$coefficients[j,1]
+						if (pValue < 0.05)
+							{
+								table1[row.names(summary(lrm)$coefficients)[j],((i-1)*3)+2] = paste0(round(beta,2),"*")
+							}	else		{
+								table1[row.names(summary(lrm)$coefficients)[j],((i-1)*3)+2] = round(beta,2)
+							}
+					}
 			}
 	}
 
@@ -1072,14 +1127,37 @@ variableNames = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-
 				  "popDensity","medianAge","moreThan65","ratioBedsInMRsPopulation","medianIncome",
 				  "sectorP","sectorS","sectorT","pm10","pm25","propUrbanArea")
 responseVariables = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-01_2020-11-30","hosp_10^5_habitants_2020-11-30")
-responseVariables = gsub("\\^","e",gsub("-","",responseVariables)); nberOfReplicates = 10; brts_list = list()
-for (i in 1:length(responseVariables))
-	{	
+responseVariables = gsub("\\^","e",gsub("-","",responseVariables)); nberOfReplicates = 10
+if (!file.exists("All_the_BRT_models.rds"))
+	{
+		brts_list = list()
+		for (i in 1:length(responseVariables))
+			{	
+				df = catchmentAreas@data[,variableNames]; brts = list()
+				colnames(df) = gsub("\\^","e",gsub("-","",colnames(df)))
+				sub = df[,c(responseVariables[i],colnames(df)[!colnames(df)%in%responseVariables])]
+				sub[,responseVariables[i]] = round(sub[,responseVariables[i]]) # for family="possoin"
+				gbm.x = colnames(df)[!colnames(df)%in%responseVariables]; gbm.y = responseVariables[i]
+				offset = NULL; fold.vector = NULL; tree.complexity = 5; learning.rate = 0.005; bag.fraction = 0.75
+				site.weights = rep(1,dim(sub)[1]); var.monotone = rep(0,length(gbm.x)); n.folds = 5; prev.stratify = TRUE
+				family = "poisson"; step.size = 5; max.trees = 1000; tolerance.method = "auto"
+				tolerance = 0.001; plot.main = TRUE; plot.folds = FALSE; verbose = TRUE; silent = FALSE
+				keep.fold.models = FALSE; keep.fold.vector = FALSE; keep.fold.fit = FALSE; showingFoldsPlot = FALSE
+				for (j in 1:nberOfReplicates)
+					{
+						n.trees = 10
+						brts[[j]] = gbm.step(sub, gbm.x, gbm.y, offset, fold.vector, tree.complexity, learning.rate, bag.fraction, site.weights,
+									 		 var.monotone, n.folds, prev.stratify, family, n.trees, step.size, max.trees, tolerance.method, tolerance,
+											 plot.main, plot.folds, verbose, silent, keep.fold.models, keep.fold.vector, keep.fold.fit)
+					}
+				brts_list[[i]] = brts
+			}
 		df = catchmentAreas@data[,variableNames]; brts = list()
 		colnames(df) = gsub("\\^","e",gsub("-","",colnames(df)))
-		sub = df[,c(responseVariables[i],colnames(df)[!colnames(df)%in%responseVariables])]
-		sub[,responseVariables[i]] = round(sub[,responseVariables[i]]) # for family="possoin"
-		gbm.x = colnames(df)[!colnames(df)%in%responseVariables]; gbm.y = responseVariables[i]
+		sub = df[,c(responseVariables[2],responseVariables[1],colnames(df)[!colnames(df)%in%responseVariables])]
+		sub[,responseVariables[2]] = round(sub[,responseVariables[2]]) # for family="possoin"
+		sub[,responseVariables[1]] = round(sub[,responseVariables[1]]) # for family="possoin"
+		gbm.x = c(responseVariables[1],colnames(df)[!colnames(df)%in%responseVariables]); gbm.y = responseVariables[2]
 		offset = NULL; fold.vector = NULL; tree.complexity = 5; learning.rate = 0.005; bag.fraction = 0.75
 		site.weights = rep(1,dim(sub)[1]); var.monotone = rep(0,length(gbm.x)); n.folds = 5; prev.stratify = TRUE
 		family = "poisson"; step.size = 5; max.trees = 1000; tolerance.method = "auto"
@@ -1092,8 +1170,39 @@ for (i in 1:length(responseVariables))
 							 		 var.monotone, n.folds, prev.stratify, family, n.trees, step.size, max.trees, tolerance.method, tolerance,
 									 plot.main, plot.folds, verbose, silent, keep.fold.models, keep.fold.vector, keep.fold.fit)
 			}
-		brts_list[[i]] = brts
+		brts_list[[4]] = brts
+		saveRDS(brts_list, "All_the_BRT_models.rds")
+	}	else		{
+		brts_list = readRDS("All_the_BRT_models.rds")
 	}
+responseVariables_mod = c(responseVariables, "hosp_10e5_habitants_20200901_20201130")
+meanCorrelations = matrix(nrow=length(responseVariables_mod), ncol=length(responseVariables))
+for (i in 1:length(brts_list))
+	{
+		for (j in 1:(length(responseVariables_mod)-1))
+			{
+				df1 = catchmentAreas@data[,variableNames]; correlations = c()
+				colnames(df1) = gsub("\\^","e",gsub("-","",colnames(df1)))
+				if (i <= 3)
+					{
+						sub = df1[,c(responseVariables_mod[i],colnames(df1)[!colnames(df1)%in%responseVariables_mod])]
+						sub[,responseVariables_mod[i]] = round(sub[,responseVariables_mod[i]]); df2 = sub
+					}	else		{
+						sub = df1[,c(responseVariables_mod[i],responseVariables_mod[1],colnames(df1)[!colnames(df1)%in%responseVariables_mod])]
+						sub[,responseVariables_mod[i]] = round(sub[,responseVariables_mod[i]])
+						sub[,responseVariables_mod[1]] = round(sub[,responseVariables_mod[1]]); df2 = sub
+					}
+				for (k in 1:length(brts_list[[i]]))
+					{
+						n.trees = brts_list[[i]][[k]]$gbm.call$best.trees; type = "response"; single.tree = FALSE
+						prediction = predict.gbm(brts_list[[i]][[k]], newdata=df2, n.trees, type, single.tree)
+						correlations = c(correlations, cor(df1[,responseVariables_mod[j]],prediction,method="spearman"))
+					}
+				meanCorrelations[i,j] = paste0(round(mean(correlations),2)," [",round(min(correlations),2),"-",round(max(correlations),2),"]")
+			}
+	}
+row.names(meanCorrelations) = responseVariables_mod; colnames(meanCorrelations) = responseVariables
+if (writingFiles) write.table(meanCorrelations, "BRT_correlations.csv", quote=F, sep=",")
 for (i in 1:length(responseVariables))
 	{
 		variables = summary(brts_list[[i]][[1]])$var
@@ -1102,13 +1211,16 @@ for (i in 1:length(responseVariables))
 			{
 				for (k in 1:length(variables)) tab1[k,j] = summary(brts_list[[i]][[j]])[variables[k],"rel.inf"]
 			}
-		tab2 = matrix(nrow=length(variables), ncol=1)
+		tab2 = matrix(nrow=length(variables), ncol=1); row.names(tab2) = variables
+		tab3 = matrix(nrow=length(variables), ncol=1); row.names(tab3) = variables
 		for (j in 1:length(variables)) tab2[j,1] = paste0("[",round(min(tab1[j,]),1),"-",round(max(tab1[j,]),1),"]")
-		row.names(tab2) = variables; print(tab2)
+		for (j in 1:length(variables)) tab3[j,1] = round(mean(tab1[j,]),1)
+		table1[variables,((i-1)*3)+3] = tab3
 	}
+if (writingFiles) write.table(table1, "Table_1_TEMP.txt", sep="\t", quote=F, row.names=F, col.names=F)
 for (i in 1:length(responseVariables))
 	{
-		df1 = catchmentAreas@data[,variableNames]; brts = list()
+		df1 = catchmentAreas@data[,variableNames]
 		colnames(df1) = gsub("\\^","e",gsub("-","",colnames(df1)))
 		sub = df1[,c(responseVariables[i],colnames(df1)[!colnames(df1)%in%responseVariables])]
 		sub[,responseVariables[i]] = round(sub[,responseVariables[i]]); df2s = list()
@@ -1161,4 +1273,322 @@ for (i in 1:length(responseVariables))
 			}
 		dev.off()
 	}
+
+# 4. Analyses of hospital catchment areas (temporal)
+
+	# 4.1. 	Extracting mobility data from mobile phone data
+
+		# - out_per_capita = # trips out / # subscriptions
+		# - in_per_capita = # trips in / # subscriptions
+		# - in_out_per_capita = (# trips in + trips out) / # subscriptions
+		# - trips out = journey of >15min outside the zip code
+		# - trips in = journey of >15min inside the zip code (for someone that is not living in that zip code)
+		# - subscriptions = number of SIM cards (Proximus or Telenet) "living" in the zip code, even for in_per_capita (!)
+		# - n.b.: the negative in_per_capita result from not enough inhabitants, because this is not allowed to report counts < 30 
+		# 		  (so they put these values on "-1"). These negative values should thus be treated as "NA"
+
+if (!file.exists("Raw_data_Sciensano/proximus_catchment_areas_all.csv"))
+	{
+		days1 = c(paste0("2020-03-0",c(1:9)),paste0("2020-03-",c(10:31)),paste0("2020-04-0",c(1:9)),paste0("2020-04-",c(10:30)),
+				  paste0("2020-05-0",c(1:9)),paste0("2020-05-",c(10:31)),paste0("2020-06-0",c(1:9)),paste0("2020-06-",c(10:30)),
+				  paste0("2020-07-0",c(1:9)),paste0("2020-07-",c(10:31)),paste0("2020-08-0",c(1:9)),paste0("2020-08-",c(10:31)),
+				  paste0("2020-09-0",c(1:9)),paste0("2020-09-",c(10:30)),paste0("2020-10-0",c(1:9)),paste0("2020-10-",c(10:31)),
+				  paste0("2020-11-0",c(1:9)),paste0("2020-11-",c(10:30)))
+		days2 = gsub("-","",days1); days3 = ymd(days1)
+		data = read.csv("Raw_data_Sciensano/proximus_in_out_zip.csv")
+		proximusIndexCommunesIn = matrix(nrow=dim(communes2@data)[1], ncol=length(days1))
+		proximusIndexCommunesOut = matrix(nrow=dim(communes2@data)[1], ncol=length(days1))
+		proximusIndexCommunesAll = matrix(nrow=dim(communes2@data)[1], ncol=length(days1))
+		row.names(proximusIndexCommunesIn) = communes2@data[,"nouveau_PO"]; colnames(proximusIndexCommunesIn) = days1
+		row.names(proximusIndexCommunesOut) = communes2@data[,"nouveau_PO"]; colnames(proximusIndexCommunesOut) = days1
+		row.names(proximusIndexCommunesAll) = communes2@data[,"nouveau_PO"]; colnames(proximusIndexCommunesAll) = days1
+		for (i in 1:dim(communes2@data)[1])
+			{
+				for (j in 1:length(days2))
+					{
+						indices = which((data[,"postalcode"]==communes2@data[i,"nouveau_PO"])&(data[,"date"]==days2[j]))
+						if (length(indices) > 0)	
+							{
+								proximusIndexCommunesIn[i,j] = mean(data[indices,"in_per_capita"])
+								proximusIndexCommunesOut[i,j] = mean(data[indices,"out_per_capita"])
+								proximusIndexCommunesAll[i,j] = mean(data[indices,"in_out_per_capita"])
+							}
+					}
+			}
+		proximusIndexCatchmentsIn = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+		proximusIndexCatchmentsOut = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+		proximusIndexCatchmentsAll = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+		colnames(proximusIndexCatchmentsIn) = paste0("proximusIndexIn_",days1)
+		colnames(proximusIndexCatchmentsOut) = paste0("proximusIndexOut_",days1)
+		colnames(proximusIndexCatchmentsAll) = paste0("proximusIndexAll_",days1)
+		for (i in 1:dim(catchmentAreas@data)[1])
+			{
+				for (j in 1:length(days2))
+					{
+						proximusIndexCatchmentsIn[i,j] = sum(proximusIndexCommunesIn[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
+						proximusIndexCatchmentsOut[i,j] = sum(proximusIndexCommunesOut[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
+						proximusIndexCatchmentsAll[i,j] = sum(proximusIndexCommunesAll[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
+					}
+			}
+		write.table(proximusIndexCatchmentsIn, "Raw_data_Sciensano/proximus_catchment_areas_in.csv", quote=F, row.names=F, sep=",")
+		write.table(proximusIndexCatchmentsOut, "Raw_data_Sciensano/proximus_catchment_areas_out.csv", quote=F, row.names=F, sep=",")
+		write.table(proximusIndexCatchmentsAll, "Raw_data_Sciensano/proximus_catchment_areas_all.csv", quote=F, row.names=F, sep=",")
+	}
+proximusIndexCatchmentsIn = read.csv("Raw_data_Sciensano/Mobility_data_catchementA_in_20200513.csv")
+proximusIndexCatchmentsOut = read.csv("Raw_data_Sciensano/Mobility_data_catchementA_out_20200513.csv")
+proximusIndexCatchmentsAll = read.csv("Raw_data_Sciensano/Mobility_data_catchementA_all_20200513.csv")
+colnames(proximusIndexCatchmentsIn) = gsub("\\.","-",colnames(proximusIndexCatchmentsIn))
+colnames(proximusIndexCatchmentsOut) = gsub("\\.","-",colnames(proximusIndexCatchmentsOut))
+colnames(proximusIndexCatchmentsAll) = gsub("\\.","-",colnames(proximusIndexCatchmentsAll))
+catchmentAreas@data = cbind(catchmentAreas@data, proximusIndexCatchmentsIn, proximusIndexCatchmentsOut, proximusIndexCatchmentsAll)
+
+
+
+
+
+
+
+
+
+
+
+
+mobilityMetric = "proximusIndexIn"
+mobilityMetric = "proximusIndexOut"
+mobilityMetric = "proximusIndexAll"
+reloadingFile = FALSE
+if (reloadingFile)
+	{
+		catchmentAreas = shapefile("Hosp_catchment_areas/Hospital_catchment_areas_080420.shp")
+		catchmentAreas@data = read.csv("Catchment_areas.csv")
+	}
+mobilityIndices = catchmentAreas@data[,which(grepl(mobilityMetric,colnames(catchmentAreas@data)))]
+newHospitaCases = catchmentAreas@data[,which(grepl("newHospitaliCases",colnames(catchmentAreas@data)))]
+growthRateHosps = catchmentAreas@data[,which(grepl("growthRHosCases",colnames(catchmentAreas@data)))]
+days1 = c(paste0("2020-03-",c(15:31)),paste0("2020-04-0",c(1:9)),paste0("2020-04-",c(10:12)))
+Ds = c(1:20); R2s = matrix(nrow=dim(growthRateHosps)[1], ncol=length(Ds)); cors = matrix(nrow=dim(growthRateHosps)[1], ncol=length(Ds))
+for (i in 1:length(Ds))
+	{
+		for (j in 1:dim(growthRateHosps)[1])
+			{
+				days2 = as.character(ymd(days1)-Ds[i]); days3 = as.character(ymd(days1)-1)
+				indices = which(days2%in%gsub(paste0(mobilityMetric,"_"),"",colnames(mobilityIndices)))
+				x = t(mobilityIndices[j,paste0(paste0(mobilityMetric,"_"),days2[indices])])
+				y = t(newHospitaCases[j,paste0("newHospitaliCases_",days1[indices])])
+				y = t(growthRateHosps[j,paste0("growthRHosCases_",days1[indices])])
+				y[is.infinite(y)] = NA; x = x[!is.na(y)]; y = y[!is.na(y)]; # plot(x,y) }
+				if (length(y) > 0)
+					{
+						lr = lm("y ~ x"); R2s[j,i] = summary(lr)$r.square; cors[j,i] = cor(x,y)
+					}
+			}
+	}
+library(ggridges); library(ggplot2); library(viridis); library(hrbrthemes); library(tibble)
+correlations = c(); days = c()
+for (i in 1:dim(cors)[2])
+	{
+		correlations = c(correlations, cors[,i])
+		days = c(days, rep(i,dim(cors)[1]))
+	}
+days = days[!is.na(correlations)]; correlations = correlations[!is.na(correlations)]
+df = as_tibble(data.frame(cbind(as.factor(days),correlations)))
+ggplot(df, aes(x=correlations, y=as.factor(days), fill=..x..)) +
+	   geom_density_ridges_gradient(scale=3, rel_min_height=0.01) +
+	   scale_fill_viridis(name="Temp. [F]", option="C") + theme_ipsum() +
+	   theme(legend.position="none", panel.spacing=unit(0.1,"lines"), strip.text.x=element_text(size=7))
+
+newHospitalisations = c(); days = c()
+for (i in 1:length(days1))
+	{
+		newHospitalisations = c(newHospitalisations, newHospitaCases[,paste0("newHospitaliCases_",days1[i])])
+		days = c(days, rep(i,dim(newHospitaCases)[1]))
+	}
+df = as_tibble(data.frame(cbind(as.factor(days),newHospitalisations)))
+ggplot(df, aes(x=newHospitalisations, y=as.factor(days), fill=..x..)) +
+	   geom_density_ridges_gradient(scale=3, rel_min_height=0.01) +
+	   scale_fill_viridis(name="Temp. [F]", option="C") + theme_ipsum() +
+	   theme(legend.position="none", panel.spacing=unit(0.1,"lines"), strip.text.x=element_text(size=7))
+
+mobilityIndices = catchmentAreas@data[,which(grepl("proximusIndex",colnames(catchmentAreas@data)))]
+lagAndAveragedM = catchmentAreas@data[,which(grepl("incidenceHosCases",colnames(catchmentAreas@data)))]
+lagAndAveragedM[,] = NA; colnames(lagAndAveragedM) = gsub("incidenceHosCases","lagAndAveragedM",colnames(lagAndAveragedM))
+days1 = ymd(gsub("lagAndAveragedM_","",colnames(lagAndAveragedM)))
+index = which(as.character(days1)=="2020-03-14")
+for (i in index:length(days1))
+	{
+		days2 = as.character(days1[i]-c(6:15))
+		for (j in 1:dim(lagAndAveragedM)[1])
+			{
+				indices = which(days2%in%gsub("proximusIndex_","",colnames(mobilityIndices)))
+				lagAndAveragedM[j,i] = mean(as.numeric(mobilityIndices[j,paste0("proximusIndex_",days2[indices])]), na.rm=T)
+			}
+	}
+lagAndAveragedM = lagAndAveragedM[,index:dim(lagAndAveragedM)[2]]
+catchmentAreas@data = cbind(catchmentAreas@data, lagAndAveragedM)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	# 5.5. Cumputing doubling times for hospitalisations and ICU
+
+data = read.csv("Google_Drive_N_Hens/Data_Hospit_2_13-05.csv", head=T, sep=";")
+days1 = c(paste0("2020-03-0",c(1:9)),paste0("2020-03-",c(10:31)),paste0("2020-04-0",c(1:9)),paste0("2020-04-",c(10:30)),
+		  paste0("2020-05-0",c(1:9)),paste0("2020-05-",c(10:13))); D = 7 # time interval
+firstDay = ymd("2020-01-30"); days2 = ymd(days1); days3 = as.numeric(days2-firstDay)
+data$date = rep(NA, dim(data)[1])
+for (i in 1:dim(data)[1])
+	{
+		data[i,"date"] = as.character(dmy(unlist(strsplit(as.character(data[i,"Date"])," "))[1]))
+	}
+data$days = as.numeric(ymd(data[,"date"])-firstDay)
+newHospitaliCases = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+cumulatedHosCases = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+cumulatedICUCases = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+incidenceHosCases = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+incidenceICUCases = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+doublingTHosCases = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+doublingTICUCases = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+growthRHosCases = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+growthRICUCases = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+for (i in 1:dim(catchmentAreas@data)[1])
+	{
+		hospitalIDs = unlist(strsplit(catchmentAreas@data[i,"X_ID"],"-"))
+		hospitalIDs = as.numeric(hospitalIDs); lines = c()
+		for (j in 1:length(hospitalIDs))
+			{
+				lines = c(lines,which(as.numeric(data[,"ERK.AGR"])==hospitalIDs[j]))
+			}
+		temp1 = data[lines,c("days","NewPatientsNotReferredHospital","NewPatientsNotReferredHospitalNursingHome",
+							 "Confirmed.patients.in.hospital","Confirmed.patients.in.ICU")]
+		temp1 = temp1[order(temp1[,"days"]),]; temp2 = temp1[1,]
+		for (j in 2:dim(temp1)[1])
+			{
+				if (temp1[j,"days"] == temp2[dim(temp2)[1],"days"])
+					{
+						for (k in 2:dim(temp2)[2])
+							{
+								temp2[dim(temp2)[1],k] = sum(c(temp2[dim(temp2)[1],k],temp1[j,k]), na.rm=T)
+							}
+					}	else	{
+						temp2 = rbind(temp2, temp1[j,])
+					}
+			}
+		temp3 = temp2[1,]; d1 = temp2[1,"days"]+1; d2 = temp2[dim(temp2)[1],"days"]
+		for (d in d1:d2)
+			{
+				index = which(temp2[,"days"]==d)
+				if (length(index) == 1)
+					{
+						temp3 = rbind(temp3, temp2[index,])
+					}	else	{
+						temp3 = rbind(temp3, temp3[dim(temp3)[1],])
+						temp3[dim(temp3)[1],"days"] = d 
+					}
+			}
+		temp = temp3
+		for (j in 1:length(days3))
+			{
+				index1 = which(temp[,"days"]==(days3[j]-D))				
+				index2 = which(temp[,"days"]==days3[j])
+				if (length(index2) > 0)
+					{
+						newHospitaliCases[i,j] = temp[index2,"NewPatientsNotReferredHospital"]+temp[index2,"NewPatientsNotReferredHospitalNursingHome"]
+						if (length(index1) == 0)	
+							{
+								QTD1 = 0
+							}	else	{
+								QTD1 = temp[index1,"Confirmed.patients.in.hospital"]
+							}
+						QTD2 = temp[index2,"Confirmed.patients.in.hospital"]
+						DT = (D*log(2))/(log(QTD2/QTD1))
+						cumulatedHosCases[i,j] = QTD2
+						incidenceHosCases[i,j] = (QTD2/(catchmentAreas@data[i,"population"]))*1000
+						doublingTHosCases[i,j] = DT
+						growthRHosCases[i,j] = QTD2/QTD1
+						if (length(index1) == 0)	
+							{
+								QTD1 = 0
+							}	else	{
+								QTD1 = temp[index1,"Confirmed.patients.in.ICU"]
+							}
+						QTD2 = temp[index2,"Confirmed.patients.in.ICU"]
+						DT = (D*log(2))/(log(QTD2/QTD1))
+						cumulatedICUCases[i,j] = QTD2
+						incidenceICUCases[i,j] = (QTD2/(catchmentAreas@data[i,"population"]))*1000
+						doublingTICUCases[i,j] = DT
+						growthRICUCases[i,j] = QTD2/QTD1
+					}
+			}
+	}
+colnames(newHospitaliCases) = paste0("newHospitaliCases_",days1)
+colnames(cumulatedHosCases) = paste0("cumulatedHosCases_",days1)
+colnames(incidenceHosCases) = paste0("incidenceHosCases_",days1)
+colnames(doublingTHosCases) = paste0("doublingTHosCases_",days1)
+colnames(growthRHosCases) = paste0("growthRHosCases_",days1)
+colnames(cumulatedICUCases) = paste0("cumulatedICUCases_",days1)
+colnames(incidenceICUCases) = paste0("incidenceICUCases_",days1)
+colnames(doublingTICUCases) = paste0("doublingTICUCases_",days1)
+colnames(growthRICUCases) = paste0("growthRICUCases_",days1)
+catchmentAreas@data = cbind(catchmentAreas@data, newHospitaliCases)
+catchmentAreas@data = cbind(catchmentAreas@data, cumulatedHosCases)
+catchmentAreas@data = cbind(catchmentAreas@data, incidenceHosCases)
+catchmentAreas@data = cbind(catchmentAreas@data, doublingTHosCases)
+catchmentAreas@data = cbind(catchmentAreas@data, growthRHosCases)
+catchmentAreas@data = cbind(catchmentAreas@data, cumulatedICUCases)
+catchmentAreas@data = cbind(catchmentAreas@data, incidenceICUCases)
+catchmentAreas@data = cbind(catchmentAreas@data, doublingTICUCases)
+catchmentAreas@data = cbind(catchmentAreas@data, growthRICUCases)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

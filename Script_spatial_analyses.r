@@ -767,7 +767,7 @@ if (showingPlots)
 		variables = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-01_2020-11-30","hosp_10^5_habitants_2020-11-30","pm25",
 					  "popDensityLog","ratioBedsInMRsPopulation","medianAge","propUrbanArea","sectorP","sectorS","sectorT","medianIncome")
 		variableNames = c("CNHP (01/03-31/05/2020)","CNHP (01/09-30/11/2020)","CNHP (01/03-30/11/2020)","Ratio of urban areas","PM 2.5 emission",
-						  "Population density (log)","Ratio MR beds/population","Median age",">= 65 years (proportion)",
+						  "Population density (log)","ratio NH beds/population","Median age",">= 65 years (proportion)",
 						  "% in primary sector","% in secundary sector","% in tertiary sector","Median declared income")
 		dev.new(width=8, height=4.85); par(mfrow=c(3,4), mar=c(0,0,0,0), oma=c(0,0,0,0), mgp=c(0,0.4,0), lwd=0.2, bty="o")
 		for (i in 1:length(variables))
@@ -792,7 +792,7 @@ if (showingPlots)
 					  "sectorP","sectorS","sectorT","medianIncome","moreThan65","ratioBedsInMRsPopulation","propUrbanArea","pm25")
 		variableNames = c("Cumul. new hosp. 01/03-31/05","Cumul. new hosp. 01/06-31/08","Cumul. new hosp. 01/09-30/11","Population",
 						  "% in primary sector","% in secundary sector","% in tertiary sector","Median declared income",
-						  ">= 65 years (proportion)","Ratio MR beds/population","Ratio of urban areas","PM 2.5 emission")
+						  ">= 65 years (proportion)","ratio NH beds/population","Ratio of urban areas","PM 2.5 emission")
 		dev.new(width=8, height=4.85); par(mfrow=c(3,4), mar=c(0,0,0,0), oma=c(0,0,0,0), mgp=c(0,0.4,0), lwd=0.2, bty="o")
 		for (i in 1:length(variables))
 			{
@@ -846,6 +846,47 @@ if (showingPlots)
 
 if (showingPlots)
 	{
+		values = catchmentAreas@data[,"hosp_10^5_habitants_2020-11-30"]
+		dev.new(width=9, height=2.5); par(mfrow=c(1,3), mar=c(2,3,1,1), lwd=0.2, col="gray30")
+		x = log(catchmentAreas@data[,"hosp_10^5_habitants_2020-03-01_2020-05-31"])
+		y = log(catchmentAreas@data[,"hosp_10^5_habitants_2020-09-01_2020-11-30"])
+		lr = lm(as.formula(paste0("y ~ x"))); R2 = summary(lr)$r.squared
+		plot(x, y, col=NA, cex=0.2, pch=16, ann=F, axes=F, xlim=c(1.0,8.0), ylim=c(3.0,8.0))
+		abline(lr, lwd=1.5, col="gray80", lty=2); print(c(round(R2,2),cor(x,y,method="spearman")))
+		points(x, y, cex=(values/max(values))*8, pch=16, lwd=0.0, col=rgb(1,0,0,0.3,1))
+		points(x, y, cex=(values/max(values))*8, pch=1, lwd=0.5, col=rgb(1,0,0,1,1))
+		axis(side=1, lwd.tick=0.2, cex.axis=0.6, lwd=0.2, tck=-0.015, col.axis="gray30", mgp=c(0,0.05,0), at=seq(0,9,1))
+		axis(side=2, lwd.tick=0.2, cex.axis=0.6, lwd=0.2, tck=-0.015, col.axis="gray30", mgp=c(0,0.25,0), at=seq(2,9,1))
+		title(xlab="CNHP (01/03-31/05/20, log)", cex.lab=0.8, mgp=c(1.0,0,0), col.lab="gray30")
+		title(ylab="CNHP (01/09-30/11/20, log)", cex.lab=0.8, mgp=c(1.3,0,0), col.lab="gray30")		
+		legendPoints = rbind(cbind(2,7.73),cbind(2.57,7.65),cbind(3.5,7.5))
+		points(legendPoints, pch=16, cex=(c(500,1000,2000)/max(values))*8, col=rgb(0,0,1,0.3,1))
+		points(legendPoints, pch=1, cex=(c(500,1000,2000)/max(values))*8, col=rgb(0,0,1,1,1), lwd=0.5)
+		x = log(catchmentAreas@data[,"hosp_10^5_habitants_2020-09-01_2020-11-30"])-log(catchmentAreas@data[,"hosp_10^5_habitants_2020-03-01_2020-05-31"])
+		y = log(catchmentAreas@data[,"hosp_10^5_habitants_2020-09-01_2020-11-30"])
+		lr = lm(as.formula(paste0("y ~ x"))); R2 = summary(lr)$r.squared
+		plot(x, y, col=NA, cex=0.2, pch=16, ann=F, axes=F, xlim=c(-1.8,4.2), ylim=c(3.0,7.8))
+		abline(lr, lwd=1.5, col="gray80", lty=2); print(c(round(R2,2),cor(x,y,method="spearman")))
+		points(x, y, cex=(values/max(values))*8, pch=16, lwd=0.0, col=rgb(1,0,0,0.3,1))
+		points(x, y, cex=(values/max(values))*8, pch=1, lwd=0.5, col=rgb(1,0,0,1,1))
+		axis(side=1, lwd.tick=0.2, cex.axis=0.6, lwd=0.2, tck=-0.015, col.axis="gray30", mgp=c(0,0.05,0), at=seq(-2,5,1))
+		axis(side=2, lwd.tick=0.2, cex.axis=0.6, lwd=0.2, tck=-0.015, col.axis="gray30", mgp=c(0,0.25,0), at=seq(1,8,1))
+		title(xlab="CNHP (01/09-30/11/20, log) - CNHP (01/03-31/05/20, log)", cex.lab=0.8, mgp=c(1.0,0,0), col.lab="gray30")
+		title(ylab="CNHP (01/09-30/11/20, log)", cex.lab=0.8, mgp=c(1.3,0,0), col.lab="gray30")		
+		x = catchmentAreas@data[,"ratioBedsInMRsPopulation"]
+		y = log(catchmentAreas@data[,"hosp_10^5_habitants_2020-11-30"])
+		lr = lm(as.formula(paste0("y ~ x"))); R2 = summary(lr)$r.squared
+		plot(x, y, col=NA, cex=0.2, pch=16, ann=F, axes=F, xlim=c(0,0.03), ylim=c(4.0,8.5))
+		abline(lr, lwd=1.5, col="gray80", lty=2); print(c(round(R2,2),cor(x,y,method="spearman")))
+		points(x, y, cex=(values/max(values))*8, pch=16, lwd=0.0, col=rgb(1,0,0,0.3,1))
+		points(x, y, cex=(values/max(values))*8, pch=1, lwd=0.5, col=rgb(1,0,0,1,1))
+		axis(side=1, lwd.tick=0.2, cex.axis=0.7, lwd=0.2, tck=-0.015, col.axis="gray30", mgp=c(0,0.05,0), at=seq(-0.005,0.035,0.005))
+		axis(side=2, lwd.tick=0.2, cex.axis=0.7, lwd=0.2, tck=-0.015, col.axis="gray30", mgp=c(0,0.25,0), at=seq(3,9,1))
+		title(xlab="ratio NH beds/population", cex.lab=0.8, mgp=c(1.0,0,0), col.lab="gray30")
+		title(ylab="CNHP (30/11/2020, log)", cex.lab=0.8, mgp=c(1.3,0,0), col.lab="gray30")		
+	}
+if (showingPlots)
+	{
 		values = (catchmentAreas@data[,"hospitalisation_2020-11-30"]/catchmentAreas@data[,"population"])*(10^5)
 		variableNames = c("popDensity","medianAge","moreThan65","ratioBedsInMRsPopulation",
 						  "medianIncome","sectorP","sectorS","sectorT","pm10","pm25","propUrbanArea")
@@ -895,7 +936,7 @@ variableNames = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-
 				  "medianIncome","sectorP","sectorS","sectorT","pm10","pm25","propUrbanArea")
 df = catchmentAreas@data[,variableNames]; colnames(df) = gsub("-","",colnames(df))
 colnames(df) = c("CNHP - 01/03-31/05/20","CNHP - 01/09-30/11/20","CNHP - 01/03-30/11/20",
-				 "population density","median age","prop. >65 years old","ratio MR beds/population",
+				 "population density","median age","prop. >65 years old","ratio NH beds/population",
 				 "median income","% in primary sector","% in secundary sector","% in tertiary sector",
 				 "PM 10 emission","PM 2.5 emission","prop. urban areas")
 correlations_spearman = matrix(nrow=dim(df)[2], ncol=dim(df)[2])
@@ -997,18 +1038,36 @@ for (i in 1:length(responseVariables))
 
 	# 3.8. Univariate (LR) followed by multivariate regression (GLM) analyses
 
+normal_analyses = TRUE; analyses_on_MR_cases = FALSE; analyses_without_ouliers_BXL = FALSE
+normal_analyses = FALSE; analyses_on_MR_cases = TRUE; analyses_without_ouliers_BXL = FALSE
+normal_analyses = FALSE; analyses_on_MR_cases = FALSE; analyses_without_ouliers_BXL = TRUE
+if (analyses_without_ouliers_BXL == TRUE) outliersToExclude = c("689","077-150","110","723","076-079","087")
+
 predictors = c("popDensity","medianAge","moreThan65","ratioBedsInMRsPopulation","medianIncome",
 			   "sectorP","sectorS","sectorT","pm10","pm25","propUrbanArea")	
-table1 = matrix(nrow=11, ncol=9); row.names(table1) = predictors
+table1 = matrix(nrow=11, ncol=9); row.names(table1) = predictors # all hospitalisation cases
+tableS1 = matrix(nrow=11, ncol=9); row.names(tableS1) = predictors # only MR hospitalisations
+tableS2 = matrix(nrow=11, ncol=9); row.names(tableS2) = predictors # without the outlier and Brussels
 
-variableNames = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-01_2020-11-30",
-				  "hosp_10^5_habitants_2020-11-30",predictors,"xCentroid","yCentroid")
-responseVariables = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-01_2020-11-30","hosp_10^5_habitants_2020-11-30")
+if (analyses_on_MR_cases != TRUE)
+	{
+		variableNames = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-01_2020-11-30",
+						  "hosp_10^5_habitants_2020-11-30",predictors,"xCentroid","yCentroid")
+		responseVariables = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-01_2020-11-30","hosp_10^5_habitants_2020-11-30")
+	}	else		{
+		variableNames = c("hosp_10^5_habitantsMR_2020-05-31","hosp_10^5_habitantsMR_2020-09-01_2020-11-30",
+						  "hosp_10^5_habitantsMR_2020-11-30",predictors,"xCentroid","yCentroid")
+		responseVariables = c("hosp_10^5_habitantsMR_2020-05-31","hosp_10^5_habitantsMR_2020-09-01_2020-11-30","hosp_10^5_habitantsMR_2020-11-30")
+	}
 responseVariables = gsub("\\^","e",gsub("-","",responseVariables)); selectedVariables = list()
 for (i in 1:length(responseVariables))
 	{
 		df = catchmentAreas@data[,variableNames]; buffer = c()
 		colnames(df) = gsub("\\^","e",gsub("-","",colnames(df)))
+		if (analyses_without_ouliers_BXL == TRUE)
+			{
+				df = df[which(!catchmentAreas@data[,"X_ID"]%in%outliersToExclude),]
+			}
 		for (j in 1:length(predictors))
 			{
 				values = df[,responseVariables[i]]; tmp = df
@@ -1021,9 +1080,13 @@ for (i in 1:length(responseVariables))
 				if (pValue < 0.05)
 					{
 						buffer = c(buffer, predictors[j])
-						table1[j,((i-1)*3)+1] = paste0(round(R2,2),"*")
+						if (normal_analyses == TRUE) table1[j,((i-1)*3)+1] = paste0(round(R2,2),"*")
+						if (analyses_on_MR_cases == TRUE) tableS1[j,((i-1)*3)+1] = paste0(round(R2,2),"*") 
+						if (analyses_without_ouliers_BXL == TRUE) tableS2[j,((i-1)*3)+1] = paste0(round(R2,2),"*")
 					}	else	{
-						table1[j,((i-1)*3)+1] = round(R2,2)
+						if (normal_analyses == TRUE) table1[j,((i-1)*3)+1] = round(R2,2)
+						if (analyses_on_MR_cases == TRUE) tableS1[j,((i-1)*3)+1] = round(R2,2) 
+						if (analyses_without_ouliers_BXL == TRUE) tableS2[j,((i-1)*3)+1] = round(R2,2)
 					}
 			}
 		selectedVariables[[i]] = buffer
@@ -1054,9 +1117,13 @@ for (i in 1:length(responseVariables))
 						beta = summary(lrm)$coefficients[j,1]
 						if (pValue < 0.05)
 							{
-								table1[row.names(summary(lrm)$coefficients)[j],((i-1)*3)+2] = paste0(round(beta,2),"*")
+								if (normal_analyses == TRUE) table1[row.names(summary(lrm)$coefficients)[j],((i-1)*3)+2] = paste0(round(beta,2),"*")
+								if (analyses_on_MR_cases == TRUE) tableS1[row.names(summary(lrm)$coefficients)[j],((i-1)*3)+2] = paste0(round(beta,2),"*")
+								if (analyses_without_ouliers_BXL == TRUE) tableS2[row.names(summary(lrm)$coefficients)[j],((i-1)*3)+2] = paste0(round(beta,2),"*")
 							}	else		{
-								table1[row.names(summary(lrm)$coefficients)[j],((i-1)*3)+2] = round(beta,2)
+								if (normal_analyses == TRUE) table1[row.names(summary(lrm)$coefficients)[j],((i-1)*3)+2] = paste0(round(beta,2),"*")
+								if (analyses_on_MR_cases == TRUE) tableS1[row.names(summary(lrm)$coefficients)[j],((i-1)*3)+2] = paste0(round(beta,2),"*")
+								if (analyses_without_ouliers_BXL == TRUE) tableS2[row.names(summary(lrm)$coefficients)[j],((i-1)*3)+2] = round(beta,2)
 							}
 					}
 			}
@@ -1087,7 +1154,7 @@ if (showingPlots)
 		gam = gams[[3]]; responseCurves = list()
 		curves = plot(gam, pages=1); dev.off()
 		selectedVariables = c("ratioBedsInMRsPopulation")
-		variableNames = c("ratio MR beds/population")
+		variableNames = c("ratio NH beds/population")
 		dev.new(width=3.5,height=3)
 		par(mfrow=c(1,1), mar=c(3,3,1,2), oma=c(0,0,0,0), mgp=c(0,0.4,0), lwd=0.2, col="gray30", bty="o")
 		for (i in 1:length(selectedVariables))
@@ -1136,10 +1203,21 @@ if (showingPlots)
 
 	# 3.10. Multivariate analyses with the boosted regression trees approach
 
-variableNames = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-01_2020-11-30","hosp_10^5_habitants_2020-11-30",
-				  "popDensity","medianAge","moreThan65","ratioBedsInMRsPopulation","medianIncome",
-				  "sectorP","sectorS","sectorT","pm10","pm25","propUrbanArea")
-responseVariables = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-01_2020-11-30","hosp_10^5_habitants_2020-11-30")
+normal_analyses = TRUE; analyses_on_MR_cases = FALSE; analyses_without_ouliers_BXL = FALSE
+normal_analyses = FALSE; analyses_on_MR_cases = TRUE; analyses_without_ouliers_BXL = FALSE
+normal_analyses = FALSE; analyses_on_MR_cases = FALSE; analyses_without_ouliers_BXL = TRUE
+if (analyses_on_MR_cases == FALSE)
+	{
+		variableNames = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-01_2020-11-30","hosp_10^5_habitants_2020-11-30",
+						  "popDensity","medianAge","moreThan65","ratioBedsInMRsPopulation","medianIncome",
+						  "sectorP","sectorS","sectorT","pm10","pm25","propUrbanArea")
+		responseVariables = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-01_2020-11-30","hosp_10^5_habitants_2020-11-30")
+	}	else		{
+		variableNames = c("hosp_10^5_habitantsMR_2020-05-31","hosp_10^5_habitantsMR_2020-09-01_2020-11-30","hosp_10^5_habitantsMR_2020-11-30",
+						  "popDensity","medianAge","moreThan65","ratioBedsInMRsPopulation","medianIncome",
+						  "sectorP","sectorS","sectorT","pm10","pm25","propUrbanArea")
+		responseVariables = c("hosp_10^5_habitantsMR_2020-05-31","hosp_10^5_habitantsMR_2020-09-01_2020-11-30","hosp_10^5_habitantsMR_2020-11-30")
+	}
 responseVariables = gsub("\\^","e",gsub("-","",responseVariables)); nberOfReplicates = 10
 if (!file.exists("All_the_BRT_models.rds"))
 	{
@@ -1147,6 +1225,10 @@ if (!file.exists("All_the_BRT_models.rds"))
 		for (i in 1:length(responseVariables))
 			{	
 				df = catchmentAreas@data[,variableNames]; brts = list()
+				if (analyses_without_ouliers_BXL == TRUE)
+					{
+						df = df[which(!catchmentAreas@data[,"X_ID"]%in%outliersToExclude),]
+					}
 				colnames(df) = gsub("\\^","e",gsub("-","",colnames(df)))
 				sub = df[,c(responseVariables[i],colnames(df)[!colnames(df)%in%responseVariables])]
 				sub[,responseVariables[i]] = round(sub[,responseVariables[i]]) # for family="possoin"
@@ -1184,17 +1266,22 @@ if (!file.exists("All_the_BRT_models.rds"))
 									 plot.main, plot.folds, verbose, silent, keep.fold.models, keep.fold.vector, keep.fold.fit)
 			}
 		brts_list[[4]] = brts
-		saveRDS(brts_list, "All_the_BRT_models.rds")
+		if (normal_analyses == TRUE) saveRDS(brts_list, "All_the_BRT_models.rds")
 	}	else		{
-		brts_list = readRDS("All_the_BRT_models.rds")
+		if (normal_analyses == TRUE) brts_list = readRDS("All_the_BRT_models.rds")
 	}
-responseVariables_mod = c(responseVariables, "hosp_10e5_habitants_20200901_20201130")
+if (analyses_on_MR_cases != TRUE) responseVariables_mod = c(responseVariables, "hosp_10e5_habitants_20200901_20201130")
+if (analyses_on_MR_cases == TRUE) responseVariables_mod = c(responseVariables, "hosp_10e5_habitantsMR_20200901_20201130")
 meanCorrelations = matrix(nrow=length(responseVariables_mod), ncol=length(responseVariables))
 for (i in 1:length(brts_list))
 	{
 		for (j in 1:(length(responseVariables_mod)-1))
 			{
 				df1 = catchmentAreas@data[,variableNames]; correlations = c()
+				if (analyses_without_ouliers_BXL == TRUE)
+					{
+						df1 = df1[which(!catchmentAreas@data[,"X_ID"]%in%outliersToExclude),]
+					}
 				colnames(df1) = gsub("\\^","e",gsub("-","",colnames(df1)))
 				if (i <= 3)
 					{
@@ -1228,16 +1315,27 @@ for (i in 1:length(responseVariables))
 		tab3 = matrix(nrow=length(variables), ncol=1); row.names(tab3) = variables
 		for (j in 1:length(variables)) tab2[j,1] = paste0("[",round(min(tab1[j,]),1),"-",round(max(tab1[j,]),1),"]")
 		for (j in 1:length(variables)) tab3[j,1] = round(mean(tab1[j,]),1)
-		table1[variables,((i-1)*3)+3] = tab3
+		if (normal_analyses == TRUE) table1[variables,((i-1)*3)+3] = tab3
+		if (analyses_on_MR_cases == TRUE) tableS1[variables,((i-1)*3)+3] = tab3
+		if (analyses_without_ouliers_BXL == TRUE) tableS2[variables,((i-1)*3)+3] = tab3
 	}
-if (writingFiles) write.table(table1, "Table_1_TEMP.txt", sep="\t", quote=F, row.names=F, col.names=F)
+if (writingFiles)
+	{
+		if (normal_analyses == TRUE) write.table(table1, "Table_1_TEMP.txt", sep="\t", quote=F, row.names=F, col.names=F)
+		if (analyses_on_MR_cases == TRUE) write.table(tableS1, "Table_S1_TEMP.txt", sep="\t", quote=F, row.names=F, col.names=F)
+		if (analyses_without_ouliers_BXL == TRUE) write.table(tableS2, "Table_S2_TEMP.txt", sep="\t", quote=F, row.names=F, col.names=F)
+	}
 for (i in 1:length(responseVariables))
 	{
 		df1 = catchmentAreas@data[,variableNames]
+		if (analyses_without_ouliers_BXL == TRUE)
+			{
+				df1 = df1[which(!catchmentAreas@data[,"X_ID"]%in%outliersToExclude),]
+			}
 		colnames(df1) = gsub("\\^","e",gsub("-","",colnames(df1)))
 		sub = df1[,c(responseVariables[i],colnames(df1)[!colnames(df1)%in%responseVariables])]
 		sub[,responseVariables[i]] = round(sub[,responseVariables[i]]); df2s = list()
-		variableNames_to_print = c("","population density","median age","proportion of >65 years old","ratio MR beds/population","median income",
+		variableNames_to_print = c("","population density","median age","proportion of >65 years old","ratio NH beds/population","median income",
 				 				   "% of workers in primary sector","% of workers in secundary sector","% of workers in tertiary sector",
 				 				   "PM 10 emission","PM 2.5 emission","proportion of urban areas")
 		pdf(paste0("BRT_RC_",i,".pdf"), width=7.5, height=4)

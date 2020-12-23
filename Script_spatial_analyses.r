@@ -747,7 +747,7 @@ catchmentAreas@data[,"hosp_10^5_habitantsMR_2020-03-01_2020-05-31"] = (catchment
 catchmentAreas@data[,"hosp_10^5_habitantsMR_2020-06-01_2020-08-31"] = (catchmentAreas@data[,"hospitalisationMR_2020-06-01_2020-08-31"]/catchmentAreas@data[,"population"])*(10^5)
 catchmentAreas@data[,"hosp_10^5_habitantsMR_2020-09-01_2020-11-30"] = (catchmentAreas@data[,"hospitalisationMR_2020-09-01_2020-11-30"]/catchmentAreas@data[,"population"])*(10^5)
 
-if (writingFiles) write.csv(catchmentAreas@data, "Catchment_areas.csv", quote=F, row.names=F)
+if (writingFiles) write.csv(catchmentAreas@data, "Catchment_areas_1.csv", quote=F, row.names=F)
 
 if (showingPlots)
 	{
@@ -943,7 +943,7 @@ correlations_spearman = matrix(nrow=dim(df)[2], ncol=dim(df)[2])
 correlations_ranking = matrix(nrow=dim(df)[2], ncol=dim(df)[2])
 pValues_spearman = matrix(nrow=dim(df)[2], ncol=dim(df)[2])
 pValues_ranking = matrix(nrow=dim(df)[2], ncol=dim(df)[2])
-for (i in 2:dim(correlations)[2])
+for (i in 2:dim(correlations_spearman)[2])
 	{
 		for (j in 1:(i-1))
 			{
@@ -1038,9 +1038,9 @@ for (i in 1:length(responseVariables))
 
 	# 3.8. Univariate (LR) followed by multivariate regression (GLM) analyses
 
-normal_analyses = TRUE; analyses_on_MR_cases = FALSE; analyses_without_ouliers_BXL = FALSE
-normal_analyses = FALSE; analyses_on_MR_cases = TRUE; analyses_without_ouliers_BXL = FALSE
 normal_analyses = FALSE; analyses_on_MR_cases = FALSE; analyses_without_ouliers_BXL = TRUE
+normal_analyses = FALSE; analyses_on_MR_cases = TRUE; analyses_without_ouliers_BXL = FALSE
+normal_analyses = TRUE; analyses_on_MR_cases = FALSE; analyses_without_ouliers_BXL = FALSE
 if (analyses_without_ouliers_BXL == TRUE) outliersToExclude = c("689","077-150","110","723","076-079","087")
 
 predictors = c("popDensity","medianAge","moreThan65","ratioBedsInMRsPopulation","medianIncome",
@@ -1203,9 +1203,9 @@ if (showingPlots)
 
 	# 3.10. Multivariate analyses with the boosted regression trees approach
 
-normal_analyses = TRUE; analyses_on_MR_cases = FALSE; analyses_without_ouliers_BXL = FALSE
-normal_analyses = FALSE; analyses_on_MR_cases = TRUE; analyses_without_ouliers_BXL = FALSE
 normal_analyses = FALSE; analyses_on_MR_cases = FALSE; analyses_without_ouliers_BXL = TRUE
+normal_analyses = FALSE; analyses_on_MR_cases = TRUE; analyses_without_ouliers_BXL = FALSE
+normal_analyses = TRUE; analyses_on_MR_cases = FALSE; analyses_without_ouliers_BXL = FALSE
 if (analyses_on_MR_cases == FALSE)
 	{
 		variableNames = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-01_2020-11-30","hosp_10^5_habitants_2020-11-30",
@@ -1393,179 +1393,7 @@ days1 = c(paste0("2020-03-0",c(1:9)),paste0("2020-03-",c(10:31)),paste0("2020-04
 		  paste0("2020-09-0",c(1:9)),paste0("2020-09-",c(10:30)),paste0("2020-10-0",c(1:9)),paste0("2020-10-",c(10:31)),
 		  paste0("2020-11-0",c(1:9)),paste0("2020-11-",c(10:30)))
 
-	# 4.1. Extracting mobility data from mobile phone data
-
-		# - out_per_capita = # trips out / # subscriptions
-		# - in_per_capita = # trips in / # subscriptions
-		# - in_out_per_capita = (# trips in + trips out) / # subscriptions
-		# - trips out = journey of >15min outside the zip code
-		# - trips in = journey of >15min inside the zip code (for someone that is not living in that zip code)
-		# - subscriptions = number of SIM cards (Proximus or Telenet) "living" in the zip code, even for in_per_capita (!)
-		# - n.b.: the negative in_per_capita result from not enough inhabitants, because this is not allowed to report counts < 30 
-		# 		  (so they put these values on "-1"). These negative values should thus be treated as "NA"
-
-if (!file.exists("Raw_data_Sciensano/proximus_catchment_areas_all.csv"))
-	{
-		days2 = gsub("-","",days1); days3 = ymd(days1)
-		data = read.csv("Raw_data_Sciensano/proximus_in_out_zip.csv")
-		proximusIndexCommunesIn = matrix(nrow=dim(communes2@data)[1], ncol=length(days1))
-		proximusIndexCommunesOut = matrix(nrow=dim(communes2@data)[1], ncol=length(days1))
-		proximusIndexCommunesAll = matrix(nrow=dim(communes2@data)[1], ncol=length(days1))
-		row.names(proximusIndexCommunesIn) = communes2@data[,"nouveau_PO"]; colnames(proximusIndexCommunesIn) = days1
-		row.names(proximusIndexCommunesOut) = communes2@data[,"nouveau_PO"]; colnames(proximusIndexCommunesOut) = days1
-		row.names(proximusIndexCommunesAll) = communes2@data[,"nouveau_PO"]; colnames(proximusIndexCommunesAll) = days1
-		for (i in 1:dim(communes2@data)[1])
-			{
-				for (j in 1:length(days2))
-					{
-						indices = which((data[,"postalcode"]==communes2@data[i,"nouveau_PO"])&(data[,"date"]==days2[j]))
-						if (length(indices) > 0)	
-							{
-								proximusIndexCommunesIn[i,j] = mean(data[indices,"in_per_capita"])
-								proximusIndexCommunesOut[i,j] = mean(data[indices,"out_per_capita"])
-								proximusIndexCommunesAll[i,j] = mean(data[indices,"in_out_per_capita"])
-							}
-					}
-			}
-		proximusIndexCatchmentsIn = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
-		proximusIndexCatchmentsOut = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
-		proximusIndexCatchmentsAll = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
-		colnames(proximusIndexCatchmentsIn) = paste0("proximusIndexIn_",days1)
-		colnames(proximusIndexCatchmentsOut) = paste0("proximusIndexOut_",days1)
-		colnames(proximusIndexCatchmentsAll) = paste0("proximusIndexAll_",days1)
-		for (i in 1:dim(catchmentAreas@data)[1])
-			{
-				for (j in 1:length(days2))
-					{
-						proximusIndexCatchmentsIn[i,j] = sum(proximusIndexCommunesIn[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
-						proximusIndexCatchmentsOut[i,j] = sum(proximusIndexCommunesOut[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
-						proximusIndexCatchmentsAll[i,j] = sum(proximusIndexCommunesAll[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
-					}
-			}
-		write.table(proximusIndexCatchmentsIn, "Raw_data_Sciensano/proximus_catchment_areas_in.csv", quote=F, row.names=F, sep=",")
-		write.table(proximusIndexCatchmentsOut, "Raw_data_Sciensano/proximus_catchment_areas_out.csv", quote=F, row.names=F, sep=",")
-		write.table(proximusIndexCatchmentsAll, "Raw_data_Sciensano/proximus_catchment_areas_all.csv", quote=F, row.names=F, sep=",")
-		data = read.csv("Raw_data_Sciensano/telenet_zip_per_capita.csv")
-		telenetIndexCommunesIn = matrix(nrow=dim(communes2@data)[1], ncol=length(days1))
-		telenetIndexCommunesOut = matrix(nrow=dim(communes2@data)[1], ncol=length(days1))
-		telenetIndexCommunesAll = matrix(nrow=dim(communes2@data)[1], ncol=length(days1))
-		row.names(telenetIndexCommunesIn) = communes2@data[,"nouveau_PO"]; colnames(telenetIndexCommunesIn) = days1
-		row.names(telenetIndexCommunesOut) = communes2@data[,"nouveau_PO"]; colnames(telenetIndexCommunesOut) = days1
-		row.names(telenetIndexCommunesAll) = communes2@data[,"nouveau_PO"]; colnames(telenetIndexCommunesAll) = days1
-		for (i in 1:dim(communes2@data)[1])
-			{
-				for (j in 1:length(days2))
-					{
-						indices = which((data[,"postalcode"]==communes2@data[i,"nouveau_PO"])&(data[,"date"]==days2[j]))
-						if (length(indices) > 0)	
-							{
-								telenetIndexCommunesIn[i,j] = mean(data[indices,"in_per_capita"])
-								telenetIndexCommunesOut[i,j] = mean(data[indices,"out_per_capita"])
-								telenetIndexCommunesAll[i,j] = mean(data[indices,"in_out_per_capita"])
-							}
-					}
-			}
-		telenetIndexCatchmentsIn = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
-		telenetIndexCatchmentsOut = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
-		telenetIndexCatchmentsAll = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
-		colnames(telenetIndexCatchmentsIn) = paste0("telenetIndexIn_",days1)
-		colnames(telenetIndexCatchmentsOut) = paste0("telenetIndexOut_",days1)
-		colnames(telenetIndexCatchmentsAll) = paste0("telenetIndexAll_",days1)
-		for (i in 1:dim(catchmentAreas@data)[1])
-			{
-				for (j in 1:length(days2))
-					{
-						telenetIndexCatchmentsIn[i,j] = sum(telenetIndexCommunesIn[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
-						telenetIndexCatchmentsOut[i,j] = sum(telenetIndexCommunesOut[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
-						telenetIndexCatchmentsAll[i,j] = sum(telenetIndexCommunesAll[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
-					}
-			}
-		write.table(telenetIndexCatchmentsIn, "Raw_data_Sciensano/telenet_catchment_areas_in.csv", quote=F, row.names=F, sep=",")
-		write.table(telenetIndexCatchmentsOut, "Raw_data_Sciensano/telenet_catchment_areas_out.csv", quote=F, row.names=F, sep=",")
-		write.table(telenetIndexCatchmentsAll, "Raw_data_Sciensano/telenet_catchment_areas_all.csv", quote=F, row.names=F, sep=",")
-	}
-proximusIndexCatchmentsAll = read.csv("Raw_data_Sciensano/proximus_catchment_areas_all.csv")
-telenetIndexCatchmentsAll = read.csv("Raw_data_Sciensano/telenet_catchment_areas_all.csv")
-colnames(proximusIndexCatchmentsAll) = gsub("\\.","-",colnames(proximusIndexCatchmentsAll))
-colnames(telenetIndexCatchmentsAll) = gsub("\\.","-",colnames(telenetIndexCatchmentsAll))
-catchmentAreas@data = cbind(catchmentAreas@data, proximusIndexCatchmentsAll, telenetIndexCatchmentsAll)
-
-	# 4.2. Extracting mobility data from mobile phone data
-
-if (!file.exists("B-post_avisages_data/B-post_data_catchment_areas.csv"))
-	{
-		days2 = gsub("-","",days1[1:73]); days3 = ymd(days1) # TO ACTUALISE !!
-		data = read.csv("B-post_avisages_data/B-post_data2_Daniele_081220.csv")
-		colnames(data) = gsub("\\.","",gsub("X","",colnames(data)))
-		bpostIndexCommunes = matrix(nrow=dim(communes2@data)[1], ncol=length(days1[1:73]))
-		row.names(bpostIndexCommunes) = communes2@data[,"nouveau_PO"]; colnames(bpostIndexCommunes) = days1[1:73]
-		for (i in 1:dim(communes2@data)[1])
-			{
-				for (j in 1:length(days2))
-					{
-						if ((length(which(data[,"PO"]==communes2@data[i,"nouveau_PO"])) > 0)&(length(which((colnames(data)==days2[j]))) > 0))
-							{
-								bpostIndexCommunes[i,j] = data[which(data[,"PO"]==communes2@data[i,"nouveau_PO"]),which((colnames(data)==days2[j]))]
-							}
-					}
-			}
-		bpostIndexCatchments = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1[1:73]))
-		colnames(bpostIndexCatchments) = paste0("bpostIndexAll_",days1[1:73])
-		for (i in 1:dim(catchmentAreas@data)[1])
-			{
-				for (j in 1:length(days2))
-					{
-						bpostIndexCatchments[i,j] = sum(bpostIndexCommunes[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
-					}
-			}
-		write.table(bpostIndexCatchments, "B-post_avisages_data/B-post_data_catchment_areas.csv", quote=F, row.names=F, sep=",")
-	}
-bpostIndexCatchments = read.csv("B-post_avisages_data/B-post_data_catchment_areas.csv")
-catchmentAreas@data = cbind(catchmentAreas@data, bpostIndexCatchments)
-
-	# 4.3. Extracting mobility data from mobile phone data
-
-if (!file.exists("CDS_Copernicus_data/Catchment_areas_data.csv"))
-	{
-		days2 = gsub("-","",days1); days3 = ymd(days1); communes3 = spTransform(communes2, CRS("+init=epsg:4326"))
-		temperatureCommunes = matrix(nrow=dim(communes3@data)[1], ncol=length(days1))
-		row.names(temperatureCommunes) = communes2@data[,"nouveau_PO"]; colnames(temperatureCommunes) = days1
-		for (i in 1:length(days2))
-			{
-				month = substr(days2[i], 5, 6)
-				rasts = brick(paste0("CDS_Copernicus_data/CDS_Copernicus_",month,"20.nc"))
-				rast = rasts[[which(gsub("\\.","",gsub("X","",gsub(".12.00.00","",names(rasts))))==days2[i])]]
-				for (j in 1:dim(communes3@data)[1])
-					{
-						maxArea = 0; polIndex = 0
-						for (k in 1:length(communes3@polygons[[j]]@Polygons))
-							{
-								if (maxArea < communes3@polygons[[j]]@Polygons[[k]]@area)
-									{
-										maxArea = communes3@polygons[[j]]@Polygons[[k]]@area; polIndex = k
-									}
-							}
-						pol = communes3@polygons[[j]]@Polygons[[polIndex]]
-						p = Polygon(pol@coords); ps = Polygons(list(p),1); sps = SpatialPolygons(list(ps))
-						pol = sf::st_as_sfc(sps); st_crs(pol) = communes3@proj4string
-						temperatureCommunes[j,i] = exact_extract(rast, pol, fun="mean")
-					}
-			}
-		temperatureCatchments = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
-		colnames(temperatureCatchments) = paste0("tempoerature_",days1)
-		for (i in 1:dim(catchmentAreas@data)[1])
-			{
-				for (j in 1:length(days2))
-					{
-						temperatureCatchments[i,j] = sum(temperatureCommunes[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
-					}
-			}
-		write.table(temperatureCatchments, "CDS_Copernicus_data/Catchment_areas_data.csv", quote=F, row.names=F, sep=",")
-	}
-temperatureCatchments = read.csv("CDS_Copernicus_data/Catchment_areas_data.csv")
-catchmentAreas@data = cbind(catchmentAreas@data, temperatureCatchments)
-
-	# 4.4. Cumputing doubling times for hospitalisations and ICU
+	# 4.1. Cumputing doubling times for hospitalisations and ICU
 
 data = read.csv("Raw_data_Sciensano/Hosp_surge_overview_03122020_1500.csv", head=T, sep=";")
 firstDay = ymd("2020-01-30"); days2 = ymd(days1); days3 = as.numeric(days2-firstDay)
@@ -1673,47 +1501,525 @@ catchmentAreas@data = cbind(catchmentAreas@data, incidenceICUCases)
 catchmentAreas@data = cbind(catchmentAreas@data, doublingTICUCases)
 catchmentAreas@data = cbind(catchmentAreas@data, dailyRatioICUCases)
 
-	# 4.5. Relation between temporal variables and new hospitalisations
+	# 4.2. Extracting mobility data from mobile phone data
+
+		# - out_per_capita = # trips out / # subscriptions
+		# - in_per_capita = # trips in / # subscriptions
+		# - in_out_per_capita = (# trips in + trips out) / # subscriptions
+		# - trips out = journey of >15min outside the zip code
+		# - trips in = journey of >15min inside the zip code (for someone that is not living in that zip code)
+		# - subscriptions = number of SIM cards (Proximus or Telenet) "living" in the zip code, even for in_per_capita (!)
+		# - n.b.: the negative in_per_capita result from not enough inhabitants, because this is not allowed to report counts < 30 
+		# 		  (so they put these values on "-1"). These negative values should thus be treated as "NA"
+
+if (!file.exists("Raw_data_Sciensano/proximus_catchment_areas_all.csv"))
+	{
+		days2 = gsub("-","",days1); days3 = ymd(days1)
+		data = read.csv("Raw_data_Sciensano/proximus_in_out_zip.csv")
+		proximusIndexCommunesIn = matrix(nrow=dim(communes2@data)[1], ncol=length(days1))
+		proximusIndexCommunesOut = matrix(nrow=dim(communes2@data)[1], ncol=length(days1))
+		proximusIndexCommunesAll = matrix(nrow=dim(communes2@data)[1], ncol=length(days1))
+		row.names(proximusIndexCommunesIn) = communes2@data[,"nouveau_PO"]; colnames(proximusIndexCommunesIn) = days1
+		row.names(proximusIndexCommunesOut) = communes2@data[,"nouveau_PO"]; colnames(proximusIndexCommunesOut) = days1
+		row.names(proximusIndexCommunesAll) = communes2@data[,"nouveau_PO"]; colnames(proximusIndexCommunesAll) = days1
+		for (i in 1:dim(communes2@data)[1])
+			{
+				for (j in 1:length(days2))
+					{
+						indices = which((data[,"postalcode"]==communes2@data[i,"nouveau_PO"])&(data[,"date"]==days2[j]))
+						if (length(indices) > 0)	
+							{
+								proximusIndexCommunesIn[i,j] = mean(data[indices,"in_per_capita"])
+								proximusIndexCommunesOut[i,j] = mean(data[indices,"out_per_capita"])
+								proximusIndexCommunesAll[i,j] = mean(data[indices,"in_out_per_capita"])
+							}
+					}
+			}
+		proximusIndexCatchmentsIn = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+		proximusIndexCatchmentsOut = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+		proximusIndexCatchmentsAll = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+		colnames(proximusIndexCatchmentsIn) = paste0("proximusIndexIn_",days1)
+		colnames(proximusIndexCatchmentsOut) = paste0("proximusIndexOut_",days1)
+		colnames(proximusIndexCatchmentsAll) = paste0("proximusIndexAll_",days1)
+		for (i in 1:dim(catchmentAreas@data)[1])
+			{
+				for (j in 1:length(days2))
+					{
+						proximusIndexCatchmentsIn[i,j] = sum(proximusIndexCommunesIn[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
+						proximusIndexCatchmentsOut[i,j] = sum(proximusIndexCommunesOut[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
+						proximusIndexCatchmentsAll[i,j] = sum(proximusIndexCommunesAll[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
+					}
+			}
+		write.table(proximusIndexCatchmentsIn, "Raw_data_Sciensano/proximus_catchment_areas_in.csv", quote=F, row.names=F, sep=",")
+		write.table(proximusIndexCatchmentsOut, "Raw_data_Sciensano/proximus_catchment_areas_out.csv", quote=F, row.names=F, sep=",")
+		write.table(proximusIndexCatchmentsAll, "Raw_data_Sciensano/proximus_catchment_areas_all.csv", quote=F, row.names=F, sep=",")
+		data = read.csv("Raw_data_Sciensano/telenet_zip_per_capita.csv")
+		telenetIndexCommunesIn = matrix(nrow=dim(communes2@data)[1], ncol=length(days1))
+		telenetIndexCommunesOut = matrix(nrow=dim(communes2@data)[1], ncol=length(days1))
+		telenetIndexCommunesAll = matrix(nrow=dim(communes2@data)[1], ncol=length(days1))
+		row.names(telenetIndexCommunesIn) = communes2@data[,"nouveau_PO"]; colnames(telenetIndexCommunesIn) = days1
+		row.names(telenetIndexCommunesOut) = communes2@data[,"nouveau_PO"]; colnames(telenetIndexCommunesOut) = days1
+		row.names(telenetIndexCommunesAll) = communes2@data[,"nouveau_PO"]; colnames(telenetIndexCommunesAll) = days1
+		for (i in 1:dim(communes2@data)[1])
+			{
+				for (j in 1:length(days2))
+					{
+						indices = which((data[,"postalcode"]==communes2@data[i,"nouveau_PO"])&(data[,"date"]==days2[j]))
+						if (length(indices) > 0)	
+							{
+								telenetIndexCommunesIn[i,j] = mean(data[indices,"in_per_capita"])
+								telenetIndexCommunesOut[i,j] = mean(data[indices,"out_per_capita"])
+								telenetIndexCommunesAll[i,j] = mean(data[indices,"in_out_per_capita"])
+							}
+					}
+			}
+		telenetIndexCatchmentsIn = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+		telenetIndexCatchmentsOut = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+		telenetIndexCatchmentsAll = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+		colnames(telenetIndexCatchmentsIn) = paste0("telenetIndexIn_",days1)
+		colnames(telenetIndexCatchmentsOut) = paste0("telenetIndexOut_",days1)
+		colnames(telenetIndexCatchmentsAll) = paste0("telenetIndexAll_",days1)
+		for (i in 1:dim(catchmentAreas@data)[1])
+			{
+				for (j in 1:length(days2))
+					{
+						telenetIndexCatchmentsIn[i,j] = sum(telenetIndexCommunesIn[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
+						telenetIndexCatchmentsOut[i,j] = sum(telenetIndexCommunesOut[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
+						telenetIndexCatchmentsAll[i,j] = sum(telenetIndexCommunesAll[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
+					}
+			}
+		write.table(telenetIndexCatchmentsIn, "Raw_data_Sciensano/telenet_catchment_areas_in.csv", quote=F, row.names=F, sep=",")
+		write.table(telenetIndexCatchmentsOut, "Raw_data_Sciensano/telenet_catchment_areas_out.csv", quote=F, row.names=F, sep=",")
+		write.table(telenetIndexCatchmentsAll, "Raw_data_Sciensano/telenet_catchment_areas_all.csv", quote=F, row.names=F, sep=",")
+	}
+proximusIndexCatchmentsAll = read.csv("Raw_data_Sciensano/proximus_catchment_areas_all.csv")
+colnames(proximusIndexCatchmentsAll) = gsub("\\.","-",colnames(proximusIndexCatchmentsAll))
+catchmentAreas@data = cbind(catchmentAreas@data, proximusIndexCatchmentsAll)
+
+	# 4.3. Extracting mobility data from B-post postal data
+
+if (!file.exists("B-post_avisages_data/B-post_data_catchment_areas.csv"))
+	{
+		days2 = gsub("-","",days1[1:73]); days3 = ymd(days1) # TO ACTUALISE !!
+		data = read.csv("B-post_avisages_data/B-post_data2_Daniele_081220.csv")
+		colnames(data) = gsub("\\.","",gsub("X","",colnames(data)))
+		bpostIndexCommunes = matrix(nrow=dim(communes2@data)[1], ncol=length(days1[1:73]))
+		row.names(bpostIndexCommunes) = communes2@data[,"nouveau_PO"]; colnames(bpostIndexCommunes) = days1[1:73]
+		for (i in 1:dim(communes2@data)[1])
+			{
+				for (j in 1:length(days2))
+					{
+						if ((length(which(data[,"PO"]==communes2@data[i,"nouveau_PO"])) > 0)&(length(which((colnames(data)==days2[j]))) > 0))
+							{
+								bpostIndexCommunes[i,j] = data[which(data[,"PO"]==communes2@data[i,"nouveau_PO"]),which((colnames(data)==days2[j]))]
+							}
+					}
+			}
+		bpostIndexCatchments = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1[1:73]))
+		colnames(bpostIndexCatchments) = paste0("bpostIndexAll_",days1[1:73])
+		for (i in 1:dim(catchmentAreas@data)[1])
+			{
+				for (j in 1:length(days2))
+					{
+						bpostIndexCatchments[i,j] = sum(bpostIndexCommunes[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
+					}
+			}
+		write.table(bpostIndexCatchments, "B-post_avisages_data/B-post_data_catchment_areas.csv", quote=F, row.names=F, sep=",")
+	}
+
+	# 4.4. Extracting temperature and precipitation data from CDS Copernicus
+
+if (!file.exists("CDS_Copernicus_data/Catchment_areas_temp.csv"))
+	{
+		days2 = gsub("-","",days1); days3 = ymd(days1); communes3 = spTransform(communes2, CRS("+init=epsg:4326"))
+		temperatureCommunes = matrix(nrow=dim(communes3@data)[1], ncol=length(days1))
+		row.names(temperatureCommunes) = communes2@data[,"nouveau_PO"]; colnames(temperatureCommunes) = days1
+		for (i in 1:length(days2))
+			{
+				month = substr(days2[i], 5, 6)
+				rasts = brick(paste0("CDS_Copernicus_data/CDS_temperature_",month,"20.nc"))
+				rast = rasts[[which(gsub("\\.","",gsub("X","",gsub(".12.00.00","",names(rasts))))==days2[i])]]
+				for (j in 1:dim(communes3@data)[1])
+					{
+						maxArea = 0; polIndex = 0
+						for (k in 1:length(communes3@polygons[[j]]@Polygons))
+							{
+								if (maxArea < communes3@polygons[[j]]@Polygons[[k]]@area)
+									{
+										maxArea = communes3@polygons[[j]]@Polygons[[k]]@area; polIndex = k
+									}
+							}
+						pol = communes3@polygons[[j]]@Polygons[[polIndex]]
+						p = Polygon(pol@coords); ps = Polygons(list(p),1); sps = SpatialPolygons(list(ps))
+						pol = sf::st_as_sfc(sps); st_crs(pol) = communes3@proj4string
+						temperatureCommunes[j,i] = exact_extract(rast, pol, fun="mean")
+					}
+			}
+		temperatureCatchments = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+		colnames(temperatureCatchments) = paste0("temperature_",days1)
+		for (i in 1:dim(catchmentAreas@data)[1])
+			{
+				for (j in 1:length(days2))
+					{
+						temperatureCatchments[i,j] = sum(temperatureCommunes[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
+					}
+			}
+		write.table(temperatureCatchments, "CDS_Copernicus_data/Catchment_areas_temp.csv", quote=F, row.names=F, sep=",")
+	}
+if (!file.exists("CDS_Copernicus_data/Catchment_areas_rhum.csv"))
+	{
+		days2 = gsub("-","",days1); days3 = ymd(days1); communes3 = spTransform(communes2, CRS("+init=epsg:4326"))
+		relativeHumidityCommunes = matrix(nrow=dim(communes3@data)[1], ncol=length(days1))
+		row.names(relativeHumidityCommunes) = communes2@data[,"nouveau_PO"]; colnames(relativeHumidityCommunes) = days1
+		for (i in 1:length(days2))
+			{
+				month = substr(days2[i], 5, 6)
+				rasts = brick(paste0("CDS_Copernicus_data/CDS_relativeHumidity_",month,"20.nc"))
+				rast = rasts[[which(gsub("\\.","",gsub("X","",gsub(".12.00.00","",names(rasts))))==days2[i])]]
+				for (j in 1:dim(communes3@data)[1])
+					{
+						maxArea = 0; polIndex = 0
+						for (k in 1:length(communes3@polygons[[j]]@Polygons))
+							{
+								if (maxArea < communes3@polygons[[j]]@Polygons[[k]]@area)
+									{
+										maxArea = communes3@polygons[[j]]@Polygons[[k]]@area; polIndex = k
+									}
+							}
+						pol = communes3@polygons[[j]]@Polygons[[polIndex]]
+						p = Polygon(pol@coords); ps = Polygons(list(p),1); sps = SpatialPolygons(list(ps))
+						pol = sf::st_as_sfc(sps); st_crs(pol) = communes3@proj4string
+						relativeHumidityCommunes[j,i] = exact_extract(rast, pol, fun="mean")
+					}
+			}
+		relativeHumidityCatchments = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+		colnames(relativeHumidityCatchments) = paste0("relativeHumidity_",days1)
+		for (i in 1:dim(catchmentAreas@data)[1])
+			{
+				for (j in 1:length(days2))
+					{
+						relativeHumidityCatchments[i,j] = sum(relativeHumidityCommunes[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
+					}
+			}
+		write.table(relativeHumidityCatchments, "CDS_Copernicus_data/Catchment_areas_rhum.csv", quote=F, row.names=F, sep=",")
+	}
+if (!file.exists("CDS_Copernicus_data/Catchment_areas_prec.csv"))
+	{
+		days2 = gsub("-","",days1); days3 = ymd(days1); communes3 = spTransform(communes2, CRS("+init=epsg:4326"))
+		precipitationCommunes = matrix(nrow=dim(communes3@data)[1], ncol=length(days1))
+		row.names(precipitationCommunes) = communes2@data[,"nouveau_PO"]; colnames(precipitationCommunes) = days1
+		for (i in 1:length(days2))
+			{
+				month = substr(days2[i], 5, 6)
+				rasts = brick(paste0("CDS_Copernicus_data/CDS_precipitation_",month,"20.nc"))
+				rast = rasts[[which(gsub("\\.","",gsub("X","",gsub(".12.00.00","",names(rasts))))==days2[i])]]
+				for (j in 1:dim(communes3@data)[1])
+					{
+						maxArea = 0; polIndex = 0
+						for (k in 1:length(communes3@polygons[[j]]@Polygons))
+							{
+								if (maxArea < communes3@polygons[[j]]@Polygons[[k]]@area)
+									{
+										maxArea = communes3@polygons[[j]]@Polygons[[k]]@area; polIndex = k
+									}
+							}
+						pol = communes3@polygons[[j]]@Polygons[[polIndex]]
+						p = Polygon(pol@coords); ps = Polygons(list(p),1); sps = SpatialPolygons(list(ps))
+						pol = sf::st_as_sfc(sps); st_crs(pol) = communes3@proj4string
+						precipitationCommunes[j,i] = exact_extract(rast, pol, fun="mean")
+					}
+			}
+		precipitationCatchments = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+		colnames(precipitationCatchments) = paste0("precipitation_",days1)
+		for (i in 1:dim(catchmentAreas@data)[1])
+			{
+				for (j in 1:length(days2))
+					{
+						precipitationCatchments[i,j] = sum(precipitationCommunes[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
+					}
+			}
+		write.table(precipitationCatchments, "CDS_Copernicus_data/Catchment_areas_prec.csv", quote=F, row.names=F, sep=",")
+	}
+if (!file.exists("CDS_Copernicus_data/Catchment_areas_radia.csv"))
+	{
+		days2 = gsub("-","",days1); days3 = ymd(days1); communes3 = spTransform(communes2, CRS("+init=epsg:4326"))
+		solarRadiationCommunes = matrix(nrow=dim(communes3@data)[1], ncol=length(days1))
+		row.names(solarRadiationCommunes) = communes2@data[,"nouveau_PO"]; colnames(solarRadiationCommunes) = days1
+		for (i in 1:length(days2))
+			{
+				month = substr(days2[i], 5, 6)
+				rasts = brick(paste0("CDS_Copernicus_data/CDS_solarRadiation_",month,"20.nc"))
+				rast = rasts[[which(gsub("\\.","",gsub("X","",gsub(".12.00.00","",names(rasts))))==days2[i])]]
+				for (j in 1:dim(communes3@data)[1])
+					{
+						maxArea = 0; polIndex = 0
+						for (k in 1:length(communes3@polygons[[j]]@Polygons))
+							{
+								if (maxArea < communes3@polygons[[j]]@Polygons[[k]]@area)
+									{
+										maxArea = communes3@polygons[[j]]@Polygons[[k]]@area; polIndex = k
+									}
+							}
+						pol = communes3@polygons[[j]]@Polygons[[polIndex]]
+						p = Polygon(pol@coords); ps = Polygons(list(p),1); sps = SpatialPolygons(list(ps))
+						pol = sf::st_as_sfc(sps); st_crs(pol) = communes3@proj4string
+						solarRadiationCommunes[j,i] = exact_extract(rast, pol, fun="mean")
+					}
+			}
+		solarRadiationCatchments = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(days1))
+		colnames(solarRadiationCatchments) = paste0("solarRadiation_",days1)
+		for (i in 1:dim(catchmentAreas@data)[1])
+			{
+				for (j in 1:length(days2))
+					{
+						solarRadiationCatchments[i,j] = sum(solarRadiationCommunes[,j]*populations2[,i],na.rm=T)/catchmentAreas@data[i,"population"]
+					}
+			}
+		write.table(solarRadiationCatchments, "CDS_Copernicus_data/Catchment_areas_radia.csv", quote=F, row.names=F, sep=",")
+	}
+temperatureCatchments = read.csv("CDS_Copernicus_data/Catchment_areas_temp.csv")
+precipitationCatchments = read.csv("CDS_Copernicus_data/Catchment_areas_prec.csv")
+relativeHumidityCatchments = read.csv("CDS_Copernicus_data/Catchment_areas_rhum.csv")
+solarRadiationCatchments = read.csv("CDS_Copernicus_data/Catchment_areas_radia.csv")
+catchmentAreas@data = cbind(catchmentAreas@data, temperatureCatchments, relativeHumidityCatchments, solarRadiationCatchments)
+
+	# 4.5. Extracting PM 2.5 emission value from gridded data
+
+if (!file.exists("Rasters_de_irceline_be/Catchment_areas_PM_25.csv"))
+	{
+		template = raster("PM25_mean_2017.asc")
+		grid = shapefile("Rasters_de_irceline_be/Rast_2020_daily_grids.shp")
+		pm25 = read.csv("Rasters_de_irceline_be/PM25_2020_daily_grids.csv", head=T)
+		days2 = gsub("-","",days1); days3 = ymd(days1)
+		pm25CatchmentAreas = matrix(nrow=dim(catchmentAreas)[1], ncol=length(days1))
+		colnames(pm25CatchmentAreas) = days1
+		for (i in 1:length(days1))
+			{
+				index = which(colnames(pm25)==paste0("X",gsub("-","",days1[i])))
+				if (length(index1) == 1)
+					{
+						temp1 = grid; temp1@data$vals = pm25[,index]
+						temp2 = SpatialPolygons(temp1@polygons)
+						rast = rasterize(temp2, template, field=temp1@data$vals)
+						for (j in 1:dim(catchmentAreas@data)[1])
+							{
+								maxArea = 0; polIndex = 0
+								for (k in 1:length(catchmentAreas@polygons[[j]]@Polygons))
+									{
+										if (maxArea < catchmentAreas@polygons[[j]]@Polygons[[k]]@area)
+											{
+												maxArea = catchmentAreas@polygons[[j]]@Polygons[[k]]@area; polIndex = k
+											}
+									}
+								pol = catchmentAreas@polygons[[j]]@Polygons[[polIndex]]
+								p = Polygon(pol@coords); ps = Polygons(list(p),1); sps = SpatialPolygons(list(ps))
+								pol = sf::st_as_sfc(sps); st_crs(pol) = communes1@proj4string; crs(rast) = crs(pol)
+								pm25CatchmentAreas[j,i] = exact_extract(rast, pol, fun="mean")
+							}
+					}
+			}
+		colnames(pm25CatchmentAreas) = paste0("emissionPM25_",days1)
+		write.table(pm25CatchmentAreas, "Rasters_de_irceline_be/Catchment_areas_PM_25.csv", quote=F, row.names=F, sep=",")
+	}
+pm25CatchmentAreas = read.csv("Rasters_de_irceline_be/Catchment_areas_PM_25.csv", head=T)
+catchmentAreas@data = cbind(catchmentAreas@data, pm25CatchmentAreas)
+
+if (writingFiles) write.csv(catchmentAreas@data, "Catchment_areas_2.csv", row.names=F, quote=F)
+
+	# 4.6. Exploring the Relation between temporal variables and new hospitalisations
 
 library(ggridges); library(ggplot2); library(viridis); library(hrbrthemes); library(tibble)
 
-temporalVariable = "proximusIndexAll"; temporalVariable = "telenetIndexAll"
-temporalVariable = "bpostIndexAll"; temporalVariable = "temperature"
-
-colnames(catchmentAreas@data) = gsub("\\.","-",colnames(catchmentAreas@data))
-temporalValues = catchmentAreas@data[,which(grepl(temporalVariable,colnames(catchmentAreas@data)))]
-newHospitaCases = catchmentAreas@data[,which(grepl("newHospitaliCases",colnames(catchmentAreas@data)))]
-dailyRatioHosps = catchmentAreas@data[,which(grepl("dailyRatioHosCases",colnames(catchmentAreas@data)))]
-days1 = c(paste0("2020-03-",c(15:31)),paste0("2020-04-0",c(1:9)),paste0("2020-04-",c(10:15)))
-days1 = c(paste0("2020-03-",c(15:31)),paste0("2020-04-0",c(1:9)),paste0("2020-04-",c(10:30)),paste0("2020-05-0",c(1:9)),paste0("2020-05-",c(10:12)))
-days1 = c(paste0("2020-10-",c(15:31)),paste0("2020-11-0",c(1:9)),paste0("2020-11-",c(10:15))))
-Ds = c(1:20); R2s = matrix(nrow=dim(dailyRatioHosps)[1], ncol=length(Ds)); cors = matrix(nrow=dim(dailyRatioHosps)[1], ncol=length(Ds))
-for (i in 1:length(Ds))
+catchmentAreas@data = read.csv("Catchment_areas_2.csv", head=T); h = 1; movingAverageOf7days = TRUE
+temporalVariables = c("proximusIndexAll", "temperature", "relativeHumidity", "solarRadiation", "emissionPM25")
+if (showingPlots)
 	{
-		for (j in 1:dim(dailyRatioHosps)[1])
+		temporalVariable = temporalVariables[h]; temporalVariable = "proximusIndexAll"
+		temporalVariable = temporalVariables[h]; temporalVariable = "temperature"
+		temporalVariable = temporalVariables[h]; temporalVariable = "relativeHumidity"
+		temporalVariable = temporalVariables[h]; temporalVariable = "solarRadiation"
+		temporalVariable = temporalVariables[h]; temporalVariable = "emissionPM25"
+		colnames(catchmentAreas@data) = gsub("\\.","-",colnames(catchmentAreas@data))
+		temporalValues = catchmentAreas@data[,which(grepl(temporalVariable,colnames(catchmentAreas@data)))]
+		newHospitaCases = catchmentAreas@data[,which(grepl("newHospitaliCases",colnames(catchmentAreas@data)))]
+		dailyRatioHosps = catchmentAreas@data[,which(grepl("dailyRatioHosCases",colnames(catchmentAreas@data)))]
+		Ds = c(1:30); R2s = matrix(nrow=dim(dailyRatioHosps)[1], ncol=length(Ds)); cors = matrix(nrow=dim(dailyRatioHosps)[1], ncol=length(Ds))
+		for (i in 1:length(Ds))
 			{
-				days2 = as.character(ymd(days1)-Ds[i]); days3 = as.character(ymd(days1)-1)
-				indices = which(days2%in%gsub(paste0(temporalVariable,"_"),"",colnames(temporalValues)))
-				x = t(temporalValues[j,paste0(paste0(temporalVariable,"_"),days2[indices])])
-				y = t(newHospitaCases[j,paste0("newHospitaliCases_",days1[indices])])
-				y = t(dailyRatioHosps[j,paste0("dailyRatioHosCases_",days1[indices])])
-				y[is.infinite(y)] = NA; x = x[!is.na(y)]; y = y[!is.na(y)]; plot(x,y)
-				if (length(y) > 0)
+				for (j in 1:dim(dailyRatioHosps)[1])
 					{
-						lr = lm("y ~ x"); R2s[j,i] = summary(lr)$r.square; cors[j,i] = cor(x,y,method="spearman")
+						days2 = as.character(ymd(days1)-Ds[i]); days3 = as.character(ymd(days1)-1)
+						indices = which(days2%in%gsub(paste0(temporalVariable,"_"),"",colnames(temporalValues)))
+						x1 = t(temporalValues[j,paste0(paste0(temporalVariable,"_"),days2[indices])]); x2 = x1
+						y1 = t(newHospitaCases[j,paste0("newHospitaliCases_",days1[indices])]); y2 = y1
+						y1 = t(dailyRatioHosps[j,paste0("dailyRatioHosCases_",days1[indices])]); y2 = y1
+						if (movingAverageOf7days == TRUE)
+							{
+								for (k in 1:length(x2))
+									{
+										indices = seq(k-3,k+3,1); indices = indices[which((indices[]>0)&(indices[]<=length(x2)))]
+										if (!is.na(x2[k])) x2[k] = mean(as.numeric(x1[indices]), na.rm=T)
+										if (!is.na(as.numeric(y2[k]))) y2[k] = mean(as.numeric(y1[indices]), na.rm=T)
+									}
+							}	else		{
+								x2 = x1; y2 = y1
+							}
+						y = as.numeric(y2); x = as.numeric(x2)
+						y[is.infinite(y)] = NA; x = x[!is.na(y)]; y = y[!is.na(y)]
+						y = y[!is.na(x)]; x = x[!is.na(x)]; # plot(x,y)
+						if (length(y) > 0)
+							{
+								lr = lm("y ~ x"); R2s[j,i] = summary(lr)$r.square; cors[j,i] = cor(x,y,method="spearman")
+							}
 					}
 			}
+		correlations = c(); days = c()
+		for (i in 1:dim(cors)[2])
+			{
+				correlations = c(correlations, cors[,i])
+				days = c(days, rep(i,dim(cors)[1]))
+			}
+		days = days[!is.na(correlations)]; correlations = correlations[!is.na(correlations)]
+		df = as_tibble(data.frame(cbind(as.factor(days),correlations)))
+				ggplot(df, aes(x=correlations, y=as.factor(days), fill=..x..)) +
+		 	   geom_density_ridges_gradient(scale=3, rel_min_height=0.01) +
+		scale_fill_viridis(name="Temp. [F]", option="C") + # theme_ipsum() +
+		theme(legend.position="none", panel.spacing=unit(0.1,"lines"), strip.text.x=element_text(size=7))
 	}
-correlations = c(); days = c()
-for (i in 1:dim(cors)[2])
+if (showingPlots)
 	{
-		correlations = c(correlations, cors[,i])
-		days = c(days, rep(i,dim(cors)[1]))
+		pdf("Catchment_areas_NEW.pdf", width=9, height=6) # dev.new(width=9, height=6)
+		par(mfrow=c(6,1), mar=c(0,2.5,0,0), oma=c(2,0,0,0), lwd=0.2, col="gray30")
+		temporalVariables = c("proximusIndexAll", "temperature", "relativeHumidity", "solarRadiation", "emissionPM25"); movingAverageOf7days = TRUE
+		temporalVariable_names = c("mobility index", "temperature", "relative humidity", "solar radiation", "PM 2.5 emission")
+		selectedDays = c(16:length(days1)); newHospitaliCases = catchmentAreas@data[,which(grepl("newHospitaliCases",colnames(catchmentAreas@data)))]
+		selected_dates = decimal_date(ymd("2020-03-01","2020-04-01","2020-05-01","2020-06-01","2020-07-01","2020-08-01","2020-09-01","2020-10-01","2020-11-01","2020-12-15"))
+		selected_dates_name = c("","01-04","01-05","01-06","01-07","01-08","01-09","01-10","01-11","")
+		xMin = decimal_date(ymd("2020-03-15")); xMax = decimal_date(ymd("2020-11-30"))
+		allValues = catchmentAreas@data[,paste0("newHospitaliCases_",days1[selectedDays])]
+		yMin = min(allValues,na.rm=T); yMax = max(allValues,na.rm=T)
+		if (movingAverageOf7days == TRUE)
+			{
+				allYvalues = c()
+				for (i in 1:dim(catchmentAreas@data)[1])
+					{
+						y1 = catchmentAreas@data[i,paste0("newHospitaliCases_",days1[selectedDays])]; y2 = y1
+						for (j in 1:length(y2))
+							{
+								indices = seq(j-3,j+3,1); indices = indices[which((indices[]>0)&(indices[]<=length(y1)))]
+								if (!is.na(y2[j])) y2[j] = mean(as.numeric(y1[indices]), na.rm=T)
+							}
+						allYvalues = c(allYvalues, y2)
+					}
+				yMin = min(as.numeric(allYvalues),na.rm=T); yMax = max(as.numeric(allYvalues[!is.infinite(as.numeric(allYvalues))]),na.rm=T)
+			}	else		{
+				yMin = min(allValues,na.rm=T); yMax = max(allValues[!is.infinite(allValues)],na.rm=T)
+			}
+		for (i in 1:dim(catchmentAreas@data)[1])
+			{
+				y1 = catchmentAreas@data[i,paste0("newHospitaliCases_",days1[selectedDays])]; y2 = y1
+				if (movingAverageOf7days == TRUE)
+					{
+						for (j in 1:length(y2))
+							{
+								indices = seq(j-3,j+3,1); indices = indices[which((indices[]>0)&(indices[]<=length(y1)))]
+								values = y1[indices]; values = values[which(!is.infinite(as.numeric(values)))]
+								if (!is.na(y2[j])) y2[j] = mean(as.numeric(values), na.rm=T)
+							}
+					}	else	{
+						y2 = y1
+					}
+				if (i == 1)
+					{
+						plot(decimal_date(ymd(days1[selectedDays])), y2, lwd=0.1, col="red", type="l", axes=F, ann=F, xlim=c(xMin,xMax), ylim=c(yMin,yMax))
+					}	else	{
+						lines(decimal_date(ymd(days1[selectedDays])), y2, lwd=0.1, col="red")
+					}
+			}
+		axis(side=2, lwd.tick=0.2, cex.axis=0.9, lwd=0.2, tck=-0.05, col.axis="gray30", mgp=c(0,0.35,0))
+		title(ylab="hospitalisations", cex.lab=1.1, mgp=c(1.4,0,0), col.lab="gray30")
+		for (i in 1:length(temporalVariables))
+			{
+				temporalValues = catchmentAreas@data[,which(grepl(temporalVariables[i],colnames(catchmentAreas@data)))]
+				yMin = min(temporalValues,na.rm=T); yMax = max(temporalValues,na.rm=T)
+				if (movingAverageOf7days == TRUE)
+					{
+						allYvalues = c()
+						for (j in 1:dim(catchmentAreas@data)[1])
+							{
+								y1 = temporalValues[j,paste0(temporalVariables[i],"_",days1[selectedDays])]; y2 = y1
+								for (k in 1:length(y2))
+									{
+										indices = seq(k-3,k+3,1); indices = indices[which((indices[]>0)&(indices[]<=length(y1)))]
+										if (!is.na(y2[k])) y2[k] = mean(as.numeric(y1[indices]), na.rm=T)
+									}
+								allYvalues = c(allYvalues, y2)
+							}
+						yMin = min(as.numeric(allYvalues),na.rm=T); yMax = max(as.numeric(allYvalues),na.rm=T)
+					}
+				for (j in 1:dim(catchmentAreas@data)[1])
+					{
+						y1 = temporalValues[j,paste0(temporalVariables[i],"_",days1[selectedDays])]; y2 = y1
+						if (movingAverageOf7days == TRUE)
+							{
+								for (k in 1:length(y2))
+									{
+										indices = seq(k-3,k+3,1); indices = indices[which((indices[]>0)&(indices[]<=length(y1)))]
+										if (!is.na(y2[k])) y2[k] = mean(as.numeric(y1[indices]), na.rm=T)
+									}
+							}	else	{
+								y2 = y1
+							}
+						if (j == 1)
+							{
+								plot(decimal_date(ymd(days1[selectedDays])), y2, lwd=0.1, col="gray50", type="l", axes=F, ann=F, xlim=c(xMin,xMax), ylim=c(yMin,yMax))
+							}	else	{
+								lines(decimal_date(ymd(days1[selectedDays])), y2, lwd=0.1, col="gray50")
+							}
+					}
+				axis(side=2, lwd.tick=0.2, cex.axis=0.9, lwd=0.2, tck=-0.05, col.axis="gray30", mgp=c(0,0.35,0))
+				title(ylab=temporalVariable_names[i], cex.lab=1.1, mgp=c(1.4,0,0), col.lab="gray30")
+				if (i == length(temporalVariables))
+					{
+						axis(side=1, lwd.tick=0.2, cex.axis=0.9, lwd=0.2, tck=-0.05, col.axis="gray30", mgp=c(0,0.25,0), at=selected_dates, labels=selected_dates_name)
+					}
+			}
+		dev.off()
 	}
-days = days[!is.na(correlations)]; correlations = correlations[!is.na(correlations)]
-df = as_tibble(data.frame(cbind(as.factor(days),correlations)))
-ggplot(df, aes(x=correlations, y=as.factor(days), fill=..x..)) +
-	   geom_density_ridges_gradient(scale=3, rel_min_height=0.01) +
-	   scale_fill_viridis(name="Temp. [F]", option="C") + theme_ipsum() +
-	   theme(legend.position="none", panel.spacing=unit(0.1,"lines"), strip.text.x=element_text(size=7))
+
+	# 4.7. Multivariate regression analyses considering different fixed lag times
+
+D = 20; temporalVariables = c("proximusIndexAll", "temperature", "relativeHumidity", "solarRadiation", "emissionPM25")
+betas = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(temporalVariables)); colnames(betas) = temporalVariables
+pValues = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(temporalVariables)); colnames(pValues) = temporalVariables
+for (i in 1:dim(catchmentAreas)[1])
+	{
+		days2 = as.character(ymd(days1)-D); days3 = as.character(ymd(days1)-1)
+		dailyRatioHosps = catchmentAreas@data[,which(grepl("dailyRatioHosCases",colnames(catchmentAreas@data)))]
+		responseV = t(dailyRatioHosps[i,paste0("dailyRatioHosCases_",days1)])
+		predictors = matrix(nrow=length(days1), ncol=length(temporalVariables))
+		for (j in 1:dim(predictors)[2])
+			{
+				for (k in 1:dim(predictors)[1])
+					{
+						if (paste0(paste0(temporalVariables[j],"_"),days2[k])%in%colnames(catchmentAreas@data))
+							{
+								predictors[k,j] = catchmentAreas@data[i,paste0(paste0(temporalVariables[j],"_"),days2[k])]
+							}
+					}		
+			}
+		indices = c()
+		for (j in 1:dim(predictors)[1])
+			{
+				if ((sum(!is.na(predictors[j,])) == dim(predictors)[2])&(!is.na(responseV[j,1]))&(!is.infinite(responseV[j,1]))) indices = c(indices, j)
+			}
+		predictors = predictors[indices,]; responseV = responseV[indices,1]
+		df = cbind(responseV, predictors); colnames(df) = c("dailyRatioHosCases",temporalVariables)
+		for (j in 1:dim(df)[2]) df[,j] = (df[,j]-mean(df[,j]))/sd(df[,j])
+		fm = paste0("dailyRatioHosCases ~ ",temporalVariables[1])
+		for (j in 2:length(temporalVariables)) fm = paste0(fm," + ",temporalVariables[j])
+		glm = glm(as.formula(fm), data=as.data.frame(df))
+		for (j in 1:length(temporalVariables)) betas[i,j] = glm$coefficients[temporalVariables[j]]
+		for (j in 1:length(temporalVariables)) pValues[i,j] = summary(glm)$coefficients[temporalVariables[j],"Pr(>|t|)"]
+	}
 

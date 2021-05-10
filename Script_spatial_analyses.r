@@ -5,8 +5,10 @@ library(dismo)
 library(exactextractr)
 library(fields)
 library(gbm)
+library(gdistance)
 library(gplots)
 library(lubridate)
+library(malariaAtlas)
 library(mapi)
 library(mgcv)
 library(randomForest)
@@ -14,12 +16,13 @@ library(raster)
 library(RColorBrewer)
 library(rgdal)
 library(rgeos)
+library(sf)
 library(spdep)
 
-# 1. Analyses of Sciensano data (generating tables)
-# 2. Analyses at the province levels (hospitalisations)
-# 3. Analyses of hospital catchment areas (spatial)
-# 4. Analyses of hospital catchment areas (temporal)
+# 2. Analyses of Sciensano data (generating tables)
+# 3. Analyses at the province levels (hospitalisations)
+# 4. Analyses of hospital catchment areas (spatial)
+# 5. Analyses of hospital catchment areas (temporal)
 
 writingFiles = FALSE
 showingPlots = FALSE
@@ -29,7 +32,87 @@ zTransformation = function(x)
 		x = (x-mean(x))/sqrt(var(x))
 	}
 
-# 1. Analyses of Sciensano data (generating tables)
+# 1. Delimitating the hospital catchment areas (HCAs)
+
+frictionR = readGDAL("Friction_raster_Belgium.tif")
+hospitals = read_sf("All_hospitals_Belgium/All_hospitals_Belgium.shp")
+
+	# 1.1. Computing the travel time to the closest hospital for the whole country
+
+tr = transition(raster(frictionR), function(x) 1/mean(x), 8)
+trG = geoCorrection(tr)
+hospitals_xy = st_coordinates(hospitals)
+hospitals_access = accCost(trG, hospitals_xy)
+writeRaster(hospitals_access, "Access_to_hospitals.tif")
+
+	# 1.2. For each hospital, estimating the travel time from each pixel of the map
+
+s = stack()
+for (i in 1:nrow(hospitals))
+	{
+		coord = st_coordinates(hospitals[i,])
+		rast = accCost(trG, coord); s = stack(s, rast)
+		print(paste0("Computation for hospital ",i))
+	}
+vect = getValues(hospitals_access)[!is.infinite(getValues(hospitals_access))]
+mat = matrix(nrow=nrow(hospitals), ncol=length(vect))
+for (i in 1:nrow(hospitals))
+	{
+		mat[i,] = getValues(s[[i]])[!is.infinite(getValues(s[[i]]))]
+	}
+
+	# 1.3. For each pixel, identifying which hospital is associated with the lowest travel time
+
+vectsel = c()
+for (i in 1:ncol(mat))
+	{
+		vectsel[i] = which(mat[,i]==min(mat[,i]))
+	}
+vectInf = values(hospitals_access); j = 1
+for (i in 1:(ncol(hospitals_access)*nrow(hospitals_access)))
+	{
+		if (is.infinite(vectInf[i]) == FALSE)
+			{
+		 		vectInf[i] = vectsel[j]
+				j = j+1
+			}
+	}
+catchmentAreas = raster(vals=(vectInf), ext=extent(hospitals_access), crs=crs(hospitals_access), nrows=dim(hospitals_access)[1], ncols=dim(hospitals_access)[2])
+
+	# 1.4. Converting and saving the resulting raster into a shapefile gathering HCAs
+
+catchmentAreas = rasterToPolygons(catchmentAreas, dissolve=T, na.rm=T)
+catchmentAreas = subset(catchmentAreas, is.finite(HCAs@data[,"layer"]))
+metadata = matrix(nrow=dim(catchmentAreas@data)[1], ncol=2); colnames(metadata) = c("area","X_ID")
+xS = as(hospitals,"Spatial")@coords[,1]; yS = as(hospitals,"Spatial")@coords[,2]
+for (i in 1:dim(metadata)[1])
+	{
+		area = 0
+		for (j in 1:length(catchmentAreas@polygons[[i]]@Polygons))
+			{
+				pol = catchmentAreas@polygons[[i]]@Polygons[[j]]
+				indices = which(point.in.polygon(xS, yS, pol@coords[,1], pol@coords[,2]) == 1)
+				if (length(indices) > 0)
+					{
+						metadata[i,"X_ID"] = hospitals$ID[indices[1]]
+						if (length(indices) > 1)
+							{
+								for (k in 2:length(indices))
+									{
+										metadata[i,"X_ID"] = paste(metadata[i,"X_ID"],hospitals$ID[indices[k]],sep="-")
+									}
+							}
+					}
+				p = Polygon(pol@coords); ps = Polygons(list(p),1); sps = SpatialPolygons(list(ps))
+				pol = sps; proj4string(pol) = crs(catchmentAreas)
+				area = area + raster::area(pol)
+			}
+		metadata[i,"area"] = round(area)
+	}
+catchmentAreas@data = as.data.frame(metadata)
+writeOGR(catchmentAreas, dsn="Hosp_catchmentArea", "Hospital_catchment_areas_NEW", driver="ESRI Shapefile")
+
+# 2. Analyses of Sciensano data (generating tables)
 
 data_cases = read.csv("https://epistat.sciensano.be/Data/COVID19BE_CASES_AGESEX.csv")
 data_hosps = read.csv("https://epistat.sciensano.be/Data/COVID19BE_HOSP.csv")
@@ -181,7 +264,7 @@ for (h in 1:length(provinceNames))
 		write.csv(tab, paste0("Last_data_",gsub("Li\xe8ge","Liege",provinceNames[h]),".csv"), row.names=F, quote=F)
 	}
 
-# 2. Analyses at the province levels (hospitalisations)
+# 3. Analyses at the province levels (hospitalisations)
 
 selectedDays1 = ymd(c("2020-07-10","2020-07-17","2020-07-24","2020-07-31",
 					  "2020-08-07","2020-08-14","2020-08-21","2020-08-28",
@@ -337,7 +420,7 @@ if (showingPlots)
 		legend(1, 33, provinces@data$NAME_2, col=cols, text.col="gray30", pch=16, pt.cex=1.2, box.lty=0, cex=0.7, y.intersp=1.3)
 	}
 
-# 3. Analyses of hospital catchment areas (spatial)
+# 4. Analyses of hospital catchment areas (spatial)
 
 communes1 = shapefile("Shapefile_communes/Shapefile_NIS5_codes.shp")
 communes2 = shapefile("Shapefile_communes/Shapefile_post_codes.shp")
@@ -347,7 +430,7 @@ catchmentAreas = shapefile("Hosp_catchmentArea/Hospital_catchment_areas_080420.s
 catchmentAreas@data[,"X_ID"] = gsub(" ","",catchmentAreas@data[,"X_ID"])
 catchmentAreas@data$area = as.numeric(catchmentAreas@data$area)
 
-	# 3.1. Establishing the link between catchment areas and communes
+	# 4.1. Establishing the link between catchment areas and communes
 
 computeSharedAreas = FALSE
 if (computeSharedAreas)
@@ -487,7 +570,7 @@ for (i in 1:dim(proportions2)[1])
 	}
 row.names(proportions1) = communes1@data[,"NIS5"]
 
-	# 3.2. Extracting and assigning covariate values to each commune
+	# 4.2. Extracting and assigning covariate values to each commune
 
 data = read.csv("https://epistat.sciensano.be/Data/COVID19BE_CASES_MUNI_CUM.csv")
 communes1@data$cases = rep(0,dim(communes1@data)[1])
@@ -581,7 +664,7 @@ for (i in 1:dim(communes1@data)[1])
 		if (length(index) == 1) communes1@data[i,"sectorT"] = data[index,"MS_PROP"]*100
 	}
 
-	# 3.3. 	Extracting and assigning covariate values to each catchment area
+	# 4.3. 	Extracting and assigning covariate values to each catchment area
 
 catchmentAreas@data$xCentroid = rep(0,dim(catchmentAreas@data)[1])
 catchmentAreas@data$yCentroid = rep(0,dim(catchmentAreas@data)[1])
@@ -701,7 +784,7 @@ if (!file.exists("Hosp_catchmentArea/Proportion_of_urban_areas_080420.csv"))
 	}
 catchmentAreas@data$propUrbanArea = read.csv("Hosp_catchmentArea/Proportion_of_urban_areas_080420.csv")[,3]
 
-	# 3.4. Assigning total numbers of new entries to each catchment area
+	# 4.4. Assigning total numbers of new entries to each catchment area
 
 selected_dates = dmy(c("31-05-2020","31-08-2020","30-11-2020"))
 data = read.csv("Raw_data_Sciensano/Hosp_surge_overview_03122020_1500.csv", head=T, sep=";")
@@ -842,7 +925,7 @@ if (showingPlots)
 			}
 	}
 
-	# 3.5. Performing and plotting the first axes of an exploratory PCA
+	# 4.5. Performing and plotting the first axes of an exploratory PCA
 
 if (showingPlots)
 	{
@@ -929,7 +1012,7 @@ if (showingPlots)
 		title(ylab=paste0("PCA axis 1 (",round((pca$eig[1]/(sum(pca$eig))*100),1),"%)"), cex.lab=0.7, mgp=c(1.3,0,0), col.lab="gray30")
 	}
 
-	# 3.6. Classic correlation analyses (correlogram)
+	# 4.6. Classic correlation analyses (correlogram)
 
 variableNames = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-01_2020-11-30","hosp_10^5_habitants_2020-11-30",
 				  "popDensity","medianAge","moreThan65","ratioBedsInMRsPopulation",
@@ -1018,7 +1101,7 @@ if (showingPlots)
 				  lwd.tick=0.2, tck=-0.6, col.axis="gray30", col.tick="gray30", line=0, mgp=c(0,0.07,0)))
 	}
 
-	# 3.7. Assessing spatial autocorrelation with the Moran's I test
+	# 4.7. Assessing spatial autocorrelation with the Moran's I test
 
 variableNames = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-01_2020-11-30","hosp_10^5_habitants_2020-11-30",
 				  "popDensity","medianAge","moreThan65","ratioBedsInMRsPopulation","medianIncome",
@@ -1036,7 +1119,7 @@ for (i in 1:length(responseVariables))
 			# H0: no spatial autocorrelation
 	}
 
-	# 3.8. Univariate (LR) followed by multivariate regression (GLM) analyses
+	# 4.8. Univariate (LR) followed by multivariate regression (GLM) analyses
 
 normal_analyses = FALSE; analyses_on_MR_cases = FALSE; analyses_without_ouliers_BXL = TRUE
 normal_analyses = FALSE; analyses_on_MR_cases = TRUE; analyses_without_ouliers_BXL = FALSE
@@ -1129,7 +1212,7 @@ for (i in 1:length(responseVariables))
 			}
 	}
 
-	# 3.9. Multivariate GAM (generalised additive model) analyses
+	# 4.9. Multivariate GAM (generalised additive model) analyses
 
 variableNames = c("hosp_10^5_habitants_2020-05-31","hosp_10^5_habitants_2020-09-01_2020-11-30","hosp_10^5_habitants_2020-11-30",
 				  "popDensity","medianAge","moreThan65","ratioBedsInMRsPopulation","medianIncome",
@@ -1201,7 +1284,7 @@ if (showingPlots)
 			}
 	}
 
-	# 3.10. Multivariate analyses with the boosted regression trees approach
+	# 4.10. Multivariate analyses with the boosted regression trees approach
 
 normal_analyses = FALSE; analyses_on_MR_cases = FALSE; analyses_without_ouliers_BXL = TRUE
 normal_analyses = FALSE; analyses_on_MR_cases = TRUE; analyses_without_ouliers_BXL = FALSE
@@ -1385,7 +1468,7 @@ for (i in 1:length(responseVariables))
 		dev.off()
 	}
 
-# 4. Analyses of hospital catchment areas (temporal)
+# 5. Analyses of hospital catchment areas (temporal)
 
 days1 = c(paste0("2020-03-0",c(1:9)),paste0("2020-03-",c(10:31)),paste0("2020-04-0",c(1:9)),paste0("2020-04-",c(10:30)),
 		  paste0("2020-05-0",c(1:9)),paste0("2020-05-",c(10:31)),paste0("2020-06-0",c(1:9)),paste0("2020-06-",c(10:30)),
@@ -1393,7 +1476,7 @@ days1 = c(paste0("2020-03-0",c(1:9)),paste0("2020-03-",c(10:31)),paste0("2020-04
 		  paste0("2020-09-0",c(1:9)),paste0("2020-09-",c(10:30)),paste0("2020-10-0",c(1:9)),paste0("2020-10-",c(10:31)),
 		  paste0("2020-11-0",c(1:9)),paste0("2020-11-",c(10:30)))
 
-	# 4.1. Cumputing doubling times for hospitalisations and ICU
+	# 5.1. Cumputing doubling times for hospitalisations and ICU
 
 data = read.csv("Raw_data_Sciensano/Hosp_surge_overview_03122020_1500.csv", head=T, sep=";")
 firstDay = ymd("2020-01-30"); days2 = ymd(days1); days3 = as.numeric(days2-firstDay)
@@ -1501,7 +1584,7 @@ catchmentAreas@data = cbind(catchmentAreas@data, incidenceICUCases)
 catchmentAreas@data = cbind(catchmentAreas@data, doublingTICUCases)
 catchmentAreas@data = cbind(catchmentAreas@data, dailyRatioICUCases)
 
-	# 4.2. Extracting mobility data from mobile phone data
+	# 5.2. Extracting mobility data from mobile phone data
 
 		# - out_per_capita = # trips out / # subscriptions
 		# - in_per_capita = # trips in / # subscriptions
@@ -1596,7 +1679,7 @@ proximusIndexCatchmentsAll = read.csv("Raw_data_Sciensano/proximus_catchment_are
 colnames(proximusIndexCatchmentsAll) = gsub("\\.","-",colnames(proximusIndexCatchmentsAll))
 catchmentAreas@data = cbind(catchmentAreas@data, proximusIndexCatchmentsAll)
 
-	# 4.3. Extracting mobility data from B-post postal data
+	# 5.3. Extracting mobility data from B-post postal data
 
 if (!file.exists("B-post_avisages_data/B-post_data_catchment_areas.csv"))
 	{
@@ -1627,7 +1710,7 @@ if (!file.exists("B-post_avisages_data/B-post_data_catchment_areas.csv"))
 		write.table(bpostIndexCatchments, "B-post_avisages_data/B-post_data_catchment_areas.csv", quote=F, row.names=F, sep=",")
 	}
 
-	# 4.4. Extracting temperature and precipitation data from CDS Copernicus
+	# 5.4. Extracting temperature and precipitation data from CDS Copernicus
 
 if (!file.exists("CDS_Copernicus_data/Catchment_areas_temp.csv"))
 	{
@@ -1783,7 +1866,7 @@ relativeHumidityCatchments = read.csv("CDS_Copernicus_data/Catchment_areas_rhum.
 solarRadiationCatchments = read.csv("CDS_Copernicus_data/Catchment_areas_radia.csv")
 catchmentAreas@data = cbind(catchmentAreas@data, temperatureCatchments, relativeHumidityCatchments, solarRadiationCatchments)
 
-	# 4.5. Extracting PM 2.5 emission value from gridded data
+	# 5.5. Extracting PM 2.5 emission value from gridded data
 
 if (!file.exists("Rasters_de_irceline_be/Catchment_areas_PM_25.csv"))
 	{
@@ -1826,7 +1909,7 @@ catchmentAreas@data = cbind(catchmentAreas@data, pm25CatchmentAreas)
 
 if (writingFiles) write.csv(catchmentAreas@data, "Catchment_areas_2.csv", row.names=F, quote=F)
 
-	# 4.6. Exploring the Relation between temporal variables and new hospitalisations
+	# 5.6. Exploring the Relation between temporal variables and new hospitalisations
 
 library(ggridges); library(ggplot2); library(viridis); library(hrbrthemes); library(tibble)
 
@@ -1987,7 +2070,7 @@ if (showingPlots)
 		dev.off()
 	}
 
-	# 4.7. Multivariate regression analyses considering different fixed lag times
+	# 5.7. Multivariate regression analyses considering different fixed lag times
 
 D = 20; temporalVariables = c("proximusIndexAll", "temperature", "relativeHumidity", "solarRadiation", "emissionPM25")
 betas = matrix(nrow=dim(catchmentAreas@data)[1], ncol=length(temporalVariables)); colnames(betas) = temporalVariables

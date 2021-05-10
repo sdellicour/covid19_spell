@@ -34,12 +34,12 @@ zTransformation = function(x)
 
 # 1. Delimitating the hospital catchment areas (HCAs)
 
-frictionR = readGDAL("Friction_raster_Belgium.tif")
+frictionR = raster("Friction_raster_Belgium.tif")
 hospitals = read_sf("All_hospitals_Belgium/All_hospitals_Belgium.shp")
 
 	# 1.1. Computing the travel time to the closest hospital for the whole country
 
-tr = transition(raster(frictionR), function(x) 1/mean(x), 8)
+tr = transition(frictionR, function(x) 1/mean(x), 8)
 trG = geoCorrection(tr)
 hospitals_xy = st_coordinates(hospitals)
 hospitals_access = accCost(trG, hospitals_xy)
@@ -82,7 +82,7 @@ catchmentAreas = raster(vals=(vectInf), ext=extent(hospitals_access), crs=crs(ho
 	# 1.4. Converting and saving the resulting raster into a shapefile gathering HCAs
 
 catchmentAreas = rasterToPolygons(catchmentAreas, dissolve=T, na.rm=T)
-catchmentAreas = subset(catchmentAreas, is.finite(HCAs@data[,"layer"]))
+catchmentAreas = subset(catchmentAreas, is.finite(catchmentAreas@data[,"layer"]))
 metadata = matrix(nrow=dim(catchmentAreas@data)[1], ncol=2); colnames(metadata) = c("area","X_ID")
 xS = as(hospitals,"Spatial")@coords[,1]; yS = as(hospitals,"Spatial")@coords[,2]
 for (i in 1:dim(metadata)[1])

@@ -19,6 +19,7 @@ library(rgeos)
 library(sf)
 library(spdep)
 
+# 1. Delimitating the hospital catchment areas (HCAs)
 # 2. Analyses of Sciensano data (generating tables)
 # 3. Analyses at the province levels (hospitalisations)
 # 4. Analyses of hospital catchment areas (spatial)
